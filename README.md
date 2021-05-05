@@ -156,18 +156,100 @@ hacerlo, puedes guiarte de los proyectos anteriores.
 
 ### 5.2 Definición del producto
 
-En el `README.md` cuéntanos brevemente cómo descubriste las necesidades de los
-usuarios y cómo llegaste a la definición final de tu producto. Es importante
-que detalles:
-
 * Quiénes son los principales usuarios de producto.
+ Los usuarios de nuestro producto son personas que :
+ - Pertenecen o apoyan a la comunidad LGTBIQ+ 
+ - Tienen de 18 años en adelante
+ - Poseen conexión a internet
+ - Tiene afinidad con la tecnología
+
 * Qué problema resuelve el producto / para qué le servirá a estos usuarios.
 
 ### 5.3 Historias de usuario
 
-Una vez que entiendas las necesidades de tus usuarixs, escribe las Historias de
-Usuario que representen todo lo que necesitan hacer/ver en la Red Social. Cada
-una de tus Historias de Usuario debe tener:
+La o el usuario se identifica y es un aliado de la comunidad LGQTB+. En tal sentido, para describir sus inquietudes y necesidades, se detallan líneas abajo cada historia de estxs.
+
+#### **Historia de Usuario 1:**
+
+Yo como usuarix deseo observar claramente la página de inicio, sea en mi celular o máquina de escritorio, para crear una cuenta o loguearme.
+
+*Criterios de aceptación*
+
+*Definition of done* 
+  - Debe ser una SPA.
+  - Debe ser _responsive_.
+  - Deben haber recibido _code review_ de al menos una compañera de otro equipo.
+  - Hicieron los _test_ unitarios
+  - Testearon manualmente buscando errores e imperfecciones simples.
+  - Hicieron _pruebas_ de usabilidad e incorporaron el _feedback_ de los
+    usuarios como mejoras.
+  - Desplegaron su aplicación y etiquetaron la versión (git tag).
+
+#### **Historia de Usuario 2:** 
+
+Yo como usuarix, al crearme una cuenta, deseo usar mi correo de Google para tener todo anexado.
+
+*Criterios de aceptación*
+
+*Definition of done* 
+  - Debe ser una SPA.
+  - Debe ser _responsive_.
+  - Deben haber recibido _code review_ de al menos una compañera de otro equipo.
+  - Hicieron los _test_ unitarios
+  - Testearon manualmente buscando errores e imperfecciones simples.
+  - Hicieron _pruebas_ de usabilidad e incorporaron el _feedback_ de los
+    usuarios como mejoras.
+  - Desplegaron su aplicación y etiquetaron la versión (git tag).
+
+#### **Historia de Usuario 3:** 
+
+Yo como usuarix quiero crear una nueva cuenta (sin hacer uso de Google) para tener acceso al aplicativo.
+
+*Criterios de aceptación*
+
+*Definition of done* 
+  - Debe ser una SPA.
+  - Debe ser _responsive_.
+  - Deben haber recibido _code review_ de al menos una compañera de otro equipo.
+  - Hicieron los _test_ unitarios
+  - Testearon manualmente buscando errores e imperfecciones simples.
+  - Hicieron _pruebas_ de usabilidad e incorporaron el _feedback_ de los
+    usuarios como mejoras.
+  - Desplegaron su aplicación y etiquetaron la versión (git tag).
+
+#### **Historia de Usuario 4:**
+
+Yo como usuarix deseo conocer si estoy teniendo errores en la ceración de cuenta o al llenar el formulario para evitar hacer retrabajos.
+
+*Criterios de aceptación*
+
+*Definition of done* 
+  - Debe ser una SPA.
+  - Debe ser _responsive_.
+  - Deben haber recibido _code review_ de al menos una compañera de otro equipo.
+  - Hicieron los _test_ unitarios
+  - Testearon manualmente buscando errores e imperfecciones simples.
+  - Hicieron _pruebas_ de usabilidad e incorporaron el _feedback_ de los
+    usuarios como mejoras.
+  - Desplegaron su aplicación y etiquetaron la versión (git tag).
+
+#### **Historia de Usuario 5:**
+
+Yo como usuarix quiero recuperar mi clave para volver a tener acceso y no crear una nueva cuenta; así, también, evito que se duplique mi user name.
+
+*Criterios de aceptación*
+
+*Definition of done* 
+  - Debe ser una SPA.
+  - Debe ser _responsive_.
+  - Deben haber recibido _code review_ de al menos una compañera de otro equipo.
+  - Hicieron los _test_ unitarios
+  - Testearon manualmente buscando errores e imperfecciones simples.
+  - Hicieron _pruebas_ de usabilidad e incorporaron el _feedback_ de los
+    usuarios como mejoras.
+  - Desplegaron su aplicación y etiquetaron la versión (git tag).
+
+
 
 * **Criterios de Aceptación:** todo lo que debe ocurrir para satisfacer las
   necesidades del usuario.
