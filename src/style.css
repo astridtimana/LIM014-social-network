@@ -6,4 +6,30 @@
     box-sizing: border-box;
     text-decoration: none;
     list-style: none;
+    display: inline-grid;
+    
+    row-gap: 1rem;
+    
+}
+
+input, button {
+    height: 2rem;
+    border-radius: 5px;
+    justify-content: center;
+    padding: 3%;
+}
+input{
+    background-color: rgba(0, 0, 0, 0.1);
+    border: rgba(255, 255, 255, 0);
+}
+.home {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 200px));
+    justify-content: center;
+    /* margin: 1%; */
+}
+
+h1{
+    font-size : 3rem;
+    justify-content: center;
+    font-family: 'Raleway', sans-serif;
 }
