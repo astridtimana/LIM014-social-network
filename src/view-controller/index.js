@@ -8,6 +8,7 @@ const changeView = (route) => {
   container.innerHTML = '';
   switch (route) {
     case '#/home': { return container.appendChild(components.home()); }
+    case '#/register': { return container.appendChild(components.register()); }
     case '#/feed': { return container.appendChild(components.feed()); }
 
     default: { return container.appendChild(components.different()); }
