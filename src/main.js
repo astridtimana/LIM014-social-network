@@ -4,7 +4,7 @@ import { myFunction } from './lib/index.js';
 
 myFunction(); */
 
-import { changeView } from './view-controller/index.js';
+import { changeView } from './view-controller/indexMVC.js';
 
 const navigator = document.getElementById('navigator');
 
