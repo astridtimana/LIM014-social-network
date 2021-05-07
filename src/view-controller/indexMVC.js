@@ -10,8 +10,8 @@ const changeView = (route) => {
     case '#/home': { return container.appendChild(components.home()); }
     case '#/register': { return container.appendChild(components.register()); }
     case '#/feed': { return container.appendChild(components.feed()); }
-    case '' : { return container.appendChild(components.home()); }
-    case '#/' : { return container.appendChild(components.home()); }
+    case '': { return container.appendChild(components.home()); }
+    case '#/': { return container.appendChild(components.home()); }
 
     default: { return container.appendChild(components.different()); }
   }
