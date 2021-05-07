@@ -4,7 +4,7 @@ export default () => {
       <h1> PRIDE </h1>
       <img class="" src="" alt="">
     </header>
-    <section>
+    <section class="home">
       <input type="email" placeholder="Correo" id="correo"> 
       <input type="password" placeholder="Contraseña" id="contraseña"> 
       <button>Ingresar</button>

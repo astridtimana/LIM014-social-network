@@ -7,3 +7,8 @@
     text-decoration: none;
     list-style: none;
 }
+
+.home {
+    display: flex;
+    justify-content: center;
+}
