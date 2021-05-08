@@ -108,6 +108,7 @@ footer{
         align-items: left;
     }
     #homePhrase{
+        display: block;
         font-family: 'Raleway', sans-serif;
         font-size:2rem;
     }
@@ -120,9 +121,6 @@ footer{
     }
     #formMobile{
         display: none;
-    }
-    #homePhrase{
-        display: block;
     }
     #formDesktop{
         display: block;
