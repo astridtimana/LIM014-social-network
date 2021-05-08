@@ -72,7 +72,7 @@ h1{
     align-items: center;
 }
 footer{
-    margin-top: 2%;
+    margin-top: 1%;
     font-size:0.8rem ;
     justify-content: center;
     display:flex;
@@ -95,8 +95,11 @@ footer{
     *{
         row-gap: 0.8rem;
     }
+    head {
+        margin-top: -1%; 
+    }
     #lgtbiqImage {
-        width:600px;
+        width:500px;
         justify-content: left;
     }
     .leftWrapper{
