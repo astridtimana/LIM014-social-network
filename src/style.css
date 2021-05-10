@@ -11,7 +11,7 @@
     row-gap: 1.5rem;
 }
 
-title{
+head{
     display: none;
 }
 
@@ -189,11 +189,12 @@ footer{
     }
 }
 
-/* PARA LA PÁGINA DE REGÍSTRATE */
+/*-------------------- PARA LA PÁGINA DE REGÍSTRATE ----------------------- */
 
 #registerMobile {
+    margin-left: 5%;
     display: grid;
-
+    gap: 55px;
     /* grid-template-rows: 100px 300px; */
     grid-template-rows: repeat(12, auto);
     grid-template-columns: repeat(6, auto);
@@ -202,21 +203,69 @@ footer{
 #logoBig {
     width: 10.5rem;
     grid-column-start: 4;
-    grid-row-start: 0;
-    grid-row-end: 3;
-    grid-column-end: 6;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    grid-column-end: 7;
 }
 
 #createAccount {
-    grid-column-start: ;
+    grid-column-start: 1;
     grid-row-start: 2;
-/*     grid-row-end: 7; */
+    grid-row-end: 4;
     grid-column-end: 4;
 }
 
-.registerForm{
-    grid-column-start: 2;
+#nombre{
+    grid-column-start: 1;
     grid-row-start: 3;
     grid-row-end: 7;
     grid-column-end: 6;
+}
+
+#correo2{
+    grid-column-start: 1;
+    grid-row-start: 4;
+    grid-row-end: 7;
+    grid-column-end: 6;
+}
+
+#contraseña2{
+    grid-column-start: 1;
+    grid-row-start: 5;
+    grid-row-end: 8;
+    grid-column-end: 6;
+}
+
+#buttonRegister {
+    grid-column-start: 1;
+    grid-row-start: 6;
+    grid-row-end: 8;
+    grid-column-end: 6;
+}
+
+#arrowImg {
+    grid-column-start: 5;
+    grid-row-start: 6;
+    grid-row-end: 9;
+    /* grid-column-end: 6; */
+}
+
+#buttonRegisterGoogle {
+    grid-column-start: 1;
+    grid-row-start: 8;
+    grid-row-end: 8;
+    grid-column-end: 6;
+}
+
+#registerMobile > p {
+    grid-column-start: 1;
+    grid-row-start: 9;
+    /* grid-row-end: 8; */
+    grid-column-end: 6;
+}
+
+#logIn {
+    grid-column-start: 4;
+    grid-row-start: 9;
+    grid-column-end: 7;
 }
