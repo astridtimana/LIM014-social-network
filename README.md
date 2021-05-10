@@ -175,17 +175,13 @@ Yo como usuarix deseo observar claramente la página de inicio, sea en mi celula
 
 *Criterios de aceptación*
 
-La página de inicio queda finalizada al mostrar, tanto en un tamaño para mobile
+- La página de inicio queda finalizada al mostrar de forma responsive en tamaño "mobile" y "desktop". 
+- Está visible y claro el logo y nombre de la red social; así mismo, tiene una breve descripción del aplicativo. 
+- También, la página tiene los espacios referentes para iniciar sesión o crear una cuenta.
 
 *Definition of done* 
-  - Debe ser una SPA.
-  - Debe ser _responsive_.
-  - Deben haber recibido _code review_ de al menos una compañera de otro equipo.
-  - Hicieron los _test_ unitarios
-  - Testearon manualmente buscando errores e imperfecciones simples.
-  - Hicieron _pruebas_ de usabilidad e incorporaron el _feedback_ de los
-    usuarios como mejoras.
-  - Desplegaron su aplicación y etiquetaron la versión (git tag).
+- Cumple con el SPA y el test unitario de la función que muestra el string en la sección creada desde JavaScript.
+- También, fue iterado el feedback recibido del usuario para su presentación.
 
 #### **Historia de Usuario 2:** 
 
