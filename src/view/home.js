@@ -20,7 +20,7 @@ export default () => {
         <a class = "smallText">Olvidé mi contraseña</a>
       </article>
       <a class= "loginMobile">Ingresar</a>
-      <i class="fas fa-arrow-right"></i>
+      <i class="fas fa-arrow-right"></i> 
       <button class = "googleButton">
         <img src="./images/googleIcon.png" class="googleLogo">Ingresar con Google
       </button>
@@ -56,5 +56,6 @@ export default () => {
   const sectionElement = document.createElement('section');
   sectionElement.setAttribute('class', 'home');
   sectionElement.innerHTML = viewHome;
+  console.log(typeof(sectionElement));
   return sectionElement;
 };
