@@ -175,6 +175,8 @@ Yo como usuarix deseo observar claramente la página de inicio, sea en mi celula
 
 *Criterios de aceptación*
 
+La página de inicio queda finalizada al mostrar, tanto en un tamaño para mobile
+
 *Definition of done* 
   - Debe ser una SPA.
   - Debe ser _responsive_.
