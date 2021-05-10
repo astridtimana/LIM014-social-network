@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    display: inline-grid;
+    font-family: 'Raleway', sans-serif;
+    row-gap: 1.5rem;
+}
+
+title{
+    display: none;
+}
+
+input, button {
+    height: 2.5rem;
+    border-radius: 10px;
+    justify-content: center;
+    padding: 3%;
+}
+input{
+    background-color: rgba(0, 0, 0, 0.1);
+    border: rgba(255, 255, 255, 0);
+}
+.googleButton{
+    background-color: white;
+    border: rgba(255, 255, 255, 0);
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
+    padding: 5%;
+    display: flex;
+    flex-direction: row;
+}
+#googleLogo{
+    width: 1.4rem;
+    margin-right: 10px;
+    margin-top: -1.5%;
+}
+.home {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 400px));
+    justify-content: center;
+    margin: 0% 15%;
+}
+.smallText{
+    font-size:0.8rem ;
+}
+h1{
+    font-size : 3rem;
+    justify-content: center;
+    font-family: 'Raleway', sans-serif;
+}
+.loginMobile{
+    font-family: 'Raleway', sans-serif;
+    font-size:1.5rem;
+}
+.logo{
+    height: 3.5rem;
+}
+#logoContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20%;
+}
+.smallContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.rememberMe{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+footer{
+    margin-top: 1%;
+    font-size:0.8rem ;
+    justify-content: center;
+    display:flex;
+    align-items: flex-end;
+}
+#lgtbiqImage{
+    width: 0px;  
+}
+#formDesktop{
+    display: none;
+}
+#homePhrase{
+    display: none;
+}
+.formContainer{
+    display: none;
+}
+
+@media only screen and (min-width: 700px) {
+    *{
+        row-gap: 0.8rem;
+    }
+    head {
+        margin-top: -1%; 
+    }
+    #lgtbiqImage {
+        width:500px;
+        justify-content: left;
+    }
+    .leftWrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+    }
+    #homePhrase{
+        font-family: 'Raleway', sans-serif;
+        font-size:2rem;
+    }
+    #logoContainer{
+        margin-bottom: 3%;
+        justify-content: left;
+    }
+    .home {
+        justify-content: space-between;
+    }
+    #formMobile{
+        display: none;
+    }
+    #homePhrase{
+        display: block;
+    }
+    #formDesktop{
+        display: block;
+        display:flex;
+        flex-direction: column;
+    }
+    #welcomeMessage{
+        font-size: 1.3rem;
+    }
+    #loginMessage{
+        font-size: 1.5rem;
+    }
+    .desktopText{
+        margin-bottom: 1%;
+    }
+    .loginDesktop{
+        border-radius: 5px;
+        font-size: 1rem;
+        color:white;
+        background-color: rgba(255, 204, 0, 1);
+        border: rgba(255, 255, 255, 0);
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
+        padding: 3%;
+    }
+    .googleButton{
+        border-radius: 5px;
+        padding: 3%;
+        background-color: rgba(45, 55, 72, 1);
+        color:white;
+        border: rgba(255, 255, 255, 0);
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
+        font-size: 1rem;
+    }
+    .smallContainerDesktop{
+        border: rgba(221, 217, 217) solid;
+        border-width: 2px;
+        display:flex;
+        padding: 20px 50px;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 1rem;
+    }
+    .formContainer{
+        border: rgba(221, 217, 217) solid;
+        border-width: 2px;
+        display:block;
+        display:flex;
+        flex-direction: column;
+        padding: 20px 50px;
+    }
+    input {
+        height: 2.5rem;
+        border-radius: 5px;
+        background-color: white;
+        border: rgba(221, 217, 217) solid;
+        border-width: 1.5px;
+    }
+    .googleLogo{
+        width: 1.3rem;
+        margin-right: 10px;
+        margin-top: 0.5%; 
+    }
+}
+
+/* PARA LA PÁGINA DE REGÍSTRATE */
+
+#registerMobile {
+    display: grid;
+
+    /* grid-template-rows: 100px 300px; */
+    grid-template-rows: repeat(12, auto);
+    grid-template-columns: repeat(6, auto);
+}
+
+#logoBig {
+    width: 10.5rem;
+    grid-column-start: 4;
+    grid-row-start: 0;
+    grid-row-end: 3;
+    grid-column-end: 6;
+}
+
+#createAccount {
+    grid-column-start: ;
+    grid-row-start: 2;
+/*     grid-row-end: 7; */
+    grid-column-end: 4;
+}
+
+.registerForm{
+    grid-column-start: 2;
+    grid-row-start: 3;
+    grid-row-end: 7;
+    grid-column-end: 6;
+}
