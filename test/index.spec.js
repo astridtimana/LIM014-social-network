@@ -4,6 +4,7 @@
 import Home from '../src/view/home';
 import Register from '../src/view/register';
 
+
 describe('Función home', () => {
   it('debería ser una función', () => {
     expect(typeof Home).toBe('function');
