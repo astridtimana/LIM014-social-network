@@ -69,7 +69,7 @@ h1{
     font-size: 2rem;
     margin-bottom: 5%;
 }
-#arrowImg {
+#arrowImg, #arrowImgRegister {
     width: 55px;
 }
 .logo{
