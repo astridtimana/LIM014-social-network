@@ -60,6 +60,7 @@ export default () => {
         
       </section>
     <section>
+    
       `;
   const divElement = document.createElement('div');
   divElement.setAttribute('class', 'register');
