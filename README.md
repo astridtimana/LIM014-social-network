@@ -156,14 +156,26 @@ hacerlo, puedes guiarte de los proyectos anteriores.
 
 ### 5.2 Definición del producto
 
-* Quiénes son los principales usuarios de producto.
+**¿Quiénes son los principales usuarios de producto?**
+
  Los usuarios de nuestro producto son personas que :
  - Pertenecen o apoyan a la comunidad LGTBIQ+ 
  - Tienen de 18 años en adelante
  - Poseen conexión a internet
  - Tiene afinidad con la tecnología
 
-* Qué problema resuelve el producto / para qué le servirá a estos usuarios.
+**¿Qué problema resuelve el producto / para qué le servirá a estos usuarios?**
+
+Pride, es una red social que está orientada hacia la comunidad LGTBIQ+ y sus allies, y busca crear un espacio social seguro, libre de prejuicios y discriminaciones, en donde se podrá revisar noticias y recomendaciones de interés para este público. 
+En la plataforma los usuarios pueden conocer amigos, informarse sobre lugares gay-friendly, acceder a contenidos de interés, enterarse de los eventos de la comunidad. El servicio es gratuito,y se encuentra en versión web y móvil.
+
+Esta red social será de gran utilidad para el público objetivo ya que en la actualidad esta minoría es foco de distintas problemáticas.
+En el Perú, se destacan las siguientes:
+- Discriminación y exclusión social
+- Afectaciones a la vida e integridad
+- Violencia
+- Falta de reconocimiento de las uniones civiles entre parejas del mismo sexo
+
 
 ### 5.3 Historias de usuario
 
