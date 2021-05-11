@@ -2,20 +2,26 @@
 
 export default () => {
   const viewRegister = `
-    <section id="registerMobile">
-      
-        <h2 id="createAccount"> Crear cuenta </h2>
-        <img id="logoBig" src="./images/colorwheel.png">
-        <input type="email" placeholder="Nombre" id="nombre">
+
+    <section id="registerDesktop">
+      <section id="prideImageRegister">
+        <img id="lgtbiqRegister" src="./images/lgtbiq.png">
+      </section>
+      <section id="formRegisterDesktop">
+        <p>Regístrate para ver fotos y videos de tus amigos.</p>
+        <button id="buttonRegisterGoogle">Iniciar sesión con Google</button>
         <input type="email" placeholder="Correo" id="correo2"> 
+        <input type="email" placeholder="Nombre" id="nombre">
         <input type="password" placeholder="Contraseña" id="contraseña2"> 
-        <a id="buttonRegister">Registrar</a>
-        <img id="arrowImg" src="./images/arrow.png">
-        <button id="buttonRegisterGoogle">Registrar con Google</button>
+        <button id="createAccount"> Regístrate</button>
+        <p>Al registrarte, aceptas nuestras Condiciones, la Poítica de datos y la Política de cookies.</p>
         <p>¿Tienes una cuenta?</p>
-        <a id="logIn" href="#/registro">Iniciar sesión</a>
-      
+        <a id="logInDesktop" href="#/registro">Iniciar sesión</a>
+      </section>
     <section>  
+
+
+
       `;
   const divElement = document.createElement('div');
   divElement.setAttribute('class', 'register');
