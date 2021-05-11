@@ -21,7 +21,7 @@ head{
 }
 
 input, button {
-    height: 2.5rem;
+    height: 3rem;
     border-radius: 10px;
     justify-content: center;
     padding: 3%;
@@ -40,8 +40,8 @@ input{
     font-weight: bold;
     color: #6C6C64;
     font-size: 1rem;
-    /* justify-content: space-around; */
     align-items: center;
+    margin-bottom: 5%;
 }
 .googleLogo{
     width: 1.4rem;
@@ -51,7 +51,7 @@ input{
 .home {
     grid-template-columns: repeat(auto-fit, minmax(120px, 400px));
     justify-content: center;
-    margin: 0% 15%;
+    margin: 35% 15%;
 }
 .smallText{
     font-size:0.8rem ;
@@ -63,7 +63,14 @@ h1{
 }
 .loginMobile{
     font-family: 'Raleway', sans-serif;
-    font-size:1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2rem;
+    margin-bottom: 5%;
+}
+#arrowImg {
+    width: 55px;
 }
 .logo{
     height: 3.5rem;
@@ -86,7 +93,7 @@ h1{
     align-items: center;
 }
 footer{
-    margin-top: 1%;
+    margin-top: 0%;
     font-size:0.8rem ;
     justify-content: center;
     display:flex;
@@ -130,7 +137,8 @@ footer{
         justify-content: left;
     }
     .home {
-        justify-content: space-between;
+        justify-content: space-around;
+        margin: 5%;
     }
     #formMobile{
         display: none;
@@ -156,11 +164,14 @@ footer{
     .loginDesktop{
         border-radius: 5px;
         font-size: 1rem;
+        font-weight: bold;
         color:white;
         background-color: rgba(255, 204, 0, 1);
         border: rgba(255, 255, 255, 0);
         box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
         padding: 3%;
+        display: flex;
+        align-items: center;
     }
     .googleButton{
         border-radius: 5px;
@@ -172,12 +183,10 @@ footer{
         font-size: 1rem;
     }
     .smallContainerDesktop{
-        border: rgba(221, 217, 217) solid;
-        border-width: 2px;
         display:flex;
-        padding: 20px 50px;
+        padding: 5px 10px;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
         font-size: 1rem;
     }
     .formContainer{
@@ -200,9 +209,19 @@ footer{
         margin-right: 10px;
         margin-top: 0.5%; 
     }
+    #registerMobile{
+        display: none;
+    }
+    #registerDesktop{
+        display: block;
+    }
 }
 
 /*-------------------- PARA LA PÁGINA DE REGÍSTRATE ----------------------- */
+
+#registerDesktop{
+    display: none;
+}
 
 #headerCreate {
     display: flex;
@@ -229,9 +248,7 @@ footer{
     padding: 3%;
 }
 
-#arrowImg {
-    width: 15%;
-}
+
 
 #buttonRegister {
     display: flex;
@@ -251,4 +268,53 @@ footer{
     align-items: center;
     justify-content: space-between;
     margin: 10%;
+}
+
+@media only screen and (min-width: 700px) {
+    #registerMobile{
+        display: none;
+    }
+    #registerDesktop{
+        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2%;
+        border: rgba(221, 217, 217) solid;
+        margin: 1% 30%;
+
+    }
+    #createAccount{
+        background-color: #FFCC00;
+        color: white;
+        font-weight: bold;
+        font-size: 1.2rem;
+        align-content: center;
+        border: rgba(255, 255, 255, 0);
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
+        margin-top: 5%;
+    }
+    input {
+        height: 3rem;
+        border-radius: 5px;
+        background-color: white;
+        border: rgba(221, 217, 217) solid;
+        border-width: 1.5px;
+    }
+    
+    #txtRegister {
+        font-weight: bold;
+        color: #828282;
+        justify-content: center;
+    }
+    #txtCondiciones{
+        color: #828282;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        font-size: small;
+        margin-bottom: 4%;
+    }
+    
+
 }
