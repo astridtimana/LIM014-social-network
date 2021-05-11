@@ -156,14 +156,26 @@ hacerlo, puedes guiarte de los proyectos anteriores.
 
 ### 5.2 Definición del producto
 
-* Quiénes son los principales usuarios de producto.
+**¿Quiénes son los principales usuarios de producto?**
+
  Los usuarios de nuestro producto son personas que :
  - Pertenecen o apoyan a la comunidad LGTBIQ+ 
  - Tienen de 18 años en adelante
  - Poseen conexión a internet
  - Tiene afinidad con la tecnología
 
-* Qué problema resuelve el producto / para qué le servirá a estos usuarios.
+**¿Qué problema resuelve el producto / para qué le servirá a estos usuarios?**
+
+Pride, es una red social que está orientada hacia la comunidad LGTBIQ+ y sus allies, y busca crear un espacio social seguro, libre de prejuicios y discriminaciones, en donde se podrá revisar noticias y recomendaciones de interés para este público. 
+En la plataforma los usuarios pueden conocer amigos, informarse sobre lugares gay-friendly, acceder a contenidos de interés, enterarse de los eventos de la comunidad. El servicio es gratuito,y se encuentra en versión web y móvil.
+
+Esta red social será de gran utilidad para el público objetivo ya que en la actualidad esta minoría es foco de distintas problemáticas.
+En el Perú, se destacan las siguientes:
+- Discriminación y exclusión social
+- Afectaciones a la vida e integridad
+- Violencia
+- Falta de reconocimiento de las uniones civiles entre parejas del mismo sexo
+
 
 ### 5.3 Historias de usuario
 
@@ -175,15 +187,13 @@ Yo como usuarix deseo observar claramente la página de inicio, sea en mi celula
 
 *Criterios de aceptación*
 
+- La página de inicio queda finalizada al mostrar de forma responsive en tamaño "mobile" y "desktop". 
+- Está visible y claro el logo y nombre de la red social; así mismo, tiene una breve descripción del aplicativo. 
+- También, la página tiene los espacios referentes para iniciar sesión o crear una cuenta.
+
 *Definition of done* 
-  - Debe ser una SPA.
-  - Debe ser _responsive_.
-  - Deben haber recibido _code review_ de al menos una compañera de otro equipo.
-  - Hicieron los _test_ unitarios
-  - Testearon manualmente buscando errores e imperfecciones simples.
-  - Hicieron _pruebas_ de usabilidad e incorporaron el _feedback_ de los
-    usuarios como mejoras.
-  - Desplegaron su aplicación y etiquetaron la versión (git tag).
+- Cumple con el SPA y el test unitario de la función que muestra el string en la sección creada desde JavaScript.
+- También, fue iterado el feedback recibido del usuario para su presentación.
 
 #### **Historia de Usuario 2:** 
 
