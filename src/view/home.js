@@ -20,8 +20,10 @@ export default () => {
         <article class="rememberMe"><input type="checkbox"><label class="smallText">Recuérdame</label></article>
         <a class = "smallText">Olvidé mi contraseña</a>
       </article>
-      <a class= "loginMobile">Ingresar</a>
-      <i class="fas fa-arrow-right"></i> 
+      <section class="loginMobile">
+          <a>Ingresar</a>
+          <img id="arrowImg" src="./images/arrow.png">
+      </section>
       <button class = "googleButton">
         <img src="./images/googleIcon.png" class="googleLogo">Ingresar con Google
       </button>
@@ -47,16 +49,16 @@ export default () => {
         <button class = "googleButton">
           <img src="./images/googleIcon.png" class="googleLogo"> Ingresar con Google
         </button>
+        <article class="smallContainerDesktop">
+          <p>¿No tienes una cuenta?</p>
+          <a href="#/register">Regístrate</a>
+        </article>
       </article>
-      <article class="smallContainerDesktop">
-        <p>¿No tienes una cuenta?</p>
-        <a href="#/register">Regístrate</a>
-      </article>
+      
     </section>
     `;
   const sectionElement = document.createElement('section');
   sectionElement.setAttribute('class', 'home');
   sectionElement.innerHTML = viewHome;
-  console.log(typeof (sectionElement));
   return sectionElement;
 };
