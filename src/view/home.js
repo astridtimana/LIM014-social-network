@@ -59,6 +59,5 @@ export default () => {
   const sectionElement = document.createElement('section');
   sectionElement.setAttribute('class', 'home');
   sectionElement.innerHTML = viewHome;
-  console.log(typeof(sectionElement));
   return sectionElement;
 };
