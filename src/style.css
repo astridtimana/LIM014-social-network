@@ -131,6 +131,7 @@ footer{
     #homePhrase{
         font-family: 'Raleway', sans-serif;
         font-size:2rem;
+        display: block;
     }
     #logoContainer{
         margin-bottom: 3%;
@@ -143,14 +144,11 @@ footer{
     #formMobile{
         display: none;
     }
-    #homePhrase{
-        display: block;
-    }
+    
     #formDesktop{
         display: block;
         display:flex;
         flex-direction: column;
-        display: inline-grid;
     }
     #welcomeMessage{
         font-size: 1.3rem;
@@ -236,7 +234,6 @@ footer{
     display: flex;
     flex-direction: column;
     row-gap: 1.5rem;
-    display: inline-grid;
     margin: 5%;
     padding: 5%;
 }
