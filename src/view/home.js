@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 export default () => {
   const viewHome = `
     <section class="leftWrapper">
@@ -56,6 +57,6 @@ export default () => {
   const sectionElement = document.createElement('section');
   sectionElement.setAttribute('class', 'home');
   sectionElement.innerHTML = viewHome;
-  console.log(typeof(sectionElement));
+  console.log(typeof (sectionElement));
   return sectionElement;
 };
