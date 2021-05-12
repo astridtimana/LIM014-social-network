@@ -1,23 +1,15 @@
+/* eslint-disable no-alert */
+/* eslint-disable max-len */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-console */
 
-const email = 'someone@example.com';
-const password = 'password';
-
-/* document.getElementById('arrowImg').addEventListener('click', signUpUser);
-
-function signUpUser() {
-  console.log('wiw');
-}
- */
 // Create User with Email and Password
-firebase.auth().createUserWithEmailAndPassword(email, password).catch((error) => {
-  // Handle Errors here.
-  const errorCode = error.code;
-  const errorMessage = error.message;
-  console.log(errorCode);
-  console.log(errorMessage);
+// eslint-disable-next-line no-undef
 
-  console.log(email);
-  console.log(password);
-});
+export const createUser = (email, pass) => firebase.auth().createUserWithEmailAndPassword(email, pass)
+  .catch((error) => {
+    const errorCode = error.code; //
+    const errorMessage = error.message; // 'auth-invalid email'
+    alert(errorCode);
+    alert(errorMessage);
+  });

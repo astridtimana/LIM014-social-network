@@ -132,7 +132,6 @@ footer{
         display: block;
         font-family: 'Raleway', sans-serif;
         font-size:2rem;
-        display: block;
     }
     #logoContainer{
         margin-bottom: 3%;
@@ -304,7 +303,7 @@ footer{
         color: #828282;
         justify-content: center;
     }
-    #txtCondiciones{
+    #txtConditions{
         color: #828282;
         display: flex;
         justify-content: center;
