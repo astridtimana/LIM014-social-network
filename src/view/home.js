@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 export default () => {
   const viewHome = `
     <section class="leftWrapper">
