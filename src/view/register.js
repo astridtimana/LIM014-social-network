@@ -1,4 +1,10 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-alert */
+/* eslint-disable no-unreachable */
 // será necesario hacer una página de js para el modal???.
+
+import { createUser } from '../firebase/firebaseFx.js';
 
 export default () => {
   const viewRegister = `
@@ -9,9 +15,9 @@ export default () => {
   </header>
   <section>
     <section id="formRegister">
-      <input type="email" placeholder="Nombre" id="nombre">
-      <input type="email" placeholder="Correo" id="correo2"> 
-      <input type="password" placeholder="Contraseña" id="contraseña2"> 
+      <input type="name" placeholder="Nombre" id="name">
+      <input type="email" placeholder="Correo" id="emailRegister"> 
+      <input type="password" placeholder="Contraseña" id="passwordRegister"> 
     </section>
     <section id="buttonRegister">
       <a>Registrar</a>
@@ -41,25 +47,31 @@ export default () => {
       <img src="./images/googleIcon.png" class="googleLogo">Iniciar sesión con Google
     </button>
     
-    <input type="email" placeholder="Correo electrónico" id="correoDesktop"> 
+    <input type="email" placeholder="Correo electrónico" id="emailDesktop"> 
     <input type="email" placeholder="Nombre y apellido" id="nameDesktop">
-    <input type="password" placeholder="Contraseña" id="contraseñaDesktop"> 
+    <input type="password" placeholder="Contraseña" id="passwordDesktop"> 
     
     <button id="createAccount"> Regístrate</button>
     
-    <p id="txtCondiciones">Al registrarte, aceptas nuestras <a href="">Condiciones</a>, la <a href="">Política de datos</a> y la <a href="">Política de cookies</a>.</p>
+    <p id="txtConditions">Al registrarte, aceptas nuestras <a href="">Condiciones</a>, la <a href="">Política de datos</a> y la <a href="">Política de cookies</a>.</p>
     
     <article class="smallContainerDesktop">
       <p>¿Tienes una cuenta?</p>
       <a id="logInDesktop" href="#/registro">Inicia sesión</a>
     </article>
-    
-    
-  </section>
-<section>
-  `;
+      `;
+
   const divElement = document.createElement('div');
   divElement.setAttribute('class', 'register');
   divElement.innerHTML = viewRegister;
+
+  const logIn = divElement.querySelector('#arrowImgRegister');
+  logIn.addEventListener('click', () => {
+    const email = document.getElementById('emailRegister').value;
+    const pass = document.getElementById('passwordRegister').value;
+    // console.log(`email=${email} pass= ${pass}`);
+    createUser(email, pass);
+  });
+
   return divElement;
 };
