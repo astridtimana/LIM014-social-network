@@ -15,7 +15,7 @@ export default () => {
     </section>
     <section id="buttonRegister">
       <a>Registrar</a>
-      <img id="arrowImg" src="./images/arrow.png">
+      <img id="arrowImgRegister" src="./images/arrow.png">
     </section>
     
     <button class="googleButton" id="buttonRegisterGoogle">
@@ -41,9 +41,9 @@ export default () => {
       <img src="./images/googleIcon.png" class="googleLogo">Iniciar sesión con Google
     </button>
     
-    <input type="email" placeholder="Correo electrónico" id="correo2"> 
-    <input type="email" placeholder="Nombre y apellido" id="nombre2">
-    <input type="password" placeholder="Contraseña" id="contraseña2"> 
+    <input type="email" placeholder="Correo electrónico" id="correoDesktop"> 
+    <input type="email" placeholder="Nombre y apellido" id="nameDesktop">
+    <input type="password" placeholder="Contraseña" id="contraseñaDesktop"> 
     
     <button id="createAccount"> Regístrate</button>
     
