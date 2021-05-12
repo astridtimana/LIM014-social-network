@@ -1,3 +1,4 @@
+/* eslint-disable no-trailing-spaces */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
@@ -66,11 +67,14 @@ export default () => {
   divElement.innerHTML = viewRegister;
 
   const logIn = divElement.querySelector('#arrowImgRegister');
+  
   logIn.addEventListener('click', () => {
     const email = document.getElementById('emailRegister').value;
     const pass = document.getElementById('passwordRegister').value;
+    const name = document.getElementById('name').value;
     // console.log(`email=${email} pass= ${pass}`);
-    createUser(email, pass);
+    createUser(email, pass, name);
+    // verificationMail();
   });
 
   return divElement;
