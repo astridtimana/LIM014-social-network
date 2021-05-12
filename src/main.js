@@ -6,7 +6,6 @@ import { myFunction } from './lib/index.js';
 
 myFunction(); */
 
-
 import { changeView } from './view-controller/indexMVC.js';
 // import { firebaseConfig } from './firebase/configFireBase.js';
 
@@ -23,5 +22,5 @@ window.addEventListener('load', init);
 function signUpUser() {
   console.log('wiw');
 }
-
-document.querySelector('#arrowImgRegister').addEventListener('click', signUpUser);
+const fot = document.querySelector('.containerRegister');
+fot.addEventListener('click', signUpUser);
