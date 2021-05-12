@@ -14,8 +14,8 @@ export default () => {
     </section>
 
     <section id="formMobile">
-      <input type="email" placeholder="Correo" id="correo"> 
-      <input type="password" placeholder="Contraseña" id="contraseña"> 
+      <input type="email" placeholder="Correo" id="email"> 
+      <input type="password" placeholder="Contraseña" id="password"> 
       <article class="smallContainer">
         <article class="rememberMe"><input type="checkbox"><label class="smallText">Recuérdame</label></article>
         <a class = "smallText">Olvidé mi contraseña</a>

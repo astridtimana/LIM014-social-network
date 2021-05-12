@@ -19,16 +19,3 @@ const init = () => {
 };
 
 window.addEventListener('load', init);
-/*
-function signUpUser() {
-  console.log('wiw');
-}
-
-document.querySelector('#arrowImgRegister').addEventListener('click', signUpUser); */
-
-const prueba = document.getElementById('arrowImgRegister');
-prueba.addEventListener('click', () => {
-  const email = document.getElementById('correo2').value;
-  const pass = document.getElementById('password').value;
-  alert(`email=${email}pass= ${pass}`);
-});
