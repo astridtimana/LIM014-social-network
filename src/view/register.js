@@ -1,3 +1,7 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-alert */
+/* eslint-disable no-unreachable */
 // será necesario hacer una página de js para el modal???.
 
 export default () => {
@@ -15,7 +19,9 @@ export default () => {
     </section>
     <section id="buttonRegister">
       <a>Registrar</a>
+      <button id=prueba onclick="enviar()" >
       <img id="arrowImgRegister" src="./images/arrow.png">
+      </button>
     </section>
     
     <button class="googleButton" id="buttonRegisterGoogle">
@@ -63,3 +69,9 @@ export default () => {
   divElement.innerHTML = viewRegister;
   return divElement;
 };
+// const prueba = document.getElementById('arrowImgRegister');
+// prueba.addEventListener('click', () => {
+//   const email = document.getElementById('correo2').value;
+//   const pass = document.getElementById('password').value;
+//   alert(`email=${email}pass= ${pass}`);
+// });
