@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const firebaseConfig = {
   apiKey: 'AIzaSyDcy3-FGrMuG2ssOOS8W04b9XGJW7V8vWM',
   authDomain: 'red-social-pride.firebaseapp.com',
