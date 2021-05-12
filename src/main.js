@@ -5,6 +5,7 @@ import { myFunction } from './lib/index.js';
 myFunction(); */
 
 import { changeView } from './view-controller/indexMVC.js';
+// import { firebaseConfig } from './firebase/configFireBase.js';
 
 const navigator = document.getElementById('navigator');
 
@@ -15,3 +16,6 @@ const init = () => {
 };
 
 window.addEventListener('load', init);
+
+// firebase.initializeApp(firebaseConfig);
+// firebase.analytics();
