@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" /> -->
     <!-- <script src="https://kit.fontawesome.com/d0f3a0a8a2.js" crossorigin="anonymous"></script> -->
 </head>
+
 <body>
     <header>
         <nav id="navigator"></nav>
@@ -20,8 +22,36 @@
         <!-- &copy;  -->
         2021 RED SOCIAL PRIDE
     </footer>
-    
-    
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-auth.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyDcy3-FGrMuG2ssOOS8W04b9XGJW7V8vWM",
+            authDomain: "red-social-pride.firebaseapp.com",
+            projectId: "red-social-pride",
+            storageBucket: "red-social-pride.appspot.com",
+            messagingSenderId: "643459981183",
+            appId: "1:643459981183:web:43cdd927e43616ac52844a",
+            measurementId: "G-0EMLGW94P6"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+
+
+
+
     <script type="module" src="./main.js"></script>
 </body>
+
 </html>
