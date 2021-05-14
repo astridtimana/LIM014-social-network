@@ -63,15 +63,15 @@ export default () => {
   divElement.innerHTML = viewRegister;
 
   const logIn = divElement.querySelector('#arrowImgRegister');
-  
-  logIn.addEventListener('click', () => {
+  const loginDesk = divElement.querySelector('#signUp');
+
+  const registerUser = () => {
     const email = document.getElementById('emailRegister').value;
     const pass = document.getElementById('passwordRegister').value;
     const name = document.getElementById('name').value;
-    // console.log(`email=${email} pass= ${pass}`);
     createUser(email, pass, name);
-    // verificationMail();
-  });
-
+  };
+  logIn.addEventListener('click', (registerUser));
+  loginDesk.addEventListener('click', (registerUser));
   return divElement;
 };
