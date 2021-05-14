@@ -56,9 +56,9 @@ export default () => {
     
     <p id="txtConditions">Al registrarte, aceptas nuestras <a href="">Condiciones</a>, la <a href="">Política de datos</a> y la <a href="">Política de cookies</a>.</p>
     
-    <article class="smallContainerDesktop">
+    <article class="smallContainer">
       <p>¿Tienes una cuenta?</p>
-      <a id="logInDesktop" href="#/registro">Inicia sesión</a>
+      <a id="login" href="#/registro">Inicia sesión</a>
     </article>
       `;
 

@@ -11,7 +11,7 @@
     /* row-gap: 1.5rem; */
 }
 
-#formMobile {
+#form {
     display: inline-grid;
     row-gap: 1.5rem;
 }
@@ -30,6 +30,7 @@ input{
     background-color: rgba(0, 0, 0, 0.1);
     border: rgba(255, 255, 255, 0);
 }
+
 .googleButton{
     background-color: white;
     border: rgba(255, 255, 255, 0);
@@ -61,7 +62,7 @@ h1{
     justify-content: center;
     font-family: 'Raleway', sans-serif;
 }
-.loginMobile{
+.login{
     font-family: 'Raleway', sans-serif;
     display: flex;
     align-items: center;
@@ -102,15 +103,15 @@ footer{
 #lgtbiqImage{
     width: 0px;  
 }
-#formDesktop{
+/* #formDesktop{
     display: none;
-}
+} */
 #homePhrase{
     display: none;
 }
-.formContainer{
+/* .formContainer{
     display: none;
-}
+} */
 
 @media only screen and (min-width: 700px) {
     *{
@@ -141,13 +142,17 @@ footer{
         justify-content: space-around;
         margin: 5%;
     }
-    #formMobile{
+    /* #form{
         display: none;
-    }
-    #formDesktop{
+    } */
+    #form{
         display: block;
         display:flex;
         flex-direction: column;
+    }
+
+    #arrowImg {
+        display: none;
     }
     #welcomeMessage{
         font-size: 1.3rem;
@@ -155,10 +160,10 @@ footer{
     #loginMessage{
         font-size: 1.5rem;
     }
-    .desktopText{
+    .text{
         margin-bottom: 1%;
     }
-    .loginDesktop{
+    .login {
         border-radius: 5px;
         font-size: 1rem;
         font-weight: bold;
@@ -168,7 +173,7 @@ footer{
         box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
         padding: 3%;
         display: flex;
-        align-items: center;
+        justify-content: center;
     }
     .googleButton{
         border-radius: 5px;
@@ -179,7 +184,7 @@ footer{
         box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
         font-size: 1rem;
     }
-    .smallContainerDesktop{
+    .smallContainer{
         display:flex;
         padding: 5px 10px;
         flex-direction: row;
