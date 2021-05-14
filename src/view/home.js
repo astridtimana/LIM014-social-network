@@ -45,7 +45,7 @@ export default () => {
           <article class="rememberMe"><input type="checkbox"><label class="smallText">Recuérdame</label></article>
           <a class = "smallText">Olvidé mi contraseña</a>
         </article>
-        <button class= "loginDesktop">Ingresar</button>
+        <a class= "loginDesktop" href="#/feed" >Ingresar</a>
         <button class = "googleButton">
           <img src="./images/googleIcon.png" class="googleLogo"> Ingresar con Google
         </button>
