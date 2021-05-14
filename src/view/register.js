@@ -15,48 +15,46 @@ export default () => {
           <h2 id="createAccount"> Crear cuenta </h2>
         </header>
 
-        <section>
-          <section id="formRegister">
+      <section id="formRegister">
 
           <article class="toDesktop">
-            <header id="headerCreateToDesktop">
-          <article id="logoContainer">
-          <img class="logo" src="./images/colorwheel.png"><h2> PRIDE </h2>
-          </article>
-            </header>
-            
-            <p id="textRegister">Regístrate para ver fotos y videos de tus amigos.</p>
-            
-          <button class="googleButton" id="buttonRegisterGoogleDesktop">
-            <img src="./images/googleIcon.png" class="googleLogo">Iniciar sesión con Google
-          </button>
-          </article>  
-      
-            <input type="name" placeholder="Nombre y apellido" id="name">
-            <input type="email" placeholder="Correo electrónico" id="emailRegister"> 
-            <input type="password" placeholder="Contraseña" id="passwordRegister"> 
-            <button id="signUp"> Regístrate</button>
-            <p id="textConditions">Al registrarte, aceptas nuestras <a href="">Condiciones</a>, la <a href="">Política de datos</a> y la <a href="">Política de cookies</a>.</p>
-          </section>
-          
-          <section id="buttonRegister">
-            <a>Registrar</a>
-            <img id="arrowImgRegister" src="./images/arrow.png">
-          </section>
-          
-          <button class="googleButton" id="buttonRegisterGoogle">
-            <img src="./images/googleIcon.png" class="googleLogo">Registrar con Google
-          </button>
+              <header id="headerCreateToDesktop">
+                  <article id="logoContainer">
+                      <img class="logo" src="./images/colorwheel.png">
+                      <h2> PRIDE </h2>
+                  </article>
+              </header>
 
-          <article class="containerRegister">
-            <p>¿Tienes una cuenta?</p>
-            <a id="logIn" href="#/registro">Iniciar sesión</a>
+              <p id="textRegister">Regístrate para ver fotos y videos de tus amigos.</p>
+
+              <button class="googleButton" id="buttonRegisterGoogleDesktop">
+                  <img src="./images/googleIcon.png" class="googleLogo">Iniciar sesión con Google
+              </button>
           </article>
 
-        </section>
+          <input type="name" placeholder="Nombre y apellido" id="name">
+          <input type="email" placeholder="Correo electrónico" id="emailRegister">
+          <input type="password" placeholder="Contraseña" id="passwordRegister">
+          <button id="signUp"> Regístrate</button>
+          <p id="textConditions">Al registrarte, aceptas nuestras <a href="">Condiciones</a>, la <a href="">Política de
+                  datos</a> y la <a href="">Política de cookies</a>.</p>
+      </section>
 
-      </section> 
+      <section id="buttonRegister">
+          <a>Registrar</a>
+          <img id="arrowImgRegister" src="./images/arrow.png">
+      </section>
 
+      <button class="googleButton" id="buttonRegisterGoogle">
+          <img src="./images/googleIcon.png" class="googleLogo">Registrar con Google
+      </button>
+
+      <article class="containerRegister">
+          <p>¿Tienes una cuenta?</p>
+          <a id="logIn" href="#/registro">Iniciar sesión</a>
+      </article>
+
+  </section>
 
       `;
 

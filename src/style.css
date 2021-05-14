@@ -292,7 +292,7 @@ footer{
 @media only screen and (min-width: 700px) {
    
     #headerCreate, #buttonRegister, #buttonRegisterGoogle {
-        display: none;
+    display: none;
     }
     .toDesktop {
     display: block;
