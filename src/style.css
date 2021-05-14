@@ -8,8 +8,10 @@
     list-style: none;
     display: inline-grid;
     font-family: 'Raleway', sans-serif;
-    /* row-gap: 1.5rem; */
+    row-gap:0;
 }
+
+/*-------------------- PARA LA PÁGINA DE INICIO ----------------------- */
 
 #form {
     display: inline-grid;
@@ -359,4 +361,106 @@ footer{
     
     
 
+}
+
+/*-------------------- PARA LA PÁGINA DE FEED ----------------------- */
+
+.feed{
+    grid-template-columns: 20% 50% 30%;
+}
+#feedHeader{
+    grid-row-start: 0;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    background-color:rgba(116, 55, 144, 1);
+    height: 7vh;
+
+}
+*{
+    row-gap:0;
+}
+#menuNavigator{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+#menuNavigator > ul {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    display: inline-block;
+    /* display:flex; */
+}
+#feedConfigArea{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    background-color:rgba(247, 247, 247, 1);
+    height: 90vh;
+}
+#activitiesArea{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    background-color:rgba(247, 247, 247, 1);
+}
+#aditionalsArea{
+    grid-column-start: 3;
+    grid-column-end: 4;
+    background-color:rgba(247, 247, 247, 1);
+}
+#feedLogo{
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+}
+#search{
+    display:flex;
+    flex-direction: row;
+    color:white;
+}
+#searchBar{
+    height: 30px;
+    background-color: rgba(222, 184, 135, 0);
+    border: none;
+    color:white;
+}
+#search > ::-webkit-input-placeholder { color: white; } 
+#searchIcon{
+    width: 17px;
+    height: 17px;
+    margin-top:3.5%;
+    margin-right: 3%;
+}
+.feedConfig{
+    background-color:white;
+    margin: 10% 18% 18% 18%;
+    display: flex;
+    flex-direction: column;
+    height: 30%;
+}
+.configIcon{
+    margin-left: 5%;
+    height: 30px;
+    width: 30px;
+    margin-top:3%;
+}
+.activities{
+    background-color:white;
+    height: 50vh;
+    margin: 5%;
+}
+.aditionals{
+    background-color:white;
+    margin: 15%;
+}
+#activitiesArea{
+    display:flex;
+    flex-direction: column;
+}
+#activitiesTitle{
+    padding-top: 5%;
+    padding-left:5%;
+    height: 3%;
+    font-weight: lighter;
+    color: rgba(108, 108, 100, 1);
+    font-size: 15px;
 }
