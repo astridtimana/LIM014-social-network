@@ -11,7 +11,7 @@
     /* row-gap: 1.5rem; */
 }
 
-#formMobile {
+#form {
     display: inline-grid;
     row-gap: 1.5rem;
 }
@@ -20,6 +20,9 @@ head{
     display: none;
 }
 
+.forDesktop {
+    display: none;
+}
 input, button {
     height: 3rem;
     border-radius: 10px;
@@ -30,6 +33,7 @@ input{
     background-color: rgba(0, 0, 0, 0.1);
     border: rgba(255, 255, 255, 0);
 }
+
 .googleButton{
     background-color: white;
     border: rgba(255, 255, 255, 0);
@@ -61,7 +65,7 @@ h1{
     justify-content: center;
     font-family: 'Raleway', sans-serif;
 }
-.loginMobile{
+.login{
     font-family: 'Raleway', sans-serif;
     display: flex;
     align-items: center;
@@ -69,7 +73,7 @@ h1{
     font-size: 2rem;
     margin-bottom: 5%;
 }
-#arrowImg {
+#arrowImg, #arrowImgRegister {
     width: 55px;
 }
 .logo{
@@ -102,16 +106,20 @@ footer{
 #lgtbiqImage{
     width: 0px;  
 }
-#formDesktop{
+/* #formDesktop{
     display: none;
-}
+} */
 #homePhrase{
     display: none;
 }
-.formContainer{
+/* .formContainer{
+    display: none;
+} */
+
+
+#signUp {
     display: none;
 }
-
 @media only screen and (min-width: 700px) {
     *{
         row-gap: 0.8rem;
@@ -132,7 +140,6 @@ footer{
         display: block;
         font-family: 'Raleway', sans-serif;
         font-size:2rem;
-        display: block;
     }
     #logoContainer{
         margin-bottom: 3%;
@@ -142,13 +149,21 @@ footer{
         justify-content: space-around;
         margin: 5%;
     }
-    #formMobile{
+    /* #form{
         display: none;
+    } */
+    .forDesktop {
+        display: block;
     }
-    #formDesktop{
+
+    #form{
         display: block;
         display:flex;
         flex-direction: column;
+    }
+
+    #arrowImg {
+        display: none;
     }
     #welcomeMessage{
         font-size: 1.3rem;
@@ -156,10 +171,10 @@ footer{
     #loginMessage{
         font-size: 1.5rem;
     }
-    .desktopText{
+    .text{
         margin-bottom: 1%;
     }
-    .loginDesktop{
+    .login {
         border-radius: 5px;
         font-size: 1rem;
         font-weight: bold;
@@ -169,7 +184,7 @@ footer{
         box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
         padding: 3%;
         display: flex;
-        align-items: center;
+        justify-content: center;
     }
     .googleButton{
         border-radius: 5px;
@@ -180,7 +195,7 @@ footer{
         box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
         font-size: 1rem;
     }
-    .smallContainerDesktop{
+    .containerRegister{
         display:flex;
         padding: 5px 10px;
         flex-direction: row;
@@ -207,17 +222,15 @@ footer{
         margin-right: 10px;
         margin-top: 0.5%; 
     }
-    #registerMobile{
+    #register{
         display: none;
     }
-    #registerDesktop{
-        display: block;
-    }
+
 }
 
-/*-------------------- PARA LA PÁGINA DE REGÍSTRATE ----------------------- */
 
-#registerDesktop{
+/*-------------------- PARA LA PÁGINA DE REGÍSTRATE ----------------------- */
+.toDesktop, #headerCreateToDesktop {
     display: none;
 }
 
@@ -267,12 +280,51 @@ footer{
     margin: 10%;
 }
 
+#textConditions{
+    color: #828282;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: small;
+    margin-bottom: 4%;
+}
+
 @media only screen and (min-width: 700px) {
-    #registerMobile{
-        display: none;
+   
+    #headerCreate, #buttonRegister, #buttonRegisterGoogle {
+    display: none;
     }
-    #registerDesktop{
-        display: block;
+    .toDesktop {
+    display: block;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 5%;
+    font-size: 1.1rem;
+    }
+
+    .googleButton {
+        width: 100%;
+        align-items: center;
+    }
+
+    #headerCreateToDesktop {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-left: 5%;
+    font-size: 1.7rem;
+    }
+
+    #textRegister {
+        font-weight: bold;
+        color: #828282;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #register{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -281,7 +333,8 @@ footer{
         margin: 1% 30%;
 
     }
-    #createAccount{
+    #signUp{
+        display: block;
         background-color: #FFCC00;
         color: white;
         font-weight: bold;
@@ -291,27 +344,19 @@ footer{
         box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
         margin-top: 5%;
     }
-    input {
+    #formRegister input {
         height: 3rem;
         border-radius: 5px;
         background-color: white;
         border: rgba(221, 217, 217) solid;
         border-width: 1.5px;
+        align-items: center;
     }
     
-    #txtRegister {
-        font-weight: bold;
-        color: #828282;
-        justify-content: center;
-    }
-    #txtCondiciones{
-        color: #828282;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        font-size: small;
-        margin-bottom: 4%;
-    }
+    
+   
+    
+    
     
 
 }

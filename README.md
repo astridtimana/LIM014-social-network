@@ -177,6 +177,16 @@ En el Perú, se destacan las siguientes:
 - Falta de reconocimiento de las uniones civiles entre parejas del mismo sexo
 
 
+Pride, es una red social que está orientada hacia la comunidad LGTBIQ+ y sus allies, y busca crear un espacio social seguro, libre de prejuicios y discriminaciones, en donde se podrá revisar noticias y recomendaciones de interés para este público. 
+En la plataforma los usuarios pueden conocer amigos, informarse sobre lugares gay-friendly, acceder a contenidos de interés, enterarse de los eventos de la comunidad. El servicio es gratuito,y se encuentra en versión web y móvil.
+
+Esta red social será de gran utilidad para el público objetivo ya que en la actualidad esta minoría es foco de distintas problemáticas.
+En el Perú, se destacan las siguientes:
+- Discriminación y exclusión social
+- Afectaciones a la vida e integridad
+- Violencia
+- Falta de reconocimiento de las uniones civiles entre parejas del mismo sexo
+
 ### 5.3 Historias de usuario
 
 La o el usuario se identifica y es un aliado de la comunidad LGQTB+. En tal sentido, para describir sus inquietudes y necesidades, se detallan líneas abajo cada historia de estxs.
