@@ -20,6 +20,9 @@ head{
     display: none;
 }
 
+.forDesktop {
+    display: none;
+}
 input, button {
     height: 3rem;
     border-radius: 10px;
@@ -145,6 +148,10 @@ footer{
     /* #form{
         display: none;
     } */
+    .forDesktop {
+        display: block;
+    }
+
     #form{
         display: block;
         display:flex;
