@@ -13,14 +13,21 @@ export default () => {
       <p id="homePhrase">La red social LGTBIQ+ más grande de Latinoamérica.</p>
     </section>
 
-    <section id="formMobile">
-      <input type="email" placeholder="Correo" id="email"> 
-      <input type="password" placeholder="Contraseña" id="password"> 
+    <section id="form">
+    <article class="formContainer">
+     <article class = "forDesktop">
+      <a id="welcomeMessage"> ¡Bienvenidx!</a>
+      <a id="loginMessage"> Ingresa a tu cuenta</a>
+     </article>
+      <a class="text">Email</a>
+      <input type="email" placeholder="john.snow@gmail.com" id="email"> 
+      <a class="text">Contraseña</a>
+      <input type="password" placeholder="********" id="password"> 
       <article class="smallContainer">
         <article class="rememberMe"><input type="checkbox"><label class="smallText">Recuérdame</label></article>
         <a class = "smallText">Olvidé mi contraseña</a>
       </article>
-      <section class="loginMobile">
+      <section class="login">
           <a>Ingresar</a>
           <img id="arrowImg" src="./images/arrow.png">
       </section>
@@ -31,31 +38,9 @@ export default () => {
         <p>¿No tienes una cuenta?</p>
         <a href="#/register">Regístrate</a>
       </article>
+    </article>
     </section>
 
-    <section id="formDesktop">
-      <article class="formContainer">
-        <a id="welcomeMessage"> ¡Bienvenidx!</a>
-        <a id="loginMessage"> Ingresa a tu cuenta</a>
-        <a class="desktopText">Email</a>
-        <input type="email" placeholder="john.snow@gmail.com" class="desktopInput"> 
-        <a class="desktopText">Contraseña</a>
-        <input type="password" placeholder="********" class="desktopInput"> 
-        <article class="smallContainer">
-          <article class="rememberMe"><input type="checkbox"><label class="smallText">Recuérdame</label></article>
-          <a class = "smallText">Olvidé mi contraseña</a>
-        </article>
-        <a class= "loginDesktop" href="#/feed" >Ingresar</a>
-        <button class = "googleButton">
-          <img src="./images/googleIcon.png" class="googleLogo"> Ingresar con Google
-        </button>
-        <article class="smallContainerDesktop">
-          <p>¿No tienes una cuenta?</p>
-          <a href="#/register">Regístrate</a>
-        </article>
-      </article>
-      
-    </section>
     `;
   const sectionElement = document.createElement('section');
   sectionElement.setAttribute('class', 'home');
