@@ -15,7 +15,7 @@ export default () => {
 
     <section id="form">
     <article class="formContainer">
-     <article class = forDesktop>
+     <article class = "forDesktop">
       <a id="welcomeMessage"> ¡Bienvenidx!</a>
       <a id="loginMessage"> Ingresa a tu cuenta</a>
      </article>
