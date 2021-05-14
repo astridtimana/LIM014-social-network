@@ -8,8 +8,10 @@
     list-style: none;
     display: inline-grid;
     font-family: 'Raleway', sans-serif;
-    /* row-gap: 1.5rem; */
+    row-gap:0;
 }
+
+/*-------------------- PARA LA PÁGINA DE INICIO ----------------------- */
 
 #form {
     display: inline-grid;
