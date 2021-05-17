@@ -29,6 +29,13 @@ const verificationMail = () => {
   });
 };
 
+/* export const createUser = (email, pass) => firebase.auth().createUserWithEmailAndPassword(email, pass)
+  .catch((error) => {
+    const errorCode = error.code; //
+    const errorMessage = error.message; // 'auth-invalid email'
+    alert(errorCode);
+    alert(errorMessage);
+  }); */
 
 
 // Configura la contraseña de un usuario
