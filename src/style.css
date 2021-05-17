@@ -375,8 +375,6 @@ footer{
     display: block;
     justify-content: left;
     /* margin-left:12%; */
-}
-.checkBtn {
     color: white;
     margin-top: 2.5%;
 }
@@ -411,12 +409,6 @@ footer{
     border: none;
     color:white;
     margin-top:2%;
-}
-#menuNavigator{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
 }
 #menuNavigator{
     display:flex;
@@ -525,6 +517,7 @@ label{
         /* display:flex; */
     }
     #feedConfigArea{
+        display:block;
         grid-column-start: 1;
         grid-column-end: 2;
         background-color:rgba(247, 247, 247, 1);
@@ -535,6 +528,8 @@ label{
         margin-left: 20%;
     }
     #activitiesArea{
+        display:flex;
+        flex-direction: column;
         grid-column-start: 2;
         grid-column-end: 3;
         background-color:rgba(247, 247, 247, 1);
@@ -593,10 +588,7 @@ label{
         background-color:white;
         margin: 15%;
     }
-    #activitiesArea{
-        display:flex;
-        flex-direction: column;
-    }
+    
     #activitiesTitle{
         display:block;
         padding-top: 5%;
@@ -609,10 +601,7 @@ label{
     #check,#hamburguerMenu{
         display: none;
     }
-    #feedConfigArea{
-        display:block;
-
-    }
+   
     .feedConfigOption{
         display:flex;
         flex-direction: row;

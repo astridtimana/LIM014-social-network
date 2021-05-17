@@ -1,3 +1,5 @@
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-multiple-empty-lines */
 /* eslint-disable no-alert */
 /* eslint-disable max-len */
@@ -17,7 +19,7 @@ export const createUser = (email, pass, name) => firebase.auth().createUserWithE
     const errorMessage = error.message; // 'auth-invalid email'
     alert(`Error: ${errorCode}`);
     alert(`Error: ${errorMessage}`);
-  });
+  }); 
 
 export const verificationMail = () => {
   const user = firebase.auth().currentUser;
@@ -27,6 +29,13 @@ export const verificationMail = () => {
   });
 };
 
+/* export const createUser = (email, pass) => firebase.auth().createUserWithEmailAndPassword(email, pass)
+  .catch((error) => {
+    const errorCode = error.code; //
+    const errorMessage = error.message; // 'auth-invalid email'
+    alert(errorCode);
+    alert(errorMessage);
+  }); */
 
 
 // Configura la contraseña de un usuario
