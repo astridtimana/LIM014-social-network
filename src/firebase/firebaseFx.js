@@ -19,7 +19,7 @@ export const createUser = (email, pass, name) => firebase.auth().createUserWithE
     alert(`Error: ${errorMessage}`);
   });
 
-const verificationMail = () => {
+export const verificationMail = () => {
   const user = firebase.auth().currentUser;
   user.sendEmailVerification().then(() => {
   }).catch((error) => {
