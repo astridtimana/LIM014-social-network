@@ -8,10 +8,12 @@
     list-style: none;
     display: inline-grid;
     font-family: 'Raleway', sans-serif;
-    /* row-gap: 1.5rem; */
+    row-gap:0;
 }
 
-#formMobile {
+/*-------------------- PARA LA PÁGINA DE INICIO ----------------------- */
+
+#form {
     display: inline-grid;
     row-gap: 1.5rem;
 }
@@ -20,6 +22,9 @@ head{
     display: none;
 }
 
+.forDesktop {
+    display: none;
+}
 input, button {
     height: 3rem;
     border-radius: 10px;
@@ -30,6 +35,7 @@ input{
     background-color: rgba(0, 0, 0, 0.1);
     border: rgba(255, 255, 255, 0);
 }
+
 .googleButton{
     background-color: white;
     border: rgba(255, 255, 255, 0);
@@ -61,7 +67,7 @@ h1{
     justify-content: center;
     font-family: 'Raleway', sans-serif;
 }
-.loginMobile{
+.login{
     font-family: 'Raleway', sans-serif;
     display: flex;
     align-items: center;
@@ -102,16 +108,20 @@ footer{
 #lgtbiqImage{
     width: 0px;  
 }
-#formDesktop{
+/* #formDesktop{
     display: none;
-}
+} */
 #homePhrase{
     display: none;
 }
-.formContainer{
+/* .formContainer{
+    display: none;
+} */
+
+
+#signUp {
     display: none;
 }
-
 @media only screen and (min-width: 700px) {
     *{
         row-gap: 0.8rem;
@@ -141,13 +151,21 @@ footer{
         justify-content: space-around;
         margin: 5%;
     }
-    #formMobile{
+    /* #form{
         display: none;
+    } */
+    .forDesktop {
+        display: block;
     }
-    #formDesktop{
+
+    #form{
         display: block;
         display:flex;
         flex-direction: column;
+    }
+
+    #arrowImg {
+        display: none;
     }
     #welcomeMessage{
         font-size: 1.3rem;
@@ -155,10 +173,10 @@ footer{
     #loginMessage{
         font-size: 1.5rem;
     }
-    .desktopText{
+    .text{
         margin-bottom: 1%;
     }
-    .loginDesktop{
+    .login {
         border-radius: 5px;
         font-size: 1rem;
         font-weight: bold;
@@ -168,7 +186,7 @@ footer{
         box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
         padding: 3%;
         display: flex;
-        align-items: center;
+        justify-content: center;
     }
     .googleButton{
         border-radius: 5px;
@@ -179,7 +197,7 @@ footer{
         box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
         font-size: 1rem;
     }
-    .smallContainerDesktop{
+    .containerRegister{
         display:flex;
         padding: 5px 10px;
         flex-direction: row;
@@ -206,17 +224,15 @@ footer{
         margin-right: 10px;
         margin-top: 0.5%; 
     }
-    #registerMobile{
+    #register{
         display: none;
     }
-    #registerDesktop{
-        display: block;
-    }
+
 }
 
-/*-------------------- PARA LA PÁGINA DE REGÍSTRATE ----------------------- */
 
-#registerDesktop{
+/*-------------------- PARA LA PÁGINA DE REGÍSTRATE ----------------------- */
+.toDesktop, #headerCreateToDesktop {
     display: none;
 }
 
@@ -266,12 +282,51 @@ footer{
     margin: 10%;
 }
 
+#textConditions{
+    color: #828282;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: small;
+    margin-bottom: 4%;
+}
+
 @media only screen and (min-width: 700px) {
-    #registerMobile{
+   
+    #headerCreate, #buttonRegister, #buttonRegisterGoogle {
         display: none;
     }
-    #registerDesktop{
-        display: block;
+    .toDesktop {
+    display: block;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 5%;
+    font-size: 1.1rem;
+    }
+
+    .googleButton {
+        width: 100%;
+        align-items: center;
+    }
+
+    #headerCreateToDesktop {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-left: 5%;
+    font-size: 1.7rem;
+    }
+
+    #textRegister {
+        font-weight: bold;
+        color: #828282;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #register{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -280,7 +335,8 @@ footer{
         margin: 1% 30%;
 
     }
-    #createAccount{
+    #signUp{
+        display: block;
         background-color: #FFCC00;
         color: white;
         font-weight: bold;
@@ -290,27 +346,269 @@ footer{
         box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
         margin-top: 5%;
     }
-    input {
+    #formRegister input {
         height: 3rem;
         border-radius: 5px;
         background-color: white;
         border: rgba(221, 217, 217) solid;
         border-width: 1.5px;
-    }
-    
-    #txtRegister {
-        font-weight: bold;
-        color: #828282;
-        justify-content: center;
-    }
-    #txtConditions{
-        color: #828282;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        font-size: small;
-        margin-bottom: 4%;
+        align-items: center;
     }
     
 
+   
+    
+    
+    
+
+}
+
+/*-------------------- PARA LA PÁGINA DE FEED ----------------------- */
+
+.feed{
+    grid-template-columns: 100%;
+}
+#feedConfigArea{
+    display:none;
+}
+.checkBtn {
+    display: block;
+    justify-content: left;
+    /* margin-left:12%; */
+    color: white;
+    margin-top: 2.5%;
+}
+
+#feedHeader{
+    background-color:rgba(116, 55, 144, 1);
+    height: 7vh;
+
+}
+#feedLogo{
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    margin-left: 5%;
+}
+#search{
+    display:flex;
+    flex-direction: row;
+    color:white;
+
+}
+#searchIcon{
+    width: 18px;
+    height: 18px;
+    margin-top:2%;
+    margin-right: 3%;
+}
+#searchBar{
+    height: 15px;
+    width: 170px;
+    background-color: rgba(222, 184, 135, 0);
+    border: none;
+    color:white;
+    margin-top:2%;
+}
+#menuNavigator{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+#hamburguerMenu{
+    height: 20px;
+    justify-content: center;
+    margin:auto;
+}
+#check{
+    display:none;
+}
+#activitiesTitle{
+    display: none;
+}
+#activitiesArea{
+    display: block;
+
+}
+#profile{
+    display:none;
+}
+.botonMenu{
+   margin: 0 auto;
+   display: block;
+   width: 40px;
+   height: 36px;
+   padding: 10px;
+   border-radius: 7px;
+   color: white;
+   cursor: pointer;
+   position: relative;
+}
+
+#hamburguerBtn{
+    width: 25px;
+}
+label{
+   cursor: pointer;
+}
+
+#menu-toggle{
+   display: none;
+}
+
+#trickMenu{
+   display: none;
+   text-align: center;
+   background: rgba(116, 55, 144, 1);
+   padding: 10px 0;
+
+
+}
+
+#trickMenu li a {
+   display: block;
+   padding: 10px 0;
+   color: white;
+
+}
+
+#menu-toggle:checked + #trickMenu{
+   /* display: block; */
+   display:flex;
+   flex-direction: column;
+
+}
+
+
+@media only screen and (min-width: 700px) {
+    .feed{
+        grid-template-columns: 20% 50% 30%;
+    }
+    #feedHeader{
+        grid-row-start: 0;
+        grid-column-start: 1;
+        grid-column-end: 4;
+        background-color:rgba(116, 55, 144, 1);
+        height: 8vh;
+    }
+    *{
+        row-gap:0;
+    }
+    #menuNavigator{
+        display:flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        height: 8vh;
+    }
+    #menuNavigator > ul {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        display: inline-block;
+        /* display:flex; */
+    }
+    #feedConfigArea{
+        display:block;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        background-color:rgba(247, 247, 247, 1);
+        height: 89vh;
+    }
+    #profile{
+        display:block;
+        margin-left: 20%;
+    }
+    #activitiesArea{
+        display:flex;
+        flex-direction: column;
+        grid-column-start: 2;
+        grid-column-end: 3;
+        background-color:rgba(247, 247, 247, 1);
+    }
+    #aditionalsArea{
+        grid-column-start: 3;
+        grid-column-end: 4;
+        background-color:rgba(247, 247, 247, 1);
+    }
+    #feedLogo{
+        width: 40px;
+        height: 40px;
+        justify-content: center;
+    }
+    #search{
+        display:flex;
+        flex-direction: row;
+        color:white;
+        justify-content: center;
+        margin-left: 15%;
+    }
+    #searchBar{
+        height: 30px;
+        width: 200px;
+        background-color: rgba(222, 184, 135, 0);
+        border: none;
+        color:white;
+        
+    }
+    #search > ::-webkit-input-placeholder { color: white; } 
+    #searchIcon{
+        width: 17px;
+        height: 17px;
+        margin-top:3.5%;
+        margin-right: 3%;
+    }
+    .feedConfig{
+        background-color:white;
+        margin: 10% 18% 18% 18%;
+        display: flex;
+        flex-direction: column;
+        height: 30%;
+    }
+    .configIcon{
+        margin-left: 5%;
+        height: 30px;
+        width: 30px;
+        margin-top:3%;
+    }
+    .activities{
+        background-color:white;
+        height: 50vh;
+        margin: 5%;
+    }
+    .aditionals{
+        background-color:white;
+        margin: 15%;
+    }
+    
+    #activitiesTitle{
+        display:block;
+        padding-top: 5%;
+        padding-left:5%;
+        height: 3%;
+        font-weight: lighter;
+        color: rgba(108, 108, 100, 1);
+        font-size: 15px;
+    }
+    #check,#hamburguerMenu{
+        display: none;
+    }
+   
+    .feedConfigOption{
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        padding-left: 5%;
+        padding-top: 5%;
+    }
+    .feedConfigOption > p {
+        margin-left: 5%;
+        color:rgba(135, 135, 135, 1);
+    }
+    #hamburguerBtn{
+        display:none;
+    }
+    #trickMenu> li{
+        display:none;
+    }
 }

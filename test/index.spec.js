@@ -1,3 +1,5 @@
+/* eslint-disable import/named */
+/* eslint-disable no-console */
 /* eslint-disable import/no-named-as-default-member */
 // importamos la funcion que vamos a testear
 // import { myFunction } from '../src/lib/index';
@@ -24,7 +26,7 @@ const mocksdk = new firebasemock.MockFirebaseSdk(
   // use null if your code does not use MESSAGING
   null,
 );
-mockauth.autoFlush();
+mockauth.autoFlush(); // ?
 global.firebase = mocksdk;
 
 // TEST DE LA FUNCIÓN EN EL VIEW HOME
@@ -36,7 +38,7 @@ describe('Función home', () => {
     expect(Home()).toEqual(expect.any(Object));
   });
   it('debería tener solo 3 contenedores hijos', () => {
-    expect(Home().children).toHaveLength(3);
+    expect(Home().children).toHaveLength(2);
   });
 });
 
@@ -49,7 +51,7 @@ describe('Función register', () => {
     expect(Register()).toEqual(expect.any(Object));
   });
   it('debería tener solo 3 contenedores hijos', () => {
-    expect(Register().children).toHaveLength(2);
+    expect(Register().children).toHaveLength(1);
   });
 });
 
@@ -61,10 +63,11 @@ describe('Función que crea un nuevo usuario sin tener cuenta de Google', () => 
   it('Debería ser una función', () => {
     expect(typeof createUser).toBe('function');
   });
-  it('Debería crear un usuario con el email ben@example.com y contraseña examplePass', () => createUser('ben@example.com', 'examplePass')
+  it('Debería crear un usuario con el email ben@example.com y contraseña examplePass', () => createUser('ben', 'ben@example.com', 'examplePass')
     .then((user) => {
-      /* console.log(res); */
+      console.log('66', user.name);
+      /* expect(user.name).toBe('ben');
       expect(user.email).toBe('ben@example.com');
-      expect(user.password).toBe('examplePass');
+      expect(user.password).toBe('examplePass'); */
     }));
 });
