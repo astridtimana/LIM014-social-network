@@ -17,11 +17,11 @@ export default () => {
     </section>
 
     <section id="form">
-    <article class="formContainer">
-     <article class = "forDesktop">
+      <article class="formContainer">
+      <article class = "forDesktop">
       <a id="welcomeMessage"> ¡Bienvenidx!</a>
       <a id="loginMessage"> Ingresa a tu cuenta</a>
-     </article>
+      </article>
       <a class="text">Email</a>
       <input type="email" placeholder="john.snow@gmail.com" id="email"> 
       <p id = "errorMailMessage"></p>
@@ -42,7 +42,7 @@ export default () => {
         <p>¿No tienes una cuenta?</p>
         <a href="#/register">Regístrate</a>
       </article>
-    </article>
+      </article>
       <article id="userIncorrect">
       </article>
     </section>
@@ -55,7 +55,7 @@ export default () => {
   const toLogIn = sectionElement.querySelector('.login');
   const emailInput = sectionElement.querySelector('#email');
   const errorEmailMessage = sectionElement.querySelector('#errorMailMessage');
-  const userIncorrect = sectionElement.querySelector('#UserIncorrect');
+  const userIncorrect = sectionElement.querySelector('#userIncorrect');
 
   emailInput.addEventListener('keyup', () => {
     if (!emailInput.value.includes('@', 0)) {

@@ -75,15 +75,7 @@ export default () => {
   const errorNameUser = divElement.querySelector('#errorNameUser');
   const errorMailUser = divElement.querySelector('#errorMailUser');
   const errorPasswordUser = divElement.querySelector('#errorPasswordUser');
-
-  nameInput.addEventListener('keyup', () => {
-    if (!nameInput.value.includes('@', 0)) {
-      errorEmailMessage.innerHTML = 'Incluye un signo "@" en la dirección de correo electrónico.';
-    } else if (emailInput.value.includes('@', 0)) {
-      errorEmailMessage.innerHTML = ' ';
-    }
-  });
-
+  
   const registerUser = () => {
     const name = document.getElementById('name').value;
     const pass = document.getElementById('passwordRegister').value;

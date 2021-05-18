@@ -14,7 +14,7 @@ export const createUser = (email, pass) => firebase.auth().createUserWithEmailAn
 
 export const verificationMail = () => {
   const user = firebase.auth().currentUser;
-  user.sendEmailVerification().then(() => {
+  return user.sendEmailVerification().then(() => {
   }).catch((error) => { console.log(error.message); });
 };  
 
