@@ -69,7 +69,7 @@ export default () => {
     const name = document.getElementById('name').value;
     const pass = document.getElementById('passwordRegister').value;
     const email = document.getElementById('emailRegister').value;
-    createUser(name, pass, email);
+    createUser(email, pass, name);
   };
   signUp.addEventListener('click', (registerUser));
   signUpDesk.addEventListener('click', (registerUser));

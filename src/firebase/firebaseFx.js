@@ -9,16 +9,16 @@
 // Create User with Email and Password
 // eslint-disable-next-line no-undef
 
-export const createUser = (name, email, pass) => firebase.auth().createUserWithEmailAndPassword(name, email, pass)
+export const createUser = (email, pass) => firebase.auth().createUserWithEmailAndPassword(email, pass)
   .then(() => {
     verificationMail();
-    console.log(`${name} tu usuario ha sido creado, verifica tu correo`);
+    alert(`${name} tu usuario ha sido creado, verifica tu correo`);
   })
   .catch((error) => {
     const errorCode = error.code; //
     const errorMessage = error.message; // 'auth-invalid email'
-    console.log(`Error: ${errorCode}`);
-    console.log(`Error: ${errorMessage}`);
+    alert(`Error: ${errorCode}`);
+    alert(`Error: ${errorMessage}`);
   }); 
 
 const verificationMail = () => {
