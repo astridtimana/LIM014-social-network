@@ -1,4 +1,6 @@
 /* eslint-disable no-console */
+import { logIn } from '../firebase/firebaseFx.js';
+
 export default () => {
   const viewHome = `
     <section class="leftWrapper">
@@ -45,5 +47,17 @@ export default () => {
   const sectionElement = document.createElement('section');
   sectionElement.setAttribute('class', 'home');
   sectionElement.innerHTML = viewHome;
+
+  const toLogIn = sectionElement.querySelector('.login');
+
+  toLogIn.addEventListener('click', () => {
+    const email = document.getElementById('email').value;
+    const pass = document.getElementById('password').value;
+    // console.log(`email=${email} pass= ${pass}`);
+    logIn(email, pass);
+    console.log(logIn(email, pass));
+    // verificationMail();
+  });
+
   return sectionElement;
 };

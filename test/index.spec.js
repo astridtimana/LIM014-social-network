@@ -7,7 +7,7 @@
 // import { myFunction } from '../src/lib/index';
 // import { template } from '@babel/core';
 
-import { createUser } from '../src/firebase/firebaseFx.js';
+import { createUser, verificationMail } from '../src/firebase/firebaseFx.js';
 import Home from '../src/view/home.js';
 import Register from '../src/view/register.js';
 
@@ -57,10 +57,13 @@ describe('Función register', () => {
   });
 });
 
+<<<<<<< HEAD
 /* mocksdk.auth().getUserByEmail('ben@example.com').then((user) => {
   console.assert(user, 'ben was created');
 }); */
 
+=======
+>>>>>>> 7e1fadd9728b8b7aa0166a26c2d3f282c3539b53
 // TEST DE LA FUNCIÓN CREATEUSER
 describe('Función que crea un nuevo usuario sin tener cuenta de Google', () => {
   it('Debería ser una función', () => {
@@ -68,10 +71,24 @@ describe('Función que crea un nuevo usuario sin tener cuenta de Google', () => 
   });
   it('Debería crear un usuario con el email ben@example.com y contraseña examplePass', () => createUser('ben@example.com', 'examplePass')
     .then((user) => {
-      /*  console.log(res); */
-      /* expect(user.name).toBe('ben'); */
-      expect(user.email).toBe('ben@example.com');
-      expect(user.password).toBe('examplePass');
+      console.log(user);
+      const jsdomAlert = window.alert;// remember the jsdom alert
+      window.alert = () => {};
+      // expect(user.email).toBe('ben@example.com');
+      // expect(user.password).toBe('examplePass');
+      window.alert = jsdomAlert;
+    }));
+});
+
+describe('Función que envía correo de verificación', () => {
+  it('Debería ser una función', () => {
+    expect(typeof verificationMail).toBe('function');
+  });
+  it('Debería enviar mensaje de verificación', () => verificationMail()
+    .then((user) => {
+      console.log(user);
+      //  expect(user.email).toBe('ben@example.com');
+      //  expect(user.password).toBe('examplePass');
     }));
 });
 /*

@@ -21,7 +21,7 @@ export const createUser = (email, pass) => firebase.auth().createUserWithEmailAn
     alert(`Error: ${errorMessage}`);
   }); 
 
-const verificationMail = () => {
+export const verificationMail = () => {
   const user = firebase.auth().currentUser;
   user.sendEmailVerification().then(() => {
   }).catch((error) => {
@@ -29,16 +29,14 @@ const verificationMail = () => {
   });
 };
 
-/* export const signIn = (email, pass) => firebase.auth().signInWithEmailAndPassword(email, pass)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    // ...
-  })
+export const logIn = (email, pass) => firebase.auth().signInWithEmailAndPassword(email, pass)
+  .then(() => { console.log('Logged in!'); })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-  }); */
+    alert(`Error: ${errorCode}`);
+    alert(`Error: ${errorMessage}`);
+  });
 
 /* export const createUser = (email, pass) => firebase.auth().createUserWithEmailAndPassword(email, pass)
   .catch((error) => {
