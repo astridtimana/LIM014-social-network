@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+
 import { logIn } from '../firebase/firebaseFx.js';
 
 export default () => {
@@ -23,6 +24,7 @@ export default () => {
      </article>
       <a class="text">Email</a>
       <input type="email" placeholder="john.snow@gmail.com" id="email"> 
+      <p id = "errorMailMessage"></p>
       <a class="text">Contraseña</a>
       <input type="password" placeholder="********" id="password"> 
       <article class="smallContainer">
@@ -41,22 +43,39 @@ export default () => {
         <a href="#/register">Regístrate</a>
       </article>
     </article>
+      <article id="userIncorrect">
+      </article>
     </section>
-
     `;
   const sectionElement = document.createElement('section');
   sectionElement.setAttribute('class', 'home');
   sectionElement.innerHTML = viewHome;
 
   const toLogIn = sectionElement.querySelector('.login');
+  const emailInput = sectionElement.querySelector('#email');
+  const errorEmailMessage = sectionElement.querySelector('#errorMailMessage');
+  const userIncorrect = sectionElement.querySelector('#userIncorrect');
+
+  emailInput.addEventListener('keyup', () => {
+    if (!emailInput.value.includes('@', 0)) {
+      errorEmailMessage.innerHTML = 'Incluye un signo "@" en la dirección de correo electrónico.';
+    } else if (emailInput.value.includes('@', 0)) {
+      errorEmailMessage.innerHTML = ' ';
+    }
+  });
 
   toLogIn.addEventListener('click', () => {
     const email = document.getElementById('email').value;
     const pass = document.getElementById('password').value;
-    // console.log(`email=${email} pass= ${pass}`);
-    logIn(email, pass);
-    console.log(logIn(email, pass));
-    // verificationMail();
+    logIn(email, pass)
+      .then((obj) => {
+        if (obj.user.emailVerified) {
+          window.location.hash = '#/feed';
+        } else { userIncorrect.innerHTML = 'Verifica tu correo'; }
+      })
+      .catch(() => {
+        userIncorrect.innerHTML = 'Dirección de correo electrónico o contraseña incorrecta.';
+      });
   });
 
   return sectionElement;

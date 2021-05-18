@@ -19,6 +19,7 @@ export default () => {
       <section id="formRegister">
 
           <article class="toDesktop">
+<<<<<<< HEAD
               <header id="headerCreateToDesktop">
                   <article id="logoContainer">
                       <img class="logo" src="./images/colorwheel.png">
@@ -31,6 +32,43 @@ export default () => {
               <button class="googleButton" id="buttonRegisterGoogleDesktop">
                   <img src="./images/googleIcon.png" class="googleLogo">Iniciar sesión con Google
               </button>
+=======
+            <header id="headerCreateToDesktop">
+          <article id="logoContainer">
+          <img class="logo" src="./images/colorwheel.png"><h2> PRIDE </h2>
+          </article>
+            </header>
+            
+            <p id="textRegister">Regístrate para ver fotos y videos de tus amigos.</p>
+            
+          <button class="googleButton" id="buttonRegisterGoogleDesktop">
+            <img src="./images/googleIcon.png" class="googleLogo">Iniciar sesión con Google
+          </button>
+          </article>  
+      
+            <input type="name" placeholder="Nombre y apellido" id="nameInput">
+            <p id = "errorNameUser"></p>
+            <input type="email" placeholder="Correo electrónico" id="mailInput">
+            <p id = "errorMailUser"></p> 
+            <input type="password" placeholder="Contraseña" id="passwordInput"> 
+            <p id = "errorPasswordUser"></p> 
+            <button id="signUp"> Regístrate</button>
+            <p id="textConditions">Al registrarte, aceptas nuestras <a href="">Condiciones</a>, la <a href="">Política de datos</a> y la <a href="">Política de cookies</a>.</p>
+          </section>
+          
+          <section id="buttonRegister">
+            <a>Registrar</a>
+            <img id="arrowImgRegister" src="./images/arrow.png">
+          </section>
+          
+          <button class="googleButton" id="buttonRegisterGoogle">
+            <img src="./images/googleIcon.png" class="googleLogo">Registrar con Google
+          </button>
+
+          <article class="containerRegister">
+            <p>¿Tienes una cuenta?</p>
+            <a id="logIn" href="#/home">Iniciar sesión</a>
+>>>>>>> 5218ff51ad87d444f3754d761899df57fe3a1133
           </article>
 
           <input type="name" placeholder="Nombre y apellido" id="name">
@@ -65,6 +103,37 @@ export default () => {
 
   const signUp = divElement.querySelector('#arrowImgRegister');
   const signUpDesk = divElement.querySelector('#signUp');
+  const nameInput = divElement.querySelector('#nameInput');
+  const mailInput = divElement.querySelector('#mailInput');
+  const passwordInput = divElement.querySelector('#passwordInput');
+  const errorNameUser = divElement.querySelector('#errorNameUser');
+  const errorMailUser = divElement.querySelector('#errorMailUser');
+  const errorPasswordUser = divElement.querySelector('#errorPasswordUser');
+  const validateLetters = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;
+
+  nameInput.addEventListener('keyup', () => {
+    if (!validateLetters.test(nameInput.value)) {
+      errorNameUser.innerHTML = 'Incluye solo letras, no números.';
+    } else {
+      errorNameUser.innerHTML = ' ';
+    }
+  });
+
+  mailInput.addEventListener('keyup', () => {
+    if (!mailInput.value.includes('@', 0)) {
+      errorMailUser.innerHTML = 'Incluye un signo "@" en la dirección de correo electrónico.';
+    } else {
+      errorMailUser.innerHTML = ' ';
+    }
+  });
+
+  passwordInput.addEventListener('keyup', () => {
+    if (passwordInput.value.length < 6) {
+      errorPasswordUser.innerHTML = 'La contraseña debe tener mínimo 6 caracteres.';
+    } else {
+      errorPasswordUser.innerHTML = ' ';
+    }
+  });
 
   const registerUser = () => {
     const name = document.getElementById('name').value;
