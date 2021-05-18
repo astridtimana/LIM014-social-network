@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-multiple-empty-lines */
@@ -14,19 +15,14 @@ export const createUser = (email, pass) => firebase.auth().createUserWithEmailAn
 
 export const verificationMail = () => {
   const user = firebase.auth().currentUser;
-  user.sendEmailVerification().then(() => {
-  }).catch((error) => { console.log(error.message); });
-};  
+  return user.sendEmailVerification()
+    .then(() => ('se envió el email'))
+    .catch((error) => {
+      console.log(`Error: ${error}`);
+    });
+};
 
 export const logIn = (email, pass) => firebase.auth().signInWithEmailAndPassword(email, pass);
-
-/* export const createUser = (email, pass) => firebase.auth().createUserWithEmailAndPassword(email, pass)
-  .catch((error) => {
-    const errorCode = error.code; //
-    const errorMessage = error.message; // 'auth-invalid email'
-    alert(errorCode);
-    alert(errorMessage);
-  }); */
 
 // Cuando un usuario accede a tu app, pasa la dirección de correo electrónico y la contraseña a signInWithEmailAndPassword:
 // Web v8
