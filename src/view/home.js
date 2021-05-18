@@ -43,7 +43,7 @@ export default () => {
         <a href="#/register">Regístrate</a>
       </article>
     </article>
-      <article id="prueba">
+      <article id="userIncorrect">
       </article>
     </section>
 
@@ -55,7 +55,7 @@ export default () => {
   const toLogIn = sectionElement.querySelector('.login');
   const emailInput = sectionElement.querySelector('#email');
   const errorEmailMessage = sectionElement.querySelector('#errorMailMessage');
-  const userIncorrect = sectionElement.querySelector('#prueba');
+  const userIncorrect = sectionElement.querySelector('#UserIncorrect');
 
   emailInput.addEventListener('keyup', () => {
     if (!emailInput.value.includes('@', 0)) {
