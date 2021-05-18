@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+
 import { logIn } from '../firebase/firebaseFx.js';
 
 export default () => {
@@ -41,6 +42,8 @@ export default () => {
         <a href="#/register">Regístrate</a>
       </article>
     </article>
+      <article id="prueba">
+      </article>
     </section>
 
     `;
@@ -54,9 +57,13 @@ export default () => {
     const email = document.getElementById('email').value;
     const pass = document.getElementById('password').value;
     // console.log(`email=${email} pass= ${pass}`);
-    logIn(email, pass);
-    console.log(logIn(email, pass));
-    // verificationMail();
+    logIn(email, pass)
+      .then((obj) => {
+        if (obj.user.emailVerified) {
+          window.location.hash = '#/feed';
+        } else { alert('verifica tu correo'); }
+      })
+      .catch((error) => console.log(error));
   });
 
   return sectionElement;

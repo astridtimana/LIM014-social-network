@@ -5,7 +5,7 @@
 /* eslint-disable no-unreachable */
 // será necesario hacer una página de js para el modal???.
 
-import { createUser } from '../firebase/firebaseFx.js';
+import { createUser, verificationMail } from '../firebase/firebaseFx.js';
 
 export default () => {
   const viewRegister = `
@@ -50,7 +50,7 @@ export default () => {
 
           <article class="containerRegister">
             <p>¿Tienes una cuenta?</p>
-            <a id="logIn" href="#/registro">Iniciar sesión</a>
+            <a id="logIn" href="#/home">Iniciar sesión</a>
           </article>
 
         </section>
@@ -71,7 +71,13 @@ export default () => {
     const name = document.getElementById('name').value;
     const pass = document.getElementById('passwordRegister').value;
     const email = document.getElementById('emailRegister').value;
-    createUser(email, pass, name);
+
+    createUser(email, pass)
+      .then(() => {
+        verificationMail();
+        alert(`${name} tu usuario ha sido creado, verifica tu correo`);
+      })
+      .catch((error) => { console.log(error); }); 
   };
   signUp.addEventListener('click', (registerUser));
   signUpDesk.addEventListener('click', (registerUser));
