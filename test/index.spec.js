@@ -1,3 +1,5 @@
+/* eslint-disable no-sequences */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable import/named */
 /* eslint-disable no-console */
 /* eslint-disable import/no-named-as-default-member */
@@ -58,6 +60,7 @@ describe('Función register', () => {
 /* mocksdk.auth().getUserByEmail('ben@example.com').then((user) => {
   console.assert(user, 'ben was created');
 }); */
+
 // TEST DE LA FUNCIÓN CREATEUSER
 describe('Función que crea un nuevo usuario sin tener cuenta de Google', () => {
   it('Debería ser una función', () => {
@@ -71,3 +74,9 @@ describe('Función que crea un nuevo usuario sin tener cuenta de Google', () => 
       expect(user.password).toBe('examplePass');
     }));
 });
+/*
+describe('Función que permite verificar el correo'), () => {
+  it('Debería ser una función', () => {
+    expect(typeof verificationMail).toBe('function');
+  });
+}; */

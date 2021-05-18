@@ -62,16 +62,16 @@ export default () => {
   divElement.setAttribute('class', 'register');
   divElement.innerHTML = viewRegister;
 
-  const logIn = divElement.querySelector('#arrowImgRegister');
-  const loginDesk = divElement.querySelector('#signUp');
+  const signUp = divElement.querySelector('#arrowImgRegister');
+  const signUpDesk = divElement.querySelector('#signUp');
 
   const registerUser = () => {
-    const email = document.getElementById('emailRegister').value;
-    const pass = document.getElementById('passwordRegister').value;
     const name = document.getElementById('name').value;
-    createUser(email, pass, name);
+    const pass = document.getElementById('passwordRegister').value;
+    const email = document.getElementById('emailRegister').value;
+    createUser(name, pass, email);
   };
-  logIn.addEventListener('click', (registerUser));
-  loginDesk.addEventListener('click', (registerUser));
+  signUp.addEventListener('click', (registerUser));
+  signUpDesk.addEventListener('click', (registerUser));
   return divElement;
 };
