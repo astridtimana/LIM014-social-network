@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
@@ -5,7 +6,7 @@
 /* eslint-disable no-unreachable */
 // será necesario hacer una página de js para el modal???.
 
-import { createUser } from '../firebase/firebaseFx.js';
+import { createUser, verificationMail } from '../firebase/firebaseFx.js';
 
 export default () => {
   const viewRegister = `
@@ -69,7 +70,19 @@ export default () => {
     const name = document.getElementById('name').value;
     const pass = document.getElementById('passwordRegister').value;
     const email = document.getElementById('emailRegister').value;
-    createUser(email, pass, name);
+    createUser(email, pass)
+      .then((user) => {
+        verificationMail().then((message) => {
+          console.log(message);
+        });
+        alert(`${name} tu usuario ha sido creado, verifica tu correo`);
+      })
+      .catch((error) => {
+        const errorCode = error.code; //
+        const errorMessage = error.message; // 'auth-invalid email'
+        alert(`Error: ${errorCode}`);
+        alert(`Error: ${errorMessage}`);
+      }); 
   };
   signUp.addEventListener('click', (registerUser));
   signUpDesk.addEventListener('click', (registerUser));
