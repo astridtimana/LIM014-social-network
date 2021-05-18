@@ -9,7 +9,7 @@
 // Create User with Email and Password
 // eslint-disable-next-line no-undef
 
-export const createUser = (email, pass) => firebase.auth().createUserWithEmailAndPassword(email, pass)
+export const createUser = (email, pass, name) => firebase.auth().createUserWithEmailAndPassword(email, pass)
   .then(() => {
     verificationMail();
     alert(`${name} tu usuario ha sido creado, verifica tu correo`);
