@@ -60,25 +60,12 @@ describe('Función que crea un nuevo usuario sin tener cuenta de Google', () => 
   it('Debería ser una función', () => {
     expect(typeof createUser).toBe('function');
   });
-  it('Debería crear un usuario con el email ben@example.com y contraseña examplePass', () => createUser('ben@example.com', 'examplePass')
+  it('Debería crear un usuario con el email ben@example.com y contraseña examplePass', () => createUser('ben@example.com', 'examplePass', { emailVerified: true })
     .then((user) => {
-      console.log(user);
-      const jsdomAlert = window.alert;// remember the jsdom alert
-      window.alert = () => {};
-      // expect(user.email).toBe('ben@example.com');
-      // expect(user.password).toBe('examplePass');
-      window.alert = jsdomAlert;
-    }));
-});
-
-describe('Función que envía correo de verificación', () => {
-  it('Debería ser una función', () => {
-    expect(typeof verificationMail).toBe('function');
-  });
-  it('Debería enviar mensaje de verificación', () => verificationMail()
-    .then((user) => {
-      console.log(user);
-      //  expect(user.email).toBe('ben@example.com');
-      //  expect(user.password).toBe('examplePass');
+      /* console.log(user); */
+      /* expect(user.name).toBe('ben'); */
+      expect(user.email).toBe('ben@example.com');
+      expect(user.password).toBe('examplePass');
+      expect(user.emailVerified).toBe(true);
     }));
 });
