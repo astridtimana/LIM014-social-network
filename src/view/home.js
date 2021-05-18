@@ -24,6 +24,7 @@ export default () => {
      </article>
       <a class="text">Email</a>
       <input type="email" placeholder="john.snow@gmail.com" id="email"> 
+      <p id = "errorMailMessage"></p>
       <a class="text">Contraseña</a>
       <input type="password" placeholder="********" id="password"> 
       <article class="smallContainer">
@@ -52,6 +53,17 @@ export default () => {
   sectionElement.innerHTML = viewHome;
 
   const toLogIn = sectionElement.querySelector('.login');
+  const emailInput = sectionElement.querySelector('#email');
+  const errorEmailMessage = sectionElement.querySelector('#errorMailMessage');
+  const userIncorrect = sectionElement.querySelector('#prueba');
+
+  emailInput.addEventListener('keyup', () => {
+    if (!emailInput.value.includes('@', 0)) {
+      errorEmailMessage.innerHTML = 'Incluye un signo "@" en la dirección de correo electrónico.';
+    } else if (emailInput.value.includes('@', 0)) {
+      errorEmailMessage.innerHTML = ' ';
+    }
+  });
 
   toLogIn.addEventListener('click', () => {
     const email = document.getElementById('email').value;
@@ -61,9 +73,11 @@ export default () => {
       .then((obj) => {
         if (obj.user.emailVerified) {
           window.location.hash = '#/feed';
-        } else { alert('verifica tu correo'); }
+        } else { userIncorrect.innerHTML = 'Verifica tu correo'; }
       })
-      .catch((error) => console.log(error));
+      .catch(() => {
+        userIncorrect.innerHTML = 'Dirección de correo electrónico o contraseña incorrectos.';
+      });
   });
 
   return sectionElement;
