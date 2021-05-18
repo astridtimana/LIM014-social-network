@@ -29,6 +29,15 @@ export const verificationMail = () => {
   });
 };
 
+export const logIn = (email, pass) => firebase.auth().signInWithEmailAndPassword(email, pass)
+  .then(() => { console.log('Logged in!'); })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    alert(`Error: ${errorCode}`);
+    alert(`Error: ${errorMessage}`);
+  });
+
 /* export const createUser = (email, pass) => firebase.auth().createUserWithEmailAndPassword(email, pass)
   .catch((error) => {
     const errorCode = error.code; //
