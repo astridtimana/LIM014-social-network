@@ -21,7 +21,7 @@ export const createUser = (email, pass, name) => firebase.auth().createUserWithE
     alert(`Error: ${errorMessage}`);
   }); 
 
-const verificationMail = () => {
+export const verificationMail = () => {
   const user = firebase.auth().currentUser;
   user.sendEmailVerification().then(() => {
   }).catch((error) => {
@@ -37,6 +37,22 @@ const verificationMail = () => {
     alert(errorMessage);
   }); */
 
+// Cuando un usuario accede a tu app, pasa la dirección de correo electrónico y la contraseña a signInWithEmailAndPassword:
+// Web v8
+// Web v9
+
+export const signIn = (email, pass) => firebase.auth().signInWithEmailAndPassword(email, pass)
+  .then((userCredential) => {
+    // Signed in
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+
+
 
 // Configura la contraseña de un usuario
 // Para configurar la contraseña de un usuario, puedes usar el método updatePassword. Por ejemplo:
@@ -50,8 +66,6 @@ const verificationMail = () => {
 //   // An error happened.
 // });
 
-
-
 // Envía un correo electrónico de restablecimiento de contraseña
 // Para enviar un correo electrónico de restablecimiento de contraseña a un usuario, puedes usar el método sendPasswordResetEmail. Por ejemplo:
 
@@ -63,26 +77,6 @@ const verificationMail = () => {
 // }).catch((error) => {
 //   // An error happened.
 // });
-
-
-
-
-// Cuando un usuario accede a tu app, pasa la dirección de correo electrónico y la contraseña a signInWithEmailAndPassword:
-// Web v8
-// Web v9
-
-// firebase.auth().signInWithEmailAndPassword(email, password)
-//   .then((userCredential) => {
-//     // Signed in
-//     const user = userCredential.user;
-//     // ...
-//   })
-//   .catch((error) => {
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//   });
-
-
 
 
 // Para salir de la sesión de un usuario, llama a signOut de la siguiente manera:

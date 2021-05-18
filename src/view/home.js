@@ -40,7 +40,6 @@ export default () => {
       </article>
     </article>
     </section>
-
     `;
   const sectionElement = document.createElement('section');
   sectionElement.setAttribute('class', 'home');

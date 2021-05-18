@@ -63,11 +63,12 @@ describe('Función que crea un nuevo usuario sin tener cuenta de Google', () => 
   it('Debería ser una función', () => {
     expect(typeof createUser).toBe('function');
   });
-  it('Debería crear un usuario con el email ben@example.com y contraseña examplePass', () => createUser('ben@example.com', 'examplePass')
+  it('Debería crear un usuario con el email ben@example.com y contraseña examplePass', () => createUser('ben@example.com', 'examplePass', { emailVerified: true })
     .then((user) => {
-      /*  console.log(res); */
+      /* console.log(user); */
       /* expect(user.name).toBe('ben'); */
       expect(user.email).toBe('ben@example.com');
       expect(user.password).toBe('examplePass');
+      expect(user.emailVerified).toBe(true);
     }));
 });
