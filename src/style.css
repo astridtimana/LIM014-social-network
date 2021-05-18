@@ -458,11 +458,17 @@ label{
 }
 
 #trickMenu{
-   display: none;
-   text-align: center;
-   background: rgba(116, 55, 144, 1);
-   padding: 10px 0;
-
+    display: none;
+    /* position: fixed; */
+    width: 100%;
+    height: 90vh;
+    background: rgba(116, 55, 144, 1);
+    top: 100px;
+    left: -100%;
+    text-align: center;
+    margin-bottom:-100%;
+    transition: all .4s;
+    margin-top:0;
 
 }
 
@@ -470,13 +476,15 @@ label{
    display: block;
    padding: 10px 0;
    color: white;
-
 }
 
 #menu-toggle:checked + #trickMenu{
    /* display: block; */
-   display:flex;
-   flex-direction: column;
+   display: flex;
+   /* align-items: flex-end; */
+   /* position: fixed; */
+   /* flex-direction: column; */
+   /* float: right; */
 
 }
 

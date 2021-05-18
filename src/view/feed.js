@@ -14,12 +14,10 @@ export default () => {
           </div>
        </label>
        <input type="checkbox" id="menu-toggle"/>
-        <section id="trickMenu">
-          <ul >
+          <ul id="trickMenu">
             <li><a href="#"> Configuración </a></li>
             <li><a href="#"> Adicionales </a></li>
           </ul>
-        </section>
       </nav>
 
     </header>

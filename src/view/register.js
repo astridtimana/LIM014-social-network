@@ -5,7 +5,7 @@
 /* eslint-disable no-unreachable */
 // será necesario hacer una página de js para el modal???.
 
-import { createUser } from '../firebase/firebaseFx.js';
+import { createUser, verificationMail } from '../firebase/firebaseFx.js';
 
 export default () => {
   const viewRegister = `
@@ -32,9 +32,12 @@ export default () => {
           </button>
           </article>  
       
-            <input type="name" placeholder="Nombre y apellido" id="name">
-            <input type="email" placeholder="Correo electrónico" id="emailRegister"> 
-            <input type="password" placeholder="Contraseña" id="passwordRegister"> 
+            <input type="name" placeholder="Nombre y apellido" id="nameInput">
+            <p id = "errorNameUser"></p>
+            <input type="email" placeholder="Correo electrónico" id="mailInput">
+            <p id = "errorMailUser"></p> 
+            <input type="password" placeholder="Contraseña" id="passwordInput"> 
+            <p id = "errorPasswordUser"></p> 
             <button id="signUp"> Regístrate</button>
             <p id="textConditions">Al registrarte, aceptas nuestras <a href="">Condiciones</a>, la <a href="">Política de datos</a> y la <a href="">Política de cookies</a>.</p>
           </section>
@@ -50,7 +53,7 @@ export default () => {
 
           <article class="containerRegister">
             <p>¿Tienes una cuenta?</p>
-            <a id="logIn" href="#/registro">Iniciar sesión</a>
+            <a id="logIn" href="#/home">Iniciar sesión</a>
           </article>
 
         </section>
@@ -64,16 +67,37 @@ export default () => {
   divElement.setAttribute('class', 'register');
   divElement.innerHTML = viewRegister;
 
-  const logIn = divElement.querySelector('#arrowImgRegister');
-  
-  logIn.addEventListener('click', () => {
-    const email = document.getElementById('emailRegister').value;
-    const pass = document.getElementById('passwordRegister').value;
-    const name = document.getElementById('name').value;
-    // console.log(`email=${email} pass= ${pass}`);
-    createUser(email, pass, name);
-    // verificationMail();
+  const signUp = divElement.querySelector('#arrowImgRegister');
+  const signUpDesk = divElement.querySelector('#signUp');
+  const nameInput = divElement.querySelector('#name');
+  const mailInput = divElement.querySelector('#mailInput');
+  const passwordInput = divElement.querySelector('#passwordInput');
+  const errorNameUser = divElement.querySelector('#errorNameUser');
+  const errorMailUser = divElement.querySelector('#errorMailUser');
+  const errorPasswordUser = divElement.querySelector('#errorPasswordUser');
+
+  nameInput.addEventListener('keyup', () => {
+    if (!nameInput.value.includes('@', 0)) {
+      errorEmailMessage.innerHTML = 'Incluye un signo "@" en la dirección de correo electrónico.';
+    } else if (emailInput.value.includes('@', 0)) {
+      errorEmailMessage.innerHTML = ' ';
+    }
   });
+
+  const registerUser = () => {
+    const name = document.getElementById('name').value;
+    const pass = document.getElementById('passwordRegister').value;
+    const email = document.getElementById('emailRegister').value;
+
+    createUser(email, pass)
+      .then(() => {
+        verificationMail();
+        alert(`${name} tu usuario ha sido creado, verifica tu correo`);
+      })
+      .catch((error) => { console.log(error); }); 
+  };
+  signUp.addEventListener('click', (registerUser));
+  signUpDesk.addEventListener('click', (registerUser));
 
   return divElement;
 };
