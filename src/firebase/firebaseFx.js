@@ -24,22 +24,6 @@ export const verificationMail = () => {
 
 export const logIn = (email, pass) => firebase.auth().signInWithEmailAndPassword(email, pass);
 
-// Cuando un usuario accede a tu app, pasa la dirección de correo electrónico y la contraseña a signInWithEmailAndPassword:
-// Web v8
-// Web v9
-
-export const signIn = (email, pass) => firebase.auth().signInWithEmailAndPassword(email, pass)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
-
-
 
 // Configura la contraseña de un usuario
 // Para configurar la contraseña de un usuario, puedes usar el método updatePassword. Por ejemplo:
