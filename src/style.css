@@ -8,8 +8,10 @@
     list-style: none;
     display: inline-grid;
     font-family: 'Raleway', sans-serif;
-    /* row-gap: 1.5rem; */
+    row-gap:0;
 }
+
+/*-------------------- PARA LA PÁGINA DE INICIO ----------------------- */
 
 #form {
     display: inline-grid;
@@ -353,10 +355,248 @@ footer{
         align-items: center;
     }
     
-    
+
    
     
     
     
 
+}
+
+/*-------------------- PARA LA PÁGINA DE FEED ----------------------- */
+
+.feed{
+    grid-template-columns: 100%;
+}
+#feedConfigArea{
+    display:none;
+}
+
+#feedHeader{
+    background-color:rgba(116, 55, 144, 1);
+    height: 7vh;
+
+}
+#feedLogo{
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    margin-left: 5%;
+}
+#search{
+    display:flex;
+    flex-direction: row;
+    color:white;
+
+}
+#searchIcon{
+    width: 18px;
+    height: 18px;
+    margin-top:2%;
+    margin-right: 3%;
+}
+#searchBar{
+    height: 15px;
+    width: 170px;
+    background-color: rgba(222, 184, 135, 0);
+    border: none;
+    color:white;
+    margin-top:2%;
+}
+#menuNavigator{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+label {
+    display: block;
+    cursor: pointer;
+    width: 26px;
+}
+
+.menu {
+    text-align: center;
+    width: 100%;
+    display: none;
+    float: right;
+    height: 100vh;
+    left: -100%;
+    background-color: rgba(116, 55, 144, 1);
+}
+
+.menu a {
+    /* clear: right; */
+    display: block;
+    margin: 0;
+    color: white;
+}
+
+#toggle:checked + .menu {
+    display: block;
+}
+
+.nav {
+    justify-content: right;
+}
+
+@media only screen and (min-width: 700px) {
+    .feed{
+        grid-template-columns: 20% 50% 30%;
+    }
+    #feedHeader{
+        grid-row-start: 0;
+        grid-column-start: 1;
+        grid-column-end: 4;
+        background-color:rgba(116, 55, 144, 1);
+        height: 8vh;
+    }
+    *{
+        row-gap:0;
+    }
+    #menuNavigator{
+        display:flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        height: 8vh;
+    }
+    #menuNavigator > ul {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        display: inline-block;
+        /* display:flex; */
+    }
+    #feedConfigArea{
+        display:block;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        background-color:rgba(247, 247, 247, 1);
+        height: 89vh;
+    }
+    #profile{
+        display:block;
+        margin-left: 20%;
+    }
+    #activitiesArea{
+        display:flex;
+        flex-direction: column;
+        grid-column-start: 2;
+        grid-column-end: 3;
+        background-color:rgba(247, 247, 247, 1);
+    }
+    #aditionalsArea{
+        grid-column-start: 3;
+        grid-column-end: 4;
+        background-color:rgba(247, 247, 247, 1);
+    }
+    #feedLogo{
+        width: 40px;
+        height: 40px;
+        justify-content: center;
+    }
+    #search{
+        display:flex;
+        flex-direction: row;
+        color:white;
+        justify-content: center;
+        margin-left: 15%;
+    }
+    #searchBar{
+        height: 30px;
+        width: 200px;
+        background-color: rgba(222, 184, 135, 0);
+        border: none;
+        color:white;
+        
+    }
+    #search > ::-webkit-input-placeholder { color: white; } 
+    #searchIcon{
+        width: 17px;
+        height: 17px;
+        margin-top:3.5%;
+        margin-right: 3%;
+    }
+    .feedConfig{
+        background-color:white;
+        margin: 10% 18% 18% 18%;
+        display: flex;
+        flex-direction: column;
+        height: 30%;
+    }
+    .configIcon{
+        margin-left: 5%;
+        height: 30px;
+        width: 30px;
+        margin-top:3%;
+    }
+
+    .nav {
+        height: 70%;
+        justify-content: right;
+        text-align: right;
+        line-height: 70px;
+        background-color: rgba(116, 55, 144, 1);
+    }
+
+    .menu {
+        margin: 0 30px 0 0;
+    }
+
+    .menu a  {
+        text-decoration: none;
+        color: red;
+        margin: 0 10px;
+        line-height: 70px;
+    }
+
+    label {
+        margin: 0 40px 0 0 ;
+        font-size: 26px;
+        line-height: 70px;
+        display: none;
+    }
+
+    #toggle {
+        display: none;
+    }
+/*     .activities{
+        background-color:white;
+        height: 50vh;
+        margin: 5%;
+    }
+    .aditionals{
+        background-color:white;
+        margin: 15%;
+    }
+    
+    #activitiesTitle{
+        display:block;
+        padding-top: 5%;
+        padding-left:5%;
+        height: 3%;
+        font-weight: lighter;
+        color: rgba(108, 108, 100, 1);
+        font-size: 15px;
+    }
+    #check,#hamburguerMenu{
+        display: none;
+    }
+   
+    .feedConfigOption{
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        padding-left: 5%;
+        padding-top: 5%;
+    }
+    .feedConfigOption > p {
+        margin-left: 5%;
+        color:rgba(135, 135, 135, 1);
+    }
+    
+    #trickMenu> li{
+        display:none;
+    } */
 }
