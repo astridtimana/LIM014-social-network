@@ -27,14 +27,6 @@ export const verificationMail = () => {
 export const logIn = (email, pass) => firebase.auth().signInWithEmailAndPassword(email, pass);
 
 
-firebase.auth().signOut().then(() => {
-  // Sign-out successful.
-}).catch((error) => {
-  // An error happened.
-});
-
-
-
 // Configura la contraseña de un usuario
 // Para configurar la contraseña de un usuario, puedes usar el método updatePassword. Por ejemplo:
 
