@@ -7,8 +7,6 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-console */
 
-firebase.auth().languageCode = 'es';
-
 
 // Fx que crea un usuario
 export const createUser = (email, pass) => firebase.auth().createUserWithEmailAndPassword(email, pass);
@@ -25,8 +23,7 @@ export const logIn = (email, pass) => firebase.auth().signInWithEmailAndPassword
 
 
 export const signInWithGoogle = () => {
-  firebase.auth()
-    .signInWithPopup(provider)
+  firebase.auth().signInWithPopup(provider)
     .then((result) => {
       // console.log(result);
       /** @type {firebase.auth.OAuthCredential} */
@@ -46,15 +43,16 @@ export const signInWithGoogle = () => {
 // Configura la contraseña de un usuario
 // Para configurar la contraseña de un usuario, puedes usar el método updatePassword. Por ejemplo:
 
-// const user = firebase.auth().currentUser;
-// const newPassword = getASecureRandomPassword();
+export const resetPasswordMail = (emailAddress) => {
+  const auth = firebase.auth();
 
-// user.updatePassword(newPassword).then(() => {
-//   // Update successful.
-// }).catch((error) => {
-//   // An error happened.
-// });
-
+  auth.sendPasswordResetEmail(emailAddress).then(() => {
+    console.log('mail sent');
+  }).catch((error) => {
+    console.log(error);
+  // An error happened.
+  });
+};
 
 const provider = new firebase.auth.GoogleAuthProvider();
 
