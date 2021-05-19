@@ -18,7 +18,7 @@ export const verificationMail = () => {
   return user.sendEmailVerification()
     .then(() => ('se envió el email'))
     .catch((error) => {
-      console.log(`Error: ${error}`);
+      console.log(`Error: ${error}`); // si hay un error, retornar como mensaje
     });
 };
 
