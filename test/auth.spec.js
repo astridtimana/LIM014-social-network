@@ -34,15 +34,6 @@ describe('Función que crea un nuevo usuario sin tener cuenta de Google', () => 
     .then((user) => {
       expect(user.email).toBe('ben@example.com');
     }));
-<<<<<<< HEAD
-  test('mock promise rejection', async () => {
-    mockauth.mockRejectedValue(objReject);
-    return (createUser(correctObject)).then((user) => {
-      expect(user.email).toEqual(objRejectionB.email);
-    });
-  });
-=======
->>>>>>> 4d36d4bfee79355661601695ccb448577a866bd9
 });
 
 describe('Función que permite verificar el correo', () => {
@@ -64,25 +55,6 @@ describe('Función para ingresar con correo electrónico', () => {
   });
   it('Debe logearse con correo y contraseña', () => logIn('ben@example.com', 'examplePass')
     .then((user) => {
-<<<<<<< HEAD
-    //   console.log(user);
-      expect(user.email).toBe('ben@example.com');
-    }));
-});
-
-// describe('Función que envía correo de verificación', () => {
-//   it('Debería ser una función', () => {
-//     expect(typeof verificationMail).toBe('function');
-//   });
-//   it('Debería enviar mensaje de verificación', () => verificationMail()
-//     .then((user) => {
-//       //console.log(user);
-//       //  expect(user.email).toBe('ben@example.com');
-//       //  expect(user.password).toBe('examplePass');
-//     }));
-// });
-=======
       expect(user.isAnonymous).toBe(false);
     }));
 });
->>>>>>> 4d36d4bfee79355661601695ccb448577a866bd9
