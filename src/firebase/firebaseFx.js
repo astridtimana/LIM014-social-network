@@ -6,10 +6,9 @@
 /* eslint-disable max-len */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-console */
+const provider = new firebase.auth.GoogleAuthProvider();
+firebase.auth().languageCode = 'es';
 
-
-// Create User with Email and Password
-// eslint-disable-next-line no-undef
 
 // Fx que crea un usuario
 export const createUser = (email, pass) => firebase.auth().createUserWithEmailAndPassword(email, pass);
@@ -24,8 +23,32 @@ export const verificationMail = () => {
     });
 };
 
-export const logIn = (email, pass) => firebase.auth().signInWithEmailAndPassword(email, pass);
+export const logIn = (email, pass, nodo) => firebase.auth().signInWithEmailAndPassword(email, pass);
 
+
+export const sigInWithGoogle = () => {
+  firebase.auth()
+    .signInWithPopup(provider)
+    .then((result) => {
+      console.log(result);
+      /** @type {firebase.auth.OAuthCredential} */
+      const credential = result.credential;
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      window.location.hash = '#/feed';
+    }).catch((error) => {
+    // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      const credential = error.credential;
+    // ...
+    });
+};
 
 // Configura la contraseña de un usuario
 // Para configurar la contraseña de un usuario, puedes usar el método updatePassword. Por ejemplo:
@@ -38,6 +61,10 @@ export const logIn = (email, pass) => firebase.auth().signInWithEmailAndPassword
 // }).catch((error) => {
 //   // An error happened.
 // });
+
+
+
+
 
 // Envía un correo electrónico de restablecimiento de contraseña
 // Para enviar un correo electrónico de restablecimiento de contraseña a un usuario, puedes usar el método sendPasswordResetEmail. Por ejemplo:

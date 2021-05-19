@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-import { logIn } from '../firebase/firebaseFx.js';
+import { logIn, sigInWithGoogle } from '../firebase/firebaseFx.js';
 
 export default () => {
   const viewHome = `
@@ -36,7 +36,7 @@ export default () => {
           <img id="arrowImg" src="./images/arrow.png">
       </section>
       <button class = "googleButton">
-        <img src="./images/googleIcon.png" class="googleLogo">Ingresar con Google
+        <img src="./images/googleIcon.png" class="googleLogo"> Ingresar con Google
       </button>
       <article class="smallContainer">
         <p>¿No tienes una cuenta?</p>
@@ -56,6 +56,7 @@ export default () => {
   const emailInput = sectionElement.querySelector('#email');
   const errorEmailMessage = sectionElement.querySelector('#errorMailMessage');
   const userIncorrect = sectionElement.querySelector('#userIncorrect');
+  const googleButton = sectionElement.querySelector('.googleButton');
 
   emailInput.addEventListener('keyup', () => {
     if (!emailInput.value.includes('@', 0)) {
@@ -63,6 +64,10 @@ export default () => {
     } else if (emailInput.value.includes('@', 0)) {
       errorEmailMessage.innerHTML = ' ';
     }
+  });
+
+  googleButton.addEventListener('click', () => {
+    sigInWithGoogle();
   });
 
   toLogIn.addEventListener('click', () => {
