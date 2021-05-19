@@ -6,7 +6,7 @@
 /* eslint-disable no-unreachable */
 // será necesario hacer una página de js para el modal???.
 
-import { createUser, verificationMail, sigInWithGoogle } from '../firebase/firebaseFx.js';
+import { createUser, verificationMail, signInWithGoogle } from '../firebase/firebaseFx.js';
 
 export default () => {
   const viewRegister = `
@@ -120,10 +120,10 @@ export default () => {
   };
 
   buttonRegisterGoogleDesktop.addEventListener('click', () => {
-    sigInWithGoogle();
+    signInWithGoogle();
   });
   buttonRegisterGoogle.addEventListener('click', () => {
-    sigInWithGoogle();
+    signInWithGoogle();
   });
 
   signUp.addEventListener('click', (registerUser));

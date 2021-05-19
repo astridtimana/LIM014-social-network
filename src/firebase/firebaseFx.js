@@ -18,37 +18,30 @@ export const verificationMail = () => {
   const user = firebase.auth().currentUser;
   return user.sendEmailVerification()
     .then(() => ('se envió el email'))
-    .catch((error) => {
-      console.log(`Error: ${error}`); // si hay un error, retornar como mensaje
-    });
+    .catch((error) => error);
 };
 
-export const logIn = (email, pass, nodo) => firebase.auth().signInWithEmailAndPassword(email, pass);
+export const logIn = (email, pass) => firebase.auth().signInWithEmailAndPassword(email, pass);
 
 
-export const sigInWithGoogle = () => {
+export const signInWithGoogle = () => {
   firebase.auth()
     .signInWithPopup(provider)
     .then((result) => {
-      console.log(result);
+      // console.log(result);
       /** @type {firebase.auth.OAuthCredential} */
       const credential = result.credential;
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const token = credential.accessToken;
-      // The signed-in user info.
-      const user = result.user;
+      const token = credential.accessToken; // This gives you a Google Access Token. You can use it to access the Google API.
+      const user = result.user; // The signed-in user info.
       window.location.hash = '#/feed';
     }).catch((error) => {
-    // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      const credential = error.credential;
-    // ...
+      const email = error.email; // The email of the user's account used.
+      const credential = error.credential; // The firebase.auth.AuthCredential type that was used.
     });
 };
+
 
 // Configura la contraseña de un usuario
 // Para configurar la contraseña de un usuario, puedes usar el método updatePassword. Por ejemplo:

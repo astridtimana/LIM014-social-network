@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-console */
 // TEST DE LA FUNCIÓN CREATEUSER
-import { createUser, logIn, verificationMail } from '../src/firebase/firebaseFx.js';
+import { createUser, logIn, verificationMail, signInWithGoogle } from '../src/firebase/firebaseFx.js';
 
 const firebasemock = require('firebase-mock');
 
@@ -58,3 +58,4 @@ describe('Función para ingresar con correo electrónico', () => {
       expect(user.isAnonymous).toBe(false);
     }));
 });
+

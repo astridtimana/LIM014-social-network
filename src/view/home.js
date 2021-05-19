@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-import { logIn, sigInWithGoogle } from '../firebase/firebaseFx.js';
+import { logIn, signInWithGoogle } from '../firebase/firebaseFx.js';
 
 export default () => {
   const viewHome = `
@@ -67,7 +67,7 @@ export default () => {
   });
 
   googleButton.addEventListener('click', () => {
-    sigInWithGoogle();
+    signInWithGoogle();
   });
 
   toLogIn.addEventListener('click', () => {
