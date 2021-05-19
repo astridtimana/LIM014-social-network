@@ -26,6 +26,17 @@ const mocksdk = new firebasemock.MockFirebaseSdk(
 
 global.firebase = mocksdk;
 
+const objReject = {
+email: "fake",
+password: " ",
+};
+
+const correctObject = {
+email: "ben@example",
+password: "examplePass",
+}
+
+
 describe('Función que crea un nuevo usuario sin tener cuenta de Google', () => {
   it('Debería ser una función', () => {
     expect(typeof createUser).toBe('function');
@@ -34,6 +45,11 @@ describe('Función que crea un nuevo usuario sin tener cuenta de Google', () => 
     .then((user) => {
       expect(user.email).toBe('ben@example.com');
     }));
+  test('mock promise rejection', async () => {
+        mockauth.mockRejectedValue(objReject)
+        return (createUser(correctObject)).then((user) => {
+          expect(user.email).toEqual(objRejectionB.email)
+        })
 });
 
 describe('Función que permite verificar el correo', () => {
