@@ -46,6 +46,7 @@ export default () => {
       <article id="userIncorrect">
       </article>
     </section>
+
     `;
   const sectionElement = document.createElement('section');
   sectionElement.setAttribute('class', 'home');
@@ -67,6 +68,7 @@ export default () => {
   toLogIn.addEventListener('click', () => {
     const email = document.getElementById('email').value;
     const pass = document.getElementById('password').value;
+    // console.log(`email=${email} pass= ${pass}`);
     logIn(email, pass)
       .then((obj) => {
         if (obj.user.emailVerified) {
@@ -74,7 +76,7 @@ export default () => {
         } else { userIncorrect.innerHTML = 'Verifica tu correo'; }
       })
       .catch(() => {
-        userIncorrect.innerHTML = 'Dirección de correo electrónico o contraseña incorrecta.';
+        userIncorrect.innerHTML = 'Dirección de correo electrónico o contraseña incorrectos.';
       });
   });
 

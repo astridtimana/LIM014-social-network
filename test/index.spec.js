@@ -31,7 +31,7 @@ describe('Función register', () => {
   it('debería retornar Html strings ', () => {
     expect(Register()).toEqual(expect.any(Object));
   });
-  it('debería tener solo 3 contenedores hijos', () => {
+  it('debería tener solo 1 contenedor hijos', () => {
     expect(Register().children).toHaveLength(1);
   });
 });

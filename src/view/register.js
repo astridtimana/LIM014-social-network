@@ -56,14 +56,6 @@ export default () => {
             <a id="logIn" href="#/home">Iniciar sesión</a>
           </article>
 
-          <input type="name" placeholder="Nombre y apellido" id="name">
-          <input type="email" placeholder="Correo electrónico" id="emailRegister">
-          <input type="password" placeholder="Contraseña" id="passwordRegister">
-          <button id="signUp"> Regístrate</button>
-          <p id="textConditions">Al registrarte, aceptas nuestras <a href="">Condiciones</a>, la <a href="">Política de
-                  datos</a> y la <a href="">Política de cookies</a>.</p>
-      </section>
-
   </section>
 
       `;
