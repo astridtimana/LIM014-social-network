@@ -223,7 +223,7 @@ Yo como usuarix, al crearme una cuenta, deseo usar mi correo de Google para tene
 
 #### **Historia de Usuario 3:** 
 
-Yo como usuarix quiero crear una nueva cuenta (sin hacer uso de Google) para tener acceso al aplicativo y que me llegue un correo de verificación.
+Yo como usuarix quiero crear una nueva cuenta (sin hacer uso de Google) para tener acceso al aplicativo.
 
 *Criterios de aceptación*
 
