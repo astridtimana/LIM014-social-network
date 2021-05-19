@@ -53,6 +53,11 @@ describe('Función para ingresar con correo electrónico', () => {
   it('Debería ser una función', () => {
     expect(typeof logIn).toBe('function');
   });
+  it('Debe logearse con correo y contraseña', () => logIn('ben@example.com', 'examplePass')
+    .then((user) => {
+    //   console.log(user);
+      expect(user.email).toBe('ben@example.com');
+    }));
 });
 /* describe('Función que envía correo de verificación', () => {
   it('Debería ser una función', () => {
