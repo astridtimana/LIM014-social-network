@@ -32,6 +32,6 @@ describe('Función register', () => {
     expect(Register()).toEqual(expect.any(Object));
   });
   it('debería tener solo 3 contenedores hijos', () => {
-    expect(Register().children).toHaveLength(4);
+    expect(Register().children).toHaveLength(1);
   });
 });

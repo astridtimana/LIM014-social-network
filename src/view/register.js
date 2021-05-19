@@ -19,31 +19,17 @@ export default () => {
       <section id="formRegister">
 
           <article class="toDesktop">
-<<<<<<< HEAD
-              <header id="headerCreateToDesktop">
-                  <article id="logoContainer">
-                      <img class="logo" src="./images/colorwheel.png">
-                      <h2> PRIDE </h2>
-                  </article>
-              </header>
-
-              <p id="textRegister">Regístrate para ver fotos y videos de tus amigos.</p>
-
-              <button class="googleButton" id="buttonRegisterGoogleDesktop">
-                  <img src="./images/googleIcon.png" class="googleLogo">Iniciar sesión con Google
-              </button>
-=======
             <header id="headerCreateToDesktop">
-          <article id="logoContainer">
-          <img class="logo" src="./images/colorwheel.png"><h2> PRIDE </h2>
-          </article>
+              <article id="logoContainer">
+                <img class="logo" src="./images/colorwheel.png"><h2> PRIDE </h2>
+              </article>
             </header>
             
             <p id="textRegister">Regístrate para ver fotos y videos de tus amigos.</p>
             
-          <button class="googleButton" id="buttonRegisterGoogleDesktop">
-            <img src="./images/googleIcon.png" class="googleLogo">Iniciar sesión con Google
-          </button>
+            <button class="googleButton" id="buttonRegisterGoogleDesktop">
+              <img src="./images/googleIcon.png" class="googleLogo">Iniciar sesión con Google
+            </button>
           </article>  
       
             <input type="name" placeholder="Nombre y apellido" id="nameInput">
@@ -54,7 +40,7 @@ export default () => {
             <p id = "errorPasswordUser"></p> 
             <button id="signUp"> Regístrate</button>
             <p id="textConditions">Al registrarte, aceptas nuestras <a href="">Condiciones</a>, la <a href="">Política de datos</a> y la <a href="">Política de cookies</a>.</p>
-          </section>
+      </section>
           
           <section id="buttonRegister">
             <a>Registrar</a>
@@ -68,7 +54,6 @@ export default () => {
           <article class="containerRegister">
             <p>¿Tienes una cuenta?</p>
             <a id="logIn" href="#/home">Iniciar sesión</a>
->>>>>>> 5218ff51ad87d444f3754d761899df57fe3a1133
           </article>
 
           <input type="name" placeholder="Nombre y apellido" id="name">
@@ -78,20 +63,6 @@ export default () => {
           <p id="textConditions">Al registrarte, aceptas nuestras <a href="">Condiciones</a>, la <a href="">Política de
                   datos</a> y la <a href="">Política de cookies</a>.</p>
       </section>
-
-      <section id="buttonRegister">
-          <a>Registrar</a>
-          <img id="arrowImgRegister" src="./images/arrow.png">
-      </section>
-
-      <button class="googleButton" id="buttonRegisterGoogle">
-          <img src="./images/googleIcon.png" class="googleLogo">Registrar con Google
-      </button>
-
-      <article class="containerRegister">
-          <p>¿Tienes una cuenta?</p>
-          <a id="logIn" href="#/registro">Iniciar sesión</a>
-      </article>
 
   </section>
 
