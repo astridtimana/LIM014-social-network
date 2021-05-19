@@ -73,6 +73,7 @@ export default () => {
   const errorMailUser = divElement.querySelector('#errorMailUser');
   const errorPasswordUser = divElement.querySelector('#errorPasswordUser');
   const buttonRegisterGoogleDesktop = divElement.querySelector('#buttonRegisterGoogleDesktop');
+  const buttonRegisterGoogle = divElement.querySelector('#buttonRegisterGoogle');
   const validateLetters = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;
 
   nameRegister.addEventListener('keyup', () => {
@@ -119,6 +120,9 @@ export default () => {
   };
 
   buttonRegisterGoogleDesktop.addEventListener('click', () => {
+    sigInWithGoogle();
+  });
+  buttonRegisterGoogle.addEventListener('click', () => {
     sigInWithGoogle();
   });
 

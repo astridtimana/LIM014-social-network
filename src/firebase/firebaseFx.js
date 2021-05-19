@@ -6,7 +6,7 @@
 /* eslint-disable max-len */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-console */
-const provider = new firebase.auth.GoogleAuthProvider();
+
 firebase.auth().languageCode = 'es';
 
 
@@ -63,7 +63,7 @@ export const sigInWithGoogle = () => {
 // });
 
 
-
+const provider = new firebase.auth.GoogleAuthProvider();
 
 
 // Envía un correo electrónico de restablecimiento de contraseña
