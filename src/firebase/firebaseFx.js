@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-multiple-empty-lines */
@@ -14,19 +15,30 @@ export const createUser = (email, pass) => firebase.auth().createUserWithEmailAn
 
 export const verificationMail = () => {
   const user = firebase.auth().currentUser;
-  return user.sendEmailVerification().then(() => {
-  }).catch((error) => { console.log(error.message); });
-};  
+  return user.sendEmailVerification()
+    .then(() => ('se envió el email'))
+    .catch((error) => {
+      console.log(`Error: ${error}`);
+    });
+};
 
 export const logIn = (email, pass) => firebase.auth().signInWithEmailAndPassword(email, pass);
 
-/* export const createUser = (email, pass) => firebase.auth().createUserWithEmailAndPassword(email, pass)
+// Cuando un usuario accede a tu app, pasa la dirección de correo electrónico y la contraseña a signInWithEmailAndPassword:
+// Web v8
+// Web v9
+
+export const signIn = (email, pass) => firebase.auth().signInWithEmailAndPassword(email, pass)
+  .then((userCredential) => {
+    // Signed in
+    const user = userCredential.user;
+    // ...
+  })
   .catch((error) => {
-    const errorCode = error.code; //
-    const errorMessage = error.message; // 'auth-invalid email'
-    alert(errorCode);
-    alert(errorMessage);
-  }); */
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+
 
 
 // Configura la contraseña de un usuario
@@ -41,8 +53,6 @@ export const logIn = (email, pass) => firebase.auth().signInWithEmailAndPassword
 //   // An error happened.
 // });
 
-
-
 // Envía un correo electrónico de restablecimiento de contraseña
 // Para enviar un correo electrónico de restablecimiento de contraseña a un usuario, puedes usar el método sendPasswordResetEmail. Por ejemplo:
 
@@ -54,26 +64,6 @@ export const logIn = (email, pass) => firebase.auth().signInWithEmailAndPassword
 // }).catch((error) => {
 //   // An error happened.
 // });
-
-
-
-
-// Cuando un usuario accede a tu app, pasa la dirección de correo electrónico y la contraseña a signInWithEmailAndPassword:
-// Web v8
-// Web v9
-
-// firebase.auth().signInWithEmailAndPassword(email, password)
-//   .then((userCredential) => {
-//     // Signed in
-//     const user = userCredential.user;
-//     // ...
-//   })
-//   .catch((error) => {
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//   });
-
-
 
 
 // Para salir de la sesión de un usuario, llama a signOut de la siguiente manera:

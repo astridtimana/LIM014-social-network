@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
@@ -15,8 +16,7 @@ export default () => {
           <h2 id="createAccount"> Crear cuenta </h2>
         </header>
 
-        <section>
-          <section id="formRegister">
+      <section id="formRegister">
 
           <article class="toDesktop">
             <header id="headerCreateToDesktop">
@@ -56,10 +56,7 @@ export default () => {
             <a id="logIn" href="#/home">Iniciar sesión</a>
           </article>
 
-        </section>
-
-      </section> 
-
+  </section>
 
       `;
 
@@ -69,27 +66,57 @@ export default () => {
 
   const signUp = divElement.querySelector('#arrowImgRegister');
   const signUpDesk = divElement.querySelector('#signUp');
-  const nameInput = divElement.querySelector('#name');
+  const nameInput = divElement.querySelector('#nameInput');
   const mailInput = divElement.querySelector('#mailInput');
   const passwordInput = divElement.querySelector('#passwordInput');
   const errorNameUser = divElement.querySelector('#errorNameUser');
   const errorMailUser = divElement.querySelector('#errorMailUser');
   const errorPasswordUser = divElement.querySelector('#errorPasswordUser');
-  
+  const validateLetters = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;
+
+  nameInput.addEventListener('keyup', () => {
+    if (!validateLetters.test(nameInput.value)) {
+      errorNameUser.innerHTML = 'Incluye solo letras, no números.';
+    } else {
+      errorNameUser.innerHTML = ' ';
+    }
+  });
+
+  mailInput.addEventListener('keyup', () => {
+    if (!mailInput.value.includes('@', 0)) {
+      errorMailUser.innerHTML = 'Incluye un signo "@" en la dirección de correo electrónico.';
+    } else {
+      errorMailUser.innerHTML = ' ';
+    }
+  });
+
+  passwordInput.addEventListener('keyup', () => {
+    if (passwordInput.value.length < 6) {
+      errorPasswordUser.innerHTML = 'La contraseña debe tener mínimo 6 caracteres.';
+    } else {
+      errorPasswordUser.innerHTML = ' ';
+    }
+  });
+
   const registerUser = () => {
     const name = document.getElementById('name').value;
     const pass = document.getElementById('passwordRegister').value;
     const email = document.getElementById('emailRegister').value;
-
     createUser(email, pass)
-      .then(() => {
-        verificationMail();
+      .then((user) => {
+        verificationMail().then((message) => {
+          console.log(message);
+        });
         alert(`${name} tu usuario ha sido creado, verifica tu correo`);
       })
-      .catch((error) => { console.log(error); }); 
+      .catch((error) => {
+        const errorCode = error.code; //
+        const errorMessage = error.message; // 'auth-invalid email'
+        alert(`Error: ${errorCode}`);
+        alert(`Error: ${errorMessage}`);
+      }); 
   };
   signUp.addEventListener('click', (registerUser));
   signUpDesk.addEventListener('click', (registerUser));
-
   return divElement;
 };
