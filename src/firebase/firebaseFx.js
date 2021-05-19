@@ -11,33 +11,27 @@
 // Create User with Email and Password
 // eslint-disable-next-line no-undef
 
+// Fx que crea un usuario
 export const createUser = (email, pass) => firebase.auth().createUserWithEmailAndPassword(email, pass);
 
+// Fx que envia correos de verificación
 export const verificationMail = () => {
   const user = firebase.auth().currentUser;
   return user.sendEmailVerification()
     .then(() => ('se envió el email'))
     .catch((error) => {
-      console.log(`Error: ${error}`);
+      console.log(error);
     });
 };
 
 export const logIn = (email, pass) => firebase.auth().signInWithEmailAndPassword(email, pass);
 
-// Cuando un usuario accede a tu app, pasa la dirección de correo electrónico y la contraseña a signInWithEmailAndPassword:
-// Web v8
-// Web v9
 
-export const signIn = (email, pass) => firebase.auth().signInWithEmailAndPassword(email, pass)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
+firebase.auth().signOut().then(() => {
+  // Sign-out successful.
+}).catch((error) => {
+  // An error happened.
+});
 
 
 
@@ -65,17 +59,6 @@ export const signIn = (email, pass) => firebase.auth().signInWithEmailAndPasswor
 //   // An error happened.
 // });
 
-
-// Para salir de la sesión de un usuario, llama a signOut de la siguiente manera:
-
-// Web v8
-// Web v9
-
-// firebase.auth().signOut().then(() => {
-//   // Sign-out successful.
-// }).catch((error) => {
-//   // An error happened.
-// });
 
 
 
