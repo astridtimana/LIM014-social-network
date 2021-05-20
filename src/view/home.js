@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-import { logIn, signInWithGoogle } from '../firebase/firebaseFx.js';
+import { logIn, signInWithGoogle, resetPasswordMail } from '../firebase/firebaseFx.js';
 
 export default () => {
   const viewHome = `
@@ -29,7 +29,7 @@ export default () => {
       <input type="password" placeholder="********" id="password"> 
       <article class="smallContainer">
         <article class="rememberMe"><input type="checkbox"><label class="smallText">Recuérdame</label></article>
-        <a class = "smallText">Olvidé mi contraseña</a>
+        <a class = "smallText" id="forgotPassword">Olvidé mi contraseña</a>
       </article>
       <section class="login">
           <a>Ingresar</a>
@@ -57,6 +57,7 @@ export default () => {
   const errorEmailMessage = sectionElement.querySelector('#errorMailMessage');
   const userIncorrect = sectionElement.querySelector('#userIncorrect');
   const googleButton = sectionElement.querySelector('.googleButton');
+  const forgotPassword = sectionElement.querySelector('#forgotPassword');
 
   emailInput.addEventListener('keyup', () => {
     if (!emailInput.value.includes('@', 0)) {
@@ -68,6 +69,10 @@ export default () => {
 
   googleButton.addEventListener('click', () => {
     signInWithGoogle();
+  });
+
+  forgotPassword.addEventListener('click', () => {
+    resetPasswordMail(emailInput.value);
   });
 
   toLogIn.addEventListener('click', () => {

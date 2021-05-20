@@ -7,8 +7,6 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-console */
 
-firebase.auth().languageCode = 'es';
-
 
 // Fx que crea un usuario
 export const createUser = (email, pass) => firebase.auth().createUserWithEmailAndPassword(email, pass);
@@ -25,8 +23,7 @@ export const logIn = (email, pass) => firebase.auth().signInWithEmailAndPassword
 
 
 export const signInWithGoogle = () => {
-  firebase.auth()
-    .signInWithPopup(provider)
+  firebase.auth().signInWithPopup(provider)
     .then((result) => {
       // console.log(result);
       /** @type {firebase.auth.OAuthCredential} */
@@ -46,41 +43,23 @@ export const signInWithGoogle = () => {
 // Configura la contraseña de un usuario
 // Para configurar la contraseña de un usuario, puedes usar el método updatePassword. Por ejemplo:
 
-// const user = firebase.auth().currentUser;
-// const newPassword = getASecureRandomPassword();
+export const resetPasswordMail = (emailAddress) => {
+  const auth = firebase.auth();
 
-// user.updatePassword(newPassword).then(() => {
-//   // Update successful.
-// }).catch((error) => {
-//   // An error happened.
-// });
+  auth.sendPasswordResetEmail(emailAddress).then(() => {
+    console.log('mail sent');
+  }).catch((error) => {
+    console.log(error);
+  // An error happened.
+  });
+};
 
+export const logOut = () => {
+  firebase.auth().signOut().then(() => {
+    console.log('logging out');
+  }).catch((error) => {
+  // An error happened.
+  });
+};
 
 const provider = new firebase.auth.GoogleAuthProvider();
-
-
-// Envía un correo electrónico de restablecimiento de contraseña
-// Para enviar un correo electrónico de restablecimiento de contraseña a un usuario, puedes usar el método sendPasswordResetEmail. Por ejemplo:
-
-// const auth = firebase.auth();
-// const emailAddress = 'user@example.com';
-
-// auth.sendPasswordResetEmail(emailAddress).then(() => {
-//   // Email sent.
-// }).catch((error) => {
-//   // An error happened.
-// });
-
-
-
-
-// Obtén el usuario con sesión activa
-// La manera recomendada de obtener el usuario actual es establecer un observador en el objeto Auth:
-
-// firebase.auth().onAuthStateChanged(function(user) {
-//   if (user) {
-//     // User is signed in.
-//   } else {
-//     // No user is signed in.
-//   }
-// });

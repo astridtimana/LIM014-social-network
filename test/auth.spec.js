@@ -3,7 +3,8 @@
 /* eslint-disable no-console */
 // TEST DE LA FUNCIÓN CREATEUSER
 import {
-  createUser, logIn, verificationMail,
+  // eslint-disable-next-line no-unused-vars
+  createUser, logIn, verificationMail, signInWithGoogle,
 } from '../src/firebase/firebaseFx.js';
 
 const firebasemock = require('firebase-mock');
@@ -34,6 +35,7 @@ describe('Función que crea un nuevo usuario sin tener cuenta de Google', () => 
   });
   it('Debería crear un usuario con el email ben@example.com y contraseña examplePass', () => createUser('ben@example.com', 'examplePass')
     .then((user) => {
+      console.log(user);
       expect(user.email).toBe('ben@example.com');
     }));
 });
@@ -48,6 +50,22 @@ describe('Función que permite verificar el correo', () => {
     verificationMail().then((message) => {
       expect(message).toBe('se envió el email');
     });
+  });
+});
+
+// HELP
+describe('Función para ingresar con Gmail', () => {
+  it('Debería ser una función', () => {
+    expect(typeof signInWithGoogle).toBe('function');
+  });
+  it('Debe logearse con Google', () => {
+    const signInWithGoogleMock = jest.fn();
+    firebase.auth().credential = { signInWithGoogle: signInWithGoogleMock.mockResolvedValue() };
+    signInWithGoogle()
+      .then((user) => {
+        console.log(user);
+      // expect(user.displayName).toBe(false);
+      });
   });
 });
 
