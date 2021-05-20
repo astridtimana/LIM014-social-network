@@ -2,12 +2,14 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-console */
 // TEST DE LA FUNCIÓN CREATEUSER
+import firebasemock from 'firebase-mock';
+
 import {
   // eslint-disable-next-line no-unused-vars
-  createUser, logIn, verificationMail, signInWithGoogle,
+  createUser, logIn, verificationMail, signInWithGoogle, resetPasswordMail,
 } from '../src/firebase/firebaseFx.js';
 
-const firebasemock = require('firebase-mock');
+// const firebasemock = require('firebase-mock');
 
 const mockauth = new firebasemock.MockAuthentication();
 const mockfirestore = new firebasemock.MockFirestore();
@@ -53,6 +55,16 @@ describe('Función que permite verificar el correo', () => {
   });
 });
 
+describe('Función para ingresar con correo electrónico', () => {
+  it('Debería ser una función', () => {
+    expect(typeof logIn).toBe('function');
+  });
+  it('Debe logearse con correo y contraseña', () => logIn('ben@example.com', 'examplePass')
+    .then((user) => {
+      expect(user.isAnonymous).toBe(false);
+    }));
+});
+
 // HELP
 describe('Función para ingresar con Gmail', () => {
   it('Debería ser una función', () => {
@@ -67,14 +79,4 @@ describe('Función para ingresar con Gmail', () => {
       // expect(user.displayName).toBe(false);
       });
   });
-});
-
-describe('Función para ingresar con correo electrónico', () => {
-  it('Debería ser una función', () => {
-    expect(typeof logIn).toBe('function');
-  });
-  it('Debe logearse con correo y contraseña', () => logIn('ben@example.com', 'examplePass')
-    .then((user) => {
-      expect(user.isAnonymous).toBe(false);
-    }));
 });
