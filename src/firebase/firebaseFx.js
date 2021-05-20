@@ -30,7 +30,7 @@ export const signInWithGoogle = () => {
       const credential = result.credential;
       const token = credential.accessToken; // This gives you a Google Access Token. You can use it to access the Google API.
       const user = result.user; // The signed-in user info.
-      window.location.hash = '#/feed';
+      window.location.hash = '#/feed'; // consumo aquí o en home.js?
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -57,6 +57,7 @@ export const resetPasswordMail = (emailAddress) => {
 export const logOut = () => {
   firebase.auth().signOut().then(() => {
     console.log('logging out');
+    window.location.hash = '#/home'; // consumo aquí o en feed.js?
   }).catch((error) => {
   // An error happened.
   });

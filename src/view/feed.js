@@ -1,6 +1,8 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-unreachable */
 /* eslint-disable no-unused-expressions */
+import { logOut } from '../firebase/firebaseFx.js';
+
 export default () => {
   const viewFeed = `
   <header id="feedHeader">
@@ -21,6 +23,7 @@ export default () => {
       <a href="#"> Perfil</a>
       <a href="#"> Configuración </a>
       <a href="#"> Adicionales </a>
+      <button id="logOut">Cerrar sesión</button>
   
   <section id="feedConfigArea">
       <section class="feedConfig">
@@ -61,5 +64,10 @@ export default () => {
   const divElement = document.createElement('div');
   divElement.setAttribute('class', 'feed');
   divElement.innerHTML = viewFeed;
+
+  const userLogOut = divElement.querySelector('#logOut');
+  userLogOut.addEventListener('click', () => {
+    logOut();
+  });
   return divElement;
 };
