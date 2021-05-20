@@ -53,6 +53,7 @@ describe('Función que permite verificar el correo', () => {
   });
 });
 
+// HELP
 describe('Función para ingresar con Gmail', () => {
   it('Debería ser una función', () => {
     expect(typeof signInWithGoogle).toBe('function');

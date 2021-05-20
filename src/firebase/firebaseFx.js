@@ -54,31 +54,12 @@ export const resetPasswordMail = (emailAddress) => {
   });
 };
 
+export const logOut = () => {
+  firebase.auth().signOut().then(() => {
+    console.log('logging out');
+  }).catch((error) => {
+  // An error happened.
+  });
+};
+
 const provider = new firebase.auth.GoogleAuthProvider();
-
-
-// Envía un correo electrónico de restablecimiento de contraseña
-// Para enviar un correo electrónico de restablecimiento de contraseña a un usuario, puedes usar el método sendPasswordResetEmail. Por ejemplo:
-
-// const auth = firebase.auth();
-// const emailAddress = 'user@example.com';
-
-// auth.sendPasswordResetEmail(emailAddress).then(() => {
-//   // Email sent.
-// }).catch((error) => {
-//   // An error happened.
-// });
-
-
-
-
-// Obtén el usuario con sesión activa
-// La manera recomendada de obtener el usuario actual es establecer un observador en el objeto Auth:
-
-// firebase.auth().onAuthStateChanged(function(user) {
-//   if (user) {
-//     // User is signed in.
-//   } else {
-//     // No user is signed in.
-//   }
-// });
