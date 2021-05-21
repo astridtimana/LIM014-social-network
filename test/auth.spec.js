@@ -35,7 +35,7 @@ describe('Función que crea un nuevo usuario sin tener cuenta de Google', () => 
   });
   it('Debería crear un usuario con el email ben@example.com y contraseña examplePass', () => createUser('ben@example.com', 'examplePass')
     .then((user) => {
-      console.log(user);
+      /* console.log(user); */
       expect(user.email).toBe('ben@example.com');
     }));
 });
@@ -63,8 +63,8 @@ describe('Función para ingresar con Gmail', () => {
     firebase.auth().credential = { signInWithGoogle: signInWithGoogleMock.mockResolvedValue() };
     signInWithGoogle()
       .then((user) => {
-        console.log(user);
-      // expect(user.displayName).toBe(false);
+        /* console.log(user); */
+        expect(user.displayName).toBe(undefined);
       });
   });
 });

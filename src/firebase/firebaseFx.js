@@ -21,11 +21,11 @@ export const verificationMail = () => {
 
 export const logIn = (email, pass) => firebase.auth().signInWithEmailAndPassword(email, pass);
 
-
 export const signInWithGoogle = () => {
-  firebase.auth().signInWithPopup(provider)
+  const provider = new firebase.auth.GoogleAuthProvider();
+  return firebase.auth().signInWithPopup(provider)
     .then((result) => {
-      // console.log(result);
+      /* console.log(result); */
       /** @type {firebase.auth.OAuthCredential} */
       const credential = result.credential;
       const token = credential.accessToken; // This gives you a Google Access Token. You can use it to access the Google API.
@@ -62,4 +62,4 @@ export const logOut = () => {
   });
 };
 
-const provider = new firebase.auth.GoogleAuthProvider();
+
