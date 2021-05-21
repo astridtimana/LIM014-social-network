@@ -600,3 +600,16 @@ label {
         display:none;
     } */
 }
+
+
+/*-------------------- FEED ----------------*/
+
+#post {
+ height: 100px;
+ width: 200px;
+ background-color: greenyellow;
+}
+#bttPost {
+    height: 20px;
+    width: 90px;
+}
