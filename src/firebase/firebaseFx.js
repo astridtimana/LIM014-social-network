@@ -46,21 +46,25 @@ export const signInWithGoogle = () => {
 export const resetPasswordMail = (emailAddress) => {
   const auth = firebase.auth();
 
-  auth.sendPasswordResetEmail(emailAddress).then(() => {
-    console.log('mail sent');
-  }).catch((error) => {
-    console.log(error);
-  // An error happened.
-  });
+  auth.sendPasswordResetEmail(emailAddress)
+    .then((usar) => {
+      console.log(usar);
+      /* console.log('mail sent'); */
+    }).catch((error) => {
+      console.log(error);
+      // An error happened.
+    });
 };
 
 export const logOut = () => {
-  firebase.auth().signOut().then(() => {
-    console.log('logging out');
-    window.location.hash = '#/home'; // consumo aquí o en feed.js?
-  }).catch((error) => {
-  // An error happened.
-  });
+  firebase.auth().signOut()
+    .then(() => {
+      ('Logging out');
+
+      window.location.hash = '#/home'; // consumo aquí o en feed.js?
+    }).catch((error) => {
+      // An error happened.
+    });
 };
 
 
