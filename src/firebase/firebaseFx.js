@@ -47,8 +47,7 @@ export const resetPasswordMail = (emailAddress) => {
   const auth = firebase.auth();
 
   auth.sendPasswordResetEmail(emailAddress)
-    .then((usar) => {
-      console.log(usar);
+    .then(() => {
       /* console.log('mail sent'); */
     }).catch((error) => {
       console.log(error);

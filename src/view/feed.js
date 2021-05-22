@@ -86,21 +86,25 @@ export default () => {
   });
 
   // FIRESTORE
-  const docRef = firestore.doc('posts/postData');
+  // const docRef = firestore.doc('posts/postData');
   const buttonPost = divElement.querySelector('#bttPost');
-  /* const wallArea = divElement.querySelector('#wall'); */
+  const wallArea = divElement.querySelector('#wall');
+
   buttonPost.addEventListener('click', () => {
     // si el textarea está vacío, no guardar algo
     const textarea = divElement.querySelector('#post').value;
     // fx de firestore
-    console.log(`${textarea}Holi Maria Paz`);
-    docRef.set({
-      newPost: textarea,
-    }).then(() => {
-      console.log('Status saved');
-    }).catch((error) => {
-      console.log('Got an error: ', error);
-    });
+    if (textarea.length > 0) {
+      firestore.collection('posts').add({ newPost: textarea })
+        .then(() => {
+          const prueba = document.createElement('div');
+          prueba.setAttribute('class', 'postToWall');
+          prueba.innerHTML = textarea;
+          wallArea.appendChild(prueba);
+        }).catch((error) => {
+          console.log('Got an error: ', error);
+        });
+    }
   });
 
   return divElement;

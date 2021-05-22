@@ -602,7 +602,7 @@ label {
 }
 
 
-/*-------------------- FEED ----------------*/
+/*-------------------- FEED PRUEBAS ----------------*/
 
 #post {
  height: 100px;
@@ -612,4 +612,17 @@ label {
 #bttPost {
     height: 20px;
     width: 90px;
+}
+#wall{
+    width: 300px;
+    height: 400px;
+
+}
+.postToWall{
+    width: 300px;
+    height: 100px;
+    border-color: #FFCC00;
+    border-style: solid;
+    margin: 10px;
+    padding: 2%;
 }
