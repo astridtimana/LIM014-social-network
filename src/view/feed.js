@@ -1,7 +1,8 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-unreachable */
 /* eslint-disable no-unused-expressions */
-import { logOut } from '../firebase/firebaseFx.js';
+import { logOut, pruebaCurrentUser } from '../firebase/firebaseFx.js';
+// import { newPost } from '../firebase/firestoreFx.js';
 
 // const firebase = require("firebase");
 // // Required for side-effects
@@ -85,8 +86,10 @@ export default () => {
     logOut();
   });
 
+  const user = firebase.auth().currentUser;
+
   // FIRESTORE
-  // const docRef = firestore.doc('posts/postData');
+  const docRef = firestore.collection('posts');
   const buttonPost = divElement.querySelector('#bttPost');
   const wallArea = divElement.querySelector('#wall');
 
@@ -95,8 +98,14 @@ export default () => {
     const textarea = divElement.querySelector('#post').value;
     // fx de firestore
     if (textarea.length > 0) {
-      firestore.collection('posts').add({ newPost: textarea })
+      // newPost({ newPost: textarea })
+      docRef.add({
+        newPost: textarea,
+        ID: pruebaCurrentUser(),
+      })
         .then(() => {
+          // console.log(user);
+          // docRef.add({ ID: user.id });
           const prueba = document.createElement('div');
           prueba.setAttribute('class', 'postToWall');
           prueba.innerHTML = textarea;
@@ -104,6 +113,7 @@ export default () => {
         }).catch((error) => {
           console.log('Got an error: ', error);
         });
+      // pruebaCurrentUser();
     }
   });
 

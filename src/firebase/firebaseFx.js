@@ -67,3 +67,10 @@ export const logOut = () => {
 };
 
 
+export const pruebaCurrentUser = () => {
+  const user = firebase.auth().currentUser;
+
+  if (user != null) {
+    user.providerData.forEach((profile) => profile.email);
+  }
+};
