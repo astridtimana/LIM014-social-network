@@ -6,7 +6,7 @@ import firebasemock from 'firebase-mock';
 
 import {
   // eslint-disable-next-line no-unused-vars
-  createUser, logIn, verificationMail, signInWithGoogle, resetPasswordMail,
+  createUser, logIn, verificationMail, signInWithGoogle, logOut, resetPasswordMail,
 } from '../src/firebase/firebaseFx.js';
 
 // const firebasemock = require('firebase-mock');
@@ -55,6 +55,20 @@ describe('Función que permite verificar el correo', () => {
   });
 });
 
+describe('Función para ingresar con Gmail', () => {
+  it('Debería ser una función', () => {
+    expect(typeof signInWithGoogle).toBe('function');
+  });
+  it('Debe logearse con Google', () => {
+    signInWithGoogle()
+      .then((user) => {
+        /* console.log(user); */
+        expect(user.displayName).toBe(undefined);
+      });
+  });
+});
+
+// LOGIN
 describe('Función para ingresar con correo electrónico', () => {
   it('Debería ser una función', () => {
     expect(typeof logIn).toBe('function');
@@ -65,18 +79,30 @@ describe('Función para ingresar con correo electrónico', () => {
     }));
 });
 
-// HELP
-describe('Función para ingresar con Gmail', () => {
+// LOG OUT
+// describe('Función para salir de la sesión', () => {
+//   it('Debería ser una función', () => {
+//     expect(typeof logOut).toBe('function');
+//   });
+//   it('Debe salir un mensaje de Logging Out', () => {
+//     const logOutMock = jest.fn();
+//     firebase.auth().signOut = logOutMock.mockResolvedValue();
+//     logOut()
+//       .then((message) => {
+//         /* console.log(user); */
+//         expect(message).toBe('Logging out');
+//       });
+//   });
+// });
+
+// RESETPASSWORD
+describe('Función para restablecer la contraseña', () => {
   it('Debería ser una función', () => {
-    expect(typeof signInWithGoogle).toBe('function');
+    expect(typeof resetPasswordMail).toBe('function');
   });
-  it('Debe logearse con Google', () => {
-    const signInWithGoogleMock = jest.fn();
-    firebase.auth().credential = { signInWithGoogle: signInWithGoogleMock.mockResolvedValue() };
-    signInWithGoogle()
-      .then((user) => {
-        /* console.log(user); */
-        expect(user.displayName).toBe(undefined);
-      });
-  });
+  it('Debe permitir cambiar la contraseña', () => resetPasswordMail('ben@example.com')
+    .then((user) => {
+      /* console.log(user); */
+      expect(user).toBe(undefined);
+    }));
 });
