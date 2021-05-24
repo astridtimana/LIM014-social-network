@@ -1,7 +1,8 @@
+/* eslint-disable no-console */
 /* eslint-disable no-alert */
 /* eslint-disable no-unreachable */
 /* eslint-disable no-unused-expressions */
-import { logOut, pruebaCurrentUser } from '../firebase/firebaseFx.js';
+import { logOut /* pruebaCurrentUser */ } from '../firebase/firebaseFx.js';
 // import { newPost } from '../firebase/firestoreFx.js';
 
 // const firebase = require("firebase");
