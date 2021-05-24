@@ -1,0 +1,105 @@
+#post {
+    height: 100px;
+    width: 200px;
+    background-color: greenyellow;
+   }
+   #bttPost {
+       height: 20px;
+       width: 90px;
+   }
+   /* #wall{
+       width: 300px;
+       height: 400px;
+   
+   }
+   .postToWall{
+       width: 300px;
+       height: 100px;
+       border-color: #FFCC00;
+       border-style: solid;
+       margin: 10px;
+       padding: 2%;
+   } */
+   
+   .postToWall{
+       margin: 10px; 
+   }
+   
+   /* ----- post ------- */
+   
+   #postTrial{
+       background-color: white;
+       border: rgba(255, 255, 255, 0);
+       box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274); 
+       /* width: 35%;  */
+   }
+   .userPhoto{
+       width:5%;
+       border-radius: 50%;
+       width: 80px;
+       margin: 10px;
+       float: left;
+   }
+   .likeAndComment{
+       width: 30px;
+       margin-left: 3%;
+   }
+   .likeAndCommentWrapper:hover{
+       background-color: rgb(196, 196, 196);
+   }
+   #postContent{
+       margin:1% 1%;
+       text-align: justify;
+   }
+   #userNamePost{
+       padding-top:5%;
+       white-space: nowrap;
+   }
+   #daysAgo{
+       padding-bottom: 2%;
+   }
+   .likeAndCommentWrapper{
+       display:flex;
+       flex-direction: row;
+       white-space: nowrap;
+       margin-left: 5%;
+   }
+   #likeAndCommentSection{
+       display:flex;
+       flex-direction: row;
+       height: 2rem;
+   }
+   .likeAndCommentWrapper > p {
+       font-size: 0.8rem;
+       flex-direction: row ;
+       color:rgb(99, 93, 93);
+       align-self: center;
+   }
+   #postHeader{
+       display: flex;
+       flex-direction: row;
+       padding: 2%;
+       justify-content: space-between;
+   }
+   .fa-ellipsis-h{
+       background-color: none;
+       border-radius: 50%;
+       height: 1.3rem;
+       width: 1.3rem;
+       justify-content: flex-end;
+       padding: 0.4%;
+   }
+   .fa-ellipsis-h:hover{
+       background-color: rgb(196, 196, 196);
+   }
+   #postHeaderWrapper{
+       display:flex;
+       flex-direction: column;
+   }
+   #postHeaderWrapper > p{
+       white-space: nowrap;
+   }
+   #userInfoPost{
+       display:flex;
+       flex-direction: row;
+   }
