@@ -11,6 +11,26 @@ import { logOut, pruebaCurrentUser } from '../firebase/firebaseFx.js';
 const firestore = firebase.firestore();
 
 export default () => {
+  const postExample = `
+  <article id= postTrial>
+        <section id= "postHeader">
+            <img class="userPhoto" src="./img/user.png"> 
+            <article id="userNamePost">User Name</article>
+            <p id= "daysAgo">Days ago</p><hr>
+        </section>
+        <section id= "postContent">Congratulations to Hamoye Data Science Ingernship Stage C Winners! The collapse of the online-advertising market in 2001 made marketing on the Internet seem even less compelling. Website usability, press releases.</section><hr>
+        <section id="likeAndCommentSection">
+            <article class="likeAndCommentWrapper">
+                <img class="likeAndComment" src="./images/Like.png"> 
+                <p>Heart counter</p>
+            </article>
+            <article class="likeAndCommentWrapper">
+                <img class="likeAndComment" src="./images/Comment.png"> 
+                <p>Comment counter</p>
+            </article>
+        </section>
+    </article> `;
+
   const viewFeed = `
   <header id="feedHeader">
     <nav id="menuNavigator">
@@ -86,7 +106,7 @@ export default () => {
     logOut();
   });
 
-  const user = firebase.auth().currentUser;
+  // const user = firebase.auth().currentUser;
 
   // FIRESTORE
   const docRef = firestore.collection('posts');
@@ -101,14 +121,16 @@ export default () => {
       // newPost({ newPost: textarea })
       docRef.add({
         newPost: textarea,
-        ID: pruebaCurrentUser(),
+        // ID: pruebaCurrentUser(),
       })
         .then(() => {
           // console.log(user);
           // docRef.add({ ID: user.id });
           const prueba = document.createElement('div');
           prueba.setAttribute('class', 'postToWall');
-          prueba.innerHTML = textarea;
+          prueba.innerHTML = postExample;
+          const postText = prueba.querySelector('#postContent');
+          postText.innerHTML = textarea;
           wallArea.appendChild(prueba);
         }).catch((error) => {
           console.log('Got an error: ', error);
