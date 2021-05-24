@@ -14,7 +14,7 @@ export default () => {
   const postExample = `
   <article id= postTrial>
         <section id= "postHeader">
-            <img class="userPhoto" src="./img/user.png"> 
+            <img class="userPhoto" src="./img/user.png" alt="Astrid?"> 
             <article id="userNamePost">User Name</article>
             <p id= "daysAgo">Days ago</p><hr>
         </section>
@@ -121,9 +121,10 @@ export default () => {
       // newPost({ newPost: textarea })
       docRef.add({
         newPost: textarea,
-        // ID: pruebaCurrentUser(),
+        ID: pruebaCurrentUser().uid,
       })
         .then(() => {
+          /* pruebaCurrentUser(); */
           // console.log(user);
           // docRef.add({ ID: user.id });
           const prueba = document.createElement('div');
