@@ -24,9 +24,8 @@ export default () => {
   const postExample = `
     <article id= postTrial>
         <section id= "postHeader">
-<<<<<<< HEAD
           <section id="userInfoPost">
-            <img class="userPhoto" src="./img/user.png"> 
+            <img class="userPhoto" src="./img/user.png alt="userPhoto"> 
             <section id="postHeaderWrapper">
               <article id="userNamePost">User Name</article>
               <p id= "daysAgo">Days ago</p>
@@ -35,13 +34,6 @@ export default () => {
           <i class="fas fa-ellipsis-h"></i>
         </section><hr>
         <section id= "postContent"> </section><hr>
-=======
-            <img class="userPhoto" src="./img/user.png" alt="Astrid?"> 
-            <article id="userNamePost">User Name</article>
-            <p id= "daysAgo">Days ago</p><hr>
-        </section>
-        <section id= "postContent">Congratulations to Hamoye Data Science Ingernship Stage C Winners! The collapse of the online-advertising market in 2001 made marketing on the Internet seem even less compelling. Website usability, press releases.</section><hr>
->>>>>>> a5b5055a99fd776a736415582c3b8c0b063d2283
         <section id="likeAndCommentSection">
             <article class="likeAndCommentWrapper" id="likeButton">
                 <img class="likeAndComment" src="./images/Like.png"> 
@@ -143,21 +135,27 @@ export default () => {
       docRef.add({
         newPost: textarea,
         ID: pruebaCurrentUser().uid,
-      })
-        .then(() => {
-          /* pruebaCurrentUser(); */
-          // console.log(user);
-          // docRef.add({ ID: user.id });
-          const prueba = document.createElement('div');
-          prueba.setAttribute('class', 'postToWall');
-          prueba.innerHTML = postExample;
-          const postText = prueba.querySelector('#postContent');
-          postText.innerHTML = textarea;
-          wallArea.appendChild(prueba);
-        }).catch((error) => {
-          console.log('Got an error: ', error);
-        });
-      // pruebaCurrentUser();
+      }).catch((error) => { console.log('Got an error: ', error); });
+      const postToWall = document.createElement('div');
+      postToWall.setAttribute('class', 'postToWall');
+      postToWall.innerHTML = postExample;
+      wallArea.appendChild(postToWall);
+      const postText = postToWall.querySelector('#postContent');
+      postText.innerHTML = textarea;
+
+      const likeButton = postToWall.querySelector('#likeButton');
+      const commentButton = postToWall.querySelector('#commentButton');
+      const postTrial = postToWall.querySelector('#postTrial');
+
+      // const textarea = divElement.querySelector('#post').value;
+
+      commentButton.addEventListener('click', () => {
+        const addingComment = document.createElement('div');
+        addingComment.innerHTML = addComment;
+        postTrial.appendChild(addingComment);
+        // const postText = addingComment.querySelector('#postContent');
+        // postText.innerHTML = textarea;
+      });
     }
   });
 
