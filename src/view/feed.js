@@ -5,50 +5,59 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-unreachable */
 /* eslint-disable no-unused-expressions */
-import { logOut, pruebaCurrentUser } from '../firebase/firebaseFx.js';
-// import Comment from './comment.js';
+import { logOut, getCurrentUser } from '../firebase/firebaseFx.js';
+import templatePost from './commentPOST.js';
+/* console.log(templatePost()); */
+// import { newPost } from '../firebase/firestoreFx.js';
 
 // const firebase = require("firebase");
 // // Required for side-effects
 // require("firebase/firestore");
 
 const firestore = firebase.firestore();
+firestore.settings({ timestampsInSnapshots: true });
 
 export default () => {
-  const addComment = `
-  <article id="commentPostPhoto">
-    <article class="userPhoto">
-    </article>
-    <article id="commentPost">
-      <input id="CommentText"></input>
-      <button id="comment" >comentar</button>
-    </article>
-  </article>`;
+  /* const addComment = `
+    <article id="commentPostPhoto">
+      <article class="userPhoto">
+      </article>
+      <article id="commentPost">
+        <input></input>
+        <button>comentar</button>
+      </article>
+    </article>`; */
 
-  const postExample = `
-  <article id= postTrial>
-      <section id= "postHeader">
-        <section id="userInfoPost">
-          <img class="userPhoto" src="./images/iconoperson.png" alt="userPhoto"> 
-          <section id="postHeaderWrapper">
-            <article id="userNamePost">User Name</article>
-            <p id= "daysAgo">Days ago</p>
+  /* const postExample = `
+    <article id= postTrial>
+        <section id= "postHeader">
+          <section id="userInfoPost">
+            <img class="userPhoto" src="./img/user.png alt="userPhoto"> 
+            <section id="postHeaderWrapper">
+              <article id="userNamePost">User Name</article>
+              <p id= "daysAgo">Days ago</p>
+            </section>
           </section>
+          <section id= "deleteOrModifyPostsWrapper">
+            <i class="fas fa-ellipsis-h"></i>
+            <section id="deleteOrModifyArea">
+              <p id="modifyPost">Modificar Post</p>
+              <p id="deletePost">Eliminar Post</p>
+            </section>
+          </section>
+        </section><hr>
+        <section id= "postContent"> </section><hr>
+        <section id="likeAndCommentSection">
+            <article class="likeAndCommentWrapper" id="likeButton">
+                <img class="likeAndComment" src="./images/Like.png"> 
+                <p>Heart counter</p>
+            </article>
+            <article class="likeAndCommentWrapper" id="commentButton">
+                <img class="likeAndComment" src="./images/Comment.png"> 
+                <p>Comment counter</p>
+            </article>
         </section>
-        <i class="fas fa-ellipsis-h"></i>
-      </section><hr>
-      <section id= "postContent"> </section><hr>
-      <section id="likeAndCommentSection">
-          <article class="likeAndCommentWrapper" id="likeButton">
-              <img class="likeAndComment" src="./images/Like.png"> 
-              <p>Heart counter</p>
-          </article>
-          <article class="likeAndCommentWrapper" id="commentButton">
-              <img class="likeAndComment" src="./images/Comment.png"> 
-              <p>Comment counter</p>
-          </article>
-      </section>
-  </article> `;
+    </article> `; */
 
   const viewFeed = `
   
@@ -120,33 +129,44 @@ export default () => {
     // fx de firestore
     if (textarea.length > 0) {
       // newPost({ newPost: textarea })
-      docRef
-        .add({
-          newPost: textarea,
-          ID: pruebaCurrentUser().uid,
-        })
-        .catch((error) => {
-          console.log('Got an error: ', error);
-        });
-      const postToWall = document.createElement('div');
-      postToWall.setAttribute('class', 'postToWall');
-      postToWall.innerHTML = postExample;
-      wallArea.appendChild(postToWall);
+      docRef.add({
+        newPost: textarea,
+        ID: getCurrentUser().uid,
+      }).catch((error) => { console.log('Got an error: ', error); });
+
+      const postToWall = wallArea.appendChild(templatePost());
       const postText = postToWall.querySelector('#postContent');
       postText.innerHTML = textarea;
-      const likeButton = postToWall.querySelector('#likeButton');
-      const commentButton = postToWall.querySelector('#commentButton');
-      const postTrial = postToWall.querySelector('#postTrial');
 
-      // const textarea = divElement.querySelector('#post').value;
+      // COMMENT SECTION
 
-      commentButton.addEventListener('click', () => {
-        const addingComment = document.createElement('div');
-        addingComment.innerHTML = addComment;
-        postTrial.appendChild(addingComment);
-        // const postText = addingComment.querySelector('#postContent');
-        // postText.innerHTML = textarea;
-      });
+      // const deleteOrModifyPost = document.querySelector('.fa-ellipsis-h');
+      // const deleteOrModifyArea = document.querySelector('#deleteOrModifyArea');
+      // const modifyPost = postToWall.querySelector('#modifyPost');
+      // const deletePost = postToWall.querySelector('#deletePost');
+
+      // deleteOrModifyArea.style.display = 'none';
+
+      // deleteOrModifyPost.addEventListener('click', () => {
+      //   deleteOrModifyArea.style.display = 'block';
+      // });
+      // const deletePostFirestore = (user) => {
+      //   firebase.collection('posts').doc(user.).delete().then(() => {
+      //     console.log('Document successfully deleted!');
+      //   })
+      //     .catch((error) => {
+      //       console.error('Error removing document: ', error);
+      //     });
+      // };
+
+      // modifyPost.addEventListener('click', (e) => {
+      //   e.stopPropagation();
+      //   let id = e.target.parentElement.getAttribute('data-id');
+      // });
+
+      // deletePost.addEventListener('click', () => {
+
+      // });
     }
   });
 
