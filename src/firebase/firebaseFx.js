@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable implicit-arrow-linebreak */
@@ -69,7 +70,7 @@ export const logOut = () => {
 
 export const pruebaCurrentUser = () => {
   const user = firebase.auth().currentUser;
-  /* let data = ''; */
+  // let data = '';
   if (user != null) {
     /* user.providerData.forEach((profile) => profile.email); */
     // data = {
@@ -82,7 +83,7 @@ export const pruebaCurrentUser = () => {
     //   // you have one. Use User.getToken() instead.
     // };
   }
-  return user;
+  return user; /* data */
 };
 
 export const userSessionActive = () => firebase.auth().onAuthStateChanged();
