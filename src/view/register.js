@@ -105,18 +105,24 @@ export default () => {
     const pass = document.getElementById('passwordRegister').value;
     const email = document.getElementById('mailRegister').value;
     createUser(email, pass)
-      .then((user) => {
-        verificationMail().then((message) => {
-          console.log(message);
+      .then((userCredential) => {
+        const user = userCredential.user;
+        user.updateProfile({
+          displayName: name,
         });
-        alert(`${name} tu usuario ha sido creado, verifica tu correo`);
+        verificationMail()
+          .then((message) => {
+            console.log(message);
+            alert(`${name} tu usuario ha sido creado, verifica tu correo`);
+          });
       })
       .catch((error) => {
-        const errorCode = error.code; //
-        const errorMessage = error.message; // 'auth-invalid email'
-        alert(`Error: ${errorCode}`);
-        alert(`Error: ${errorMessage}`);
-      }); 
+        if (error.code === 'auth/email-already-in-use') {
+          alert('El mail ya ha sido registrado. Por favor, intenta con otro');
+        } else {
+          alert('Un error ha ocurrido. Por favor, intenta una vez más');
+        }
+      });
   };
 
   buttonRegisterGoogleDesktop.addEventListener('click', () => {
