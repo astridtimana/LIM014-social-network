@@ -34,17 +34,21 @@ export default () => {
         </section>
     </article> `;
 
-  //   const likeButton = postToWall.querySelector('#likeButton');
-  //   const commentButton = postToWall.querySelector('#commentButton');
-  //   const postTrial = postToWall.querySelector('#postTrial');
+  const postToWall = document.createElement('div');
+  postToWall.setAttribute('class', 'postToWall');
+  postToWall.innerHTML = postExample;
 
-  //   commentButton.addEventListener('click', () => {
-  //     const addingComment = document.createElement('div');
-  //     addingComment.innerHTML = addComment;
-  //     postTrial.appendChild(addingComment);
-  //     // const postText = addingComment.querySelector('#postContent');
-  //     // postText.innerHTML = textarea;
-  //   });
+  const likeButton = postToWall.querySelector('#likeButton');
+  const commentButton = postToWall.querySelector('#commentButton');
+  const postTrial = postToWall.querySelector('#postTrial');
 
-  return postExample;
+  commentButton.addEventListener('click', () => {
+    const addingComment = document.createElement('div');
+    addingComment.innerHTML = addComment;
+    postTrial.appendChild(addingComment);
+    // const postText = addingComment.querySelector('#postContent');
+    // postText.innerHTML = textarea;
+  });
+
+  return postToWall;
 };

@@ -1,14 +1,9 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-unreachable */
 /* eslint-disable no-unused-expressions */
-<<<<<<< HEAD
-import { logOut, pruebaCurrentUser } from '../firebase/firebaseFx.js';
-
-=======
 import { logOut, getCurrentUser } from '../firebase/firebaseFx.js';
 import templatePost from './commentPOST.js';
 /* console.log(templatePost()); */
->>>>>>> 272d2d467cf61f7867c257f897e2ba9eb2851435
 // import { newPost } from '../firebase/firestoreFx.js';
 
 // const firebase = require("firebase");
@@ -140,7 +135,7 @@ export default () => {
   const buttonPost = divElement.querySelector('#bttPost');
   const wallArea = divElement.querySelector('#wall');
 
-  buttonPost.addEventListener('click', (doc) => {
+  buttonPost.addEventListener('click', () => {
     // si el textarea está vacío, no guardar algo
     const textarea = divElement.querySelector('#post').value;
     // fx de firestore
@@ -150,39 +145,23 @@ export default () => {
         newPost: textarea,
         ID: getCurrentUser().uid,
       }).catch((error) => { console.log('Got an error: ', error); });
-      const postToWall = document.createElement('div');
-      postToWall.setAttribute('class', 'postToWall');
-      postToWall.innerHTML = templatePost();
-      wallArea.appendChild(postToWall);
+
+      const postToWall = wallArea.appendChild(templatePost());
       const postText = postToWall.querySelector('#postContent');
       postText.innerHTML = textarea;
 
-      // const likeButton = postToWall.querySelector('#likeButton');
-      const commentButton = postToWall.querySelector('#commentButton');
-      const postTrial = postToWall.querySelector('#postTrial');
-
-      // const textarea = divElement.querySelector('#post').value;
-
-      commentButton.addEventListener('click', () => {
-        const addingComment = document.createElement('div');
-        addingComment.innerHTML = addComment;
-        postTrial.appendChild(addingComment);
-        // const postText = addingComment.querySelector('#postContent');
-        // postText.innerHTML = textarea;
-      });
-
       // COMMENT SECTION
 
-      const deleteOrModifyPost = document.querySelector('.fa-ellipsis-h');
-      const deleteOrModifyArea = document.querySelector('#deleteOrModifyArea');
-      const modifyPost = postToWall.querySelector('#modifyPost');
-      const deletePost = postToWall.querySelector('#deletePost');
+      // const deleteOrModifyPost = document.querySelector('.fa-ellipsis-h');
+      // const deleteOrModifyArea = document.querySelector('#deleteOrModifyArea');
+      // const modifyPost = postToWall.querySelector('#modifyPost');
+      // const deletePost = postToWall.querySelector('#deletePost');
 
-      deleteOrModifyArea.style.display = 'none';
+      // deleteOrModifyArea.style.display = 'none';
 
-      deleteOrModifyPost.addEventListener('click', () => {
-        deleteOrModifyArea.style.display = 'block';
-      });
+      // deleteOrModifyPost.addEventListener('click', () => {
+      //   deleteOrModifyArea.style.display = 'block';
+      // });
       // const deletePostFirestore = (user) => {
       //   firebase.collection('posts').doc(user.).delete().then(() => {
       //     console.log('Document successfully deleted!');
@@ -192,20 +171,16 @@ export default () => {
       //     });
       // };
 
-      modifyPost.addEventListener('click', (e) => {
-        e.stopPropagation();
-        let id = e.target.parentElement.getAttribute('data-id');
-      });
+      // modifyPost.addEventListener('click', (e) => {
+      //   e.stopPropagation();
+      //   let id = e.target.parentElement.getAttribute('data-id');
+      // });
 
-      deletePost.addEventListener('click', () => {
+      // deletePost.addEventListener('click', () => {
 
-      });
+      // });
     }
   });
-
-  // firestore.collection('posts').get().then((snapshot) => {
-  //   snapshot.docs.forEach((doc) => console.log(doc));
-  // });
 
   return divElement;
 };
