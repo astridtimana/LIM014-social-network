@@ -134,7 +134,7 @@ export default () => {
       // newPost({ newPost: textarea })
       docRef.add({
         newPost: textarea,
-        ID: pruebaCurrentUser().uid,
+        ID: pruebaCurrentUser(),
       }).catch((error) => { console.log('Got an error: ', error); });
       const postToWall = document.createElement('div');
       postToWall.setAttribute('class', 'postToWall');
