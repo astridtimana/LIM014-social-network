@@ -1,8 +1,14 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-unreachable */
 /* eslint-disable no-unused-expressions */
+<<<<<<< HEAD
 import { logOut, pruebaCurrentUser } from '../firebase/firebaseFx.js';
 
+=======
+import { logOut, getCurrentUser } from '../firebase/firebaseFx.js';
+import templatePost from './commentPOST.js';
+/* console.log(templatePost()); */
+>>>>>>> 272d2d467cf61f7867c257f897e2ba9eb2851435
 // import { newPost } from '../firebase/firestoreFx.js';
 
 // const firebase = require("firebase");
@@ -13,7 +19,7 @@ const firestore = firebase.firestore();
 firestore.settings({ timestampsInSnapshots: true });
 
 export default () => {
-  const addComment = `
+  /* const addComment = `
     <article id="commentPostPhoto">
       <article class="userPhoto">
       </article>
@@ -21,9 +27,9 @@ export default () => {
         <input></input>
         <button>comentar</button>
       </article>
-    </article>`;
+    </article>`; */
 
-  const postExample = `
+  /* const postExample = `
     <article id= postTrial>
         <section id= "postHeader">
           <section id="userInfoPost">
@@ -52,7 +58,7 @@ export default () => {
                 <p>Comment counter</p>
             </article>
         </section>
-    </article> `;
+    </article> `; */
 
   const viewFeed = `
   <header id="feedHeader">
@@ -142,13 +148,11 @@ export default () => {
       // newPost({ newPost: textarea })
       docRef.add({
         newPost: textarea,
-        userId: pruebaCurrentUser().uid,
-
+        ID: getCurrentUser().uid,
       }).catch((error) => { console.log('Got an error: ', error); });
       const postToWall = document.createElement('div');
       postToWall.setAttribute('class', 'postToWall');
-      postToWall.setAttribute('data-id', doc.id);
-      postToWall.innerHTML = postExample;
+      postToWall.innerHTML = templatePost();
       wallArea.appendChild(postToWall);
       const postText = postToWall.querySelector('#postContent');
       postText.innerHTML = textarea;
