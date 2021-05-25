@@ -67,11 +67,12 @@ export const logOut = () => {
 };
 
 
-export const pruebaCurrentUser = () => {
+export const getCurrentUser = () => {
   const user = firebase.auth().currentUser;
   let data = '';
   if (user != null) {
     /* user.providerData.forEach((profile) => profile.email); */
+    console.log(user);
     data = {
       name: user.displayName,
       email: user.email,
@@ -82,6 +83,7 @@ export const pruebaCurrentUser = () => {
       // you have one. Use User.getToken() instead.
     };
   }
+  console.log('data', data);
   return data;
 };
 
