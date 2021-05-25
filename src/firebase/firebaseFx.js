@@ -82,6 +82,7 @@ export const pruebaCurrentUser = () => {
     //   // you have one. Use User.getToken() instead.
     // };
   }
+  console.log(user);
   return user;
 };
 

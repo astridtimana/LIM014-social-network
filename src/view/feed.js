@@ -9,6 +9,7 @@ import { logOut, pruebaCurrentUser } from '../firebase/firebaseFx.js';
 // require("firebase/firestore");
 
 const firestore = firebase.firestore();
+firestore.settings({ timestampsInSnapshots: true });
 
 export default () => {
   const addComment = `
@@ -31,7 +32,13 @@ export default () => {
               <p id= "daysAgo">Days ago</p>
             </section>
           </section>
-          <i class="fas fa-ellipsis-h"></i>
+          <section id= "deleteOrModifyPostsWrapper">
+            <i class="fas fa-ellipsis-h"></i>
+            <section id="deleteOrModifyArea">
+              <p id="modifyPost">Modificar Post</p>
+              <p id="deletePost">Eliminar Post</p>
+            </section>
+          </section>
         </section><hr>
         <section id= "postContent"> </section><hr>
         <section id="likeAndCommentSection">
@@ -143,7 +150,7 @@ export default () => {
       const postText = postToWall.querySelector('#postContent');
       postText.innerHTML = textarea;
 
-      const likeButton = postToWall.querySelector('#likeButton');
+      // const likeButton = postToWall.querySelector('#likeButton');
       const commentButton = postToWall.querySelector('#commentButton');
       const postTrial = postToWall.querySelector('#postTrial');
 
@@ -156,7 +163,38 @@ export default () => {
         // const postText = addingComment.querySelector('#postContent');
         // postText.innerHTML = textarea;
       });
+
+      // COMMENT SECTION
+
+      const deleteOrModifyPost = document.querySelector('.fa-ellipsis-h');
+      const deleteOrModifyArea = document.querySelector('#deleteOrModifyArea');
+      const modifyPost = postToWall.querySelector('#modifyPost');
+      const deletePost = postToWall.querySelector('#deletePost');
+
+      deleteOrModifyArea.style.display = 'none';
+
+      deleteOrModifyPost.addEventListener('click', () => {
+        deleteOrModifyArea.style.display = 'block';
+      });
+      // const deletePostFirestore = (user) => {
+      //   firebase.collection('posts').doc(user.).delete().then(() => {
+      //     console.log('Document successfully deleted!');
+      //   })
+      //     .catch((error) => {
+      //       console.error('Error removing document: ', error);
+      //     });
+      // };
+
+      modifyPost.addEventListener('click', () => pruebaCurrentUser);
+
+      deletePost.addEventListener('click', () => {
+
+      });
     }
+  });
+
+  firestore.collection('posts').get().then((snapshot) => {
+    snapshot.docs.forEach((doc) => console.log(doc));
   });
 
   return divElement;
