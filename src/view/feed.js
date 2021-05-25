@@ -2,6 +2,7 @@
 /* eslint-disable no-unreachable */
 /* eslint-disable no-unused-expressions */
 import { logOut, pruebaCurrentUser } from '../firebase/firebaseFx.js';
+
 // import { newPost } from '../firebase/firestoreFx.js';
 
 // const firebase = require("firebase");
@@ -133,7 +134,7 @@ export default () => {
   const buttonPost = divElement.querySelector('#bttPost');
   const wallArea = divElement.querySelector('#wall');
 
-  buttonPost.addEventListener('click', () => {
+  buttonPost.addEventListener('click', (doc) => {
     // si el textarea está vacío, no guardar algo
     const textarea = divElement.querySelector('#post').value;
     // fx de firestore
@@ -141,10 +142,12 @@ export default () => {
       // newPost({ newPost: textarea })
       docRef.add({
         newPost: textarea,
-        ID: pruebaCurrentUser(),
+        userId: pruebaCurrentUser().uid,
+
       }).catch((error) => { console.log('Got an error: ', error); });
       const postToWall = document.createElement('div');
       postToWall.setAttribute('class', 'postToWall');
+      postToWall.setAttribute('data-id', doc.id);
       postToWall.innerHTML = postExample;
       wallArea.appendChild(postToWall);
       const postText = postToWall.querySelector('#postContent');
@@ -185,7 +188,10 @@ export default () => {
       //     });
       // };
 
-      modifyPost.addEventListener('click', () => pruebaCurrentUser);
+      modifyPost.addEventListener('click', (e) => {
+        e.stopPropagation();
+        let id = e.target.parentElement.getAttribute('data-id');
+      });
 
       deletePost.addEventListener('click', () => {
 
@@ -193,9 +199,9 @@ export default () => {
     }
   });
 
-  firestore.collection('posts').get().then((snapshot) => {
-    snapshot.docs.forEach((doc) => console.log(doc));
-  });
+  // firestore.collection('posts').get().then((snapshot) => {
+  //   snapshot.docs.forEach((doc) => console.log(doc));
+  // });
 
   return divElement;
 };

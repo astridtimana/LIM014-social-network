@@ -69,20 +69,22 @@ export const logOut = () => {
 
 export const pruebaCurrentUser = () => {
   const user = firebase.auth().currentUser;
-  let data = '';
+  // let data = '';
   if (user != null) {
     /* user.providerData.forEach((profile) => profile.email); */
-    data = {
-      name: user.displayName,
-      email: user.email,
-      photoUrl: user.photoURL,
-      emailVerified: user.emailVerified,
-      uid: user.uid, // The user's ID, unique to the Firebase project. Do NOT use
-      // this value to authenticate with your backend server, if
-      // you have one. Use User.getToken() instead.
-    };
+    // data = {
+    //   name: user.displayName,
+    //   email: user.email,
+    //   photoUrl: user.photoURL,
+    //   emailVerified: user.emailVerified,
+    //   uid: user.uid, // The user's ID, unique to the Firebase project. Do NOT use
+    //   // this value to authenticate with your backend server, if
+    //   // you have one. Use User.getToken() instead.
+    // };
   }
-  return data;
+  // console.log(user);
+  return user;
 };
+
 
 export const userSessionActive = () => firebase.auth().onAuthStateChanged();
