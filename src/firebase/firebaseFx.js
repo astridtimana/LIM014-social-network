@@ -72,7 +72,7 @@ export const getCurrentUser = () => {
   const user = firebase.auth().currentUser;
   let data;
   if (user != null) {
-    console.log(user);
+    // console.log(user);
     data = {
       name: user.displayName,
       email: user.email,

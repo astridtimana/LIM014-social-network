@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* eslint-disable no-unused-vars */
 export default () => {
   const addComment = `
@@ -54,4 +55,22 @@ export default () => {
       postText.innerHTML = textarea; */
   });
   return postToWall;
+=======
+export default () => {
+  const addComment = `
+    <article id="commentPostPhoto">
+        <article class="userPhoto">
+        </article>
+        <article id="commentPost">
+        <input></input>
+        <button>comentar</button>
+        </article>
+    </article>`;
+
+  const commentOnPost = document.createElement('div');
+  commentOnPost.setAttribute('class', 'postToWall');
+  commentOnPost.innerHTML = addComment;
+
+  return commentOnPost;
+>>>>>>> 390b62037f3497382c18d17f8d5c489f4b2ed081
 };
