@@ -79,9 +79,21 @@ export const getCurrentUser = () => {
       photoUrl: user.photoURL,
       uid: user.uid, 
     };
+    document.querySelector('#nameUserProfile');
   }
+  console.log(dataUser);
   return dataUser;
 };
 
 // es un método observador: detecta al usuario logueado
-export const userSessionActive = () => firebase.auth().onAuthStateChanged();
+export const userSessionActive = () => firebase.auth().onAuthStateChanged((user) =>{
+  let dataUser = '';
+  if (user != null) {
+    dataUser = {
+      name: user.displayName,
+      photoUrl: user.photoURL,
+      uid: user.uid, 
+    };
+    document.querySelector('#nameUserProfile').innerHTML = user.displayName;
+  }
+});
