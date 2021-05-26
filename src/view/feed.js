@@ -14,47 +14,6 @@ const firestore = firebase.firestore();
 firestore.settings({ timestampsInSnapshots: true });
 
 export default () => {
-  /* const addComment = `
-    <article id="commentPostPhoto">
-      <article class="userPhoto">
-      </article>
-      <article id="commentPost">
-        <input></input>
-        <button>comentar</button>
-      </article>
-    </article>`; */
-
-  /* const postExample = `
-    <article id= postTrial>
-        <section id= "postHeader">
-          <section id="userInfoPost">
-            <img class="userPhoto" src="./img/user.png alt="userPhoto"> 
-            <section id="postHeaderWrapper">
-              <article id="userNamePost">User Name</article>
-              <p id= "daysAgo">Days ago</p>
-            </section>
-          </section>
-          <section id= "deleteOrModifyPostsWrapper">
-            <i class="fas fa-ellipsis-h"></i>
-            <section id="deleteOrModifyArea">
-              <p id="modifyPost">Modificar Post</p>
-              <p id="deletePost">Eliminar Post</p>
-            </section>
-          </section>
-        </section><hr>
-        <section id= "postContent"> </section><hr>
-        <section id="likeAndCommentSection">
-            <article class="likeAndCommentWrapper" id="likeButton">
-                <img class="likeAndComment" src="./images/Like.png"> 
-                <p>Heart counter</p>
-            </article>
-            <article class="likeAndCommentWrapper" id="commentButton">
-                <img class="likeAndComment" src="./images/Comment.png"> 
-                <p>Comment counter</p>
-            </article>
-        </section>
-    </article> `; */
-
   const viewFeed = `
   <header id="feedHeader">
     <nav id="menuNavigator">
@@ -111,6 +70,12 @@ export default () => {
     </section>
   </header>
 
+  <article class="user-info profile">
+    <img alt="userimage" src="" alt="Foto de perfil">
+    <h2 class="user-name profile-name">${getCurrentUser().name}</h2>
+  </article>
+
+
     <div>
         <textarea placeholder="¿En qué estás pensando?" id="post"></textarea>
         <button id="bttPost">Publicar</button>
@@ -149,38 +114,12 @@ export default () => {
       const postToWall = wallArea.appendChild(templatePost());
       const postText = postToWall.querySelector('#postContent');
       postText.innerHTML = textarea;
-
-      // COMMENT SECTION
-
-      // const deleteOrModifyPost = document.querySelector('.fa-ellipsis-h');
-      // const deleteOrModifyArea = document.querySelector('#deleteOrModifyArea');
-      // const modifyPost = postToWall.querySelector('#modifyPost');
-      // const deletePost = postToWall.querySelector('#deletePost');
-
-      // deleteOrModifyArea.style.display = 'none';
-
-      // deleteOrModifyPost.addEventListener('click', () => {
-      //   deleteOrModifyArea.style.display = 'block';
-      // });
-      // const deletePostFirestore = (user) => {
-      //   firebase.collection('posts').doc(user.).delete().then(() => {
-      //     console.log('Document successfully deleted!');
-      //   })
-      //     .catch((error) => {
-      //       console.error('Error removing document: ', error);
-      //     });
-      // };
-
-      // modifyPost.addEventListener('click', (e) => {
-      //   e.stopPropagation();
-      //   let id = e.target.parentElement.getAttribute('data-id');
-      // });
-
-      // deletePost.addEventListener('click', () => {
-
-      // });
     }
   });
+
+  // firestore.collection('posts').get().then((snapshot) => {
+  //   snapshot.docs.forEach((doc) => doc.data());
+  // });
 
   return divElement;
 };
