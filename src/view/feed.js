@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-unreachable */
 /* eslint-disable no-unused-expressions */
-import { logOut, getCurrentUser } from '../firebase/firebaseFx.js';
+import { logOut, getCurrentUser, userSessionActive } from '../firebase/firebaseFx.js';
 import templatePost from './commentPOST.js';
 /* console.log(templatePost()); */
 
@@ -65,7 +65,7 @@ export default () => {
 
                           <article class="user-info profile">
                               <img alt="userimage" src="" alt="Foto de perfil">
-                              <h2 class="user-name profile-name">${getCurrentUser().name}</h2>
+                              <h2 class="user-name profile-name" id="nameUserProfile"></h2>
                           </article>
 
     <div>
@@ -82,6 +82,8 @@ export default () => {
   divElement.setAttribute('class', 'feed');
   divElement.innerHTML = viewFeed;
 
+  userSessionActive();
+
   const userLogOut = divElement.querySelector('#logOut');
   userLogOut.addEventListener('click', () => {
     logOut();
@@ -92,7 +94,8 @@ export default () => {
   const buttonPost = divElement.querySelector('#bttPost');
   const wallArea = divElement.querySelector('#wall');
 
-  buttonPost.addEventListener('click', () => {
+  buttonPost.addEventListener('click', (e) => {
+    e.preventDefault();// para evitar que los datos no aparezcan cuando se refresque
     // si el textarea está vacío, no guardar algo
     const textarea = divElement.querySelector('#post').value;
     // fx de firestore
@@ -123,6 +126,7 @@ export default () => {
         // postText.innerHTML = textarea;
       });
     }
+    /* buttonPost.reset(); */ // traido del video
   });
 
   return divElement;
