@@ -66,25 +66,22 @@ export const logOut = () => {
     });
 };
 
-
+// Information about the CURRENT USER
 export const getCurrentUser = () => {
+  // te capta info cuando solo estés logueada ... there is not much sense
+  // xq ya hay un usuario
+  // peroooooo CUANDO SE RECARGA LA PÁGINA LA INFO SE PIERDE, so, sí hay sense
   const user = firebase.auth().currentUser;
-  let data = '';
+  let dataUser = '';
   if (user != null) {
-    /* user.providerData.forEach((profile) => profile.email); */
-    console.log(user);
-    data = {
+    dataUser = {
       name: user.displayName,
-      email: user.email,
       photoUrl: user.photoURL,
-      emailVerified: user.emailVerified,
-      uid: user.uid, // The user's ID, unique to the Firebase project. Do NOT use
-      // this value to authenticate with your backend server, if
-      // you have one. Use User.getToken() instead.
+      uid: user.uid, 
     };
   }
-  console.log('data', data);
-  return data;
+  return dataUser;
 };
 
+// es un método observador: detecta al usuario logueado
 export const userSessionActive = () => firebase.auth().onAuthStateChanged();
