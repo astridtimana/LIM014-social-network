@@ -7,8 +7,8 @@
 /* eslint-disable no-unused-expressions */
 import { logOut, getCurrentUser } from '../firebase/firebaseFx.js';
 import templatePost from './commentPOST.js';
-/* console.log(templatePost()); */
-import { newPost, listPostAll } from '../firebase/firestoreFx.js';
+// console.log(templatePost());
+import { addDocPost, listPostAll } from '../firebase/firestoreFx.js';
 
 // const firebase = require("firebase");
 // // Required for side-effects
@@ -88,7 +88,7 @@ export default () => {
   const wallArea = divElement.querySelector('#wall');
 
   // Cargar La informacion
-  listPostAll().then((response) => {
+  /* .then((response) => {
     response.docs.forEach((doc) => {
       const { ID, newPost } = doc.data();
       const postToWall = wallArea.appendChild(templatePost());
@@ -97,7 +97,7 @@ export default () => {
     });
   }).catch((err) => {
 
-  });
+  }); */
 
   buttonPost.addEventListener('click', () => {
     // si el textarea está vacío, no guardar algo
@@ -105,17 +105,24 @@ export default () => {
     // fx de firestore
     if (textarea.length > 0) {
       // newPost({ newPost: textarea })
-      newPost({
+      addDocPost({
         newPost: textarea,
         ID: getCurrentUser().uid,
+        date: new Date(),
       }).catch((error) => { console.log('Got an error: ', error); });
-
-      const postToWall = wallArea.appendChild(templatePost());
-      const postText = postToWall.querySelector('#postContent');
-      postText.innerHTML = textarea;
     }
   });
-
+  const callback = (data) => {
+    console.log(data);
+    wallArea.innerHTML = '';
+    data.forEach((post) => {
+      wallArea.appendChild(templatePost(post));
+    });
+  };
+  listPostAll(callback);
+  /*   const postToWall = wallArea.appendChild(templatePost());
+  const postText = postToWall.querySelector('#postContent');
+  postText.innerHTML = textarea; */
   // firestore.collection('posts').get().then((snapshot) => {
   //   snapshot.docs.forEach((doc) => doc.data());
   // });

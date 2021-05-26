@@ -7,7 +7,7 @@ import { deletePostFirestore } from '../firebase/firestoreFx.js';
 
 const firestore = firebase.firestore();
 
-export default () => {
+export default (data) => {
   const postExample = `
     <article id= postTrial>
         <section id= "postHeader">
@@ -26,7 +26,7 @@ export default () => {
             </ul>
           </section>
         </section><hr>
-        <section id= "postContent"> </section><hr>
+        <section id= "postContent">${data.newPost}</section><hr>
         <section id="likeAndCommentSection">
             <article class="likeAndCommentWrapper" id="likeButton">
                 <img class="likeAndComment" src="./images/Like.png"> 
