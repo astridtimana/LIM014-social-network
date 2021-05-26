@@ -1,55 +1,49 @@
+/* eslint-disable import/named */
+/* eslint-disable no-shadow */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
 /* eslint-disable no-alert */
 /* eslint-disable no-unreachable */
 /* eslint-disable no-unused-expressions */
 import { logOut, getCurrentUser, userSessionActive } from '../firebase/firebaseFx.js';
 import templatePost from './commentPOST.js';
-/* console.log(templatePost()); */
+// console.log(templatePost());
+import { addDocPost, listPostAll } from '../firebase/firestoreFx.js';
 
-const firestore = firebase.firestore();
+// const firebase = require("firebase");
+// // Required for side-effects
+// require("firebase/firestore");
+
+// const firestore = firebase.firestore();
+// firestore.settings({ timestampsInSnapshots: true });
 
 export default () => {
   const viewFeed = `
   <header id="feedHeader">
-    <nav id="menuNavigator">
-        <img id="feedLogo" src="./images/Logo grande.png">
-        <section id="search">
-            <img id="searchIcon" src="./images/searchIcon.png">
-            <input id="searchBar" type="text" placeholder="Encuentra a tus amigos..." name="search">
-        </section>
-    </nav>    
-
-    <section class="nav">
-        <label for="toggle">&#9776</label>
-        <input type="checkbox" id="toggle" />
-
-        <article class="menu">
-            <a href="#"> Perfil</a>
-            <a href="#"> Configuración </a>
-            <a href="#"> Adicionales </a>
-            <button id="logOut">Cerrar sesión</button>
-    
-            <section id="feedConfigArea"> 
-                <section class="feedConfig">
-                    <section class="feedConfigOption">
-                        <img class="configIcon" id="favoriteIcon" src="./images/favorite.png">
-                        <p>Inicio</p>
-                    </section>
-                    <section class="feedConfigOption">
-                        <img class="configIcon" id="profileIcon" src="./images/profile.png">
-                        <p> Mi perfil</p>
-                    </section>
-                    <section class="feedConfigOption">
-                        <img class="configIcon" id="settingsIcon" src="./images/settings.png">
-                        <p>Configuración</p>
-                    </section>
-                    <section class="feedConfigOption">
-                        <img class="configIcon" id="logOutIcon" src="./images/logout.png">
-                        <p>Salir</p>
-                    </section>
-                </section>
-        </article>
-    </section>
-
+      <nav id="navigatorMenu">
+          <img id="feedLogo" src="./images/logomenu.png">
+          <section class="search" id="search">
+              <img id="searchIcon" src="./images/searchIcon.png">
+              <input id="searchBar" type="text" placeholder="Encuentra a tus amigos..." name="search">
+          </section>
+          <label for="toggle">
+            <i class="fas fa-bars" id="signOne"></i>
+            <i class="fas fa-times" id="signTwo"></i>
+          </label>
+          <input type="checkbox" id="toggle" />
+          <section class="nav">
+            <article class="menu">
+                <a href="#" class="active"> Inicio<img class="configIcon" id="favoriteIcon" src="./images/home.svg"></a>
+                <a href="#" > Mi Perfil<img class="configIcon" id="profileIcon" src="./images/profile.png"></a>
+                <a href="#"> Configuración <img class="configIcon" id="settingsIcon" src="./images/settings.png"></a>
+                <a href="#"> Adicionales <img class="configIcon" id="favoriteIcon" src="./images/favorite.png"></a>
+                <a id="logOut">Cerrar sesión <img class="configIcon" id="logOutIcon" src="./images/logout.png"></a>
+            </article>
+      
+          </section>
+      </nav>      
+  
+  </header>
             <section id="activitiesArea">
                 <h3 id="activitiesTitle"> ACTIVIDADES </h3>
                 <section class="activities">
@@ -59,9 +53,13 @@ export default () => {
             <section id="aditionalsArea">
                 <section class="aditionals">
                 </section>
-            </section>
-    </section>
-  </header>
+            </section>  
+
+  <article class="user-info profile">
+    <img alt="userimage" src="" alt="Foto de perfil">
+    <h2 class="user-name profile-name">${getCurrentUser().name}</h2>
+  </article>
+
 
                           <article class="user-info profile">
                               <img alt="userimage" src="" alt="Foto de perfil">
@@ -90,44 +88,51 @@ export default () => {
   });
 
   // FIRESTORE
-  const docRef = firestore.collection('posts');
+  // const docRef = firestore.collection('posts');
   const buttonPost = divElement.querySelector('#bttPost');
   const wallArea = divElement.querySelector('#wall');
 
   buttonPost.addEventListener('click', (e) => {
     e.preventDefault();// para evitar que los datos no aparezcan cuando se refresque
+    // Cargar La informacion
+    /* .then((response) => {
+    response.docs.forEach((doc) => {
+      const { ID, newPost } = doc.data();
+      const postToWall = wallArea.appendChild(templatePost());
+      const postText = postToWall.querySelector('#postContent');
+      postText.innerHTML = newPost;
+    });
+    }).catch((err) => {
+
+    }); */
+
     // si el textarea está vacío, no guardar algo
     const textarea = divElement.querySelector('#post').value;
     // fx de firestore
     if (textarea.length > 0) {
       // newPost({ newPost: textarea })
-      docRef.add({
+      addDocPost({
         newPost: textarea,
         ID: getCurrentUser().uid,
+        date: new Date(),
       }).catch((error) => { console.log('Got an error: ', error); });
-      const postToWall = document.createElement('div');
-      postToWall.setAttribute('class', 'postToWall');
-      postToWall.innerHTML = templatePost();
-      wallArea.appendChild(postToWall);
-      const postText = postToWall.querySelector('#postContent');
-      postText.innerHTML = textarea;
-
-      const likeButton = postToWall.querySelector('#likeButton');
-      const commentButton = postToWall.querySelector('#commentButton');
-      const postTrial = postToWall.querySelector('#postTrial');
-
-      // const textarea = divElement.querySelector('#post').value;
-
-      commentButton.addEventListener('click', () => {
-        const addingComment = document.createElement('div');
-        addingComment.innerHTML = addComment;
-        postTrial.appendChild(addingComment);
-        // const postText = addingComment.querySelector('#postContent');
-        // postText.innerHTML = textarea;
-      });
     }
     /* buttonPost.reset(); */ // traido del video
   });
+  const callback = (data) => {
+    console.log(data);
+    wallArea.innerHTML = '';
+    data.forEach((post) => {
+      wallArea.appendChild(templatePost(post));
+    });
+  };
+  listPostAll(callback);
+  /*   const postToWall = wallArea.appendChild(templatePost());
+  const postText = postToWall.querySelector('#postContent');
+  postText.innerHTML = textarea; */
+  // firestore.collection('posts').get().then((snapshot) => {
+  //   snapshot.docs.forEach((doc) => doc.data());
+  // });
 
   return divElement;
 };

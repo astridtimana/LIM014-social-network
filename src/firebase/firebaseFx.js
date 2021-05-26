@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable implicit-arrow-linebreak */
@@ -81,12 +82,12 @@ export const getCurrentUser = () => {
     };
     document.querySelector('#nameUserProfile');
   }
-  console.log(dataUser);
+  /* console.log(dataUser); */
   return dataUser;
 };
 
 // es un método observador: detecta al usuario logueado
-export const userSessionActive = () => firebase.auth().onAuthStateChanged((user) =>{
+export const userSessionActive = () => firebase.auth().onAuthStateChanged((user) => {
   let dataUser = '';
   if (user != null) {
     dataUser = {
