@@ -4,9 +4,10 @@ import { deletePostFirestore } from '../firebase/firestoreFx.js';
 
 const firestore = firebase.firestore();
 
-export default () => {
+export default (ID) => {
+  // console.log(ID);
   const postExample = `
-    <article id= postTrial>
+    <article id= "${ID}">
         <section id= "postHeader">
           <section id="userInfoPost">
             <img class="userPhoto" src="${getCurrentUser().photoUrl} alt="userPhoto"> 
@@ -68,7 +69,7 @@ export default () => {
     deleteOrModifyArea.style.display = 'block';
   });
 
-  // postToWall.querySelector(`deleteOrModifyPostsWrapper-${postData.id}`)
+  // postToWall.querySelector(`${postData.id}`)
   //   .addEventListener('click', () => {
   //     deletePost(postData.id);
   //   });

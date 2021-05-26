@@ -8,7 +8,7 @@
 import { logOut, getCurrentUser } from '../firebase/firebaseFx.js';
 import templatePost from './posts.js';
 /* console.log(templatePost()); */
-import { newPost, listPostAll } from '../firebase/firestoreFx.js';
+import { newPost, listPostAll, onGetPosts } from '../firebase/firestoreFx.js';
 
 // const firebase = require("firebase");
 // // Required for side-effects
@@ -88,15 +88,29 @@ export default () => {
   const wallArea = divElement.querySelector('#wall');
 
   // Cargar La informacion
+  // window.addEventListener('DOMContentLoaded', () => {
+  //   onGetPosts((querySnapshot) => {
+  //     // postToWall.innerHTML = '';
+
+  //     querySnapshot.forEach((doc) => {
+  //       // const post = doc.data();
+  //       const { ID, newPost } = doc.data();
+  //       const postToWall = wallArea.appendChild(templatePost());
+  //       const postText = postToWall.querySelector('#postContent');
+  //       postText.innerHTML = newPost;
+  //     });
+  //   });
+  // });
+
+  // Cargar La informacion
   listPostAll().then((response) => {
     response.docs.forEach((doc) => {
       const { ID, newPost } = doc.data();
-      const postToWall = wallArea.appendChild(templatePost());
+      console.log(ID);
+      const postToWall = wallArea.appendChild(templatePost(ID));
       const postText = postToWall.querySelector('#postContent');
       postText.innerHTML = newPost;
     });
-  }).catch((err) => {
-
   });
 
   buttonPost.addEventListener('click', () => {
@@ -108,11 +122,14 @@ export default () => {
       newPost({
         newPost: textarea,
         ID: getCurrentUser().uid,
-      }).catch((error) => { console.log('Got an error: ', error); });
-
-      const postToWall = wallArea.appendChild(templatePost());
-      const postText = postToWall.querySelector('#postContent');
-      postText.innerHTML = textarea;
+      }).then((doc) => {
+        const postToWall = wallArea.appendChild(templatePost(doc.id));
+        const postText = postToWall.querySelector('#postContent');
+        postText.innerHTML = textarea;
+      })
+        .catch((error) => { console.log('Got an error: ', error); });
+      // const postText = postToWall.querySelector('#postContent');
+      // postText.innerHTML = textarea;
     }
   });
 

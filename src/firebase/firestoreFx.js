@@ -19,3 +19,4 @@ export const deletePostFirestore = (idPost) => {
 };
 
 // obtener info de posts
+export const onGetPosts = (callback) => firestore.collection('posts').onSnapshot(callback);
