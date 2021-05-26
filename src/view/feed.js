@@ -32,7 +32,7 @@ export default () => {
     <article id= postTrial>
         <section id= "postHeader">
           <section id="userInfoPost">
-            <img class="userPhoto" src="./img/user.png alt="userPhoto"> 
+            <img class="userPhoto" src="./img/user.png alt="userPhoto">
             <section id="postHeaderWrapper">
               <article id="userNamePost">User Name</article>
               <p id= "daysAgo">Days ago</p>
@@ -49,11 +49,11 @@ export default () => {
         <section id= "postContent"> </section><hr>
         <section id="likeAndCommentSection">
             <article class="likeAndCommentWrapper" id="likeButton">
-                <img class="likeAndComment" src="./images/Like.png"> 
+                <img class="likeAndComment" src="./images/Like.png">
                 <p>Heart counter</p>
             </article>
             <article class="likeAndCommentWrapper" id="commentButton">
-                <img class="likeAndComment" src="./images/Comment.png"> 
+                <img class="likeAndComment" src="./images/Comment.png">
                 <p>Comment counter</p>
             </article>
         </section>
