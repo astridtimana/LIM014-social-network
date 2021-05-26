@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable import/named */
 import { getCurrentUser } from '../firebase/firebaseFx.js';
 import templateComment from './comment.js';
 import { deletePostFirestore } from '../firebase/firestoreFx.js';
