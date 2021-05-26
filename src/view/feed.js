@@ -4,50 +4,10 @@
 import { logOut, getCurrentUser } from '../firebase/firebaseFx.js';
 import templatePost from './commentPOST.js';
 /* console.log(templatePost()); */
-// import { newPost } from '../firebase/firestoreFx.js';
-
-// const firebase = require("firebase");
-// // Required for side-effects
-// require("firebase/firestore");
 
 const firestore = firebase.firestore();
 
 export default () => {
-  /* const addComment = `
-    <article id="commentPostPhoto">
-      <article class="userPhoto">
-      </article>
-      <article id="commentPost">
-        <input></input>
-        <button>comentar</button>
-      </article>
-    </article>`; */
-
-  /* const postExample = `
-    <article id= postTrial>
-        <section id= "postHeader">
-          <section id="userInfoPost">
-            <img class="userPhoto" src="./img/user.png alt="userPhoto"> 
-            <section id="postHeaderWrapper">
-              <article id="userNamePost">User Name</article>
-              <p id= "daysAgo">Days ago</p>
-            </section>
-          </section>
-          <i class="fas fa-ellipsis-h"></i>
-        </section><hr>
-        <section id= "postContent"> </section><hr>
-        <section id="likeAndCommentSection">
-            <article class="likeAndCommentWrapper" id="likeButton">
-                <img class="likeAndComment" src="./images/Like.png"> 
-                <p>Heart counter</p>
-            </article>
-            <article class="likeAndCommentWrapper" id="commentButton">
-                <img class="likeAndComment" src="./images/Comment.png"> 
-                <p>Comment counter</p>
-            </article>
-        </section>
-    </article> `; */
-
   const viewFeed = `
   <header id="feedHeader">
     <nav id="menuNavigator">
@@ -57,7 +17,6 @@ export default () => {
             <input id="searchBar" type="text" placeholder="Encuentra a tus amigos..." name="search">
         </section>
     </nav>    
-
 
     <section class="nav">
         <label for="toggle">&#9776</label>
@@ -103,6 +62,11 @@ export default () => {
             </section>
     </section>
   </header>
+
+                          <article class="user-info profile">
+                              <img alt="userimage" src="" alt="Foto de perfil">
+                              <h2 class="user-name profile-name">${getCurrentUser().name}</h2>
+                          </article>
 
     <div>
         <textarea placeholder="¿En qué estás pensando?" id="post"></textarea>
