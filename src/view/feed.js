@@ -60,9 +60,8 @@ export default () => {
     </article> `; */
 
   const viewFeed = `
-  
   <header id="feedHeader">
-    <nav id="menuNavigator">
+    <nav id="navigatorMenu">
         <img id="feedLogo" src="./images/logomenu.png">
         <section class="search" id="search">
             <img id="searchIcon" src="./images/searchIcon.png">
