@@ -1,11 +1,18 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable import/named */
 import { getCurrentUser } from '../firebase/firebaseFx.js';
 import templateComment from './comment.js';
 // import { deletePostFirestore } from '../firebase/firestoreFx.js';
 
 // const firestore = firebase.firestore();
 
+<<<<<<< HEAD:src/view/posts.js
 export default (ID) => {
   // console.log(ID);
+=======
+export default (data) => {
+>>>>>>> 1629a3564dbfa6346d3f80cb602e300daaf1d40b:src/view/commentPOST.js
   const postExample = `
     <article id= "${ID}">
         <section id= "postHeader">
@@ -24,7 +31,7 @@ export default (ID) => {
             </ul>
           </section>
         </section><hr>
-        <section id= "postContent"> </section><hr>
+        <section id= "postContent">${data.newPost}</section><hr>
         <section id="likeAndCommentSection">
             <article class="likeAndCommentWrapper" id="likeButton">
                 <img class="likeAndComment" src="./images/Like.png"> 
@@ -50,7 +57,7 @@ export default (ID) => {
   //   snapshot.docs.forEach((doc) => (doc));
   // });
 
-  //  const likeButton = postToWall.querySelector('#likeButton');
+  const likeButton = postToWall.querySelector('#likeButton');
   const commentButton = postToWall.querySelector('#commentButton');
   const postTrial = postToWall.querySelector('#postTrial');
 
@@ -60,8 +67,8 @@ export default (ID) => {
 
   const deleteOrModifyPost = postToWall.querySelector('.fa-ellipsis-h');
   const deleteOrModifyArea = postToWall.querySelector('#deleteOrModifyArea');
-  // const modifyPost = postToWall.querySelector('#modifyPost');
-  // const deletePost = postToWall.querySelector('#deletePost');
+  const modifyPost = postToWall.querySelector('#modifyPost');
+  const deletePost = postToWall.querySelector('#deletePost');
 
   deleteOrModifyArea.style.display = 'none';
 
