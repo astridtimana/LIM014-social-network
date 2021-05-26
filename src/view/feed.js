@@ -8,14 +8,14 @@
 import { logOut, getCurrentUser } from '../firebase/firebaseFx.js';
 import templatePost from './commentPOST.js';
 /* console.log(templatePost()); */
-// import { newPost } from '../firebase/firestoreFx.js';
+import { newPost, listPostAll } from '../firebase/firestoreFx.js';
 
 // const firebase = require("firebase");
 // // Required for side-effects
 // require("firebase/firestore");
 
-const firestore = firebase.firestore();
-firestore.settings({ timestampsInSnapshots: true });
+// const firestore = firebase.firestore();
+// firestore.settings({ timestampsInSnapshots: true });
 
 export default () => {
   /* const addComment = `
@@ -118,9 +118,21 @@ export default () => {
   });
 
   // FIRESTORE
-  const docRef = firestore.collection('posts');
+  // const docRef = firestore.collection('posts');
   const buttonPost = divElement.querySelector('#bttPost');
   const wallArea = divElement.querySelector('#wall');
+
+  // Cargar La informacion
+  listPostAll().then((response) => {
+    response.docs.forEach((doc) => {
+      const { ID, newPost } = doc.data();
+      const postToWall = wallArea.appendChild(templatePost());
+      const postText = postToWall.querySelector('#postContent');
+      postText.innerHTML = newPost;
+    });
+  }).catch((err) => {
+
+  });
 
   buttonPost.addEventListener('click', () => {
     // si el textarea está vacío, no guardar algo
@@ -128,7 +140,7 @@ export default () => {
     // fx de firestore
     if (textarea.length > 0) {
       // newPost({ newPost: textarea })
-      docRef.add({
+      newPost({
         newPost: textarea,
         ID: getCurrentUser().uid,
       }).catch((error) => { console.log('Got an error: ', error); });
