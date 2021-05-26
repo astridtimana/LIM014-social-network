@@ -4,10 +4,10 @@ import templateComment from './comment.js';
 
 // const firestore = firebase.firestore();
 
-export default (ID) => {
+export default (data) => {
   // console.log(ID);
   const postExample = `
-    <article id= "${ID}">
+    <article class="postId" id= "${data.ID}">
         <section id= "postHeader">
           <section id="userInfoPost">
             <img class="userPhoto" src="${getCurrentUser().photoUrl} alt="userPhoto"> 
@@ -24,7 +24,7 @@ export default (ID) => {
             </ul>
           </section>
         </section><hr>
-        <section id= "postContent"> </section><hr>
+        <section id= "postContent"> ${data.newPost}</section><hr>
         <section id="likeAndCommentSection">
             <article class="likeAndCommentWrapper" id="likeButton">
                 <img class="likeAndComment" src="./images/Like.png"> 
@@ -52,7 +52,7 @@ export default (ID) => {
 
   //  const likeButton = postToWall.querySelector('#likeButton');
   const commentButton = postToWall.querySelector('#commentButton');
-  const postTrial = postToWall.querySelector('#postTrial');
+  const postTrial = postToWall.querySelector('.postId');
 
   commentButton.addEventListener('click', () => {
     postTrial.appendChild(templateComment());
