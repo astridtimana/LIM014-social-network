@@ -1,3 +1,5 @@
+import { getCurrentUser } from '../firebase/firebaseFx.js';
+
 export default () => {
   const addComment = `
     <article id="commentPostPhoto">
@@ -15,7 +17,7 @@ export default () => {
           <section id="userInfoPost">
             <img class="userPhoto" src="./img/user.png alt="userPhoto"> 
             <section id="postHeaderWrapper">
-              <article id="userNamePost">User Name</article>
+              <article id="userNamePost">${getCurrentUser().name}</article>
               <p id= "daysAgo">Days ago</p>
             </section>
           </section>
