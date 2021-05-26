@@ -6,7 +6,7 @@
 /* eslint-disable no-unreachable */
 /* eslint-disable no-unused-expressions */
 import { logOut, getCurrentUser } from '../firebase/firebaseFx.js';
-import templatePost from './commentPOST.js';
+import templatePost from './posts.js';
 /* console.log(templatePost()); */
 import { newPost, listPostAll } from '../firebase/firestoreFx.js';
 
