@@ -2,12 +2,14 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-console */
 // TEST DE LA FUNCIÓN CREATEUSER
+import firebasemock from 'firebase-mock';
+
 import {
   // eslint-disable-next-line no-unused-vars
   createUser, logIn, verificationMail, signInWithGoogle, logOut, resetPasswordMail,
 } from '../src/firebase/firebaseFx.js';
 
-const firebasemock = require('firebase-mock');
+// const firebasemock = require('firebase-mock');
 
 const mockauth = new firebasemock.MockAuthentication();
 const mockfirestore = new firebasemock.MockFirestore();

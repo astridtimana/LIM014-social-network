@@ -81,7 +81,7 @@ export default () => {
     // console.log(`email=${email} pass= ${pass}`);
     logIn(email, pass)
       .then((obj) => {
-        /* console.log(obj); */
+        // console.log(obj);
         if (obj.user.emailVerified) {
           window.location.hash = '#/feed';
         } else { userIncorrect.innerHTML = 'Verifica tu correo'; }
