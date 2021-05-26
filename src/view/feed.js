@@ -5,7 +5,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-unreachable */
 /* eslint-disable no-unused-expressions */
-import { logOut, getCurrentUser } from '../firebase/firebaseFx.js';
+import { logOut, getCurrentUser, userSessionActive } from '../firebase/firebaseFx.js';
 import templatePost from './commentPOST.js';
 // console.log(templatePost());
 import { addDocPost, listPostAll } from '../firebase/firestoreFx.js';
@@ -20,30 +20,30 @@ import { addDocPost, listPostAll } from '../firebase/firestoreFx.js';
 export default () => {
   const viewFeed = `
   <header id="feedHeader">
-    <nav id="navigatorMenu">
-        <img id="feedLogo" src="./images/logomenu.png">
-        <section class="search" id="search">
-            <img id="searchIcon" src="./images/searchIcon.png">
-            <input id="searchBar" type="text" placeholder="Encuentra a tus amigos..." name="search">
-        </section>
-        <label for="toggle">
-        <i class="fas fa-bars" id="signOne"></i>
-        <i class="fas fa-times" id="signTwo"></i>
-        </label>
-        <input type="checkbox" id="toggle" />
-        <section class="nav">
-        <article class="menu">
-            <a href="#" class="active"> Inicio<img class="configIcon" id="favoriteIcon" src="./images/home.svg"></a>
-            <a href="#" > Mi Perfil<img class="configIcon" id="profileIcon" src="./images/profile.png"></a>
-            <a href="#"> Configuración <img class="configIcon" id="settingsIcon" src="./images/settings.png"></a>
-            <a href="#"> Adicionales <img class="configIcon" id="favoriteIcon" src="./images/favorite.png"></a>
-            <a id="logOut">Cerrar sesión <img class="configIcon" id="logOutIcon" src="./images/logout.png"></a>
-        </article>
-    
-    </section>
-    </nav>      
-    </section>
-    </header>
+      <nav id="navigatorMenu">
+          <img id="feedLogo" src="./images/logomenu.png">
+          <section class="search" id="search">
+              <img id="searchIcon" src="./images/searchIcon.png">
+              <input id="searchBar" type="text" placeholder="Encuentra a tus amigos..." name="search">
+          </section>
+          <label for="toggle">
+            <i class="fas fa-bars" id="signOne"></i>
+            <i class="fas fa-times" id="signTwo"></i>
+          </label>
+          <input type="checkbox" id="toggle" />
+          <section class="nav">
+            <article class="menu">
+                <a href="#" class="active"> Inicio<img class="configIcon" id="favoriteIcon" src="./images/home.svg"></a>
+                <a href="#" > Mi Perfil<img class="configIcon" id="profileIcon" src="./images/profile.png"></a>
+                <a href="#"> Configuración <img class="configIcon" id="settingsIcon" src="./images/settings.png"></a>
+                <a href="#"> Adicionales <img class="configIcon" id="favoriteIcon" src="./images/favorite.png"></a>
+                <a id="logOut">Cerrar sesión <img class="configIcon" id="logOutIcon" src="./images/logout.png"></a>
+            </article>
+      
+          </section>
+      </nav>      
+  
+  </header>
             <section id="activitiesArea">
                 <h3 id="activitiesTitle"> ACTIVIDADES </h3>
                 <section class="activities">
@@ -53,15 +53,13 @@ export default () => {
             <section id="aditionalsArea">
                 <section class="aditionals">
                 </section>
-            </section>
-    </section>
+            </section>  
+
   
-
-  <article class="user-info profile">
-    <img alt="userimage" src="" alt="Foto de perfil">
-    <h2 class="user-name profile-name">${getCurrentUser().name}</h2>
-  </article>
-
+              <article class="user-info profile">
+                <img alt="userimage" src="" alt="Foto de perfil">
+                <h2 class="user-name profile-name" id="nameUserProfile"></h2>
+              </article>
 
     <div>
         <textarea placeholder="¿En qué estás pensando?" id="post"></textarea>
@@ -77,6 +75,8 @@ export default () => {
   divElement.setAttribute('class', 'feed');
   divElement.innerHTML = viewFeed;
 
+  userSessionActive();
+
   const userLogOut = divElement.querySelector('#logOut');
   userLogOut.addEventListener('click', () => {
     logOut();
@@ -87,19 +87,20 @@ export default () => {
   const buttonPost = divElement.querySelector('#bttPost');
   const wallArea = divElement.querySelector('#wall');
 
-  // Cargar La informacion
-  /* .then((response) => {
+  buttonPost.addEventListener('click', (e) => {
+    e.preventDefault();// para evitar que los datos no aparezcan cuando se refresque
+    // Cargar La informacion
+    /* .then((response) => {
     response.docs.forEach((doc) => {
       const { ID, newPost } = doc.data();
       const postToWall = wallArea.appendChild(templatePost());
       const postText = postToWall.querySelector('#postContent');
       postText.innerHTML = newPost;
     });
-  }).catch((err) => {
+    }).catch((err) => {
 
-  }); */
+    }); */
 
-  buttonPost.addEventListener('click', () => {
     // si el textarea está vacío, no guardar algo
     const textarea = divElement.querySelector('#post').value;
     // fx de firestore
@@ -111,6 +112,7 @@ export default () => {
         date: new Date(),
       }).catch((error) => { console.log('Got an error: ', error); });
     }
+    /* buttonPost.reset(); */ // traido del video
   });
   const callback = (data) => {
     console.log(data);

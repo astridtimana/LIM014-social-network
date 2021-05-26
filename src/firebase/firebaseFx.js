@@ -67,23 +67,34 @@ export const logOut = () => {
     });
 };
 
-
+// Information about the CURRENT USER
 export const getCurrentUser = () => {
+  // te capta info cuando solo estés logueada ... there is not much sense
+  // xq ya hay un usuario
+  // peroooooo CUANDO SE RECARGA LA PÁGINA LA INFO SE PIERDE, so, sí hay sense
   const user = firebase.auth().currentUser;
-  let data;
+  let dataUser = '';
   if (user != null) {
-    // console.log(user);
-    data = {
+    dataUser = {
       name: user.displayName,
-      email: user.email,
       photoUrl: user.photoURL,
-      emailVerified: user.emailVerified,
-      uid: user.uid,
+      uid: user.uid, 
     };
+    document.querySelector('#nameUserProfile');
   }
-  // console.log('data', data);
-  return data;
+  /* console.log(dataUser); */
+  return dataUser;
 };
 
-
-export const userSessionActive = () => firebase.auth().onAuthStateChanged();
+// es un método observador: detecta al usuario logueado
+export const userSessionActive = () => firebase.auth().onAuthStateChanged((user) => {
+  let dataUser = '';
+  if (user != null) {
+    dataUser = {
+      name: user.displayName,
+      photoUrl: user.photoURL,
+      uid: user.uid, 
+    };
+    document.querySelector('#nameUserProfile').innerHTML = user.displayName;
+  }
+});

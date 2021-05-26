@@ -3,9 +3,9 @@
 /* eslint-disable import/named */
 import { getCurrentUser } from '../firebase/firebaseFx.js';
 import templateComment from './comment.js';
-import { deletePostFirestore } from '../firebase/firestoreFx.js';
+// import { deletePostFirestore } from '../firebase/firestoreFx.js';
 
-const firestore = firebase.firestore();
+// const firestore = firebase.firestore();
 
 export default (data) => {
   const postExample = `

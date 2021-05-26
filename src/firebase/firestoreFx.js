@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const firestore = firebase.firestore();
+const firestore = firebase.firestore(); // desde firebase, voy a llamar algo llamado firestore
 firestore.settings({ timestampsInSnapshots: true });
 
 export const addDocPost = (doc) => firestore.collection('posts').add(doc);
