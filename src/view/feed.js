@@ -55,16 +55,11 @@ export default () => {
                 </section>
             </section>  
 
-  <article class="user-info profile">
-    <img alt="userimage" src="" alt="Foto de perfil">
-    <h2 class="user-name profile-name">${getCurrentUser().name}</h2>
-  </article>
-
-
-                          <article class="user-info profile">
-                              <img alt="userimage" src="" alt="Foto de perfil">
-                              <h2 class="user-name profile-name" id="nameUserProfile"></h2>
-                          </article>
+  
+              <article class="user-info profile">
+                <img alt="userimage" src="" alt="Foto de perfil">
+                <h2 class="user-name profile-name" id="nameUserProfile"></h2>
+              </article>
 
     <div>
         <textarea placeholder="¿En qué estás pensando?" id="post"></textarea>
