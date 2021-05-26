@@ -1,12 +1,18 @@
-const firestore = firebase.firestore();
+/* eslint-disable no-console */
+const firestore = firebase.firestore(); // desde firebase, voy a llamar algo llamado firestore
 firestore.settings({ timestampsInSnapshots: true });
 
-export const newPost = (doc) => firestore.collection('posts').add(doc);
-// export const newPost = (doc) => {
-//   firestore.collection('posts').add(doc);
-// };
+export const addDocPost = (doc) => firestore.collection('posts').add(doc);
 
-export const listPostAll = () => firestore.collection('posts').get();
+export const listPostAll = (callback) => firestore.collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
+  const post = [];
+  querySnapshot.forEach((doc) => {
+    // console.log(doc.data());
+    post.push(doc.data());
+  });
+  callback(post);
+  // console.log('Posts: ', post.join(', '));
+});
 
 // obtener información de posts
 export const getPostData = (post) => {
@@ -19,3 +25,4 @@ export const deletePostFirestore = (idPost) => {
 };
 
 // obtener info de posts
+export const onGetPosts = (callback) => firestore.collection('posts').onSnapshot(callback);
