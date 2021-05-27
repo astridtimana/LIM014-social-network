@@ -5,10 +5,12 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-unreachable */
 /* eslint-disable no-unused-expressions */
-import { logOut, getCurrentUser, userSessionActive } from '../firebase/firebaseFx.js';
+import {
+  logOut, getCurrentUser, userSessionActive,
+} from '../firebase/firebaseFx.js';
 import templatePost from './posts.js';
 // console.log(templatePost());
-import { addDocPost, listPostAll } from '../firebase/firestoreFx.js';
+import { addDocPost, listPostAll, onGetPosts } from '../firebase/firestoreFx.js';
 
 // const firebase = require("firebase");
 // // Required for side-effects
@@ -87,48 +89,36 @@ export default () => {
   const buttonPost = divElement.querySelector('#bttPost');
   const wallArea = divElement.querySelector('#wall');
 
+  listPostAll((data) => {
+    // console.log(data); trae la data del documento con sus fields.
+    wallArea.innerHTML = '';
+    data.forEach((post) => {
+      wallArea.appendChild(templatePost(post));
+    });
+  });
+
   buttonPost.addEventListener('click', (e) => {
     e.preventDefault();// para evitar que los datos no aparezcan cuando se refresque
-    // Cargar La informacion
-    /* .then((response) => {
-    response.docs.forEach((doc) => {
-      const { ID, newPost } = doc.data();
-      console.log(ID);
-      const postToWall = wallArea.appendChild(templatePost(ID));
-      const postText = postToWall.querySelector('#postContent');
-      postText.innerHTML = newPost;
-    });
-    }).catch((err) => {
-
-    }); */
 
     // si el textarea está vacío, no guardar algo
     const textarea = divElement.querySelector('#post').value;
+    const deleteOrModifyPost = wallArea.querySelector('#deleteOrModifyPostsWrapper');
+    const deleteOrModifyArea = wallArea.querySelector('#deleteOrModifyArea');
     // fx de firestore
     if (textarea.length > 0) {
       // newPost({ newPost: textarea })
       addDocPost({
         newPost: textarea,
-        ID: getCurrentUser().uid,
+        userID: getCurrentUser().uid,
         date: new Date(),
       }).catch((error) => { console.log('Got an error: ', error); });
     }
+    // if (getCurrentUser().uid === wallArea.querySelector(`#${post.userID}`)) {
+    //   deleteOrModifyPost.style.display = 'block';
+    // } else { deleteOrModifyPost.style.display = 'none'; }
+
     /* buttonPost.reset(); */ // traido del video
   });
-  const callback = (data) => {
-    console.log(data);
-    wallArea.innerHTML = '';
-    data.forEach((post) => {
-      wallArea.appendChild(templatePost(post));
-    });
-  };
-  listPostAll(callback);
-  /*   const postToWall = wallArea.appendChild(templatePost());
-  const postText = postToWall.querySelector('#postContent');
-  postText.innerHTML = textarea; */
-  // firestore.collection('posts').get().then((snapshot) => {
-  //   snapshot.docs.forEach((doc) => doc.data());
-  // });
 
   return divElement;
 };

@@ -3,12 +3,13 @@ const firestore = firebase.firestore(); // desde firebase, voy a llamar algo lla
 firestore.settings({ timestampsInSnapshots: true });
 
 export const addDocPost = (doc) => firestore.collection('posts').add(doc);
+export const setDocPost = (docID, newField) => firestore.collection('posts').doc(docID).update(newField);
 
 export const listPostAll = (callback) => firestore.collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
   const post = [];
   querySnapshot.forEach((doc) => {
-    // console.log(doc.data());
-    post.push(doc.data());
+    // console.log(doc);
+    post.push({ id: doc.id, ...doc.data() });
   });
   callback(post);
   // console.log('Posts: ', post.join(', '));
@@ -20,9 +21,12 @@ export const getPostData = (post) => {
 };
 
 // borrar commentario
-export const deletePostFirestore = (idPost) => {
+export const deletePostFirebase = (idPost) => {
   firestore.collection('posts').doc(idPost).delete();
 };
 
 // obtener info de posts
-export const onGetPosts = (callback) => firestore.collection('posts').onSnapshot(callback);
+export const onGetPosts = () => firestore.collection('posts').get();
+// .then((snapshot) => {
+//   snapshot.docs.forEach((doc) => doc.data());
+// });
