@@ -1,6 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable import/no-named-as-default */
-/* eslint-disable import/named */
 import { getCurrentUser } from '../firebase/firebaseFx.js';
 import templateComment from './comment.js';
 // import { deletePostFirestore } from '../firebase/firestoreFx.js';
@@ -8,8 +5,9 @@ import templateComment from './comment.js';
 // const firestore = firebase.firestore();
 
 export default (data) => {
+  // console.log(ID);
   const postExample = `
-    <article id= postTrial>
+    <article class="postId" id= "${data.ID}">
         <section id= "postHeader">
           <section id="userInfoPost">
             <img class="userPhoto" src="${getCurrentUser().photoUrl} alt="userPhoto"> 
@@ -26,7 +24,7 @@ export default (data) => {
             </ul>
           </section>
         </section><hr>
-        <section id= "postContent">${data.newPost}</section><hr>
+        <section id= "postContent"> ${data.newPost}</section><hr>
         <section id="likeAndCommentSection">
             <article class="likeAndCommentWrapper" id="likeButton">
                 <img class="likeAndComment" src="./images/Like.png"> 
@@ -52,9 +50,9 @@ export default (data) => {
   //   snapshot.docs.forEach((doc) => (doc));
   // });
 
-  const likeButton = postToWall.querySelector('#likeButton');
+  //  const likeButton = postToWall.querySelector('#likeButton');
   const commentButton = postToWall.querySelector('#commentButton');
-  const postTrial = postToWall.querySelector('#postTrial');
+  const postTrial = postToWall.querySelector('.postId');
 
   commentButton.addEventListener('click', () => {
     postTrial.appendChild(templateComment());
@@ -62,8 +60,8 @@ export default (data) => {
 
   const deleteOrModifyPost = postToWall.querySelector('.fa-ellipsis-h');
   const deleteOrModifyArea = postToWall.querySelector('#deleteOrModifyArea');
-  const modifyPost = postToWall.querySelector('#modifyPost');
-  const deletePost = postToWall.querySelector('#deletePost');
+  // const modifyPost = postToWall.querySelector('#modifyPost');
+  // const deletePost = postToWall.querySelector('#deletePost');
 
   deleteOrModifyArea.style.display = 'none';
 
@@ -71,7 +69,7 @@ export default (data) => {
     deleteOrModifyArea.style.display = 'block';
   });
 
-  // postToWall.querySelector(`deleteOrModifyPostsWrapper-${postData.id}`)
+  // postToWall.querySelector(`${postData.id}`)
   //   .addEventListener('click', () => {
   //     deletePost(postData.id);
   //   });

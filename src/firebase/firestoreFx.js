@@ -23,3 +23,6 @@ export const getPostData = (post) => {
 export const deletePostFirestore = (idPost) => {
   firestore.collection('posts').doc(idPost).delete();
 };
+
+// obtener info de posts
+export const onGetPosts = (callback) => firestore.collection('posts').onSnapshot(callback);

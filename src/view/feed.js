@@ -6,7 +6,7 @@
 /* eslint-disable no-unreachable */
 /* eslint-disable no-unused-expressions */
 import { logOut, getCurrentUser, userSessionActive } from '../firebase/firebaseFx.js';
-import templatePost from './commentPOST.js';
+import templatePost from './posts.js';
 // console.log(templatePost());
 import { addDocPost, listPostAll } from '../firebase/firestoreFx.js';
 
@@ -93,7 +93,8 @@ export default () => {
     /* .then((response) => {
     response.docs.forEach((doc) => {
       const { ID, newPost } = doc.data();
-      const postToWall = wallArea.appendChild(templatePost());
+      console.log(ID);
+      const postToWall = wallArea.appendChild(templatePost(ID));
       const postText = postToWall.querySelector('#postContent');
       postText.innerHTML = newPost;
     });
