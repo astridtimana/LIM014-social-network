@@ -20,39 +20,38 @@ export const verificationMail = () => {
     .catch((error) => error);
 };
 
-export const logIn = (email, pass) => firebase.auth().signInWithEmailAndPassword(email, pass);
-
-export const signInWithGoogle = () => {
-  const provider = new firebase.auth.GoogleAuthProvider();
-  return firebase.auth().signInWithPopup(provider)
-    .then((result) => {
-      /* console.log(result); */
-      /** @type {firebase.auth.OAuthCredential} */
-      const credential = result.credential;
-      const token = credential.accessToken; // This gives you a Google Access Token. You can use it to access the Google API.
-      const user = result.user; // The signed-in user info.
-      window.location.hash = '#/feed'; // consumo aquí o en home.js?
-    }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      const email = error.email; // The email of the user's account used.
-      const credential = error.credential; // The firebase.auth.AuthCredential type that was used.
+// Fx que permite el logIn desde cualquier proveedor
+export const logIn = (email, pass) => {
+  firebase.auth().signInWithEmailAndPassword(email, pass)
+    .then((obj) => {
+    // console.log(obj);
+      if (obj.user.emailVerified) {
+        window.location.hash = '#/feed';
+      } else { userIncorrect.innerHTML = 'Verifica tu correo'; }
+    })
+    .catch(() => {
+      userIncorrect.innerHTML = 'Dirección de correo electrónico o contraseña incorrectos.';
     });
 };
 
+// Fx que permite logIn con Google
+export const signInWithGoogle = () => {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  return firebase.auth().signInWithPopup(provider)
+    .then(() => {
+      window.location.hash = '#/feed'; // consumo aquí o en home.js?
+    }).catch((error) => {
+      console.log(error.message);
+    });
+};
 
-// Configura la contraseña de un usuario
-// Para configurar la contraseña de un usuario, puedes usar el método updatePassword. Por ejemplo:
-
+// Fx que resetea el password del usuario
 export const resetPasswordMail = (emailAddress) => {
   const auth = firebase.auth();
-
   auth.sendPasswordResetEmail(emailAddress)
     .then(() => {
-      /* console.log('mail sent'); */
     }).catch((error) => {
       console.log(error);
-      // An error happened.
     });
 };
 
@@ -63,7 +62,7 @@ export const logOut = () => {
 
       window.location.hash = '#/'; // consumo aquí o en feed.js?
     }).catch((error) => {
-      // An error happened.
+      console.log(error);
     });
 };
 

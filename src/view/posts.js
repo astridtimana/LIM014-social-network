@@ -107,7 +107,6 @@ export default (post) => {
   });
 
   // MODIFICAR POST
-
   modifyPost.addEventListener('click', (e) => {
     e.stopPropagation();
     savePost.style.display = 'block';

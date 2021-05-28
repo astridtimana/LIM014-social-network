@@ -19,7 +19,7 @@ import { addDocPost, listPostAll, onGetPosts } from '../firebase/firestoreFx.js'
 // const firestore = firebase.firestore();
 // firestore.settings({ timestampsInSnapshots: true });
 
-export default () => {
+export default (post) => {
   const viewFeed = `
   <header id="feedHeader">
       <nav id="navigatorMenu">
@@ -108,7 +108,7 @@ export default () => {
 
   buttonPost.addEventListener('click', (e) => {
     e.preventDefault();// para evitar que los datos no aparezcan cuando se refresque
-
+    // si el textarea está vacío, no guardar algo
     const textarea = divElement.querySelector('#post').value;
 
     // fx de firestore

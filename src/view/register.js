@@ -111,8 +111,7 @@ export default () => {
           displayName: name,
         });
         verificationMail()
-          .then((message) => {
-            console.log(message);
+          .then(() => {
             alert(`${name} tu usuario ha sido creado, verifica tu correo`);
           });
       })
