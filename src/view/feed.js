@@ -63,10 +63,11 @@ export default () => {
                 <h2 class="user-name profile-name" id="nameUserProfile"></h2>
               </article>
 
-    <div>
+    <form class="formPost">
         <textarea placeholder="¿En qué estás pensando?" id="post"></textarea>
-        <button id="bttPost">Publicar</button>
-    </div>
+        <button id="bttPost" type="submit">Publicar</button>
+    </form>
+    
 
     <div id="wall">
     </div>
@@ -77,22 +78,30 @@ export default () => {
   divElement.setAttribute('class', 'feed');
   divElement.innerHTML = viewFeed;
 
-  userSessionActive();
-
-  const userLogOut = divElement.querySelector('#logOut');
-  userLogOut.addEventListener('click', () => {
+  // funcion temporal log out
+  const buttonPride = divElement.querySelector('#feedLogo');
+  buttonPride.addEventListener('click', () => {
     logOut();
   });
+
+  // const userLogOut = divElement.querySelector('#logOut');
+  // userLogOut.addEventListener('click', () => {
+  //   logOut();
+  // });
+
+  divElement.querySelector('#nameUserProfile').innerHTML = getCurrentUser().name;
 
   // FIRESTORE
   // const docRef = firestore.collection('posts');
   const buttonPost = divElement.querySelector('#bttPost');
   const wallArea = divElement.querySelector('#wall');
 
+  // renderizar posts en wall
   listPostAll((data) => {
     // console.log(data); trae la data del documento con sus fields.
     wallArea.innerHTML = '';
     data.forEach((post) => {
+      // console.log(post);
       wallArea.appendChild(templatePost(post));
     });
   });
@@ -100,24 +109,24 @@ export default () => {
   buttonPost.addEventListener('click', (e) => {
     e.preventDefault();// para evitar que los datos no aparezcan cuando se refresque
 
-    // si el textarea está vacío, no guardar algo
     const textarea = divElement.querySelector('#post').value;
-    const deleteOrModifyPost = wallArea.querySelector('#deleteOrModifyPostsWrapper');
-    const deleteOrModifyArea = wallArea.querySelector('#deleteOrModifyArea');
+
     // fx de firestore
+    // si el textarea está vacío, no guardar algo
     if (textarea.length > 0) {
       // newPost({ newPost: textarea })
       addDocPost({
         newPost: textarea,
         userID: getCurrentUser().uid,
+        userName: getCurrentUser().name,
         date: new Date(),
       }).catch((error) => { console.log('Got an error: ', error); });
     }
+
+    divElement.querySelector('#post').innerHTML = '';
     // if (getCurrentUser().uid === wallArea.querySelector(`#${post.userID}`)) {
     //   deleteOrModifyPost.style.display = 'block';
     // } else { deleteOrModifyPost.style.display = 'none'; }
-
-    /* buttonPost.reset(); */ // traido del video
   });
 
   return divElement;

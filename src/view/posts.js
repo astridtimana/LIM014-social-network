@@ -1,17 +1,19 @@
 import { getCurrentUser } from '../firebase/firebaseFx.js';
 import templateComment from './comment.js';
-import { deletePostFirebase, setDocPost } from '../firebase/firestoreFx.js';
+import {
+  deletePostFirebase, setDocPost, listCommentAll, addDocComment,
+} from '../firebase/firestoreFx.js';
 
 // const firestore = firebase.firestore();
 
 export default (post) => {
-  const postExample = `
+  const postView = `
     <article class="postId" id= "${post.userID}">
         <section id= "postHeader">
           <section id="userInfoPost">
             <img class="userPhoto" src="${post.photoUrl} alt="userPhoto"> 
             <section id="postHeaderWrapper">
-              <article id="userNamePost">${getCurrentUser().name}</article>
+              <article id="userNamePost">${post.userName}</article>
               <p id= "daysAgo">Days ago</p>
             </section>
           </section>
@@ -37,12 +39,17 @@ export default (post) => {
                 <p>Comment counter</p>
             </article>
         </section>
+      <div id="commentContainer">
+        <form class="formComment">
+          <textarea class="comment" required></textarea>
+          <button type="submit">Comentar</button>
+        </form>
+      </div>
     </article> `;
 
   const postToWall = document.createElement('div');
   postToWall.setAttribute('class', 'postToWall');
-  // postToWall.setAttribute('data-id', getPostData(post));
-  postToWall.innerHTML = postExample;
+  postToWall.innerHTML = postView;
 
   const deleteOrModifyPost = postToWall.querySelector('#deleteOrModifyPostsWrapper');
   const deleteOrModifyArea = postToWall.querySelector('#deleteOrModifyArea');
@@ -51,11 +58,35 @@ export default (post) => {
   //  const likeButton = postToWall.querySelector('#likeButton');
   const commentButton = postToWall.querySelector('#commentButton');
   const postContent = postToWall.querySelector('#postContent');
-  const postID = postToWall.querySelector('.postId');
+  const commentContainer = postToWall.querySelector('#commentContainer');
   const savePost = postToWall.querySelector('#savePost');
+  const formComment = postToWall.querySelector('.formComment');
+  // enconder div de comentario
+  commentContainer.classList.add('hidden');
 
-  commentButton.addEventListener('click', () => {
-    postID.appendChild(templateComment());
+  // renderizar comments en CommentContainer
+  listCommentAll((data) => {
+    // console.log(data); trae la data del documento con sus fields.
+    // commentContainer.innerHTML = '';
+    data.forEach((comment) => {
+      commentContainer.appendChild(templateComment(comment));
+    });
+  });
+
+  commentButton.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    commentContainer.classList.toggle('hidden');
+    const textarea = postToWall.querySelector('.commentText').value;
+
+    if (textarea.length > 0) {
+      // newPost({ newPost: textarea })
+      addDocComment({
+        newComment: textarea,
+        userID: getCurrentUser().uid,
+        date: new Date(),
+      }).catch((error) => { console.log('Got an error: ', error); });
+    }
   });
 
   deleteOrModifyArea.style.display = 'none';
@@ -94,6 +125,14 @@ export default (post) => {
       });
     });
   });
+
+  // window.addEventListener('click', (e) => {
+  //   if (e.target !== savePost) {
+  //     postContent.contentEditable = false;
+  //     savePost.style.display = 'none';
+  //     postContent.style.border = 'none';
+  //   }
+  // });
 
   return postToWall;
 };

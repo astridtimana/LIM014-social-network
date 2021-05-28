@@ -103,3 +103,9 @@
     flex-direction: column;
 }
 
+.show{
+       display:block;
+}
+.hidden{
+       display:none;
+}

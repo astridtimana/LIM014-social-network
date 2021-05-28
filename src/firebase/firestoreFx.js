@@ -30,3 +30,15 @@ export const onGetPosts = () => firestore.collection('posts').get();
 // .then((snapshot) => {
 //   snapshot.docs.forEach((doc) => doc.data());
 // });
+
+export const addDocComment = (doc) => firestore.collection('doc').add(doc);
+export const listCommentAll = (callback) => firestore.collection('comments')
+  .orderBy('date', 'desc').onSnapshot((querySnapshot) => {
+    const comment = [];
+    querySnapshot.forEach((doc) => {
+      // console.log(doc);
+      comment.push({ id: doc.id, ...doc.data() });
+    });
+    callback(comment);
+  // console.log('Posts: ', post.join(', '));
+  });

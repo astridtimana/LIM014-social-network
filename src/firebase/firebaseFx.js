@@ -61,7 +61,7 @@ export const logOut = () => {
     .then(() => {
       ('Logging out');
 
-      window.location.hash = '#/home'; // consumo aquí o en feed.js?
+      window.location.hash = '#/'; // consumo aquí o en feed.js?
     }).catch((error) => {
       // An error happened.
     });
@@ -80,21 +80,11 @@ export const getCurrentUser = () => {
       photoUrl: user.photoURL,
       uid: user.uid, 
     };
-    document.querySelector('#nameUserProfile');
   }
   /* console.log(dataUser); */
   return dataUser;
 };
 
 // es un método observador: detecta al usuario logueado
-export const userSessionActive = () => firebase.auth().onAuthStateChanged((user) => {
-  let dataUser = '';
-  if (user != null) {
-    dataUser = {
-      name: user.displayName,
-      photoUrl: user.photoURL,
-      uid: user.uid, 
-    };
-    document.querySelector('#nameUserProfile').innerHTML = user.displayName;
-  }
-});
+export const userSessionActive = (callback) => firebase.auth().onAuthStateChanged(callback); 
+
