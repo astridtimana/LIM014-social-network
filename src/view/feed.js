@@ -19,7 +19,7 @@ import { addDocPost, listPostAll, onGetPosts } from '../firebase/firestoreFx.js'
 // const firestore = firebase.firestore();
 // firestore.settings({ timestampsInSnapshots: true });
 
-export default () => {
+export default (post) => {
   const viewFeed = `
   <header id="feedHeader">
       <nav id="navigatorMenu">
@@ -77,7 +77,6 @@ export default () => {
   divElement.setAttribute('class', 'feed');
   divElement.innerHTML = viewFeed;
 
-  userSessionActive();
 
   const userLogOut = divElement.querySelector('#logOut');
   userLogOut.addEventListener('click', () => {
@@ -99,7 +98,6 @@ export default () => {
 
   buttonPost.addEventListener('click', (e) => {
     e.preventDefault();// para evitar que los datos no aparezcan cuando se refresque
-
     // si el textarea está vacío, no guardar algo
     const textarea = divElement.querySelector('#post').value;
     const deleteOrModifyPost = wallArea.querySelector('#deleteOrModifyPostsWrapper');
@@ -109,7 +107,8 @@ export default () => {
       // newPost({ newPost: textarea })
       addDocPost({
         newPost: textarea,
-        userID: getCurrentUser().uid,
+        /* userID: getCurrentUser().uid, */
+        userID: userSessionActive().uid,
         date: new Date(),
       }).catch((error) => { console.log('Got an error: ', error); });
     }
