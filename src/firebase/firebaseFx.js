@@ -20,43 +20,47 @@ export const verificationMail = () => {
     .catch((error) => error);
 };
 
-export const logIn = (email, pass) => firebase.auth().signInWithEmailAndPassword(email, pass);
+// Fx que permite el logIn desde cualquier proveedor
+export const logIn = (email, pass) => {
+  firebase.auth().signInWithEmailAndPassword(email, pass)
+    .then((obj) => {
+    // console.log(obj);
+      if (obj.user.emailVerified) {
+        window.location.hash = '#/feed';
+      } else { userIncorrect.innerHTML = 'Verifica tu correo'; }
+    })
+    .catch(() => {
+      userIncorrect.innerHTML = 'Dirección de correo electrónico o contraseña incorrectos.';
+    });
+};
 
+// Fx que permite logIn con Google
 export const signInWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   return firebase.auth().signInWithPopup(provider)
     .then(() => {
-      // /* console.log(result); */
       window.location.hash = '#/feed'; // consumo aquí o en home.js?
     }).catch((error) => {
       console.log(error.message);
     });
 };
 
-
-// Configura la contraseña de un usuario
-// Para configurar la contraseña de un usuario, puedes usar el método updatePassword. Por ejemplo:
-
+// Fx que resetea el password del usuario
 export const resetPasswordMail = (emailAddress) => {
   const auth = firebase.auth();
-
   auth.sendPasswordResetEmail(emailAddress)
     .then(() => {
-      /* console.log('mail sent'); */
     }).catch((error) => {
       console.log(error);
-      // An error happened.
     });
 };
 
 export const logOut = () => {
   firebase.auth().signOut()
     .then(() => {
-      ('Logging out');
-
-      window.location.hash = '#/home'; // consumo aquí o en feed.js?
+      window.location.hash = '#/home';
     }).catch((error) => {
-      // An error happened.
+      console.log(error);
     });
 };
 
