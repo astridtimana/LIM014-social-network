@@ -20,10 +20,4 @@ const viewError = () => {
   return articleElement;
 };
 
-/* export default () => {
-  const articleElement = document.createElement('article');
-  articleElement.innerHTML = viewDifferent;
-  return divElement;
-}; */
-
 export { viewError };
