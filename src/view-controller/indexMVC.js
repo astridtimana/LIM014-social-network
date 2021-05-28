@@ -9,7 +9,7 @@ const changeView = (route) => {
   container.innerHTML = '';
   userSessionActive((user) => {
     if (user) {
-      console.log('logged in');
+      // console.log('logged in');
       switch (route) {
         case '#/home': { return container.appendChild(components.feed()); }
         case '': { return container.appendChild(components.feed()); }
@@ -18,7 +18,7 @@ const changeView = (route) => {
         default: { return container.appendChild(components.different()); }
       }
     } else {
-      console.log('logged out');
+      // console.log('logged out');
       switch (route) {
         case '#/home': { return container.appendChild(components.home()); }
         case '#/register': { return container.appendChild(components.register()); }
