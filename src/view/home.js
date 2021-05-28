@@ -48,8 +48,6 @@ export default () => {
           </article>
       </article>
 
-      <article id="userIncorrect">
-      </article>
     </section>
 
     `;
@@ -60,7 +58,6 @@ export default () => {
   const toLogIn = sectionElement.querySelector('.login');
   const emailInput = sectionElement.querySelector('#email');
   const errorEmailMessage = sectionElement.querySelector('#errorMailMessage');
-  const userIncorrect = sectionElement.querySelector('#userIncorrect');
   const googleButton = sectionElement.querySelector('.googleButton');
   const forgotPassword = sectionElement.querySelector('#forgotPassword');
 
