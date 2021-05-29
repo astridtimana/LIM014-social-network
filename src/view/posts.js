@@ -29,16 +29,16 @@ export default (post) => {
           <p id= "postContent" > ${post.newPost}</p><hr>
           <button id="savePost">Guardar</button>
         </section>
+
         <section id="likeAndCommentSection">
-            <article class="likeAndCommentWrapper" id="likeButton">
-                <img class="likeAndComment" src="./images/Like.png"> 
-                <p>Heart counter</p>
-            </article>
-            <article class="likeAndCommentWrapper" id="commentButton">
-                <img class="likeAndComment" src="./images/Comment.png"> 
-                <p>Comment counter</p>
-            </article>
+           <i class="icon-heart"></i>  
+
+          <article class="likeAndCommentWrapper" id="commentButton">
+              <img class="likeAndComment" src="./images/Comment.png"> 
+              <p>Comment counter</p>
+          </article>
         </section>
+        
       <div id="commentContainer">
         <form class="formComment">
           <textarea class="comment" required></textarea>
@@ -55,8 +55,7 @@ export default (post) => {
   const deleteOrModifyArea = postToWall.querySelector('#deleteOrModifyArea');
   const modifyPost = postToWall.querySelector('#modifyPost');
   const deletePost = postToWall.querySelector('#deletePost');
-  //  const likeButton = postToWall.querySelector('#likeButton');
-  const commentButton = postToWall.querySelector('#commentButton');
+
   const postContent = postToWall.querySelector('#postContent');
   const commentContainer = postToWall.querySelector('#commentContainer');
   const savePost = postToWall.querySelector('#savePost');
@@ -73,6 +72,14 @@ export default (post) => {
     });
   });
 
+  // Botón LIKE
+  const likeButton = postToWall.querySelector('.icon-heart');
+  likeButton.addEventListener('click', () => {
+    likeButton.classList.toggle('icon-heart--clicked');
+  });
+
+  // Botón COMENTAR POST
+  const commentButton = postToWall.querySelector('#commentButton');
   commentButton.addEventListener('click', (e) => {
     e.preventDefault();
 
