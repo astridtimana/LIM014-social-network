@@ -20,39 +20,28 @@ import { addDocPost, listPostAll } from '../firebase/firestoreFx.js';
 export default () => {
   const viewFeed = `
   <header id="feedHeader">
-      <nav id="navigatorMenu">
-          <img id="feedLogo" src="./images/logomenu.png">
-          <section class="search" id="search">
-              <img id="searchIcon" src="./images/searchIcon.png">
-              <input id="searchBar" type="text" placeholder="Encuentra a tus amigos..." name="search">
-          </section>
-          <label for="toggle">
-            <i class="fas fa-bars" id="signOne"></i>
-            <i class="fas fa-times" id="signTwo"></i>
-          </label>
+      <nav class="navigatorMenuFeed">
+          
+          <img id="feedPrideLogo" src="./images/logomenu.png"> 
+          <label class="toggleFeed" for="toggle"><i class="fas fa-bars"></i></label>
           <input type="checkbox" id="toggle" />
-          <section class="nav">
-            <article class="menu">
-                <a href="#" class="active"> Inicio<img class="configIcon" id="favoriteIcon" src="./images/home.svg"></a>
-                <a href="#" > Mi Perfil<img class="configIcon" id="profileIcon" src="./images/profile.png"></a>
-                <a href="#"> Configuración <img class="configIcon" id="settingsIcon" src="./images/settings.png"></a>
-                <a href="#"> Adicionales <img class="configIcon" id="favoriteIcon" src="./images/favorite.png"></a>
-                <a id="logOut">Cerrar sesión <img class="configIcon" id="logOutIcon" src="./images/logout.png"></a>
+            <article class="menuFeed">
+                <a href="#">Inicio  <i class="fas fa-home"></i></a>
+                <a href="#" > Mi Perfil <i class="fas fa-user-alt"></i></a>
+                <a href="#" id="logOut">Cerrar sesión <i class="fas fa-sign-out-alt"></i></a>
             </article>
-      
-          </section>
       </nav>      
   
   </header>
-            <section id="activitiesArea">
-                <h3 id="activitiesTitle"> ACTIVIDADES </h3>
+      <section class="activitiesFeed">
+           <section id="activitiesArea">
+                <h3 id="activitiesTitle"> ¡Mira las actividades! </h3>
                 <section class="activities">
                 </section>
             </section>
 
             <section id="aditionalsArea">
-                <section class="aditionals">
-                </section>
+                <section class="aditionals"></section>
             </section>  
 
   
@@ -61,13 +50,18 @@ export default () => {
                 <h2 class="user-name profile-name" id="nameUserProfile"></h2>
               </article>
 
-    <div>
-        <textarea placeholder="¿En qué estás pensando?" id="post"></textarea>
+    <section>
+        <textarea placeholder="¿En qué estás pensando?" id="post" ></textarea>
         <button id="bttPost">Publicar</button>
-    </div>
+    </section>
 
-    <div id="wall">
-    </div>
+    <section id="wall"></section>
+    
+    
+
+    <aside>
+    </aside>
+    </section>
 
     `;
 

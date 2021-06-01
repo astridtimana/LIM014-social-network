@@ -31,7 +31,7 @@ export default (data) => {
                 <p>Heart counter</p>
             </article>
             <article class="likeAndCommentWrapper" id="commentButton">
-                <img class="likeAndComment" src="./images/Comment.png"> 
+                <i class="far fa-comment"></i>
                 <p>Comment counter</p>
             </article>
         </section>

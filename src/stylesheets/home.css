@@ -6,14 +6,20 @@
     box-sizing: border-box;
     text-decoration: none;
     list-style: none;
-    display: inline-grid;
     font-family: 'Raleway', sans-serif;
-    row-gap:0;
+    
 }
 
 /*-------------------- PARA LA PÁGINA DE INICIO ----------------------- */
-
-#form {
+.home {
+    
+    grid-template-columns: repeat(auto-fit, minmax(120px, 400px));
+    justify-content: center;
+    margin: 35% 15%;
+    display:inline-grid;
+    color: #333333;
+}
+section #form {
     display: inline-grid;
     row-gap: 1.5rem;
 }
@@ -21,17 +27,21 @@
 head{
     display: none;
 }
+.formContainerHome {
+    display:inline-grid;
+}
 
-.forDesktop {
+section .forDesktopHome {
     display: none;
 }
-input, button {
+#email, #password, #goggleButton {
     height: 3rem;
     border-radius: 10px;
     justify-content: center;
     padding: 3%;
 }
-input{
+
+#email, #password{
     background-color: rgba(0, 0, 0, 0.1);
     border: rgba(255, 255, 255, 0);
 }
@@ -54,27 +64,34 @@ input{
     margin-right: 10px;
     justify-content: center;
 }
-.home {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 400px));
-    justify-content: center;
-    margin: 35% 15%;
-}
+
 .smallText{
     font-size:0.8rem ;
+    color: #333333;
 }
-h1{
+ .letterPride{
     font-size : 3rem;
     justify-content: center;
     font-family: 'Raleway', sans-serif;
+    color: #333333;
 }
-.login{
+
+.login  {
     font-family: 'Raleway', sans-serif;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 2rem;
+    margin-top: 5%;
     margin-bottom: 5%;
+    
+    
 }
+
+#enterHome {
+    color: #333333;
+}
+
 #arrowImg, #arrowImgRegister {
     width: 55px;
 }
@@ -117,20 +134,33 @@ footer{
 /* .formContainer{
     display: none;
 } */
-
-
-#signUp {
-    display: none;
+.textHome {
+    margin: 3%;
+    color: #333333;
 }
+
+/* #signUp {
+    display: none;
+} */
 @media only screen and (min-width: 700px) {
-    *{
+    /* *{
         row-gap: 0.8rem;
+        display: inline-grid;
+    
+    } */
+    .home {
+        /* row-gap: 0.8rem; */
+        /* display: inline-grid; */
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin: 5%;
     }
     head {
         margin-top: -1%; 
     }
     #lgtbiqImage {
-        width:500px;
+        width:600px;
         justify-content: left;
     }
     .leftWrapper{
@@ -140,25 +170,28 @@ footer{
     }
     #homePhrase{
         display: block;
+        flex-direction: column;
         font-family: 'Raleway', sans-serif;
         font-size:2rem;
+        color: #333333;
     }
     #logoContainer{
         margin-bottom: 3%;
         justify-content: left;
     }
-    .home {
-        justify-content: space-around;
-        margin: 5%;
+    
+
+    #enterHome {
+        color: white;
     }
     /* #form{
         display: none;
     } */
-    .forDesktop {
+    section .forDesktopHome {
         display: block;
     }
 
-    #form{
+    section #form{
         display: block;
         display:flex;
         flex-direction: column;
@@ -168,13 +201,14 @@ footer{
         display: none;
     }
     #welcomeMessage{
-        font-size: 1.3rem;
+        font-size: 1.9rem;
     }
     #loginMessage{
         font-size: 1.5rem;
     }
-    .text{
+    .textHome {
         margin-bottom: 1%;
+        color: #333333;
     }
     .login {
         border-radius: 5px;
@@ -184,10 +218,14 @@ footer{
         background-color: rgba(255, 204, 0, 1);
         border: rgba(255, 255, 255, 0);
         box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
-        padding: 3%;
+        padding: 4%;
         display: flex;
         justify-content: center;
-    }
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+}
     .googleButton{
         border-radius: 5px;
         padding: 3%;
@@ -197,26 +235,28 @@ footer{
         box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
         font-size: 1rem;
     }
-    .containerRegister{
+    /* .containerRegister{
         display:flex;
         padding: 5px 10px;
         flex-direction: row;
         justify-content: space-around;
         font-size: 1rem;
-    }
-    .formContainer{
+    } */
+    section .formContainerHome{
+        row-gap: 0.8rem;
+        display: inline-grid;
         border: rgba(221, 217, 217) solid;
-        border-width: 2px;
+        border-width: 3px;
         display:block;
         display:flex;
         flex-direction: column;
-        padding: 20px 50px;
+        padding: 30px 40px;
     }
-    input {
+    #email, #password {
         height: 2.5rem;
         border-radius: 5px;
         background-color: white;
-        border: rgba(221, 217, 217) solid;
+        border: rgba(221, 217, 217, 0.842) solid;
         border-width: 1.5px;
     }
     .googleLogo{
@@ -224,8 +264,8 @@ footer{
         margin-right: 10px;
         margin-top: 0.5%; 
     }
-    #register{
+    /* #register{
         display: none;
-    }
+    } */
 
 }

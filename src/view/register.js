@@ -26,10 +26,6 @@ export default () => {
             </header>
             
             <p id="textRegister">Regístrate para ver fotos y videos de tus amigos.</p>
-            
-            <button class="googleButton" id="buttonRegisterGoogleDesktop">
-              <img src="./images/googleIcon.png" class="googleLogo">Iniciar sesión con Google
-            </button>
           </article>  
       
             <input type="name" placeholder="Nombre y apellido" id="nameRegister">
@@ -39,7 +35,7 @@ export default () => {
             <input type="password" placeholder="Contraseña" id="passwordRegister"> 
             <p id = "errorPasswordUser"></p> 
             <button id="signUp"> Regístrate</button>
-            <p id="textConditions">Al registrarte, aceptas nuestras <a href="">Condiciones</a>, la <a href="">Política de datos</a> y la <a href="">Política de cookies</a>.</p>
+            <p id="textConditions">Al registrarte, aceptas nuestras <a href="">Condiciones</a>,<a href="">Política de datos</a>,<a href="">Política de cookies</a>.</p>
       </section>
           
           <section id="buttonRegister">
@@ -48,7 +44,7 @@ export default () => {
           </section>
           
           <button class="googleButton" id="buttonRegisterGoogle">
-            <img src="./images/googleIcon.png" class="googleLogo">Ingresar con Google
+            <img src="./images/googleIcon.png" class="googleLogoRegister">Regístrate con Google
           </button>
 
           <article class="containerRegister">
@@ -72,7 +68,7 @@ export default () => {
   const errorNameUser = divElement.querySelector('#errorNameUser');
   const errorMailUser = divElement.querySelector('#errorMailUser');
   const errorPasswordUser = divElement.querySelector('#errorPasswordUser');
-  const buttonRegisterGoogleDesktop = divElement.querySelector('#buttonRegisterGoogleDesktop');
+  // const buttonRegisterGoogleDesktop = divElement.querySelector('#buttonRegisterGoogleDesktop');
   const buttonRegisterGoogle = divElement.querySelector('#buttonRegisterGoogle');
   const validateLetters = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;
 
@@ -125,9 +121,9 @@ export default () => {
       });
   };
 
-  buttonRegisterGoogleDesktop.addEventListener('click', () => {
-    signInWithGoogle();
-  });
+  // buttonRegisterGoogleDesktop.addEventListener('click', () => {
+  //   signInWithGoogle();
+  // });
   buttonRegisterGoogle.addEventListener('click', () => {
     signInWithGoogle();
   });
