@@ -2,27 +2,65 @@
 const firestore = firebase.firestore(); // desde firebase, voy a llamar algo llamado firestore
 firestore.settings({ timestampsInSnapshots: true });
 
+// ----- Añadir lista de fields en un documento de la colección posts -----
 export const addDocPost = (doc) => firestore.collection('posts').add(doc);
 
+// Kathy está trabajando aquí
+export const updateLike = (idpost, counterLikes) => firestore.collection('posts').doc(idpost).update({
+  counterLikes,
+});
+
+// ----- Añadir lista de fields en un documento de la colección comments -----
+export const addDocComment = (docID, comment) => firestore.collection('posts').doc(docID).collection('comment').add(comment);
+
+// ----- Agregar/actualizar field en un documento de la colección posts -----
+export const updateDocPost = (docID, newField) => firestore.collection('posts').doc(docID).update(newField);
+
+// ----- Agregar/actualizar field en un documento de la colección posts -----
+export const updateDocComment = (postID, commentID, newField) => firestore.collection('posts').doc(postID)
+  .collection('comment').doc(commentID)
+  .update(newField);
+
+// ----- Función para almacenar información sobre posts de forma descendente ----
 export const listPostAll = (callback) => firestore.collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
   const post = [];
   querySnapshot.forEach((doc) => {
-    // console.log(doc.data());
-    post.push(doc.data());
+    // console.log(doc);
+    post.push({ id: doc.id, ...doc.data() });
   });
   callback(post);
   // console.log('Posts: ', post.join(', '));
 });
+
+export const listCommentAll = (idPost, callback) => firestore.collection(`posts/${idPost}/comment`)
+  .orderBy('date', 'desc').onSnapshot((querySnapshot) => {
+    const comment = [];
+    querySnapshot.forEach((doc) => {
+      // console.log(doc);
+      comment.push({ id: doc.id, ...doc.data() });
+    });
+    callback(comment);
+  // console.log('Posts: ', post.join(', '));
+  });
 
 // obtener información de posts
 export const getPostData = (post) => {
   firestore.collection('posts').doc(post).get();
 };
 
-// borrar commentario
-export const deletePostFirestore = (idPost) => {
+// borrar POST
+export const deletePostFirebase = (idPost) => {
   firestore.collection('posts').doc(idPost).delete();
 };
 
+// borrar COMENTARIO
+export const deleteCommentFirebase = (idPost, idComment) => {
+  firestore.collection('posts').doc(idPost).collection('comment').doc(idComment)
+    .delete();
+};
+
 // obtener info de posts
-export const onGetPosts = (callback) => firestore.collection('posts').onSnapshot(callback);
+export const onGetPosts = () => firestore.collection('posts').get();
+// .then((snapshot) => {
+//   snapshot.docs.forEach((doc) => doc.data());
+// });

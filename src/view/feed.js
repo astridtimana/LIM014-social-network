@@ -5,10 +5,12 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-unreachable */
 /* eslint-disable no-unused-expressions */
-import { logOut, getCurrentUser, userSessionActive } from '../firebase/firebaseFx.js';
+import {
+  logOut, getCurrentUser, userSessionActive,
+} from '../firebase/firebaseFx.js';
 import templatePost from './posts.js';
 // console.log(templatePost());
-import { addDocPost, listPostAll } from '../firebase/firestoreFx.js';
+import { addDocPost, listPostAll, onGetPosts } from '../firebase/firestoreFx.js';
 
 // const firebase = require("firebase");
 // // Required for side-effects
@@ -17,7 +19,7 @@ import { addDocPost, listPostAll } from '../firebase/firestoreFx.js';
 // const firestore = firebase.firestore();
 // firestore.settings({ timestampsInSnapshots: true });
 
-export default () => {
+export default (post) => {
   const viewFeed = `
   <header id="feedHeader">
       <nav class="navigatorMenuFeed">
@@ -52,7 +54,7 @@ export default () => {
 
     <section>
         <textarea placeholder="¿En qué estás pensando?" id="post" ></textarea>
-        <button id="bttPost">Publicar</button>
+        <button id="bttPost" type="submit">Publicar</button>
     </section>
 
     <section id="wall"></section>
@@ -69,60 +71,56 @@ export default () => {
   divElement.setAttribute('class', 'feed');
   divElement.innerHTML = viewFeed;
 
-  userSessionActive();
-
-  const userLogOut = divElement.querySelector('#logOut');
-  userLogOut.addEventListener('click', () => {
+  // funcion temporal log out
+  const buttonPride = divElement.querySelector('#feedLogo');
+  buttonPride.addEventListener('click', () => {
     logOut();
   });
+
+  // const userLogOut = divElement.querySelector('#logOut');
+  // userLogOut.addEventListener('click', () => {
+  //   logOut();
+  // });
+
+  // agregar nombre de usuario al loguearse
+  divElement.querySelector('#nameUserProfile').innerHTML = getCurrentUser().name;
 
   // FIRESTORE
   // const docRef = firestore.collection('posts');
   const buttonPost = divElement.querySelector('#bttPost');
   const wallArea = divElement.querySelector('#wall');
 
+  // renderizar posts en wall
+  listPostAll((data) => {
+    // console.log(data); trae la data del documento con sus fields.
+    wallArea.innerHTML = '';
+    data.forEach((post) => {
+      // console.log(post);
+      wallArea.appendChild(templatePost(post));
+    });
+  });
+
   buttonPost.addEventListener('click', (e) => {
     e.preventDefault();// para evitar que los datos no aparezcan cuando se refresque
-    // Cargar La informacion
-    /* .then((response) => {
-    response.docs.forEach((doc) => {
-      const { ID, newPost } = doc.data();
-      console.log(ID);
-      const postToWall = wallArea.appendChild(templatePost(ID));
-      const postText = postToWall.querySelector('#postContent');
-      postText.innerHTML = newPost;
-    });
-    }).catch((err) => {
-
-    }); */
-
     // si el textarea está vacío, no guardar algo
     const textarea = divElement.querySelector('#post').value;
+
     // fx de firestore
+    // si el textarea está vacío, no guardar algo
     if (textarea.length > 0) {
       // newPost({ newPost: textarea })
       addDocPost({
         newPost: textarea,
-        ID: getCurrentUser().uid,
-        date: new Date(),
+        userID: getCurrentUser().uid,
+        userName: getCurrentUser().name,
+        date: new Date().toLocaleString(),
+        counterLikes: 1, // Kathy está trabajando aquí
       }).catch((error) => { console.log('Got an error: ', error); });
     }
-    /* buttonPost.reset(); */ // traido del video
+    // if (getCurrentUser().uid === wallArea.querySelector(`#${post.userID}`)) {
+    //   deleteOrModifyPost.style.display = 'block';
+    // } else { deleteOrModifyPost.style.display = 'none'; }
   });
-  const callback = (data) => {
-    console.log(data);
-    wallArea.innerHTML = '';
-    data.forEach((post) => {
-      wallArea.appendChild(templatePost(post));
-    });
-  };
-  listPostAll(callback);
-  /*   const postToWall = wallArea.appendChild(templatePost());
-  const postText = postToWall.querySelector('#postContent');
-  postText.innerHTML = textarea; */
-  // firestore.collection('posts').get().then((snapshot) => {
-  //   snapshot.docs.forEach((doc) => doc.data());
-  // });
 
   return divElement;
 };

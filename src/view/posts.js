@@ -1,22 +1,26 @@
+/* eslint-disable no-console */
+/* eslint-disable no-const-assign */
+/* eslint-disable no-plusplus */
 import { getCurrentUser } from '../firebase/firebaseFx.js';
 import templateComment from './comment.js';
-// import { deletePostFirestore } from '../firebase/firestoreFx.js';
+import {
+  updateLike, deletePostFirebase, updateDocPost, listCommentAll, addDocComment,
+} from '../firebase/firestoreFx.js';
 
 // const firestore = firebase.firestore();
 
-export default (data) => {
-  // console.log(ID);
-  const postExample = `
-    <article class="postId" id= "${data.ID}">
+export default (post) => {
+  const postView = `
+    <article class="postId" id= "${post.userID}">
         <section id= "postHeader">
           <section id="userInfoPost">
-            <img class="userPhoto" src="${getCurrentUser().photoUrl} alt="userPhoto"> 
+            <img class="userPhoto" src="${post.photoUrl} alt="userPhoto"> 
             <section id="postHeaderWrapper">
-              <article id="userNamePost">${getCurrentUser().name}</article>
-              <p id= "daysAgo">Days ago</p>
+              <article id="userNamePost">${post.userName}</article>
+              <p id= "daysAgo">${post.date}</p>
             </section>
           </section>
-          <section id= "deleteOrModifyPostsWrapper">
+          <section id= "deleteOrModifyPostsWrapper" class="${post.userID === getCurrentUser().uid ? 'show' : 'hide'}"> 
             <i class="fas fa-ellipsis-h"></i>
             <ul id="deleteOrModifyArea">
               <p id="modifyPost">Modificar Post</p>
@@ -24,63 +28,134 @@ export default (data) => {
             </ul>
           </section>
         </section><hr>
-        <section id= "postContent"> ${data.newPost}</section><hr>
+        <section id= "postContent"> ${post.newPost}</section><hr>
+        <button id="savePost">Guardar</button>
         <section id="likeAndCommentSection">
-            <article class="likeAndCommentWrapper" id="likeButton">
-                <img class="likeAndComment" src="./images/Like.png"> 
-                <p>Heart counter</p>
+           <article class="likeAndCommentWrapper" id="likeButton">
+              <i class="icon-heart"></i>  
+              <p class="numberLikes">0</p>
             </article>
+
             <article class="likeAndCommentWrapper" id="commentButton">
                 <i class="far fa-comment"></i>
                 <p>Comment counter</p>
             </article>
         </section>
+
+              
+
+      <div id="commentContainer">
+        <form class="formComment">
+          <textarea id="commentText-${post.id}" required></textarea>
+          <button type="submit" id="sendComment-${post.id}">Comentar</button>
+        </form>
+      </div>
+      <div id="commentWall">
+      </div>
     </article> `;
 
   const postToWall = document.createElement('div');
-  postToWall.setAttribute('class', 'postToWall');
-  // postToWall.setAttribute('data-id', getPostData(post));
-  postToWall.innerHTML = postExample;
+  postToWall.setAttribute('class', 'commentOnPost');
+  postToWall.innerHTML = postView;
 
-  // const postToWall = document.createElement('div');
-  // postToWall.setAttribute('class', 'postToWall');
-  // postToWall.innerHTML = postExample;
+  const deleteOrModifyPost = postToWall.querySelector('#deleteOrModifyPostsWrapper');
+  const deleteOrModifyArea = postToWall.querySelector('#deleteOrModifyArea');
+  const modifyPost = postToWall.querySelector('#modifyPost');
+  const deletePost = postToWall.querySelector('#deletePost');
 
-  // firestore.collection('posts').get().then((snapshot) => {
-  //   snapshot.docs.forEach((doc) => (doc));
-  // });
+  const postContent = postToWall.querySelector('#postContent');
+  const commentContainer = postToWall.querySelector('#commentContainer');
+  const savePost = postToWall.querySelector('#savePost');
+  const commentWall = postToWall.querySelector('#commentWall');
+  // const formComment = postToWall.querySelector('.formComment');
+  const commentOnPost = postToWall.querySelector(`#sendComment-${post.id}`);
 
-  //  const likeButton = postToWall.querySelector('#likeButton');
-  const commentButton = postToWall.querySelector('#commentButton');
-  const postTrial = postToWall.querySelector('.postId');
+  // enconder div de comentario
+  commentContainer.classList.add('hidden');
 
-  commentButton.addEventListener('click', () => {
-    postTrial.appendChild(templateComment());
+  // renderizar comments en CommentContainer
+  listCommentAll(post.id, (data) => {
+    commentWall.innerHTML = '';
+    data.forEach((comment) => {
+      commentWall.appendChild(templateComment(comment, post.id));
+    });
+    return commentWall;
   });
 
-  const deleteOrModifyPost = postToWall.querySelector('.fa-ellipsis-h');
-  const deleteOrModifyArea = postToWall.querySelector('#deleteOrModifyArea');
-  // const modifyPost = postToWall.querySelector('#modifyPost');
-  // const deletePost = postToWall.querySelector('#deletePost');
+  // Botón LIKE
+  const numberLikes = postToWall.querySelector('.numberLikes');
+  const likeButton = postToWall.querySelector('.icon-heart');
+  likeButton.addEventListener('click', (elem, doc) => {
+    likeButton.classList.toggle('icon-heart-2');
+    const contador = elem.counterLikes;
+    if (!contador.includes(doc.userID)) {
+      likeButton.classList.toggle('icon-heart-2');
+      contador.push(doc.userID);
+      updateLike(contador);
+    } else if (contador.includes(doc.userID)) {
+      contador = contador.filter((i) => i !== doc.userID);
+      updateLike(contador);
+    }
+    numberLikes.innerHTML = doc.counterLikes;
+  });
+
+  // Botón COMENTAR POST
+  const commentButton = postToWall.querySelector('#commentButton');
+  commentButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    commentContainer.classList.toggle('hidden');
+  });
+
+  commentOnPost.addEventListener('click', (e) => {
+    const textarea = postToWall.querySelector(`#commentText-${post.id}`).value;
+    e.preventDefault();
+    if (textarea.length > 0) {
+      addDocComment(post.id, {
+        newComment: textarea,
+        userID: getCurrentUser().uid,
+        date: new Date().toLocaleDateString(),
+      }).catch((error) => { console.log('Got an error: ', error); });
+    }
+  });
 
   deleteOrModifyArea.style.display = 'none';
+  savePost.style.display = 'none';
 
   deleteOrModifyPost.addEventListener('click', () => {
     deleteOrModifyArea.style.display = 'block';
   });
 
-  // postToWall.querySelector(`${postData.id}`)
-  //   .addEventListener('click', () => {
-  //     deletePost(postData.id);
-  //   });
+  // ELIMINAR POST
+  deletePost.addEventListener('click', () => {
+    deletePostFirebase(post.id);
+  });
 
-  //   modifyPost.addEventListener('click', (e) => {
-  //     e.stopPropagation();
-  //     const id = e.target.parentElement.getAttribute('data-id');
-  //   });
-  //   deletePost.addEventListener('click', () => {
+  // MODIFICAR POST
+  modifyPost.addEventListener('click', (e) => {
+    e.stopPropagation();
+    savePost.style.display = 'block';
+    postContent.contentEditable = true;
+    postContent.style.border = '#FFCC00 solid';
+    // console.log(e);
+    savePost.addEventListener('click', () => {
+      postContent.contentEditable = false;
+      deleteOrModifyArea.style.display = 'none';
+      savePost.style.display = 'none';
+      postContent.style.border = 'none';
+      // console.log(postContent);
+      updateDocPost(post.id, {
+        newPost: postContent.innerHTML,
+      });
+    });
+  });
 
-  //   });
+  // window.addEventListener('click', (e) => {
+  //   if (e.target !== savePost) {
+  //     postContent.contentEditable = false;
+  //     savePost.style.display = 'none';
+  //     postContent.style.border = 'none';
+  //   }
+  // });
 
   return postToWall;
 };

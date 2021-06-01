@@ -5,9 +5,9 @@ import { logIn, signInWithGoogle, resetPasswordMail } from '../firebase/firebase
 export default () => {
   const viewHome = `
     <section class="leftWrapper">
-      <section id="prideImage">
-        <img id="lgtbiqImage" src="./images/lgtbiq.png">
-      </section>
+          <section id="prideImage">
+            <img id="lgtbiqImage" src="./images/lgtbiq.png">
+          </section>
       <header>
       <article id="logoContainer">
         <img class="logo" src="./images/colorwheel.png"><h1 class="letterPride"> PRIDE </h1>
@@ -42,6 +42,10 @@ export default () => {
         <p>¿No tienes una cuenta?</p>
         <a href="#/register">Regístrate</a>
       </article>
+      
+      <p id="errorMessage">
+          </p>
+
     </article>
       <article id="userIncorrect">
       </article>
@@ -55,7 +59,6 @@ export default () => {
   const toLogIn = sectionElement.querySelector('.login');
   const emailInput = sectionElement.querySelector('#email');
   const errorEmailMessage = sectionElement.querySelector('#errorMailMessage');
-  const userIncorrect = sectionElement.querySelector('#userIncorrect');
   const googleButton = sectionElement.querySelector('.googleButton');
   const forgotPassword = sectionElement.querySelector('#forgotPassword');
 
@@ -75,20 +78,20 @@ export default () => {
     resetPasswordMail(emailInput.value);
   });
 
+  /* const userIncorrect = sectionElement.querySelector('#errorMessage'); */
   toLogIn.addEventListener('click', () => {
     const email = document.getElementById('email').value;
     const pass = document.getElementById('password').value;
-    // console.log(`email=${email} pass= ${pass}`);
-    logIn(email, pass)
-      .then((obj) => {
-        // console.log(obj);
-        if (obj.user.emailVerified) {
-          window.location.hash = '#/feed';
-        } else { userIncorrect.innerHTML = 'Verifica tu correo'; }
-      })
-      .catch(() => {
-        userIncorrect.innerHTML = 'Dirección de correo electrónico o contraseña incorrectos.';
-      });
+    logIn(email, pass);
+    // .then((obj) => {
+    //   console.log(obj);
+    //   if (obj.user.emailVerified) {
+    //     window.location.hash = '#/feed';
+    //   } else { userIncorrect.innerHTML = 'Verifica tu correo'; }
+    // })
+    // .catch(() => {
+    //   userIncorrect.innerHTML = 'Dirección de correo electrónico o contraseña incorrectos.';
+    // });
   });
 
   return sectionElement;
