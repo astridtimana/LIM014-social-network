@@ -1,7 +1,9 @@
+/* eslint-disable no-const-assign */
+/* eslint-disable no-plusplus */
 import { getCurrentUser } from '../firebase/firebaseFx.js';
 import templateComment from './comment.js';
 import {
-  deletePostFirebase, setDocPost, listCommentAll, addDocComment,
+  updateLike, deletePostFirebase, updateDocPost, listCommentAll, addDocComment,
 } from '../firebase/firestoreFx.js';
 
 // const firestore = firebase.firestore();
@@ -30,15 +32,17 @@ export default (post) => {
           <button id="savePost">Guardar</button>
         </section>
 
-        <section id="likeAndCommentSection">
-           <i class="icon-heart"></i>  
+              <section id="likeAndCommentSection">
+                  <i class="icon-heart"></i>  
+                  <p class="numberLikes">0</p>
 
-          <article class="likeAndCommentWrapper" id="commentButton">
-              <img class="likeAndComment" src="./images/Comment.png"> 
-              <p>Comment counter</p>
-          </article>
-        </section>
-        
+
+                <article class="likeAndCommentWrapper" id="commentButton">
+                    <img class="likeAndComment" src="./images/Comment.png"> 
+                    <p>Comment counter</p>
+                </article>
+              </section>
+
       <div id="commentContainer">
         <form class="formComment">
           <textarea class="comment" required></textarea>
@@ -73,9 +77,20 @@ export default (post) => {
   });
 
   // Botón LIKE
+  const numberLikes = postToWall.querySelector('.numberLikes');
   const likeButton = postToWall.querySelector('.icon-heart');
-  likeButton.addEventListener('click', () => {
-    likeButton.classList.toggle('icon-heart--clicked');
+  likeButton.addEventListener('click', (elem, doc) => {
+    // likeButton.classList.toggle('icon-heart-2');
+    const contador = elem.counterLikes;
+    if (!contador.includes(doc.userID)) {
+      likeButton.classList.toggle('icon-heart-2');
+      contador.push(doc.userID);
+      updateLike(contador);
+    } else if (contador.includes(doc.userID)) {
+      contador = contador.filter((i) => i !== doc.userID);
+      updateLike(contador);
+    }
+    numberLikes.innerHTML = doc.counterLikes;
   });
 
   // Botón COMENTAR POST
@@ -126,7 +141,7 @@ export default (post) => {
       savePost.style.display = 'none';
       postContent.style.border = 'none';
       // console.log(postContent);
-      setDocPost(post.id, {
+      updateDocPost(post.id, {
         newPost: postContent.innerHTML,
       });
     });
