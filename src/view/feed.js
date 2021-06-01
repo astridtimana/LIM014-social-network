@@ -89,6 +89,7 @@ export default (post) => {
   //   logOut();
   // });
 
+  // agregar nombre de usuario al loguearse
   divElement.querySelector('#nameUserProfile').innerHTML = getCurrentUser().name;
 
   // FIRESTORE
@@ -119,11 +120,9 @@ export default (post) => {
         newPost: textarea,
         userID: getCurrentUser().uid,
         userName: getCurrentUser().name,
-        date: new Date(),
+        date: new Date().toLocaleString(),
       }).catch((error) => { console.log('Got an error: ', error); });
     }
-
-    divElement.querySelector('#post').innerHTML = '';
     // if (getCurrentUser().uid === wallArea.querySelector(`#${post.userID}`)) {
     //   deleteOrModifyPost.style.display = 'block';
     // } else { deleteOrModifyPost.style.display = 'none'; }

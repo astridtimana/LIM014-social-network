@@ -1,10 +1,20 @@
-export default (comment) => {
+import { getCurrentUser } from '../firebase/firebaseFx.js';
+import { deleteCommentFirebase, updateDocComment } from '../firebase/firestoreFx.js';
+
+export default (comment, postId) => {
   const addComment = `
     <article id="commentPostWrapper">
-        <img class="userPhoto" id="${comment.id}">
+        <img class="userPhotoComment" src="./images/user.svg">
+        <section id= "deleteOrModifyCommentsWrapper" class="${comment.userID === getCurrentUser().uid ? 'show' : 'hide'}"> 
+        <i class="fas fa-ellipsis-h"></i>
+        <div id="deleteOrModifyCommentArea">
+          <p id="modifyComment">Modificar Post</p>
+          <p id="deleteComment">Eliminar Post</p>
+        </div>
+    </section>
         <article id="commentPost">
-        <input class= "commentText">${comment.newComment}</input>
-        <button class="pressComment">comentar</button>
+          <article class= "comment-content">${comment.newComment}</article>
+          <button id="saveComment-${comment.id}">Guardar</button>
         </article>
     </article>`;
 
@@ -12,17 +22,42 @@ export default (comment) => {
   commentOnPost.setAttribute('class', 'postToWall');
   commentOnPost.innerHTML = addComment;
 
-  // const commentDiv = commentOnPost.querySelector('#commentPostWrapper');
-  // const commentBtn = commentOnPost.querySelector('.pressComment');
-  // const commentText = commentOnPost.querySelector('.commentTextt');
+  const deleteOrModifyComment = commentOnPost.querySelector('#deleteOrModifyCommentsWrapper');
+  const deleteOrModifyArea = commentOnPost.querySelector('#deleteOrModifyCommentArea');
+  const modifyComment = commentOnPost.querySelector('#modifyComment');
+  const deleteComment = commentOnPost.querySelector('#deleteComment');
+  const commentContent = commentOnPost.querySelector('.comment-content');
+  const saveComment = commentOnPost.querySelector(`#saveComment-${comment.id}`);
 
-  // if (commentDiv.style.display === 'block') {
-  //   window.addEventListener('click', (e) => {
-  //     if (e.target !== commentBtn) {
-  //       commentDiv.style.display = 'none';
-  //       commentText.innerHTML = '';
-  //     }
-  //   });
-  // }
+  saveComment.style.display = 'none';
+
+  deleteOrModifyComment.addEventListener('click', () => {
+    deleteOrModifyArea.style.display = 'block';
+  });
+
+  // ELIMINAR POST
+  deleteComment.addEventListener('click', () => {
+    deleteCommentFirebase(postId, comment.id);
+  });
+
+  // MODIFICAR POST
+  modifyComment.addEventListener('click', (e) => {
+    e.stopPropagation();
+    saveComment.style.display = 'block';
+    commentContent.contentEditable = true;
+    commentContent.style.border = '#FFCC00 solid';
+    // console.log(e);
+    saveComment.addEventListener('click', () => {
+      commentContent.contentEditable = false;
+      deleteOrModifyArea.style.display = 'none';
+      saveComment.style.display = 'none';
+      commentContent.style.border = 'none';
+      // console.log(postContent);
+      updateDocComment(postId, comment.id, {
+        newComment: commentContent.innerHTML,
+      });
+    });
+  });
+
   return commentOnPost;
 };

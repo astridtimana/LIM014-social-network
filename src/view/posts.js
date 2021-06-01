@@ -1,7 +1,7 @@
 import { getCurrentUser } from '../firebase/firebaseFx.js';
 import templateComment from './comment.js';
 import {
-  deletePostFirebase, setDocPost, listCommentAll, addDocComment,
+  deletePostFirebase, updateDocPost, listPostAll, addDocComment, listCommentAll,
 } from '../firebase/firestoreFx.js';
 
 // const firestore = firebase.firestore();
@@ -14,7 +14,7 @@ export default (post) => {
             <img class="userPhoto" src="${post.photoUrl} alt="userPhoto"> 
             <section id="postHeaderWrapper">
               <article id="userNamePost">${post.userName}</article>
-              <p id= "daysAgo">Days ago</p>
+              <p id= "daysAgo">${post.date}</p>
             </section>
           </section>
           <section id= "deleteOrModifyPostsWrapper" class="${post.userID === getCurrentUser().uid ? 'show' : 'hide'}"> 
@@ -41,14 +41,16 @@ export default (post) => {
         </section>
       <div id="commentContainer">
         <form class="formComment">
-          <textarea class="comment" required></textarea>
-          <button type="submit">Comentar</button>
+          <textarea id="commentText-${post.id}" required></textarea>
+          <button type="submit" id="sendComment-${post.id}">Comentar</button>
         </form>
+      </div>
+      <div id="commentWall">
       </div>
     </article> `;
 
   const postToWall = document.createElement('div');
-  postToWall.setAttribute('class', 'postToWall');
+  postToWall.setAttribute('class', 'commentOnPost');
   postToWall.innerHTML = postView;
 
   const deleteOrModifyPost = postToWall.querySelector('#deleteOrModifyPostsWrapper');
@@ -60,31 +62,35 @@ export default (post) => {
   const postContent = postToWall.querySelector('#postContent');
   const commentContainer = postToWall.querySelector('#commentContainer');
   const savePost = postToWall.querySelector('#savePost');
-  const formComment = postToWall.querySelector('.formComment');
+  const commentWall = postToWall.querySelector('#commentWall');
+  // const formComment = postToWall.querySelector('.formComment');
+  const commentOnPost = postToWall.querySelector(`#sendComment-${post.id}`);
+
   // enconder div de comentario
   commentContainer.classList.add('hidden');
 
   // renderizar comments en CommentContainer
-  listCommentAll((data) => {
-    // console.log(data); trae la data del documento con sus fields.
-    // commentContainer.innerHTML = '';
+  listCommentAll(post.id, (data) => {
+    commentWall.innerHTML = '';
     data.forEach((comment) => {
-      commentContainer.appendChild(templateComment(comment));
+      commentWall.appendChild(templateComment(comment, post.id));
     });
+    return commentWall;
   });
 
   commentButton.addEventListener('click', (e) => {
     e.preventDefault();
-
     commentContainer.classList.toggle('hidden');
-    const textarea = postToWall.querySelector('.commentText').value;
+  });
 
+  commentOnPost.addEventListener('click', (e) => {
+    const textarea = postToWall.querySelector(`#commentText-${post.id}`).value;
+    e.preventDefault();
     if (textarea.length > 0) {
-      // newPost({ newPost: textarea })
-      addDocComment({
+      addDocComment(post.id, {
         newComment: textarea,
         userID: getCurrentUser().uid,
-        date: new Date(),
+        date: new Date().toLocaleDateString(),
       }).catch((error) => { console.log('Got an error: ', error); });
     }
   });
@@ -95,11 +101,6 @@ export default (post) => {
   deleteOrModifyPost.addEventListener('click', () => {
     deleteOrModifyArea.style.display = 'block';
   });
-  // if (deleteOrModifyArea.style.display === 'block') {
-  //   deleteOrModifyPost.addEventListener('click', () => {
-  //     deleteOrModifyArea.style.display = 'none';
-  //   });
-  // }
 
   // ELIMINAR POST
   deletePost.addEventListener('click', () => {
@@ -119,7 +120,7 @@ export default (post) => {
       savePost.style.display = 'none';
       postContent.style.border = 'none';
       // console.log(postContent);
-      setDocPost(post.id, {
+      updateDocPost(post.id, {
         newPost: postContent.innerHTML,
       });
     });
