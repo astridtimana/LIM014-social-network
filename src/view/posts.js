@@ -34,7 +34,7 @@ export default (post) => {
 
               <section id="likeAndCommentSection">
                   <i class="icon-heart"></i>  
-                  <p class="numberLikes">0</p>
+                  <p class="numberLikes">${post.likes.length}</p>
 
 
                 <article class="likeAndCommentWrapper" id="commentButton">
@@ -76,6 +76,13 @@ export default (post) => {
     });
   });
 
+  function removeItemFromArr(arr, item) {
+    const i = arr.indexOf(item);
+    if (i !== -1) {
+      arr.splice(i, 1);
+    }
+  }
+
   // Botón LIKE
   /* const numberLikes = postToWall.querySelector('.numberLikes'); */
   const likeButton = postToWall.querySelector('.icon-heart');
@@ -83,14 +90,14 @@ export default (post) => {
     console.log(post);
     likeButton.classList.toggle('icon-heart-2');
     const contador = post.likes;
-    if (!contador.includes(post.userID)) {
+    if (!contador.includes(getCurrentUser().uid)) {
       // contar dentro de un array uso length
       /* likeButton.classList.toggle('icon-heart-2'); */
-      console.log('inside');
-      contador.push(post.userID);
-    } else if (contador.includes(post.userID)) {
+      contador.push(getCurrentUser().uid);
+    } else if (contador.includes(getCurrentUser().uid)) {
       /* likeButton.classList.toggle('icon-heart-2'); */
-      contador = contador.splice(contador, 1);
+      /* contador = contador.splice(contador, 1); */
+      removeItemFromArr(contador, getCurrentUser().uid);
     }
     updateLike(post.id, { likes: contador });
     /* numberLikes.innerHTML = doc.likes; */
