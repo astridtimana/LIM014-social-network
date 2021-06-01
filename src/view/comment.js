@@ -35,12 +35,12 @@ export default (comment, postId) => {
     deleteOrModifyArea.style.display = 'block';
   });
 
-  // ELIMINAR POST
+  // ELIMINAR COMENTARIO
   deleteComment.addEventListener('click', () => {
     deleteCommentFirebase(postId, comment.id);
   });
 
-  // MODIFICAR POST
+  // MODIFICAR COMENTARIO
   modifyComment.addEventListener('click', (e) => {
     e.stopPropagation();
     saveComment.style.display = 'block';
