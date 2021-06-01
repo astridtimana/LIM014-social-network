@@ -34,7 +34,7 @@ export default (post) => {
 
               <section id="likeAndCommentSection">
                   <i class="icon-heart"></i>  
-                  <p class="numberLikes">0</p>
+                  <p class="numberLikes">${post.likes.length}</p>
 
 
                 <article class="likeAndCommentWrapper" id="commentButton">
@@ -81,21 +81,31 @@ export default (post) => {
     return commentWall;
   });
 
-  // Botón LIKE
-  const numberLikes = postToWall.querySelector('.numberLikes');
-  const likeButton = postToWall.querySelector('.icon-heart');
-  likeButton.addEventListener('click', (elem, doc) => {
-    likeButton.classList.toggle('icon-heart-2');
-    const contador = elem.counterLikes;
-    if (!contador.includes(doc.userID)) {
-      likeButton.classList.toggle('icon-heart-2');
-      contador.push(doc.userID);
-      updateLike(contador);
-    } else if (contador.includes(doc.userID)) {
-      contador = contador.filter((i) => i !== doc.userID);
-      updateLike(contador);
+  function removeItemFromArr(arr, item) {
+    const i = arr.indexOf(item);
+    if (i !== -1) {
+      arr.splice(i, 1);
     }
-    numberLikes.innerHTML = doc.counterLikes;
+  }
+
+  // Botón LIKE
+  /* const numberLikes = postToWall.querySelector('.numberLikes'); */
+  const likeButton = postToWall.querySelector('.icon-heart');
+  likeButton.addEventListener('click', () => {
+    console.log(post);
+    likeButton.classList.toggle('icon-heart-2');
+    const contador = post.likes;
+    if (!contador.includes(getCurrentUser().uid)) {
+      // contar dentro de un array uso length
+      /* likeButton.classList.toggle('icon-heart-2'); */
+      contador.push(getCurrentUser().uid);
+    } else if (contador.includes(getCurrentUser().uid)) {
+      /* likeButton.classList.toggle('icon-heart-2'); */
+      /* contador = contador.splice(contador, 1); */
+      removeItemFromArr(contador, getCurrentUser().uid);
+    }
+    updateLike(post.id, { likes: contador });
+    /* numberLikes.innerHTML = doc.likes; */
   });
 
   // Botón COMENTAR POST
