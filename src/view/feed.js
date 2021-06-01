@@ -121,7 +121,7 @@ export default (post) => {
         userID: getCurrentUser().uid,
         userName: getCurrentUser().name,
         date: new Date().toLocaleString(),
-        counterLikes: 1, // Kathy está trabajando aquí
+        likes: [],
       }).catch((error) => { console.log('Got an error: ', error); });
     }
     // if (getCurrentUser().uid === wallArea.querySelector(`#${post.userID}`)) {
