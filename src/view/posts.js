@@ -89,23 +89,20 @@ export default (post) => {
   }
 
   // Botón LIKE
-  /* const numberLikes = postToWall.querySelector('.numberLikes'); */
+
   const likeButton = postToWall.querySelector('.icon-heart');
   likeButton.addEventListener('click', () => {
-    console.log(post);
+    // console.log(post);
     likeButton.classList.toggle('icon-heart-2');
     const contador = post.likes;
     if (!contador.includes(getCurrentUser().uid)) {
-      // contar dentro de un array uso length
       /* likeButton.classList.toggle('icon-heart-2'); */
       contador.push(getCurrentUser().uid);
     } else if (contador.includes(getCurrentUser().uid)) {
       /* likeButton.classList.toggle('icon-heart-2'); */
-      /* contador = contador.splice(contador, 1); */
       removeItemFromArr(contador, getCurrentUser().uid);
     }
     updateLike(post.id, { likes: contador });
-    /* numberLikes.innerHTML = doc.likes; */
   });
 
   // Botón COMENTAR POST
