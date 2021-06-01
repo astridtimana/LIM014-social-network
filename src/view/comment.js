@@ -14,7 +14,7 @@ export default (comment, postId) => {
     </section>
         <article id="commentPost">
           <article class= "comment-content">${comment.newComment}</article>
-          <button id="saveComment-${comment.id}">Guardar</button>
+          <button id="saveComment-${comment.id}" class="saveCommentButton">Guardar</button>
         </article>
     </article>`;
 

@@ -138,3 +138,7 @@
     flex-direction: column;
 }
 
+.saveCommentButton{
+       width: 20px;
+       height: 20px;
+}
