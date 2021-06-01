@@ -46,7 +46,11 @@ export default () => {
             <p>¿No tienes una cuenta?</p>
             <a href="#/register">Regístrate</a>
           </article>
-      </article>
+
+          <p id="errorMessage">
+          </p>
+
+        </article>
 
     </section>
 
@@ -77,10 +81,20 @@ export default () => {
     resetPasswordMail(emailInput.value);
   });
 
+  /* const userIncorrect = sectionElement.querySelector('#errorMessage'); */
   toLogIn.addEventListener('click', () => {
     const email = document.getElementById('email').value;
     const pass = document.getElementById('password').value;
     logIn(email, pass);
+    // .then((obj) => {
+    //   console.log(obj);
+    //   if (obj.user.emailVerified) {
+    //     window.location.hash = '#/feed';
+    //   } else { userIncorrect.innerHTML = 'Verifica tu correo'; }
+    // })
+    // .catch(() => {
+    //   userIncorrect.innerHTML = 'Dirección de correo electrónico o contraseña incorrectos.';
+    // });
   });
 
   return sectionElement;

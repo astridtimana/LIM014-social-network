@@ -1,3 +1,30 @@
+/*-------------------- PARA EL BOTÓN "LIKE" ----------------------- */
+
+.icon-heart {
+       background: url(http://i.imgur.com/MIP7hPg.png);
+       background-position: left;
+       background-repeat: no-repeat;
+       background-size: auto;
+       height: 100px;
+       width: 100px;
+       cursor: pointer;
+       display: inline-block;
+   }
+.icon-heart-2 {
+       background-position: right;
+       animation: animate .8s steps(28) 1;
+   }
+   @-webkit-keyframes animate {
+       0% {
+           background-position: left;
+       }
+       100% {
+           background-position: right;
+       }
+   }
+   
+/*----------------*/
+
 #post {
     height: 100px;
     width: 200px;
