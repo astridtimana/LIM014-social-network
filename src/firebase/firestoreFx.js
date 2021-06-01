@@ -3,7 +3,12 @@ const firestore = firebase.firestore(); // desde firebase, voy a llamar algo lla
 firestore.settings({ timestampsInSnapshots: true });
 
 export const addDocPost = (doc) => firestore.collection('posts').add(doc);
-export const setDocPost = (docID, newField) => firestore.collection('posts').doc(docID).update(newField);
+export const updateDocPost = (docID, newField) => firestore.collection('posts').doc(docID).update(newField);
+
+// Kathy está trabajando aquí
+export const updateLike = (idpost, counterLikes) => firestore.collection('posts').doc(idpost).update({
+  counterLikes,
+});
 
 export const listPostAll = (callback) => firestore.collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
   const post = [];
