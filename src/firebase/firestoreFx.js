@@ -6,9 +6,7 @@ export const addDocPost = (doc) => firestore.collection('posts').add(doc);
 export const updateDocPost = (docID, newField) => firestore.collection('posts').doc(docID).update(newField);
 
 // Kathy está trabajando aquí
-export const updateLike = (idpost, counterLikes) => firestore.collection('posts').doc(idpost).update({
-  counterLikes,
-});
+export const updateLike = (docID, likes) => firestore.collection('posts').doc(docID).update(likes);
 
 export const listPostAll = (callback) => firestore.collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
   const post = [];

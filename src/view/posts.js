@@ -77,20 +77,23 @@ export default (post) => {
   });
 
   // Botón LIKE
-  const numberLikes = postToWall.querySelector('.numberLikes');
+  /* const numberLikes = postToWall.querySelector('.numberLikes'); */
   const likeButton = postToWall.querySelector('.icon-heart');
-  likeButton.addEventListener('click', (elem, doc) => {
-    // likeButton.classList.toggle('icon-heart-2');
-    const contador = elem.counterLikes;
-    if (!contador.includes(doc.userID)) {
-      likeButton.classList.toggle('icon-heart-2');
-      contador.push(doc.userID);
-      updateLike(contador);
-    } else if (contador.includes(doc.userID)) {
-      contador = contador.filter((i) => i !== doc.userID);
-      updateLike(contador);
+  likeButton.addEventListener('click', () => {
+    console.log(post);
+    likeButton.classList.toggle('icon-heart-2');
+    const contador = post.likes;
+    if (!contador.includes(post.userID)) {
+      // contar dentro de un array uso length
+      /* likeButton.classList.toggle('icon-heart-2'); */
+      console.log('inside');
+      contador.push(post.userID);
+    } else if (contador.includes(post.userID)) {
+      /* likeButton.classList.toggle('icon-heart-2'); */
+      contador = contador.splice(contador, 1);
     }
-    numberLikes.innerHTML = doc.counterLikes;
+    updateLike(post.id, { likes: contador });
+    /* numberLikes.innerHTML = doc.likes; */
   });
 
   // Botón COMENTAR POST
