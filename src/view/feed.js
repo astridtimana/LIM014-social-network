@@ -120,6 +120,7 @@ export default (post) => {
         userID: getCurrentUser().uid,
         userName: getCurrentUser().name,
         date: new Date(),
+        counterLikes: 1, // Kathy está trabajando aquí
       }).catch((error) => { console.log('Got an error: ', error); });
     }
 

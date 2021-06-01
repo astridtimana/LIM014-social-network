@@ -27,10 +27,10 @@ export const logIn = (email, pass) => {
     // console.log(obj);
       if (obj.user.emailVerified) {
         window.location.hash = '#/feed';
-      } else { userIncorrect.innerHTML = 'Verifica tu correo'; }
+      } else { alert('Verifica tu correo'); }
     })
     .catch(() => {
-      userIncorrect.innerHTML = 'Dirección de correo electrónico o contraseña incorrectos.';
+      alert('Dirección de correo electrónico o contraseña incorrectos.');
     });
 };
 
