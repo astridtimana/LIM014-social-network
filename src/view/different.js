@@ -5,7 +5,7 @@ const viewError = () => {
       <article class="container-404">
         <h2>the requested URL was not found on this server</h2>
         <h3>to go back to the main page, please click the button below </h3>
-        <button class="buttonHome">home</button>
+        <button class="buttonHome">Regresar</button>
       </article>
 
     </section>
