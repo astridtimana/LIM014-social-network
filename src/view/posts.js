@@ -32,11 +32,10 @@ export default (post) => {
           <button id="savePost">Guardar</button>
         </section>
 
-              <section id="likeAndCommentSection">
-                  <i class="icon-heart"></i>  
+              <section id="likeAndCommentSection"> 
+                  <i class="${!post.likes.includes(getCurrentUser().uid) ? 'far' : 'fas'} fa-heart" id="heart-${post.id}"></i>
                   <p class="numberLikes">${post.likes.length}</p>
-
-
+                  
                 <article class="likeAndCommentWrapper" id="commentButton">
                     <img class="likeAndComment" src="./images/Comment.png"> 
                     <p>Comment counter</p>
@@ -76,34 +75,25 @@ export default (post) => {
     });
   });
 
+  // ---------------- Botón LIKE ----------------- //
   function removeItemFromArr(arr, item) {
     const i = arr.indexOf(item);
     if (i !== -1) {
       arr.splice(i, 1);
     }
   }
-
-  // Botón LIKE
-  /* const numberLikes = postToWall.querySelector('.numberLikes'); */
-  const likeButton = postToWall.querySelector('.icon-heart');
+  const likeButton = postToWall.querySelector(`#heart-${post.id}`);
   likeButton.addEventListener('click', () => {
-    console.log(post);
-    likeButton.classList.toggle('icon-heart-2');
     const contador = post.likes;
     if (!contador.includes(getCurrentUser().uid)) {
-      // contar dentro de un array uso length
-      /* likeButton.classList.toggle('icon-heart-2'); */
       contador.push(getCurrentUser().uid);
     } else if (contador.includes(getCurrentUser().uid)) {
-      /* likeButton.classList.toggle('icon-heart-2'); */
-      /* contador = contador.splice(contador, 1); */
       removeItemFromArr(contador, getCurrentUser().uid);
     }
     updateLike(post.id, { likes: contador });
-    /* numberLikes.innerHTML = doc.likes; */
   });
 
-  // Botón COMENTAR POST
+  // ------------------ Botón COMENTAR POST ---------------- //
   const commentButton = postToWall.querySelector('#commentButton');
   commentButton.addEventListener('click', (e) => {
     e.preventDefault();

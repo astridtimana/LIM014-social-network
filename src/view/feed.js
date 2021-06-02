@@ -110,7 +110,6 @@ export default (post) => {
     e.preventDefault();// para evitar que los datos no aparezcan cuando se refresque
     // si el textarea está vacío, no guardar algo
     const textarea = divElement.querySelector('#post').value;
-
     // fx de firestore
     // si el textarea está vacío, no guardar algo
     if (textarea.length > 0) {
