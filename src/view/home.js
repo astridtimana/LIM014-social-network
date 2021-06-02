@@ -4,10 +4,10 @@ import { logIn, signInWithGoogle, resetPasswordMail } from '../firebase/firebase
 
 export default () => {
   const viewHome = `
-    <section class="leftWrapper">
-          <section id="prideImage">
-            <img id="lgtbiqImage" src="./images/lgtbiq.png">
-          </section>
+      <section class="leftWrapper">
+      <section id="prideImage">
+        <img id="lgtbiqImage" src="./images/lgtb.png">
+      </section>
       <header>
       <article id="logoContainer">
         <img class="logo" src="./images/colorwheel.png"><h1 class="letterPride"> PRIDE </h1>
@@ -19,7 +19,7 @@ export default () => {
     <section id="form">
     <article class="formContainerHome">
      <article class = "forDesktopHome">
-      <a id="welcomeMessage"> ¡Bienvenidx!</a>
+      <a id="welcomeMessage"> ¡Bienvenidx!</a><br>
       <a id="loginMessage"> Ingresa a tu cuenta</a>
      </article>
       <a class="textHome" >Email</a>
@@ -42,15 +42,10 @@ export default () => {
         <p>¿No tienes una cuenta?</p>
         <a href="#/register">Regístrate</a>
       </article>
-      
-      <p id="errorMessage">
-          </p>
-
     </article>
       <article id="userIncorrect">
       </article>
     </section>
-
     `;
   const sectionElement = document.createElement('section');
   sectionElement.setAttribute('class', 'home');

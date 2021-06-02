@@ -12,32 +12,25 @@ import templatePost from './posts.js';
 // console.log(templatePost());
 import { addDocPost, listPostAll, onGetPosts } from '../firebase/firestoreFx.js';
 
-// const firebase = require("firebase");
-// // Required for side-effects
-// require("firebase/firestore");
-
-// const firestore = firebase.firestore();
-// firestore.settings({ timestampsInSnapshots: true });
-
-export default (post) => {
+export default () => {
   const viewFeed = `
   <header id="feedHeader">
-      <nav class="navigatorMenuFeed">
-          
-          <img id="feedPrideLogo" src="./images/logomenu.png"> 
-          <label class="toggleFeed" for="toggle"><i class="fas fa-bars"></i></label>
-          <input type="checkbox" id="toggle" />
-            <article class="menuFeed">
-                <a href="#">Inicio  <i class="fas fa-home"></i></a>
-                <a href="#" > Mi Perfil <i class="fas fa-user-alt"></i></a>
-                <a href="#" id="logOut">Cerrar sesión <i class="fas fa-sign-out-alt"></i></a>
-            </article>
-      </nav>      
+    <nav class="navigatorMenuFeed">
+            
+    <img id="feedPrideLogo" src="./images/logomenu.png"> 
+    <label class="toggleFeed" for="toggle"><i class="fas fa-bars"></i></label>
+    <input type="checkbox" id="toggle" />
+      <article class="menuFeed">
+          <a href="#">Inicio  <i class="fas fa-home"></i></a>
+          <a href="#" > Mi Perfil <i class="fas fa-user-alt"></i></a>
+          <a href="#" id="logOut">Cerrar sesión <i class="fas fa-sign-out-alt"></i></a>
+      </article>
+    </nav>      
   
   </header>
-      <section class="activitiesFeed">
-           <section id="activitiesArea">
-                <h3 id="activitiesTitle"> ¡Mira las actividades! </h3>
+    <main id="feedSection">
+            <section id="activitiesArea">
+                <h3 id="activitiesTitle"> ACTIVIDADES </h3>
                 <section class="activities">
                 </section>
             </section>
@@ -52,35 +45,25 @@ export default (post) => {
                 <h2 class="user-name profile-name" id="nameUserProfile"></h2>
               </article>
 
-    <section>
-        <textarea placeholder="¿En qué estás pensando?" id="post" ></textarea>
-        <button id="bttPost" type="submit">Publicar</button>
-    </section>
+      <form class="formPost">
+          <textarea placeholder="¿En qué estás pensando?" id="post"></textarea>
+          <button id="bttPost" type="submit">Publicar</button>
+      </form>
+      
 
-    <section id="wall"></section>
-    
-    
-
-    <aside>
-    </aside>
-    </section>
-
+      <div id="wall">
+      </div>
+    </main>
     `;
 
   const divElement = document.createElement('div');
   divElement.setAttribute('class', 'feed');
   divElement.innerHTML = viewFeed;
 
-  // funcion temporal log out
-  const buttonPride = divElement.querySelector('#feedLogo');
-  buttonPride.addEventListener('click', () => {
+  const userLogOut = divElement.querySelector('#logOut');
+  userLogOut.addEventListener('click', () => {
     logOut();
   });
-
-  // const userLogOut = divElement.querySelector('#logOut');
-  // userLogOut.addEventListener('click', () => {
-  //   logOut();
-  // });
 
   // agregar nombre de usuario al loguearse
   divElement.querySelector('#nameUserProfile').innerHTML = getCurrentUser().name;
@@ -114,7 +97,7 @@ export default (post) => {
         userID: getCurrentUser().uid,
         userName: getCurrentUser().name,
         date: new Date().toLocaleString(),
-        counterLikes: 1, // Kathy está trabajando aquí
+        likes: [],
       }).catch((error) => { console.log('Got an error: ', error); });
     }
     // if (getCurrentUser().uid === wallArea.querySelector(`#${post.userID}`)) {

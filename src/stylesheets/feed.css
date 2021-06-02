@@ -1,12 +1,12 @@
 .feed {
-    background: rgba(52, 196, 52, 0.856);
+    background: rgba(247, 247, 247, 1);
 }
-/* .activitiesFeed {
+.activitiesFeed {
     width: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 2fr;
-} */
+}
 .navigatorMenuFeed {
     text-align: right;
     height: 70px;
@@ -78,5 +78,10 @@
         -moz-transition: transform .1s ease-in;
         -ms-transition: transform .1s ease-in;
         -o-transition: transform .1s ease-in;
-}
+        position: absolute;
+        z-index: 100;
+    }
+    #feedSection{
+        position: relative;
+    }
 }

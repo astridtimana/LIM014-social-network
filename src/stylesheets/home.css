@@ -6,9 +6,8 @@
     box-sizing: border-box;
     text-decoration: none;
     list-style: none;
-    /* display: inline-grid; */
     font-family: 'Raleway', sans-serif;
-    /* row-gap:0; */
+    
 }
 
 /*-------------------- PARA LA PÁGINA DE ERROR 404 ----------------------- */
@@ -39,8 +38,6 @@
 .container-404 {
     display: flex;
     flex-direction: column;
-    /* width: 70rem;
-    height: 50rem; */
     align-items: center;
     align-self: center;
     margin-right: 2rem;
@@ -59,7 +56,7 @@
 }
 section #form {
     display: inline-grid;
-    row-gap: 1.5rem;
+    row-gap: 1rem;
 }
 
 head{
@@ -121,9 +118,7 @@ section .forDesktopHome {
     justify-content: space-between;
     font-size: 2rem;
     margin-top: 5%;
-    margin-bottom: 5%;
-    
-    
+    height: 3rem;
 }
 
 #enterHome {
@@ -163,36 +158,20 @@ footer{
 #lgtbiqImage{
     width: 0px;  
 }
-/* #formDesktop{
-    display: none;
-} */
 #homePhrase{
     display: none;
 }
-/* .formContainer{
-    display: none;
-} */
 .textHome {
     margin: 3%;
     color: #333333;
 }
-
-/* #signUp {
-    display: none;
-} */
 @media only screen and (min-width: 700px) {
-    /* *{
-        row-gap: 0.8rem;
-        display: inline-grid;
-    
-    } */
+
     .home {
-        /* row-gap: 0.8rem; */
-        /* display: inline-grid; */
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        margin: 5%;
+        margin: 3%; /*  depende del height de la pantalla */
     }
     head {
         margin-top: -1%; 
@@ -218,13 +197,10 @@ footer{
         justify-content: left;
     }
     
-
     #enterHome {
         color: white;
     }
-    /* #form{
-        display: none;
-    } */
+
     section .forDesktopHome {
         display: block;
     }
@@ -233,6 +209,7 @@ footer{
         display: block;
         display:flex;
         flex-direction: column;
+        width: 35%;
     }
 
     #arrowImg {
@@ -249,7 +226,7 @@ footer{
         color: #333333;
     }
     .login {
-        border-radius: 5px;
+        border-radius: 10px;
         font-size: 1rem;
         font-weight: bold;
         color:white;
@@ -259,10 +236,6 @@ footer{
         padding: 4%;
         display: flex;
         justify-content: center;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        -ms-border-radius: 5px;
-        -o-border-radius: 5px;
 }
     .googleButton{
         border-radius: 5px;
@@ -273,13 +246,6 @@ footer{
         box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
         font-size: 1rem;
     }
-    /* .containerRegister{
-        display:flex;
-        padding: 5px 10px;
-        flex-direction: row;
-        justify-content: space-around;
-        font-size: 1rem;
-    } */
     section .formContainerHome{
         row-gap: 0.8rem;
         display: inline-grid;
@@ -302,8 +268,5 @@ footer{
         margin-right: 10px;
         margin-top: 0.5%; 
     }
-    /* #register{
-        display: none;
-    } */
 
 }

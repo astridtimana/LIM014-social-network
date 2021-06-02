@@ -6,9 +6,7 @@ firestore.settings({ timestampsInSnapshots: true });
 export const addDocPost = (doc) => firestore.collection('posts').add(doc);
 
 // Kathy está trabajando aquí
-export const updateLike = (idpost, counterLikes) => firestore.collection('posts').doc(idpost).update({
-  counterLikes,
-});
+export const updateLike = (docID, likes) => firestore.collection('posts').doc(docID).update(likes);
 
 // ----- Añadir lista de fields en un documento de la colección comments -----
 export const addDocComment = (docID, comment) => firestore.collection('posts').doc(docID).collection('comment').add(comment);

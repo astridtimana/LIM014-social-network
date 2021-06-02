@@ -26,8 +26,7 @@ export default () => {
             </header>
             
             <p id="textRegister">Regístrate para ver fotos y videos de tus amigos.</p>
-          </article>  
-      
+            
             <input type="name" placeholder="Nombre y apellido" id="nameRegister">
             <p id = "errorNameUser"></p>
             <input type="email" placeholder="Correo electrónico" id="mailRegister">

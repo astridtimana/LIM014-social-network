@@ -28,21 +28,21 @@ export default (post) => {
             </ul>
           </section>
         </section><hr>
-        <section id= "postContent"> ${post.newPost}</section><hr>
+        <section>
+        <p id= "postContent"> ${post.newPost}</p><hr>
         <button id="savePost">Guardar</button>
-        <section id="likeAndCommentSection">
-           <article class="likeAndCommentWrapper" id="likeButton">
-              <i class="icon-heart"></i>  
-              <p class="numberLikes">0</p>
-            </article>
-
-            <article class="likeAndCommentWrapper" id="commentButton">
-                <i class="far fa-comment"></i>
-                <p>Comment counter</p>
-            </article>
         </section>
 
-              
+              <section id="likeAndCommentSection">
+                  <i class="icon-heart"></i>  
+                  <p class="numberLikes">${post.likes.length}</p>
+
+
+                <article class="likeAndCommentWrapper" id="commentButton">
+                    <img class="likeAndComment" src="./images/Comment.png"> 
+                    <p>Comment counter</p>
+                </article>
+              </section>
 
       <div id="commentContainer">
         <form class="formComment">
@@ -82,21 +82,28 @@ export default (post) => {
     return commentWall;
   });
 
-  // Botón LIKE
-  const numberLikes = postToWall.querySelector('.numberLikes');
-  const likeButton = postToWall.querySelector('.icon-heart');
-  likeButton.addEventListener('click', (elem, doc) => {
-    likeButton.classList.toggle('icon-heart-2');
-    const contador = elem.counterLikes;
-    if (!contador.includes(doc.userID)) {
-      likeButton.classList.toggle('icon-heart-2');
-      contador.push(doc.userID);
-      updateLike(contador);
-    } else if (contador.includes(doc.userID)) {
-      contador = contador.filter((i) => i !== doc.userID);
-      updateLike(contador);
+  function removeItemFromArr(arr, item) {
+    const i = arr.indexOf(item);
+    if (i !== -1) {
+      arr.splice(i, 1);
     }
-    numberLikes.innerHTML = doc.counterLikes;
+  }
+
+  // Botón LIKE
+
+  const likeButton = postToWall.querySelector('.icon-heart');
+  likeButton.addEventListener('click', () => {
+    // console.log(post);
+    likeButton.classList.toggle('icon-heart-2');
+    const contador = post.likes;
+    if (!contador.includes(getCurrentUser().uid)) {
+      /* likeButton.classList.toggle('icon-heart-2'); */
+      contador.push(getCurrentUser().uid);
+    } else if (contador.includes(getCurrentUser().uid)) {
+      /* likeButton.classList.toggle('icon-heart-2'); */
+      removeItemFromArr(contador, getCurrentUser().uid);
+    }
+    updateLike(post.id, { likes: contador });
   });
 
   // Botón COMENTAR POST

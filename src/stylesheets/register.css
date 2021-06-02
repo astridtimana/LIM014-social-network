@@ -28,7 +28,6 @@
     border: rgba(255, 255, 255, 0);
 }
 
-
 #buttonRegister {
     display: flex;
     align-items: center;
@@ -170,11 +169,5 @@
         border-width: 1.5px;
         align-items: center;
     }
-    
-
-   
-    
-    
-    
 
 }
