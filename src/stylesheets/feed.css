@@ -1,16 +1,53 @@
 .feed {
     background: rgba(247, 247, 247, 1);
 }
-.activitiesFeed {
-    width: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 2fr;
+#feedSection{
+    display:grid;
+    grid-template-columns: 3fr 7fr;
+}
+#user-info {
+    grid-column-start: 1;
+    padding: 10%;
+}
+.userImage{
+    border-radius: 50%;
+    border: rgba(216, 48, 39, 1) solid;
+    width: 10vh;
+}
+#wall{
+    grid-column-start: 2;
+    padding: 3% 10% 2% 0%; /* arriba, derecha, abajo, izquierda */
+}
+.formPost{
+    background-color: white;
+    margin:3% 10% 0% 0%;
+    background-color: white;
+    border: rgba(255, 255, 255, 0);
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274); 
+}   
+#post{
+    resize: none;
+    margin: 2% 3% 1% 1%;
+    width: 50%;
+    border:transparent;
+}
+#uploadPhoto{
+    margin: 2.2%;
 }
 .navigatorMenuFeed {
     text-align: right;
     height: 70px;
     background-color:  rgba(116, 55, 144, 1);
+}
+#bttPost {
+    height: 2.5rem;
+    width: 6rem;
+    background-color: rgba(255, 210, 32, 1);
+    border-radius: 5px;
+    color:white;
+    border-color:transparent;
+    float: right;
+    margin: 2.2% 3% 0% 0%;
 }
 
 #feedPrideLogo {
@@ -18,8 +55,13 @@
     width: 65px;
     height: 65px;
     left: 0.2%;
+    margin-left:1%;
+    margin-top:2.7px;
 }
-
+.formPost img{
+    width:3rem;
+    margin: 1%, 0%, 0%, 10%;  /* no lo toma */
+}
 .menuFeed {
     margin: 0 30px 0 0;
     font-size: 25px;
@@ -44,6 +86,10 @@
 
 #toggle {
     display: none;
+}
+#activitiesArea{
+    margin-top:2%;
+    grid-column-start: 2;
 }
 
 @media only screen and (max-width: 500px) {
