@@ -12,40 +12,23 @@ import templatePost from './posts.js';
 // console.log(templatePost());
 import { addDocPost, listPostAll, onGetPosts } from '../firebase/firestoreFx.js';
 
-// const firebase = require("firebase");
-// // Required for side-effects
-// require("firebase/firestore");
-
-// const firestore = firebase.firestore();
-// firestore.settings({ timestampsInSnapshots: true });
-
-export default (post) => {
+export default () => {
   const viewFeed = `
   <header id="feedHeader">
-      <nav id="navigatorMenu">
-          <img id="feedLogo" src="./images/logomenu.png">
-          <section class="search" id="search">
-              <img id="searchIcon" src="./images/searchIcon.png">
-              <input id="searchBar" type="text" placeholder="Encuentra a tus amigos..." name="search">
-          </section>
-          <label for="toggle">
-            <i class="fas fa-bars" id="signOne"></i>
-            <i class="fas fa-times" id="signTwo"></i>
-          </label>
-          <input type="checkbox" id="toggle" />
-          <section class="nav">
-            <article class="menu">
-                <a href="#" class="active"> Inicio<img class="configIcon" id="favoriteIcon" src="./images/home.svg"></a>
-                <a href="#" > Mi Perfil<img class="configIcon" id="profileIcon" src="./images/profile.png"></a>
-                <a href="#"> Configuración <img class="configIcon" id="settingsIcon" src="./images/settings.png"></a>
-                <a href="#"> Adicionales <img class="configIcon" id="favoriteIcon" src="./images/favorite.png"></a>
-                <a id="logOut">Cerrar sesión <img class="configIcon" id="logOutIcon" src="./images/logout.png"></a>
-            </article>
-      
-          </section>
-      </nav>      
+    <nav class="navigatorMenuFeed">
+            
+    <img id="feedPrideLogo" src="./images/logomenu.png"> 
+    <label class="toggleFeed" for="toggle"><i class="fas fa-bars"></i></label>
+    <input type="checkbox" id="toggle" />
+      <article class="menuFeed">
+          <a href="#">Inicio  <i class="fas fa-home"></i></a>
+          <a href="#" > Mi Perfil <i class="fas fa-user-alt"></i></a>
+          <a href="#" id="logOut">Cerrar sesión <i class="fas fa-sign-out-alt"></i></a>
+      </article>
+    </nav>      
   
   </header>
+    <main id="feedSection">
             <section id="activitiesArea">
                 <h3 id="activitiesTitle"> ACTIVIDADES </h3>
                 <section class="activities">
@@ -63,32 +46,27 @@ export default (post) => {
                 <h2 class="user-name profile-name" id="nameUserProfile"></h2>
               </article>
 
-    <form class="formPost">
-        <textarea placeholder="¿En qué estás pensando?" id="post"></textarea>
-        <button id="bttPost" type="submit">Publicar</button>
-    </form>
-    
+      <form class="formPost">
+          <textarea placeholder="¿En qué estás pensando?" id="post"></textarea>
+          <button id="bttPost" type="submit">Publicar</button>
+      </form>
+      
 
-    <div id="wall">
-    </div>
-
+      <div id="wall">
+      </div>
+    </main>
     `;
 
   const divElement = document.createElement('div');
   divElement.setAttribute('class', 'feed');
   divElement.innerHTML = viewFeed;
 
-  // funcion temporal log out
-  const buttonPride = divElement.querySelector('#feedLogo');
-  buttonPride.addEventListener('click', () => {
+  const userLogOut = divElement.querySelector('#logOut');
+  userLogOut.addEventListener('click', () => {
     logOut();
   });
 
-  // const userLogOut = divElement.querySelector('#logOut');
-  // userLogOut.addEventListener('click', () => {
-  //   logOut();
-  // });
-
+  // agregar nombre de usuario al loguearse
   divElement.querySelector('#nameUserProfile').innerHTML = getCurrentUser().name;
 
   // FIRESTORE
@@ -118,12 +96,10 @@ export default (post) => {
         newPost: textarea,
         userID: getCurrentUser().uid,
         userName: getCurrentUser().name,
-        date: new Date(),
+        date: new Date().toLocaleString(),
         likes: [],
       }).catch((error) => { console.log('Got an error: ', error); });
     }
-
-    divElement.querySelector('#post').innerHTML = '';
     // if (getCurrentUser().uid === wallArea.querySelector(`#${post.userID}`)) {
     //   deleteOrModifyPost.style.display = 'block';
     // } else { deleteOrModifyPost.style.display = 'none'; }

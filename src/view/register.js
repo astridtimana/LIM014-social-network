@@ -27,11 +27,6 @@ export default () => {
             
             <p id="textRegister">Regístrate para ver fotos y videos de tus amigos.</p>
             
-            <button class="googleButton" id="buttonRegisterGoogleDesktop">
-              <img src="./images/googleIcon.png" class="googleLogo">Iniciar sesión con Google
-            </button>
-          </article>  
-      
             <input type="name" placeholder="Nombre y apellido" id="nameRegister">
             <p id = "errorNameUser"></p>
             <input type="email" placeholder="Correo electrónico" id="mailRegister">
@@ -124,9 +119,9 @@ export default () => {
       });
   };
 
-  buttonRegisterGoogleDesktop.addEventListener('click', () => {
-    signInWithGoogle();
-  });
+  // buttonRegisterGoogleDesktop.addEventListener('click', () => {
+  //   signInWithGoogle();
+  // });
   buttonRegisterGoogle.addEventListener('click', () => {
     signInWithGoogle();
   });
