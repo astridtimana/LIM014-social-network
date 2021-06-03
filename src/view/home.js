@@ -24,7 +24,7 @@ export default () => {
      </article>
       <a class="textHome" >Email</a>
       <input type="email" placeholder="john.snow@gmail.com" id="email"> 
-      <p id = "errorMailMessage"></p>
+      <p class = "errorMailMessage"></p>
       <a class="textHome" >Contraseña</a>
       <input type="password" placeholder="********" id="password"> 
       <article class="smallContainer">
@@ -43,8 +43,7 @@ export default () => {
         <a href="#/register">Regístrate</a>
       </article>
     </article>
-      <article id="userIncorrect">
-      </article>
+      <pid="userIncorrect"> </p>
     </section>
     `;
   const sectionElement = document.createElement('section');
@@ -53,7 +52,7 @@ export default () => {
 
   const toLogIn = sectionElement.querySelector('.login');
   const emailInput = sectionElement.querySelector('#email');
-  const errorEmailMessage = sectionElement.querySelector('#errorMailMessage');
+  const errorEmailMessage = sectionElement.querySelector('.errorMailMessage');
   const googleButton = sectionElement.querySelector('.googleButton');
   const forgotPassword = sectionElement.querySelector('#forgotPassword');
 
