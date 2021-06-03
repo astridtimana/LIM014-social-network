@@ -13,7 +13,7 @@ export default (post) => {
     <article class="postId" id= "${post.id}">
         <section id= "postHeader">
           <section id="userInfoPost">
-            <img class="userPhoto" src="../images/user.svg" alt="userPhoto"> 
+            <img class="userPhoto" src="${post.photo === null ? '../images/user.svg' : post.photo}" alt="userPhoto"> 
             <section id="postHeaderWrapper">
               <article id="userNamePost">${post.userName}</article>
               <p class= "daysAgo">${post.date}</p>
@@ -68,10 +68,10 @@ export default (post) => {
   // const formComment = postToWall.querySelector('.formComment');
   const commentOnPost = postToWall.querySelector(`#sendComment-${post.id}`);
 
-  // enconder div de comentario
+  // --------- ESCONDE EL DIV DEL COMENTARIO ---------//
   commentContainer.classList.add('hidden');
 
-  // renderizar comments en CommentContainer
+  // ------- RENDERIZAR LOS COMENTARIOS EN CommentContainer ------//
   listCommentAll(post.id, (data) => {
     commentWall.innerHTML = '';
     data.forEach((comment) => {
