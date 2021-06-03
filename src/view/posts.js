@@ -13,7 +13,7 @@ export default (post) => {
     <article class="postId" id= "${post.id}">
         <section id= "postHeader">
           <section id="userInfoPost">
-            <img class="userPhoto" src="../images/user.svg" alt="userPhoto"> 
+            <img class="userPhoto" src="${post.photo === null ? '../images/user.svg' : post.photo}" alt="userPhoto"> 
             <section id="postHeaderWrapper">
               <article id="userNamePost">${post.userName}</article>
               <p class= "daysAgo">${post.date}</p>
@@ -32,8 +32,8 @@ export default (post) => {
           <p id="savePost">Guardar</p>
         </section><hr>
 
-              <section id="likeAndCommentSection">
-                  <i class="icon-heart" id= "heart-${post.id}"></i>  
+              <section id="likeAndCommentSection"> 
+                  <i class="${!post.likes.includes(getCurrentUser().uid) ? 'far' : 'fas'} fa-heart" id="heart-${post.id}"></i>
                   <p class="numberLikes">${post.likes.length}</p>
 
                 <article class="likeAndCommentWrapper" > 
@@ -58,7 +58,6 @@ export default (post) => {
   postToWall.setAttribute('class', 'postOnWall');
   postToWall.innerHTML = postView;
 
-  const likeButton = postToWall.querySelector(`#heart-${post.id}`);
   const deleteOrModifyPost = postToWall.querySelector('#deleteOrModifyPostsWrapper');
   const deleteOrModifyArea = postToWall.querySelector('#deleteOrModifyArea');
   const modifyPost = postToWall.querySelector('#modifyPost');
@@ -70,12 +69,11 @@ export default (post) => {
   const commentWall = postToWall.querySelector('#commentWall');
   // const formComment = postToWall.querySelector('.formComment');
   const commentOnPost = postToWall.querySelector(`#sendComment-${post.id}`);
-  const contador = post.likes;
 
-  // enconder div de comentario
+  // --------- ESCONDE EL DIV DEL COMENTARIO ---------//
   commentContainer.classList.add('hidden');
 
-  // renderizar comments en CommentContainer
+  // ------- RENDERIZAR LOS COMENTARIOS EN CommentContainer ------//
   listCommentAll(post.id, (data) => {
     commentWall.innerHTML = '';
     data.forEach((comment) => {
@@ -84,38 +82,24 @@ export default (post) => {
     return commentWall;
   });
 
-  // CODIGO DANI
-  // console.log(likeButton);
-  // if (!contador.includes(getCurrentUser().uid)) {
-  //   console.log('entré al if', likeButton);
-  //   likeButton.classList.toggle('icon-heart-3');
-  //   console.log('entré al if2', likeButton);
-  // }
-
+  // -------------------- BOTÓN LIKE ----------------------- //
   function removeItemFromArr(arr, item) {
     const i = arr.indexOf(item);
     if (i !== -1) {
       arr.splice(i, 1);
     }
   }
+  const likeButton = postToWall.querySelector(`#heart-${post.id}`);
+  likeButton.addEventListener('click', () => {
+    if (!post.likes.includes(getCurrentUser().uid)) {
+      post.likes.push(getCurrentUser().uid);
+    } else if (post.likes.includes(getCurrentUser().uid)) {
+      removeItemFromArr(post.likes, getCurrentUser().uid);
+    }
+    updateLike(post.id, { likes: post.likes });
+  });
 
-  // Botón LIKE
-
-  // likeButton.addEventListener('click', () => {
-  //   console.log('entré al addevent');
-  //   if (!contador.includes(getCurrentUser().uid)) {
-  //     console.log('entré al if', likeButton);
-  //     likeButton.classList.add('icon-heart-2');
-  //     contador.push(getCurrentUser().uid);
-  //   } else {
-  //     console.log('entré al else', likeButton);
-  //     likeButton.classList.remove('icon-heart-2');
-  //     removeItemFromArr(contador, getCurrentUser().uid);
-  //   }
-  //   updateLike(post.id, { likes: contador });
-  // });
-
-  // Botón COMENTAR POST
+  // ------------------ BOTÓN COMENTAR POST ---------------- //
   const commentButton = postToWall.querySelector('#commentButton');
   commentButton.addEventListener('click', (e) => {
     e.preventDefault();
@@ -144,12 +128,12 @@ export default (post) => {
     deleteOrModifyArea.classList.toggle('hidden');
   });
 
-  // ELIMINAR POST
+  // ----------------- ELIMINAR POST ------------------- //
   deletePost.addEventListener('click', () => {
     deletePostFirebase(post.id);
   });
 
-  // MODIFICAR POST
+  // ----------------- MODIFICAR POST ------------------ //
   modifyPost.addEventListener('click', (e) => {
     e.preventDefault();
     savePost.style.display = 'block';

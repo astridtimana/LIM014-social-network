@@ -9,10 +9,10 @@
 /* eslint-disable no-console */
 
 
-// Fx que crea un usuario
+// ------------------ FUNCIÓN QUE CREA UN USUARIO -------------------------- //
 export const createUser = (email, pass) => firebase.auth().createUserWithEmailAndPassword(email, pass);
 
-// Fx que envia correos de verificación
+// ------------------ FUNCIÓN QUE ENVÍA CORREO DE VERIFICACIÓN ------------- //
 export const verificationMail = () => {
   const user = firebase.auth().currentUser;
   return user.sendEmailVerification()
@@ -20,7 +20,7 @@ export const verificationMail = () => {
     .catch((error) => error);
 };
 
-// Fx que permite el logIn desde cualquier proveedor
+// -------- FUNCIÓN QUE PERMITE EL LOGIN DESDE CUALQUIER PROVEEDOR --------- //
 export const logIn = (email, pass) => {
   firebase.auth().signInWithEmailAndPassword(email, pass)
     .then((obj) => {
@@ -34,7 +34,7 @@ export const logIn = (email, pass) => {
     });
 };
 
-// Fx que permite logIn con Google
+// ----------------- FUNCIÓN QUE PERMITE LOGIN CON GOOGLE ------------------ //
 export const signInWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   return firebase.auth().signInWithPopup(provider)
@@ -45,7 +45,7 @@ export const signInWithGoogle = () => {
     });
 };
 
-// Fx que resetea el password del usuario
+// ---------------- FUNCIÓN QUE RESETEA EL PASSWORD DEL USUARIO -------------- //
 export const resetPasswordMail = (emailAddress) => {
   const auth = firebase.auth();
   auth.sendPasswordResetEmail(emailAddress)
@@ -66,17 +66,14 @@ export const logOut = () => {
     });
 };
 
-// Information about the CURRENT USER
+// -------- FUNCIÓN QUE CONTIENE INFORMACIÓN EN UN OBJETO DEL CURRENT USER --------//
 export const getCurrentUser = () => {
-  // te capta info cuando solo estés logueada ... there is not much sense
-  // xq ya hay un usuario
-  // peroooooo CUANDO SE RECARGA LA PÁGINA LA INFO SE PIERDE, so, sí hay sense
   const user = firebase.auth().currentUser;
   let dataUser = '';
   if (user != null) {
     dataUser = {
       name: user.displayName,
-      photoURL: user.photoURL,
+      photo: user.photoURL,
       uid: user.uid, 
     };
   }
@@ -84,6 +81,5 @@ export const getCurrentUser = () => {
   return dataUser;
 };
 
-// es un método observador: detecta al usuario logueado
 export const userSessionActive = (callback) => firebase.auth().onAuthStateChanged(callback); 
 
