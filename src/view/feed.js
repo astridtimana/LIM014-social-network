@@ -107,9 +107,7 @@ export default () => {
         date: new Date().toLocaleString(),
         likes: [],
       })
-        .then(() => {
-          textareaEmpty.value = '';
-        })
+        .then(() => { textareaEmpty.value = ''; })
         .catch((error) => { console.log('Got an error: ', error); });
     }
   });
