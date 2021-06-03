@@ -1,19 +1,17 @@
 /*-------------------- PARA EL BOTÓN "LIKE" ----------------------- */
 .fa-heart {
-       height: 100%;
-       width: 100%;
        cursor: pointer;
-       display: inline-block;
        color: #FFD220;
        transition: .3s ease all;
-   }
+       text-align: right;
+}
 
 /*----------------*/
 
 .postToWall{
        margin: 10px; 
 }
-.commentOnPost{
+.postOnWall{
        margin-bottom: 2%;
 }
    
@@ -23,6 +21,7 @@
        background-color: white;
        border: rgba(255, 255, 255, 0);
        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274); 
+       /* padding-bottom:2%; */
        /* width: 35%;  */
 }
 .userPhoto{
@@ -104,8 +103,9 @@
        display:flex;
        flex-direction: row;
 }
-.hide{
-       display: none;
+.flex{
+       display:block;
+       display:flex;
 }
 #deleteOrModifyArea{
     background-color: white;
@@ -121,43 +121,44 @@
 .hidden{
        display:none;
 }
-
+.textOnComment{
+       border:none;
+       background-color: transparent;
+       box-shadow: none;
+       outline:none;
+       padding-left:2%;
+       height: 2.2rem;
+       border-radius: 15px;
+       margin-left:2%;
+       width: 90%;
+}
+#commentContainerWrap{
+       margin-left: 6%;
+       height: 3rem;
+       display:flex;
+       flex-direction: row;
+}
 .image-post{
        width:300px;
        height:200px;
 }
-/* --------- COMMENT -------  */
-
-.userPhotoComment{
-       height: 20px;
-       width: 20px;
+.formComment{
+       background-color: #e4ddf3d3;
+       box-shadow: none;
+       outline:none;
+       width: 85%;
+       height: 2.2rem;
+       border-radius: 20px;
+       margin-top:1%;
 }
-
-#commentContent{
-       margin:1% 1%;
-       text-align: justify;
+.fa-share-square{
+       float: right;
+       margin-right: 2%;
+       color: rgba(116, 55, 144, 1);
+       margin-top:1.2%;
+       font-size: large;
 }
-#userNameComment{
-       padding-top:5%;
-       white-space: nowrap;
+.fa-comment-dots{
+       width: 3rem;
+       color:rgba(255, 210, 32, 1);
 }
-#likeAndCommentSection{
-       display:flex;
-       flex-direction: row;
-       height: 2rem;
-}
-#deleteOrModifyAreaComment{
-    background-color: white;
-    border: rgba(255, 255, 255, 0);
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274); 
-    /* display: flex; */
-    flex-direction: column;
-}
-
-.saveCommentButton{
-       width: 20px;
-       height: 20px;
-}
-#editPostWrapper{
-       margin: 1.5%;
-};

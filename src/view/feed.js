@@ -102,7 +102,6 @@ export default () => {
     e.preventDefault();// para evitar que los datos no aparezcan cuando se refresque
     // si el textarea está vacío, no guardar algo
     const textarea = divElement.querySelector('#post').value;
-    // file-
     const inputFile = divElement.querySelector('#file-input').files;
 
     // fx firestorage
