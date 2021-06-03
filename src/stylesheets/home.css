@@ -171,7 +171,7 @@ footer{
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        margin: 3%; /*  depende del height de la pantalla */
+        margin: 1.5%; /*  depende del height de la pantalla */
     }
     head {
         margin-top: -1%; 
@@ -192,7 +192,7 @@ footer{
         font-family: 'Raleway', sans-serif;
         font-size:2rem;
         color: #333333;
-        margin: 0% 20% 5% 5%;
+        margin: 0% 20% 0% 5%;
         text-align: justify;
     }
     #logoContainer{

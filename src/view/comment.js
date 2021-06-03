@@ -4,18 +4,21 @@ import { deleteCommentFirebase, updateDocComment } from '../firebase/firestoreFx
 export default (comment, postId) => {
   const addComment = `
     <article id="commentPostWrapper">
-        <img class="userPhotoComment" src="./images/user.svg">
-        <section id= "deleteOrModifyCommentsWrapper" class="${comment.userID === getCurrentUser().uid ? 'show' : 'hide'}"> 
-        <i class="fas fa-ellipsis-h"></i>
-        <div id="deleteOrModifyCommentArea">
-          <p id="modifyComment">Modificar Post</p>
-          <p id="deleteComment">Eliminar Post</p>
-        </div>
-    </section>
-        <article id="commentPost">
-          <article class= "comment-content">${comment.newComment}</article>
-          <button id="saveComment-${comment.id}" class="saveCommentButton">Guardar</button>
+        <img class="userPhotoComment" src="${comment.photo === null ? '../images/user.svg' : comment.photo}">
+        <article class="commentWrap">
+          <article id="userNameComment">${comment.userName}</article>
+          <article class="commentPost">
+            <article class= "comment-content">${comment.newComment}</article>
+            <p id="saveComment-${comment.id}" class="saveCommentButton">Guardar</p>
+          </article>
         </article>
+        <section id= "deleteOrModifyCommentsWrapper" class="${comment.userID === getCurrentUser().uid ? 'show' : 'hide'}"> 
+          <i class="fas fa-ellipsis-h"></i>
+          <div id="deleteOrModifyCommentArea">
+            <p id="modifyComment" class="menu-comment">Modificar</p>
+            <p id="deleteComment" class="menu-comment" >Eliminar</p>
+          </div>
+        </section>
     </article>`;
 
   const commentOnPost = document.createElement('div');
@@ -30,9 +33,10 @@ export default (comment, postId) => {
   const saveComment = commentOnPost.querySelector(`#saveComment-${comment.id}`);
 
   saveComment.style.display = 'none';
+  deleteOrModifyArea.classList.add('hidden');
 
   deleteOrModifyComment.addEventListener('click', () => {
-    deleteOrModifyArea.style.display = 'block';
+    deleteOrModifyArea.classList.toggle('hidden');
   });
 
   // ELIMINAR COMENTARIO

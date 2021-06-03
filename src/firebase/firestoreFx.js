@@ -1,9 +1,12 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-console */
 const firestore = firebase.firestore(); // desde firebase, voy a llamar algo llamado firestore
 firestore.settings({ timestampsInSnapshots: true });
 
 // ----- Añadir lista de fields en un documento de la colección posts -----
-export const addDocPost = (doc) => firestore.collection('posts').add(doc);
+export const addDocPost = (newPost, userID, userName, photo, date, file, likes) => firestore.collection('posts').add({
+  newPost, userID, userName, photo, date, file, likes,
+});
 
 // Kathy está trabajando aquí
 export const updateLike = (docID, likes) => firestore.collection('posts').doc(docID).update(likes);
@@ -31,7 +34,7 @@ export const listPostAll = (callback) => firestore.collection('posts').orderBy('
 });
 
 export const listCommentAll = (idPost, callback) => firestore.collection(`posts/${idPost}/comment`)
-  .orderBy('date', 'desc').onSnapshot((querySnapshot) => {
+  .orderBy('date', 'asc').onSnapshot((querySnapshot) => {
     const comment = [];
     querySnapshot.forEach((doc) => {
       // console.log(doc);

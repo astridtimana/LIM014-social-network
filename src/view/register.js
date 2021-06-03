@@ -34,16 +34,16 @@ export default () => {
             <input type="password" placeholder="Contraseña" id="passwordRegister"> 
             <p id = "errorPasswordUser" class="errorRegister"></p> 
             <button id="signUp"> Regístrate</button>
-            <p id="textConditions">Al registrarte, aceptas nuestras <a href="">Condiciones</a>, la <a href="">Política de datos</a> y la <a href="">Política de cookies</a>.</p>
+            <p id="textConditions">Al registrarte, aceptas nuestras Condiciones, Política de datos, Política de cookies.</p>
       </section>
           
           <section id="buttonRegister">
             <a>Registrar</a>
             <img id="arrowImgRegister" src="./images/arrow.png">
           </section>
-          
+
           <button class="googleButton" id="buttonRegisterGoogle">
-            <img src="./images/googleIcon.png" class="googleLogo">Ingresar con Google
+            <img src="./images/googleIcon.png" class="googleLogoRegister">Regístrate con Google
           </button>
 
           <article class="containerRegister">
@@ -67,7 +67,7 @@ export default () => {
   const errorNameUser = divElement.querySelector('#errorNameUser');
   const errorMailUser = divElement.querySelector('#errorMailUser');
   const errorPasswordUser = divElement.querySelector('#errorPasswordUser');
-  const buttonRegisterGoogleDesktop = divElement.querySelector('#buttonRegisterGoogleDesktop');
+  // const buttonRegisterGoogleDesktop = divElement.querySelector('#buttonRegisterGoogleDesktop');
   const buttonRegisterGoogle = divElement.querySelector('#buttonRegisterGoogle');
   const validateLetters = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;
 

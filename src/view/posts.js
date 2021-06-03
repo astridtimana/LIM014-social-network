@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-const-assign */
 /* eslint-disable no-plusplus */
 import { getCurrentUser } from '../firebase/firebaseFx.js';
@@ -29,31 +30,35 @@ export default (post) => {
         </section><hr>
         <section id="editPostWrapper">
           <p id= "postContent" > ${post.newPost}</p>
+          ${post.file ? `<img class="image-post" src='${post.file}' />` : ''}
+          
           <p id="savePost">Guardar</p>
         </section><hr>
 
               <section id="likeAndCommentSection"> 
                   <i class="${!post.likes.includes(getCurrentUser().uid) ? 'far' : 'fas'} fa-heart" id="heart-${post.id}"></i>
                   <p class="numberLikes">${post.likes.length}</p>
-                  
-                <article class="likeAndCommentWrapper" id="commentButton">
-                    <img class="likeAndComment" src="./images/Comment.png"> 
-                    <p>Comment counter</p>
+
+                <article class="likeAndCommentWrapper" > 
+                  <i class="far fa-comment-dots" id="commentButton"></i>
                 </article>
               </section>
 
-      <div id="commentContainer">
-        <form class="formComment">
-          <textarea id="commentText-${post.id}" required></textarea>
-          <button type="submit" id="sendComment-${post.id}">Comentar</button>
-        </form>
+      <section id="commentContainer">
+        <section id="commentContainerWrap">
+          <img class="userPhotoComment" src="${getCurrentUser().photo === null ? '../images/user.svg' : getCurrentUser().photo}">
+          <form class="formComment">
+            <input id="commentText-${post.id}" class="textOnComment" placeholder="Escribe un comentario..." required><i class="fas fa-share-square"id="sendComment-${post.id}"></i></input>
+          </section>
+        </section>
       </div>
+
       <div id="commentWall">
       </div>
     </article> `;
 
   const postToWall = document.createElement('div');
-  postToWall.setAttribute('class', 'commentOnPost');
+  postToWall.setAttribute('class', 'postOnWall');
   postToWall.innerHTML = postView;
 
   const deleteOrModifyPost = postToWall.querySelector('#deleteOrModifyPostsWrapper');
@@ -104,14 +109,17 @@ export default (post) => {
     commentContainer.classList.toggle('hidden');
   });
 
+  // --------------------Función COMENTAR EN POST-----------------//
   commentOnPost.addEventListener('click', (e) => {
-    const textarea = postToWall.querySelector(`#commentText-${post.id}`).value;
     e.preventDefault();
+    const textarea = postToWall.querySelector(`#commentText-${post.id}`).value;
     if (textarea.length > 0) {
       addDocComment(post.id, {
         newComment: textarea,
         userID: getCurrentUser().uid,
         date: new Date().toLocaleDateString(),
+        userName: getCurrentUser().name,
+        photo: getCurrentUser().photo,
       }).catch((error) => { console.log('Got an error: ', error); });
     }
   });
