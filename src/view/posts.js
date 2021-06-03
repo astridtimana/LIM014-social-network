@@ -46,7 +46,7 @@ export default (post) => {
 
       <section id="commentContainer">
         <section id="commentContainerWrap">
-          <img class="userPhotoComment" src="${post.photo === null ? '../images/user.svg' : post.photo}">
+          <img class="userPhotoComment" src="${getCurrentUser().photo === null ? '../images/user.svg' : getCurrentUser().photo}">
           <form class="formComment">
             <input id="commentText-${post.id}" class="textOnComment" placeholder="Escribe un comentario..." required><i class="fas fa-share-square"id="sendComment-${post.id}"></i></input>
           </section>

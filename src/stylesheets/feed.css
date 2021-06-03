@@ -8,6 +8,7 @@
 #user-info {
     grid-column-start: 1;
     padding: 10%;
+    margin-left:10%;
 }
 .userImage{
     border-radius: 50%;
