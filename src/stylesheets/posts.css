@@ -1,37 +1,14 @@
 /*-------------------- PARA EL BOTÓN "LIKE" ----------------------- */
-
-.icon-heart {
-       background: url(http://i.imgur.com/MIP7hPg.png);
-       background-position: left;
-       background-repeat: no-repeat;
-       background-size: auto;
-       height: 100px;
-       width: 100px;
+.fa-heart {
+       height: 100%;
+       width: 100%;
        cursor: pointer;
        display: inline-block;
-   }
-.icon-heart-2 {
-       background-position: right;
-       animation: animate .8s steps(28) 1;
-   }
-   @-webkit-keyframes animate {
-       0% {
-           background-position: left;
-       }
-       100% {
-           background-position: right;
-       }
-   }
-
-   /* CODIGO DANI  */
-   .icon-heart-3 {
-       background-position: right;
-     
+       color: #FFD220;
+       transition: .3s ease all;
    }
 
 /*----------------*/
-
-
 
 .postToWall{
        margin: 10px; 

@@ -33,12 +33,13 @@ export default (post) => {
           <p id="savePost">Guardar</p>
         </section><hr>
 
-              <section id="likeAndCommentSection">
-                  <i class="icon-heart" id= "heart-${post.id}"></i>  
+              <section id="likeAndCommentSection"> 
+                  <i class="${!post.likes.includes(getCurrentUser().uid) ? 'far' : 'fas'} fa-heart" id="heart-${post.id}"></i>
                   <p class="numberLikes">${post.likes.length}</p>
-
-                <article class="likeAndCommentWrapper" id="commentButton"> 
-                    <i class="far fa-comment"></i>
+                  
+                <article class="likeAndCommentWrapper" id="commentButton">
+                    <img class="likeAndComment" src="./images/Comment.png"> 
+                    <p>Comment counter</p>
                 </article>
               </section>
 
@@ -56,7 +57,6 @@ export default (post) => {
   postToWall.setAttribute('class', 'commentOnPost');
   postToWall.innerHTML = postView;
 
-  const likeButton = postToWall.querySelector(`#heart-${post.id}`);
   const deleteOrModifyPost = postToWall.querySelector('#deleteOrModifyPostsWrapper');
   const deleteOrModifyArea = postToWall.querySelector('#deleteOrModifyArea');
   const modifyPost = postToWall.querySelector('#modifyPost');
@@ -82,38 +82,25 @@ export default (post) => {
     return commentWall;
   });
 
-  // CODIGO DANI
-  // console.log(likeButton);
-  // if (!contador.includes(getCurrentUser().uid)) {
-  //   console.log('entré al if', likeButton);
-  //   likeButton.classList.toggle('icon-heart-3');
-  //   console.log('entré al if2', likeButton);
-  // }
-
+  // ---------------- Botón LIKE ----------------- //
   function removeItemFromArr(arr, item) {
     const i = arr.indexOf(item);
     if (i !== -1) {
       arr.splice(i, 1);
     }
   }
+  const likeButton = postToWall.querySelector(`#heart-${post.id}`);
+  likeButton.addEventListener('click', () => {
+    const contador = post.likes;
+    if (!contador.includes(getCurrentUser().uid)) {
+      contador.push(getCurrentUser().uid);
+    } else if (contador.includes(getCurrentUser().uid)) {
+      removeItemFromArr(contador, getCurrentUser().uid);
+    }
+    updateLike(post.id, { likes: contador });
+  });
 
-  // Botón LIKE
-
-  // likeButton.addEventListener('click', () => {
-  //   console.log('entré al addevent');
-  //   if (!contador.includes(getCurrentUser().uid)) {
-  //     console.log('entré al if', likeButton);
-  //     likeButton.classList.add('icon-heart-2');
-  //     contador.push(getCurrentUser().uid);
-  //   } else {
-  //     console.log('entré al else', likeButton);
-  //     likeButton.classList.remove('icon-heart-2');
-  //     removeItemFromArr(contador, getCurrentUser().uid);
-  //   }
-  //   updateLike(post.id, { likes: contador });
-  // });
-
-  // Botón COMENTAR POST
+  // ------------------ Botón COMENTAR POST ---------------- //
   const commentButton = postToWall.querySelector('#commentButton');
   commentButton.addEventListener('click', (e) => {
     e.preventDefault();
