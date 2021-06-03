@@ -13,6 +13,8 @@ import templatePost from './posts.js';
 import { addDocPost, listPostAll, onGetPosts } from '../firebase/firestoreFx.js';
 
 export default () => {
+  const photo = getCurrentUser().photo;
+  const name = getCurrentUser().name;
   const viewFeed = `
   <header id="feedHeader">
     <nav class="navigatorMenuFeed">
@@ -40,15 +42,17 @@ export default () => {
             </section>  
   
             <article id="user-info">
-              <img class="userImage" src="../images/iconoperson.png" alt="Foto de perfil">
-              <h2 class="user-name profile-name" id="nameUserProfile"></h2>
+
+              <img class="userImage" src="${photo === null ? '../images/user.svg' : photo}" alt="Foto de perfil">
+
+              <h2 class="user-name profile-name" id="nameUserProfile">${name}</h2>
               <article class="user-information">
                   <h3><h3>
               </article>
             </article>
 
       <form class="formPost">
-          <img class="userPhotoFeed" src="../images/user.svg" alt="userPhoto">
+          <img class="userPhotoFeed" src="${photo === null ? '../images/user.svg' : photo}" alt="userPhoto">
           <textarea placeholder="¿En qué estás pensando?" id="post"></textarea><hr>
           <img src= "../images/photo.png" id="uploadPhoto">
           <button id="bttPost" type="submit">Publicar</button>
@@ -69,9 +73,6 @@ export default () => {
     logOut();
   });
 
-  // agregar nombre de usuario al loguearse
-  divElement.querySelector('#nameUserProfile').innerHTML = getCurrentUser().name;
-
   // FIRESTORE
   // const docRef = firestore.collection('posts');
   const buttonPost = divElement.querySelector('#bttPost');
@@ -82,9 +83,10 @@ export default () => {
     // console.log(data); trae la data del documento con sus fields.
     wallArea.innerHTML = '';
     data.forEach((post) => {
-      // console.log(post);
+      /* console.log(post); */
       wallArea.appendChild(templatePost(post));
     });
+    return wallArea;
   });
 
   buttonPost.addEventListener('click', (e) => {
@@ -99,6 +101,7 @@ export default () => {
         newPost: textarea,
         userID: getCurrentUser().uid,
         userName: getCurrentUser().name,
+        photo: getCurrentUser().photo,
         date: new Date().toLocaleString(),
         likes: [],
       }).catch((error) => { console.log('Got an error: ', error); });
