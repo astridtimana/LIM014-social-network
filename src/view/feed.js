@@ -102,6 +102,7 @@ export default () => {
     e.preventDefault();// para evitar que los datos no aparezcan cuando se refresque
     // si el textarea está vacío, no guardar algo
     const textarea = divElement.querySelector('#post').value;
+    const textareaEmpty = divElement.querySelector('#post');
     const inputFile = divElement.querySelector('#file-input').files;
 
     // fx firestorage
@@ -121,7 +122,9 @@ export default () => {
               new Date().toLocaleString(),
               url,
               [],
-            ).catch((error) => { console.log('Got an error: ', error); });
+            )
+              .then(() => { textareaEmpty.value = ''; })
+              .catch((error) => { console.log('Got an error: ', error); });
           });
         });
       } else {
@@ -131,27 +134,12 @@ export default () => {
           getCurrentUser().photo,
           new Date().toLocaleString(),
           null,
-          []).catch((error) => { console.log('Got an error: ', error); });
+          [])
+          .then(() => { textareaEmpty.value = ''; })
+          .catch((error) => { console.log('Got an error: ', error); });
       }
-      // newPost({ newPost: textarea })
-<<<<<<< HEAD
-      addDocPost({
-        newPost: textarea,
-        userID: getCurrentUser().uid,
-        userName: getCurrentUser().name,
-        photo: getCurrentUser().photo,
-        date: new Date().toLocaleString(),
-        likes: [],
-      })
-        .then(() => { textareaEmpty.value = ''; })
-        .catch((error) => { console.log('Got an error: ', error); });
-=======
->>>>>>> 5116ed0254b88d71406671aacb969eccb6970370
     }
-    divElement.querySelector('#post').value = '';
-    // if (getCurrentUser().uid === wallArea.querySelector(`#${post.userID}`)) {
-    //   deleteOrModifyPost.style.display = 'block';
-    // } else { deleteOrModifyPost.style.display = 'none'; }
+    /*  divElement.querySelector('#post').value = ''; */
   });
 
   return divElement;
