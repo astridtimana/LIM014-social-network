@@ -34,14 +34,14 @@ export default () => {
             <input type="password" placeholder="Contraseña" id="passwordRegister"> 
             <p id = "errorPasswordUser" class="errorRegister"></p> 
             <button id="signUp"> Regístrate</button>
-            <p id="textConditions">Al registrarte, aceptas nuestras <a href="">Condiciones</a>,<a href="">Política de datos</a>,<a href="">Política de cookies</a>.</p>
+            <p id="textConditions">Al registrarte, aceptas nuestras Condiciones, Política de datos, Política de cookies.</p>
       </section>
           
           <section id="buttonRegister">
             <a>Registrar</a>
             <img id="arrowImgRegister" src="./images/arrow.png">
           </section>
-          
+
           <button class="googleButton" id="buttonRegisterGoogle">
             <img src="./images/googleIcon.png" class="googleLogoRegister">Regístrate con Google
           </button>
