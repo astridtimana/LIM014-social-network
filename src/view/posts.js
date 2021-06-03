@@ -43,7 +43,7 @@ export default (post) => {
 
       <section id="commentContainer">
         <section id="commentContainerWrap">
-          <img class="userPhotoComment" src="../images/user.svg">
+          <img class="userPhotoComment" src="${post.photo === null ? '../images/user.svg' : post.photo}">
           <form class="formComment">
             <input id="commentText-${post.id}" class="textOnComment" placeholder="Escribe un comentario..." required><i class="fas fa-share-square"id="sendComment-${post.id}"></i></input>
           </section>
@@ -103,7 +103,6 @@ export default (post) => {
   const commentButton = postToWall.querySelector('#commentButton');
   commentButton.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log('pppp');
     commentContainer.classList.toggle('hidden');
   });
 
@@ -117,6 +116,7 @@ export default (post) => {
         userID: getCurrentUser().uid,
         date: new Date().toLocaleDateString(),
         userName: getCurrentUser().name,
+        photo: getCurrentUser().photo,
       }).catch((error) => { console.log('Got an error: ', error); });
     }
   });

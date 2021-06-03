@@ -142,7 +142,7 @@
        background-color: #e4ddf3d3;
        box-shadow: none;
        outline:none;
-       width: 80%;
+       width: 85%;
        height: 2.2rem;
        border-radius: 20px;
        margin-top:1%;
@@ -151,7 +151,7 @@
        float: right;
        margin-right: 2%;
        color: rgba(116, 55, 144, 1);
-       margin-top:1.8%;
+       margin-top:1.2%;
        font-size: large;
 }
 .fa-comment-dots{

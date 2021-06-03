@@ -4,12 +4,12 @@ import { deleteCommentFirebase, updateDocComment } from '../firebase/firestoreFx
 export default (comment, postId) => {
   const addComment = `
     <article id="commentPostWrapper">
-        <img class="userPhotoComment" src="../images/user.svg">
+        <img class="userPhotoComment" src="${comment.photo === null ? '../images/user.svg' : comment.photo}">
         <article class="commentWrap">
           <article id="userNameComment">${comment.userName}</article>
           <article class="commentPost">
             <article class= "comment-content">${comment.newComment}</article>
-            <button id="saveComment-${comment.id}" class="saveCommentButton">Guardar</button>
+            <p id="saveComment-${comment.id}" class="saveCommentButton">Guardar</p>
           </article>
         </article>
         <section id= "deleteOrModifyCommentsWrapper" class="${comment.userID === getCurrentUser().uid ? 'show' : 'hide'}"> 

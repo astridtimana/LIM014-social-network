@@ -1,7 +1,8 @@
 
 .userPhotoComment{
-    /* height: 20px; */
+    height: 2.5rem;
     width: 2.5rem;
+    border-radius: 50%;
     /* padding-bottom:2%; */
 }
 
@@ -31,6 +32,7 @@
     font-size: small;
 }
 .saveCommentButton{
+    color:rgba(116, 55, 144, 1);
     width: 20px;
     height: 20px;
 }
@@ -55,6 +57,7 @@
 }
 .comment-content{
     padding: 1% 2% 2% 3%;
+    outline: none;
 }
 .menu-comment{
     font-size: small;
