@@ -20,7 +20,7 @@ export default (post) => {
               <p class= "daysAgo">${post.date}</p>
             </section>
           </section>
-          <section id= "deleteOrModifyPostsWrapper" class="${post.userID === getCurrentUser().uid ? 'show' : 'hide'}"> 
+          <section id= "deleteOrModifyPostsWrapper" class="${post.userID === getCurrentUser().uid ? 'show' : 'hidden'}"> 
             <i class="fas fa-ellipsis-h" id="menuPost"></i>
             <ul id="deleteOrModifyArea">
               <p id="modifyPost">Editar</p>

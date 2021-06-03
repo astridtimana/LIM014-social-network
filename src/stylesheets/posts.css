@@ -40,7 +40,7 @@
 #postContent{
        margin:1% 1%;
        text-align: justify;
-       
+       outline:none;
 }
 #savePost{
        font-style: italic;

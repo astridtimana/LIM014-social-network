@@ -12,7 +12,7 @@ export default (comment, postId) => {
             <p id="saveComment-${comment.id}" class="saveCommentButton">Guardar</p>
           </article>
         </article>
-        <section id= "deleteOrModifyCommentsWrapper" class="${comment.userID === getCurrentUser().uid ? 'show' : 'hide'}"> 
+        <section id= "deleteOrModifyCommentsWrapper" class="${comment.userID === getCurrentUser().uid ? 'show' : 'hidden'}"> 
           <i class="fas fa-ellipsis-h"></i>
           <div id="deleteOrModifyCommentArea">
             <p id="modifyComment" class="menu-comment">Modificar</p>
