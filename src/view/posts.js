@@ -107,7 +107,7 @@ export default (post) => {
     commentContainer.classList.toggle('hidden');
   });
 
-  // Función COMENTAR POST
+  // --------------------Función COMENTAR EN POST-----------------//
   commentOnPost.addEventListener('click', (e) => {
     e.preventDefault();
     const textarea = postToWall.querySelector(`#commentText-${post.id}`).value;
@@ -116,6 +116,7 @@ export default (post) => {
         newComment: textarea,
         userID: getCurrentUser().uid,
         date: new Date().toLocaleDateString(),
+        userName: getCurrentUser().name,
       }).catch((error) => { console.log('Got an error: ', error); });
     }
   });

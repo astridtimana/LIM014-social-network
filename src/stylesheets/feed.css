@@ -11,8 +11,8 @@
 }
 .userImage{
     border-radius: 50%;
-    border: rgba(216, 48, 39, 1) solid;
-    width: 10vh;
+    border: rgba(216, 48, 39, 0.452) solid;
+    width: 15vh;
 }
 #wall{
     grid-column-start: 2;
@@ -27,13 +27,15 @@
 }   
 #post{
     resize: none;
-    margin: 2% 3% 1% 1%;
+    margin: 2% 3% 2% 2%;
     width: 50%;
+    height: 3rem;
     border:transparent;
     outline:none;
+    text-align: left;
 }
 #uploadPhoto{
-    margin: 2.2%;
+    margin: 2%;
 }
 .navigatorMenuFeed {
     text-align: right;
@@ -91,6 +93,11 @@
 #activitiesArea{
     margin-top:2%;
     grid-column-start: 2;
+}
+.userPhotoFeed{
+    border-radius: 50%;
+    margin-left: 3%;
+    margin-bottom:1.5%;
 }
 
 @media only screen and (max-width: 500px) {

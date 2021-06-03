@@ -1,12 +1,10 @@
 /*-------------------- PARA EL BOTÓN "LIKE" ----------------------- */
 .fa-heart {
-       height: 100%;
-       width: 100%;
        cursor: pointer;
-       display: inline-block;
        color: #FFD220;
        transition: .3s ease all;
-   }
+       text-align: right;
+}
 
 /*----------------*/
 
@@ -23,6 +21,7 @@
        background-color: white;
        border: rgba(255, 255, 255, 0);
        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274); 
+       /* padding-bottom:2%; */
        /* width: 35%;  */
 }
 .userPhoto{
