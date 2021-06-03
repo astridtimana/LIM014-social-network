@@ -38,15 +38,19 @@ export default () => {
             <section id="aditionalsArea">
                 <section class="aditionals"></section>
             </section>  
-
   
-              <article class="user-info profile">
-                <img alt="userimage" src="" alt="Foto de perfil">
-                <h2 class="user-name profile-name" id="nameUserProfile"></h2>
+            <article id="user-info">
+              <img class="userImage" src="../images/iconoperson.png" alt="Foto de perfil">
+              <h2 class="user-name profile-name" id="nameUserProfile"></h2>
+              <article class="user-information">
+                  <h3><h3>
               </article>
+            </article>
 
       <form class="formPost">
-          <textarea placeholder="¿En qué estás pensando?" id="post"></textarea>
+          <img class="userPhotoFeed" src="../images/user.svg" alt="userPhoto">
+          <textarea placeholder="¿En qué estás pensando?" id="post"></textarea><hr>
+          <img src= "../images/photo.png" id="uploadPhoto">
           <button id="bttPost" type="submit">Publicar</button>
       </form>
       

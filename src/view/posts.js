@@ -11,36 +11,34 @@ import {
 
 export default (post) => {
   const postView = `
-    <article class="postId" id= "${post.userID}">
+    <article class="postId" id= "${post.id}">
         <section id= "postHeader">
           <section id="userInfoPost">
-            <img class="userPhoto" src="${post.photoUrl} alt="userPhoto"> 
+            <img class="userPhoto" src="../images/user.svg" alt="userPhoto"> 
             <section id="postHeaderWrapper">
               <article id="userNamePost">${post.userName}</article>
-              <p id= "daysAgo">${post.date}</p>
+              <p class= "daysAgo">${post.date}</p>
             </section>
           </section>
           <section id= "deleteOrModifyPostsWrapper" class="${post.userID === getCurrentUser().uid ? 'show' : 'hide'}"> 
-            <i class="fas fa-ellipsis-h"></i>
+            <i class="fas fa-ellipsis-h" id="menuPost"></i>
             <ul id="deleteOrModifyArea">
-              <p id="modifyPost">Modificar Post</p>
-              <p id="deletePost">Eliminar Post</p>
+              <p id="modifyPost">Editar</p>
+              <p id="deletePost">Eliminar</p>
             </ul>
           </section>
         </section><hr>
-        <section>
-        <p id= "postContent"> ${post.newPost}</p><hr>
-        <button id="savePost">Guardar</button>
-        </section>
+        <section id="editPostWrapper">
+          <p id= "postContent" > ${post.newPost}</p>
+          <p id="savePost">Guardar</p>
+        </section><hr>
 
               <section id="likeAndCommentSection">
-                  <i class="icon-heart"></i>  
+                  <i class="icon-heart" id= "heart-${post.id}"></i>  
                   <p class="numberLikes">${post.likes.length}</p>
 
-
-                <article class="likeAndCommentWrapper" id="commentButton">
-                    <img class="likeAndComment" src="./images/Comment.png"> 
-                    <p>Comment counter</p>
+                <article class="likeAndCommentWrapper" id="commentButton"> 
+                    <i class="far fa-comment"></i>
                 </article>
               </section>
 
@@ -58,17 +56,19 @@ export default (post) => {
   postToWall.setAttribute('class', 'commentOnPost');
   postToWall.innerHTML = postView;
 
+  const likeButton = postToWall.querySelector(`#heart-${post.id}`);
   const deleteOrModifyPost = postToWall.querySelector('#deleteOrModifyPostsWrapper');
   const deleteOrModifyArea = postToWall.querySelector('#deleteOrModifyArea');
   const modifyPost = postToWall.querySelector('#modifyPost');
   const deletePost = postToWall.querySelector('#deletePost');
-
+  const editPostWrapper = postToWall.querySelector('#editPostWrapper');
   const postContent = postToWall.querySelector('#postContent');
   const commentContainer = postToWall.querySelector('#commentContainer');
   const savePost = postToWall.querySelector('#savePost');
   const commentWall = postToWall.querySelector('#commentWall');
   // const formComment = postToWall.querySelector('.formComment');
   const commentOnPost = postToWall.querySelector(`#sendComment-${post.id}`);
+  const contador = post.likes;
 
   // enconder div de comentario
   commentContainer.classList.add('hidden');
@@ -82,6 +82,14 @@ export default (post) => {
     return commentWall;
   });
 
+  // CODIGO DANI
+  // console.log(likeButton);
+  // if (!contador.includes(getCurrentUser().uid)) {
+  //   console.log('entré al if', likeButton);
+  //   likeButton.classList.toggle('icon-heart-3');
+  //   console.log('entré al if2', likeButton);
+  // }
+
   function removeItemFromArr(arr, item) {
     const i = arr.indexOf(item);
     if (i !== -1) {
@@ -91,20 +99,19 @@ export default (post) => {
 
   // Botón LIKE
 
-  const likeButton = postToWall.querySelector('.icon-heart');
-  likeButton.addEventListener('click', () => {
-    // console.log(post);
-    likeButton.classList.toggle('icon-heart-2');
-    const contador = post.likes;
-    if (!contador.includes(getCurrentUser().uid)) {
-      /* likeButton.classList.toggle('icon-heart-2'); */
-      contador.push(getCurrentUser().uid);
-    } else if (contador.includes(getCurrentUser().uid)) {
-      /* likeButton.classList.toggle('icon-heart-2'); */
-      removeItemFromArr(contador, getCurrentUser().uid);
-    }
-    updateLike(post.id, { likes: contador });
-  });
+  // likeButton.addEventListener('click', () => {
+  //   console.log('entré al addevent');
+  //   if (!contador.includes(getCurrentUser().uid)) {
+  //     console.log('entré al if', likeButton);
+  //     likeButton.classList.add('icon-heart-2');
+  //     contador.push(getCurrentUser().uid);
+  //   } else {
+  //     console.log('entré al else', likeButton);
+  //     likeButton.classList.remove('icon-heart-2');
+  //     removeItemFromArr(contador, getCurrentUser().uid);
+  //   }
+  //   updateLike(post.id, { likes: contador });
+  // });
 
   // Botón COMENTAR POST
   const commentButton = postToWall.querySelector('#commentButton');
@@ -125,11 +132,12 @@ export default (post) => {
     }
   });
 
-  deleteOrModifyArea.style.display = 'none';
+  deleteOrModifyArea.classList.add('hidden');
   savePost.style.display = 'none';
 
-  deleteOrModifyPost.addEventListener('click', () => {
-    deleteOrModifyArea.style.display = 'block';
+  deleteOrModifyPost.addEventListener('click', (e) => {
+    e.preventDefault();
+    deleteOrModifyArea.classList.toggle('hidden');
   });
 
   // ELIMINAR POST
@@ -139,28 +147,35 @@ export default (post) => {
 
   // MODIFICAR POST
   modifyPost.addEventListener('click', (e) => {
-    e.stopPropagation();
+    e.preventDefault();
     savePost.style.display = 'block';
     postContent.contentEditable = true;
     postContent.style.border = '#FFCC00 solid';
-    // console.log(e);
-    savePost.addEventListener('click', () => {
-      postContent.contentEditable = false;
-      deleteOrModifyArea.style.display = 'none';
-      savePost.style.display = 'none';
-      postContent.style.border = 'none';
-      // console.log(postContent);
-      updateDocPost(post.id, {
-        newPost: postContent.innerHTML,
-      });
+  });
+  savePost.addEventListener('click', (e) => {
+    e.preventDefault();
+    postContent.contentEditable = false;
+    deleteOrModifyArea.style.display = 'none';
+    postContent.style.border = 'none';
+    savePost.style.display = 'none';
+    // console.log(postContent);
+    updateDocPost(post.id, {
+      newPost: postContent.innerHTML,
     });
   });
 
-  // window.addEventListener('click', (e) => {
-  //   if (e.target !== savePost) {
+  // Mejorable click fuera del post
+  // window.addEventListener('click', (y) => {
+  //   console.log('in');
+  //   console.log(y.target);
+  //   if (y.target !== postToWall) {
+  //     y.preventDefault();
   //     postContent.contentEditable = false;
   //     savePost.style.display = 'none';
   //     postContent.style.border = 'none';
+  //     updateDocPost(post.id, {
+  //       newPost: postContent.innerHTML,
+  //     });
   //   }
   // });
 

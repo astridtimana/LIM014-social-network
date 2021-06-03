@@ -28,11 +28,11 @@ export default () => {
             <p id="textRegister">Regístrate para ver fotos y videos de tus amigos.</p>
             
             <input type="name" placeholder="Nombre y apellido" id="nameRegister">
-            <p id = "errorNameUser"></p>
+            <p id = "errorNameUser" class="errorRegister"></p>
             <input type="email" placeholder="Correo electrónico" id="mailRegister">
-            <p id = "errorMailUser"></p> 
+            <p id = "errorMailUser" class="errorRegister" ></p> 
             <input type="password" placeholder="Contraseña" id="passwordRegister"> 
-            <p id = "errorPasswordUser"></p> 
+            <p id = "errorPasswordUser" class="errorRegister"></p> 
             <button id="signUp"> Regístrate</button>
             <p id="textConditions">Al registrarte, aceptas nuestras <a href="">Condiciones</a>,<a href="">Política de datos</a>,<a href="">Política de cookies</a>.</p>
       </section>
@@ -47,8 +47,8 @@ export default () => {
           </button>
 
           <article class="containerRegister">
-            <p>¿Tienes una cuenta?</p>
-            <a id="logIn" href="#/home">Iniciar sesión</a>
+            <p>¿Tienes una cuenta? </p>
+            <a id="logIn" href="#/home"> Iniciar sesión</a>
           </article>
 
   </section>

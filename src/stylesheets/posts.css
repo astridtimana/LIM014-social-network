@@ -22,24 +22,25 @@
            background-position: right;
        }
    }
-   
+
+   /* CODIGO DANI  */
+   .icon-heart-3 {
+       background-position: right;
+     
+   }
+
 /*----------------*/
 
-#post {
-    height: 100px;
-    width: 200px;
-    background-color: greenyellow;
-   }
-#bttPost {
-       height: 20px;
-       width: 90px;
-}
+
 
 .postToWall{
        margin: 10px; 
 }
+.commentOnPost{
+       margin-bottom: 2%;
+}
    
-   /* ----- post ------- */
+/* ----- post ------- */
    
 .postId{
        background-color: white;
@@ -48,10 +49,9 @@
        /* width: 35%;  */
 }
 .userPhoto{
-       width:5%;
+       width:3rem;
        border-radius: 50%;
-       width: 80px;
-       margin: 10px;
+       margin-right: 1rem;
        float: left;
 }
 .likeAndComment{
@@ -64,13 +64,24 @@
 #postContent{
        margin:1% 1%;
        text-align: justify;
+       
+}
+#savePost{
+       font-style: italic;
+       color:rgba(116, 55, 144, 1);
+       outline: none;
+       text-align: right;
+       margin-right:5%;
 }
 #userNamePost{
        padding-top:5%;
        white-space: nowrap;
 }
-#daysAgo{
+.daysAgo{
        padding-bottom: 2%;
+       font-size: small;
+       color:rgb(99, 93, 93);
+       margin-top:5%;
 }
 .likeAndCommentWrapper{
        flex-direction: row;
@@ -149,9 +160,6 @@
        padding-top:5%;
        white-space: nowrap;
 }
-#daysAgo{
-       padding-bottom: 2%;
-}
 #likeAndCommentSection{
        display:flex;
        flex-direction: row;
@@ -169,3 +177,6 @@
        width: 20px;
        height: 20px;
 }
+#editPostWrapper{
+       margin: 1.5%;
+};

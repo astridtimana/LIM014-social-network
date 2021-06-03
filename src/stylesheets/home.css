@@ -135,7 +135,7 @@ section .forDesktopHome {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-bottom: 20%;
+    margin: 0% 3% 20% 5%;
 }
 .smallContainer{
     display: flex;
@@ -179,6 +179,7 @@ footer{
     #lgtbiqImage {
         width:600px;
         justify-content: left;
+        margin-bottom: 3%;
     }
     .leftWrapper{
         display: flex;
@@ -191,6 +192,8 @@ footer{
         font-family: 'Raleway', sans-serif;
         font-size:2rem;
         color: #333333;
+        margin: 0% 20% 5% 5%;
+        text-align: justify;
     }
     #logoContainer{
         margin-bottom: 3%;
@@ -268,5 +271,9 @@ footer{
         margin-right: 10px;
         margin-top: 0.5%; 
     }
-
+    .errorMailMessage{
+        color: rgba(216, 48, 39, 1);
+        text-align: center;
+        font-size: small;
+    }
 }

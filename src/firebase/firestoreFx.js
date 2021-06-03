@@ -9,7 +9,7 @@ export const addDocPost = (doc) => firestore.collection('posts').add(doc);
 export const updateLike = (docID, likes) => firestore.collection('posts').doc(docID).update(likes);
 
 // ----- Añadir lista de fields en un documento de la colección comments -----
-export const addDocComment = (docID, comment) => firestore.collection('posts').doc(docID).collection('comment').add(comment);
+export const addDocComment = (docID, comment) => firestore.collection('posts').doc(docID).collection('comment').update(comment);
 
 // ----- Agregar/actualizar field en un documento de la colección posts -----
 export const updateDocPost = (docID, newField) => firestore.collection('posts').doc(docID).update(newField);
