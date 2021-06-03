@@ -11,6 +11,7 @@ import {
 import templatePost from './posts.js';
 // console.log(templatePost());
 import { addDocPost, listPostAll, onGetPosts } from '../firebase/firestoreFx.js';
+import { uploadFile } from '../firebase/firestorageFx.js';
 
 export default () => {
   const photo = getCurrentUser().photo;
@@ -38,8 +39,7 @@ export default () => {
             </section>
 
             <section id="aditionalsArea">
-                <section class="aditionals">
-                </section>
+                <section class="aditionals"></section>
             </section>  
   
             <article id="user-info">
@@ -55,7 +55,15 @@ export default () => {
       <form class="formPost">
           <img class="userPhotoFeed" src="${photo === null ? '../images/user.svg' : photo}" alt="userPhoto">
           <textarea placeholder="¿En qué estás pensando?" id="post"></textarea><hr>
-          <img src= "../images/photo.png" id="uploadPhoto">
+         
+         <article class="image-upload">
+         <label for="file-input">
+         <img src= "../images/photo.png" id="uploadPhoto">
+         </label>
+         
+         <input type="file" id="file-input" accept="*" />
+         </article>
+          
           <button id="bttPost" type="submit">Publicar</button>
       </form>
       
@@ -94,24 +102,43 @@ export default () => {
     e.preventDefault();// para evitar que los datos no aparezcan cuando se refresque
     // si el textarea está vacío, no guardar algo
     const textarea = divElement.querySelector('#post').value;
-    const textareaEmpty = divElement.querySelector('#post');
-    // fx de firestore
-    // si el textarea está vacío, no guardar algo
-    if (textarea.length > 0) {
+    const inputFile = divElement.querySelector('#file-input').files;
+
+    // fx firestorage
+    if (textarea.length > 0 || inputFile.length >= 1) {
+      if (inputFile.length >= 1) {
+        console.log(inputFile);
+        const fileName = inputFile[0].name;
+        uploadFile(`img/${fileName}`, inputFile[0]).then((snapshot) => {
+          console.log('Archivo Subido');
+          snapshot.ref.getDownloadURL().then((url) => {
+            console.log('Url :', url);
+            addDocPost(
+              textarea,
+              getCurrentUser().uid,
+              getCurrentUser().name,
+              getCurrentUser().photo,
+              new Date().toLocaleString(),
+              url,
+              [],
+            ).catch((error) => { console.log('Got an error: ', error); });
+          });
+        });
+      } else {
+        addDocPost(textarea,
+          getCurrentUser().uid,
+          getCurrentUser().name,
+          getCurrentUser().photo,
+          new Date().toLocaleString(),
+          null,
+          []).catch((error) => { console.log('Got an error: ', error); });
+      }
       // newPost({ newPost: textarea })
-      addDocPost({
-        newPost: textarea,
-        userID: getCurrentUser().uid,
-        userName: getCurrentUser().name,
-        photo: getCurrentUser().photo,
-        date: new Date().toLocaleString(),
-        likes: [],
-      })
-        .then(() => {
-          textareaEmpty.value = '';
-        })
-        .catch((error) => { console.log('Got an error: ', error); });
     }
+    divElement.querySelector('#post').value = '';
+    // if (getCurrentUser().uid === wallArea.querySelector(`#${post.userID}`)) {
+    //   deleteOrModifyPost.style.display = 'block';
+    // } else { deleteOrModifyPost.style.display = 'none'; }
   });
 
   return divElement;

@@ -122,6 +122,10 @@
        display:none;
 }
 
+.image-post{
+       width:300px;
+       height:200px;
+}
 /* --------- COMMENT -------  */
 
 .userPhotoComment{
