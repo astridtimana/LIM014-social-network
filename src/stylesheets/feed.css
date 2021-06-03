@@ -30,6 +30,7 @@
     margin: 2% 3% 1% 1%;
     width: 50%;
     border:transparent;
+    outline:none;
 }
 #uploadPhoto{
     margin: 2.2%;
@@ -94,12 +95,15 @@
 
 @media only screen and (max-width: 500px) {
 
-
+    #wall{
+        grid-column-start: 1;
+        grid-column-end: 3;
+        padding: 3% 5% 2% 5%; /* arriba, derecha, abajo, izquierda */
+    }
     .toggleFeed {
         display: block;
         cursor: pointer;
     }
-
     .menuFeed {
         text-align: center;
         width: 100%;
@@ -111,7 +115,7 @@
         display: none;
 
     }
- 
+
     .menuFeed a {
         display: block;
         margin: 0;

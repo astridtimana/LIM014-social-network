@@ -1,6 +1,6 @@
 /*-------------------- PARA EL BOTÓN "LIKE" ----------------------- */
 
-.icon-heart {
+/* .icon-heart {
        background: url(http://i.imgur.com/MIP7hPg.png);
        background-position: left;
        background-repeat: no-repeat;
@@ -27,7 +27,7 @@
    .icon-heart-3 {
        background-position: right;
      
-   }
+   } */
 
 /*----------------*/
 
@@ -36,7 +36,7 @@
 .postToWall{
        margin: 10px; 
 }
-.commentOnPost{
+.postOnWall{
        margin-bottom: 2%;
 }
    
@@ -127,8 +127,9 @@
        display:flex;
        flex-direction: row;
 }
-.hide{
-       display: none;
+.flex{
+       display:block;
+       display:flex;
 }
 #deleteOrModifyArea{
     background-color: white;
@@ -144,39 +145,40 @@
 .hidden{
        display:none;
 }
-
-/* --------- COMMENT -------  */
-
-.userPhotoComment{
-       height: 20px;
-       width: 20px;
+.textOnComment{
+       border:none;
+       background-color: transparent;
+       box-shadow: none;
+       outline:none;
+       padding-left:2%;
+       height: 2.2rem;
+       border-radius: 15px;
+       margin-left:2%;
+       width: 90%;
 }
-
-#commentContent{
-       margin:1% 1%;
-       text-align: justify;
-}
-#userNameComment{
-       padding-top:5%;
-       white-space: nowrap;
-}
-#likeAndCommentSection{
+#commentContainerWrap{
+       margin-left: 6%;
+       height: 3rem;
        display:flex;
        flex-direction: row;
-       height: 2rem;
 }
-#deleteOrModifyAreaComment{
-    background-color: white;
-    border: rgba(255, 255, 255, 0);
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274); 
-    /* display: flex; */
-    flex-direction: column;
+.formComment{
+       background-color: #e4ddf3d3;
+       box-shadow: none;
+       outline:none;
+       width: 80%;
+       height: 2.2rem;
+       border-radius: 20px;
+       margin-top:1%;
 }
-
-.saveCommentButton{
-       width: 20px;
-       height: 20px;
+.fa-share-square{
+       float: right;
+       margin-right: 2%;
+       color: rgba(116, 55, 144, 1);
+       margin-top:1.8%;
+       font-size: large;
 }
-#editPostWrapper{
-       margin: 1.5%;
-};
+.fa-comment-dots{
+       width: 3rem;
+       color:rgba(255, 210, 32, 1);
+}

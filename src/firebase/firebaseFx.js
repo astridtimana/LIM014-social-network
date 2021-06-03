@@ -76,7 +76,7 @@ export const getCurrentUser = () => {
   if (user != null) {
     dataUser = {
       name: user.displayName,
-      photoUrl: user.photoURL,
+      photoURL: user.photoURL,
       uid: user.uid, 
     };
   }

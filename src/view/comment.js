@@ -4,18 +4,19 @@ import { deleteCommentFirebase, updateDocComment } from '../firebase/firestoreFx
 export default (comment, postId) => {
   const addComment = `
     <article id="commentPostWrapper">
-        <img class="userPhotoComment" src="./images/user.svg">
+        <img class="userPhotoComment" src="../images/user.svg">
+        <article id="userNameComment">${comment.userID}</article>
+        <article id="commentPost">
+          <article class= "comment-content">${comment.newComment}</article>
+          <button id="saveComment-${comment.id}" class="saveCommentButton">Guardar</button>
+        </article>
         <section id= "deleteOrModifyCommentsWrapper" class="${comment.userID === getCurrentUser().uid ? 'show' : 'hide'}"> 
         <i class="fas fa-ellipsis-h"></i>
         <div id="deleteOrModifyCommentArea">
           <p id="modifyComment">Modificar Post</p>
           <p id="deleteComment">Eliminar Post</p>
         </div>
-    </section>
-        <article id="commentPost">
-          <article class= "comment-content">${comment.newComment}</article>
-          <button id="saveComment-${comment.id}" class="saveCommentButton">Guardar</button>
-        </article>
+        </section>
     </article>`;
 
   const commentOnPost = document.createElement('div');
@@ -30,6 +31,7 @@ export default (comment, postId) => {
   const saveComment = commentOnPost.querySelector(`#saveComment-${comment.id}`);
 
   saveComment.style.display = 'none';
+  deleteOrModifyArea.classList.add('hidden');
 
   deleteOrModifyComment.addEventListener('click', () => {
     deleteOrModifyArea.style.display = 'block';

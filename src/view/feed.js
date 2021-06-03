@@ -101,6 +101,7 @@ export default () => {
         newPost: textarea,
         userID: getCurrentUser().uid,
         userName: getCurrentUser().name,
+        photo: getCurrentUser().photoURL,
         date: new Date().toLocaleString(),
         likes: [],
       }).catch((error) => { console.log('Got an error: ', error); });

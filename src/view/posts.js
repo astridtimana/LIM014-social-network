@@ -36,23 +36,26 @@ export default (post) => {
                   <i class="icon-heart" id= "heart-${post.id}"></i>  
                   <p class="numberLikes">${post.likes.length}</p>
 
-                <article class="likeAndCommentWrapper" id="commentButton"> 
-                    <i class="far fa-comment"></i>
+                <article class="likeAndCommentWrapper" > 
+                  <i class="far fa-comment-dots" id="commentButton"></i>
                 </article>
               </section>
 
-      <div id="commentContainer">
-        <form class="formComment">
-          <textarea id="commentText-${post.id}" required></textarea>
-          <button type="submit" id="sendComment-${post.id}">Comentar</button>
-        </form>
+      <section id="commentContainer">
+        <section id="commentContainerWrap">
+          <img class="userPhotoComment" src="../images/user.svg">
+          <form class="formComment">
+            <input id="commentText-${post.id}" class="textOnComment" placeholder="Escribe un comentario..." required><i class="fas fa-share-square"id="sendComment-${post.id}"></i></input>
+          </section>
+        </section>
       </div>
+
       <div id="commentWall">
       </div>
     </article> `;
 
   const postToWall = document.createElement('div');
-  postToWall.setAttribute('class', 'commentOnPost');
+  postToWall.setAttribute('class', 'postOnWall');
   postToWall.innerHTML = postView;
 
   const likeButton = postToWall.querySelector(`#heart-${post.id}`);
@@ -116,12 +119,14 @@ export default (post) => {
   const commentButton = postToWall.querySelector('#commentButton');
   commentButton.addEventListener('click', (e) => {
     e.preventDefault();
+    console.log('pppp');
     commentContainer.classList.toggle('hidden');
   });
 
+  // Función COMENTAR POST
   commentOnPost.addEventListener('click', (e) => {
-    const textarea = postToWall.querySelector(`#commentText-${post.id}`).value;
     e.preventDefault();
+    const textarea = postToWall.querySelector(`#commentText-${post.id}`).value;
     if (textarea.length > 0) {
       addDocComment(post.id, {
         newComment: textarea,
