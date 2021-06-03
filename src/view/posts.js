@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-const-assign */
 /* eslint-disable no-plusplus */
 import { getCurrentUser } from '../firebase/firebaseFx.js';
@@ -29,6 +30,8 @@ export default (post) => {
         </section><hr>
         <section id="editPostWrapper">
           <p id= "postContent" > ${post.newPost}</p>
+          ${post.file ? `<img class="image-post" src='${post.file}' />` : ''}
+          
           <p id="savePost">Guardar</p>
         </section><hr>
 
