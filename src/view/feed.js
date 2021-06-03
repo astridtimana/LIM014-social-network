@@ -94,6 +94,7 @@ export default () => {
     e.preventDefault();// para evitar que los datos no aparezcan cuando se refresque
     // si el textarea está vacío, no guardar algo
     const textarea = divElement.querySelector('#post').value;
+    const textareaEmpty = divElement.querySelector('#post');
     // fx de firestore
     // si el textarea está vacío, no guardar algo
     if (textarea.length > 0) {
@@ -105,11 +106,12 @@ export default () => {
         photo: getCurrentUser().photo,
         date: new Date().toLocaleString(),
         likes: [],
-      }).catch((error) => { console.log('Got an error: ', error); });
+      })
+        .then(() => {
+          textareaEmpty.value = '';
+        })
+        .catch((error) => { console.log('Got an error: ', error); });
     }
-    // if (getCurrentUser().uid === wallArea.querySelector(`#${post.userID}`)) {
-    //   deleteOrModifyPost.style.display = 'block';
-    // } else { deleteOrModifyPost.style.display = 'none'; }
   });
 
   return divElement;
