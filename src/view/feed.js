@@ -135,7 +135,8 @@ export default () => {
       }
       // newPost({ newPost: textarea })
     }
-    divElement.querySelector('#post').value = '';
+    // agregando comentario para que podamos subirlo
+    // divElement.querySelector('#post').value = '';
     // if (getCurrentUser().uid === wallArea.querySelector(`#${post.userID}`)) {
     //   deleteOrModifyPost.style.display = 'block';
     // } else { deleteOrModifyPost.style.display = 'none'; }
