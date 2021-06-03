@@ -87,3 +87,5 @@ export const getCurrentUser = () => {
 // es un método observador: detecta al usuario logueado
 export const userSessionActive = (callback) => firebase.auth().onAuthStateChanged(callback); 
 
+
+
