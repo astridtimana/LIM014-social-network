@@ -66,6 +66,14 @@ export default () => {
           
           <button id="bttPost" type="submit">Publicar</button>
       </form>
+
+      <div id="loadingImages" class="loadingImages hidden">
+      <img src="../images/loadingspin.gif"/>
+      </div>
+      
+      <div id="loading" class="loading hidden">
+      <img src="../images/loadingspin.gif"/>
+      </div>
       
 
       <div id="wall">
@@ -91,6 +99,7 @@ export default () => {
   // const docRef = firestore.collection('posts');
   const buttonPost = divElement.querySelector('#bttPost');
   const wallArea = divElement.querySelector('#wall');
+  const loadingImages = divElement.querySelector('#loadingImages');
 
   // renderizar posts en wall
   listPostAll((data) => {
@@ -103,6 +112,17 @@ export default () => {
     return wallArea;
   });
 
+  const hiddenLoading = () => {
+    const loading = divElement.querySelector('#loading');
+    loading.classList.remove('show');
+    loading.classList.add('hidden');
+  };
+  const showLoading = () => {
+    const loading = divElement.querySelector('#loading');
+    loading.classList.remove('hidden');
+    loading.classList.add('show');
+  };
+
   buttonPost.addEventListener('click', (e) => {
     e.preventDefault();// para evitar que los datos no aparezcan cuando se refresque
     // si el textarea está vacío, no guardar algo
@@ -110,11 +130,13 @@ export default () => {
     const textareaEmpty = divElement.querySelector('#post');
     const inputFile = divElement.querySelector('#file-input').files;
 
+    showLoading();
     // fx firestorage
     if (textarea.length > 0 || inputFile.length >= 1) {
       if (inputFile.length >= 1) {
         // console.log(inputFile);
         const fileName = inputFile[0].name;
+        // console.log(fileName);
         uploadFile(`img/${fileName}`, inputFile[0]).then((snapshot) => {
           // console.log('Archivo Subido');
           snapshot.ref.getDownloadURL().then((url) => {
@@ -127,9 +149,9 @@ export default () => {
               new Date().toLocaleString(),
               url,
               [],
-            )
-              .then(() => { textareaEmpty.value = ''; })
-              .catch((error) => { console.log('Got an error: ', error); });
+            ).then(() => {
+              hiddenLoading();
+            }).catch((error) => { console.log('Got an error: ', error); });
           });
         });
       } else {
@@ -140,13 +162,15 @@ export default () => {
           new Date().toLocaleString(),
           null,
           [])
-          .then(() => { textareaEmpty.value = ''; })
-          .catch((error) => { console.log('Got an error: ', error); });
+          .then(() => hiddenLoading())
+          .catch((error) => {
+            console.log('Got an error: ', error);
+            hiddenLoading();
+          });
       }
     }
 
-    //  divElement.querySelector('#post').value = ''; 
-
+    //  divElement.querySelector('#post').value = '';
   });
 
   return divElement;
