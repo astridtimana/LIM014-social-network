@@ -79,7 +79,12 @@ export default () => {
 
   const userLogOut = divElement.querySelector('#logOut');
   userLogOut.addEventListener('click', () => {
-    logOut();
+    logOut()
+      .then(() => {
+        window.location.hash = '#/';
+      }).catch((error) => {
+        console.log(error);
+      });
   });
 
   // FIRESTORE
