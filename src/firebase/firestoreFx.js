@@ -1,29 +1,32 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
-const firestore = firebase.firestore(); // desde firebase, voy a llamar algo llamado firestore
-firestore.settings({ timestampsInSnapshots: true });
+
+// BUSCARRRRRRRRRRRRRRRRRRRRR SI SIRVE
+/* firebase.firestore().settings({ timestampsInSnapshots: true }); */
 
 // ----- Añadir lista de fields en un documento de la colección posts -----
-export const addDocPost = (newPost, userID, userName, photo, date, file, likes) => firestore.collection('posts').add({
+export const addDocPost = (newPost, userID, userName, photo, date, file, likes) => firebase.firestore().collection('posts').add({
   newPost, userID, userName, photo, date, file, likes,
 });
 
-// Kathy está trabajando aquí
-export const updateLike = (docID, likes) => firestore.collection('posts').doc(docID).update(likes);
+//
+export const updateLike = (docID, likes) => firebase.firestore().collection('posts').doc(docID).update(likes);
 
 // ----- Añadir lista de fields en un documento de la colección comments -----
-export const addDocComment = (docID, comment) => firestore.collection('posts').doc(docID).collection('comment').add(comment);
+export const addDocComment = (docID, comment) => firebase.firestore().collection('posts').doc(docID).collection('comment')
+  .add(comment);
 
 // ----- Agregar/actualizar field en un documento de la colección posts -----
-export const updateDocPost = (docID, newField) => firestore.collection('posts').doc(docID).update(newField);
+export const updateDocPost = (docID, newField) => firebase.firestore().collection('posts').doc(docID).update(newField);
 
 // ----- Agregar/actualizar field en un documento de la colección posts -----
-export const updateDocComment = (postID, commentID, newField) => firestore.collection('posts').doc(postID)
-  .collection('comment').doc(commentID)
+export const updateDocComment = (postID, commentID, newField) => firebase.firestore().collection('posts').doc(postID)
+  .collection('comment')
+  .doc(commentID)
   .update(newField);
 
 // ----- Función para almacenar información sobre posts de forma descendente ----
-export const listPostAll = (callback) => firestore.collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
+export const listPostAll = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
   const post = [];
   querySnapshot.forEach((doc) => {
     // console.log(doc);
@@ -33,7 +36,7 @@ export const listPostAll = (callback) => firestore.collection('posts').orderBy('
   // console.log('Posts: ', post.join(', '));
 });
 
-export const listCommentAll = (idPost, callback) => firestore.collection(`posts/${idPost}/comment`)
+export const listCommentAll = (idPost, callback) => firebase.firestore().collection(`posts/${idPost}/comment`)
   .orderBy('date', 'asc').onSnapshot((querySnapshot) => {
     const comment = [];
     console.log('####');
@@ -47,22 +50,23 @@ export const listCommentAll = (idPost, callback) => firestore.collection(`posts/
 
 // obtener información de posts
 export const getPostData = (post) => {
-  firestore.collection('posts').doc(post).get();
+  firebase.firestore().collection('posts').doc(post).get();
 };
 
 // borrar POST
 export const deletePostFirebase = (idPost) => {
-  firestore.collection('posts').doc(idPost).delete();
+  firebase.firestore().collection('posts').doc(idPost).delete();
 };
 
 // borrar COMENTARIO
 export const deleteCommentFirebase = (idPost, idComment) => {
-  firestore.collection('posts').doc(idPost).collection('comment').doc(idComment)
+  firebase.firestore().collection('posts').doc(idPost).collection('comment')
+    .doc(idComment)
     .delete();
 };
 
 // obtener info de posts
-export const onGetPosts = () => firestore.collection('posts').get();
+export const onGetPosts = () => firebase.firestore().collection('posts').get();
 // .then((snapshot) => {
 //   snapshot.docs.forEach((doc) => doc.data());
 // });

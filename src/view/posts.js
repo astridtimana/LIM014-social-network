@@ -54,7 +54,8 @@ export default (post) => {
 
       <div id="commentWall">
       </div>
-    </article> `;
+    </article> 
+    `;
 
   const postToWall = document.createElement('div');
   postToWall.setAttribute('class', 'postOnWall');
@@ -119,7 +120,8 @@ export default (post) => {
         date: new Date().toLocaleString(),
         userName: getCurrentUser().name,
         photo: getCurrentUser().photo,
-      }).catch((error) => { console.log('Got an error: ', error); });
+      })
+        .catch((error) => { console.log('Got an error: ', error); });
     }
   });
 
@@ -154,21 +156,6 @@ export default (post) => {
       newPost: postContent.innerHTML,
     });
   });
-
-  // Mejorable click fuera del post
-  // window.addEventListener('click', (y) => {
-  //   console.log('in');
-  //   console.log(y.target);
-  //   if (y.target !== postToWall) {
-  //     y.preventDefault();
-  //     postContent.contentEditable = false;
-  //     savePost.style.display = 'none';
-  //     postContent.style.border = 'none';
-  //     updateDocPost(post.id, {
-  //       newPost: postContent.innerHTML,
-  //     });
-  //   }
-  // });
 
   return postToWall;
 };

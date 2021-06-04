@@ -251,10 +251,8 @@ footer{
     }
     section .formContainerHome{
         row-gap: 0.8rem;
-        display: inline-grid;
         border: rgba(221, 217, 217) solid;
         border-width: 3px;
-        display:block;
         display:flex;
         flex-direction: column;
         padding: 30px 40px;
