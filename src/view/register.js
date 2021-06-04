@@ -47,7 +47,7 @@ export default () => {
           </button>
 
           <article class="containerRegister">
-            <p>¿Tienes una cuenta? </p>
+            <p>¿Tienes una cuenta?</p>
             <a id="logIn" href="#/home"> Iniciar sesión</a>
           </article>
 

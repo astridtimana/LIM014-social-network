@@ -242,8 +242,7 @@ footer{
         justify-content: center;
         margin-top: 2%;
         margin-bottom: 2%;
-}
-
+    }
     section .formContainerHome{
         display: inline-grid;
         row-gap: 1rem;
