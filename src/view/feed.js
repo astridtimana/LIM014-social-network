@@ -67,6 +67,10 @@ export default () => {
           <button id="bttPost" type="submit">Publicar</button>
       </form>
       
+      <div id="loading" class="loading hidden">
+      <img src="../images/loading3.gif"/>
+      </div>
+      
 
       <div id="wall">
       </div>
@@ -98,17 +102,30 @@ export default () => {
     return wallArea;
   });
 
+  const hiddenLoading = () => {
+    const loading = divElement.querySelector('#loading');
+    loading.classList.remove('show');
+    loading.classList.add('hidden');
+  };
+  const showLoading = () => {
+    const loading = divElement.querySelector('#loading');
+    loading.classList.remove('hidden');
+    loading.classList.add('show');
+  };
+
   buttonPost.addEventListener('click', (e) => {
     e.preventDefault();// para evitar que los datos no aparezcan cuando se refresque
     // si el textarea está vacío, no guardar algo
     const textarea = divElement.querySelector('#post').value;
     const inputFile = divElement.querySelector('#file-input').files;
 
+    showLoading();
     // fx firestorage
     if (textarea.length > 0 || inputFile.length >= 1) {
       if (inputFile.length >= 1) {
         // console.log(inputFile);
         const fileName = inputFile[0].name;
+        // console.log(fileName);
         uploadFile(`img/${fileName}`, inputFile[0]).then((snapshot) => {
           // console.log('Archivo Subido');
           snapshot.ref.getDownloadURL().then((url) => {
@@ -121,7 +138,9 @@ export default () => {
               new Date().toLocaleString(),
               url,
               [],
-            ).catch((error) => { console.log('Got an error: ', error); });
+            ).then(() => {
+              hiddenLoading();
+            }).catch((error) => { console.log('Got an error: ', error); });
           });
         });
       } else {
@@ -131,7 +150,12 @@ export default () => {
           getCurrentUser().photo,
           new Date().toLocaleString(),
           null,
-          []).catch((error) => { console.log('Got an error: ', error); });
+          [])
+          .then(() => hiddenLoading())
+          .catch((error) => {
+            console.log('Got an error: ', error);
+            hiddenLoading();
+          });
       }
       // newPost({ newPost: textarea })
     }

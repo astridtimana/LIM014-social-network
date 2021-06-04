@@ -30,8 +30,7 @@ export default (post) => {
         </section><hr>
         <section id="editPostWrapper">
           <p id= "postContent" > ${post.newPost}</p>
-          ${post.file ? `<img class="image-post" src='${post.file}' />` : ''}
-          
+          <img class="image-post ${post.file ? 'show' : 'hidden'}"  src=${post.file} />
           <p id="savePost">Guardar</p>
         </section><hr>
 
@@ -65,7 +64,7 @@ export default (post) => {
   const deleteOrModifyArea = postToWall.querySelector('#deleteOrModifyArea');
   const modifyPost = postToWall.querySelector('#modifyPost');
   const deletePost = postToWall.querySelector('#deletePost');
-  const editPostWrapper = postToWall.querySelector('#editPostWrapper');
+  // const editPostWrapper = postToWall.querySelector('#editPostWrapper');
   const postContent = postToWall.querySelector('#postContent');
   const commentContainer = postToWall.querySelector('#commentContainer');
   const savePost = postToWall.querySelector('#savePost');
@@ -117,7 +116,7 @@ export default (post) => {
       addDocComment(post.id, {
         newComment: textarea,
         userID: getCurrentUser().uid,
-        date: new Date().toLocaleDateString(),
+        date: new Date().toLocaleString(),
         userName: getCurrentUser().name,
         photo: getCurrentUser().photo,
       }).catch((error) => { console.log('Got an error: ', error); });
