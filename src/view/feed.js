@@ -66,9 +66,13 @@ export default () => {
           
           <button id="bttPost" type="submit">Publicar</button>
       </form>
+
+      <div id="loadingImages" class="loadingImages hidden">
+      <img src="../images/loadingspin.gif"/>
+      </div>
       
       <div id="loading" class="loading hidden">
-      <img src="../images/loading3.gif"/>
+      <img src="../images/loadingspin.gif"/>
       </div>
       
 
@@ -95,6 +99,7 @@ export default () => {
   // const docRef = firestore.collection('posts');
   const buttonPost = divElement.querySelector('#bttPost');
   const wallArea = divElement.querySelector('#wall');
+  const loadingImages = divElement.querySelector('#loadingImages');
 
   // renderizar posts en wall
   listPostAll((data) => {
