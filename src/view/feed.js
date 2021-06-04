@@ -48,21 +48,17 @@ export default () => {
           <img class="userPhotoFeed" src="${photo === null ? '../images/user.svg' : photo}" alt="userPhoto">
           <textarea placeholder="¿En qué estás pensando?" id="post"></textarea><hr>
           <button id="bttPost" type="submit">Publicar</button>
-      </form>
 
-      <div id="loadingImages" class="loadingImages hidden">
-      <img src="../images/loadingspin.gif"/>
-      </div>
+          <article class="image-upload">
+          <label for="file-input">
+          <img src= "../images/photo.png" id="uploadPhoto">
+          </label>
       
       <div id="loading" class="loading hidden">
       <img src="../images/loadingspin.gif"/>
       </div>
       
-     
-        <article class="image-upload">
-        <label for="file-input">
-        <img src= "../images/photo.png" id="uploadPhoto">
-        </label>
+
      </form>
 
      <input type="file" id="file-input" accept="*" />
@@ -95,7 +91,6 @@ export default () => {
   // const docRef = firestore.collection('posts');
   const buttonPost = divElement.querySelector('#bttPost');
   const wallArea = divElement.querySelector('#wall');
-  const loadingImages = divElement.querySelector('#loadingImages');
 
   // renderizar posts en wall
   listPostAll((data) => {
@@ -125,18 +120,17 @@ export default () => {
     const textarea = divElement.querySelector('#post').value;
     const textareaEmpty = divElement.querySelector('#post');
     const inputFile = divElement.querySelector('#file-input').files;
-
-    showLoading();
     // fx firestorage
     if (textarea.length > 0 || inputFile.length >= 1) {
       if (inputFile.length >= 1) {
+        showLoading();
         // console.log(inputFile);
         const fileName = inputFile[0].name;
         // console.log(fileName);
         uploadFile(`img/${fileName}`, inputFile[0]).then((snapshot) => {
           // console.log('Archivo Subido');
           snapshot.ref.getDownloadURL().then((url) => {
-            console.log('Url :', url);
+            // console.log('Url :', url);
             addDocPost(
               textarea,
               getCurrentUser().uid,
@@ -147,6 +141,8 @@ export default () => {
               [],
             ).then(() => {
               hiddenLoading();
+              divElement.querySelector('#post').value = '';
+              divElement.querySelector('#file-input').value = '';
             }).catch((error) => { console.log('Got an error: ', error); });
           });
         });
@@ -157,16 +153,16 @@ export default () => {
           getCurrentUser().photo,
           new Date().toLocaleString(),
           null,
-          [])
-          .then(() => hiddenLoading())
+          []).then(() => {
+          hiddenLoading();
+          divElement.querySelector('#post').value = '';
+        })
           .catch((error) => {
             console.log('Got an error: ', error);
             hiddenLoading();
           });
       }
     }
-
-    //  divElement.querySelector('#post').value = '';
   });
 
   return divElement;
