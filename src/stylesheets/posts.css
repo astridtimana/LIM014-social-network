@@ -34,9 +34,6 @@
        width: 30px;
        margin-left: 3%;
 }
-.likeAndCommentWrapper:hover{
-       background-color: rgb(196, 196, 196);
-}
 #postContent{
        margin:1% 1%;
        text-align: justify;
@@ -63,6 +60,9 @@
        flex-direction: row;
        white-space: nowrap;
        margin-left: 5%;
+}
+.likeAndCommentWrapper:hover{
+       background-color: rgb(196, 196, 196);
 }
 #likeAndCommentSection{
        display:flex;

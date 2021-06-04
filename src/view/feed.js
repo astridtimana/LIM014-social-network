@@ -79,7 +79,12 @@ export default () => {
 
   const userLogOut = divElement.querySelector('#logOut');
   userLogOut.addEventListener('click', () => {
-    logOut();
+    logOut()
+      .then(() => {
+        window.location.hash = '#/';
+      }).catch((error) => {
+        console.log(error);
+      });
   });
 
   // FIRESTORE
@@ -102,6 +107,7 @@ export default () => {
     e.preventDefault();// para evitar que los datos no aparezcan cuando se refresque
     // si el textarea está vacío, no guardar algo
     const textarea = divElement.querySelector('#post').value;
+    const textareaEmpty = divElement.querySelector('#post');
     const inputFile = divElement.querySelector('#file-input').files;
 
     // fx firestorage
@@ -121,7 +127,9 @@ export default () => {
               new Date().toLocaleString(),
               url,
               [],
-            ).catch((error) => { console.log('Got an error: ', error); });
+            )
+              .then(() => { textareaEmpty.value = ''; })
+              .catch((error) => { console.log('Got an error: ', error); });
           });
         });
       } else {
@@ -131,15 +139,14 @@ export default () => {
           getCurrentUser().photo,
           new Date().toLocaleString(),
           null,
-          []).catch((error) => { console.log('Got an error: ', error); });
+          [])
+          .then(() => { textareaEmpty.value = ''; })
+          .catch((error) => { console.log('Got an error: ', error); });
       }
-      // newPost({ newPost: textarea })
     }
-    // agregando comentario para que podamos subirlo
-    // divElement.querySelector('#post').value = '';
-    // if (getCurrentUser().uid === wallArea.querySelector(`#${post.userID}`)) {
-    //   deleteOrModifyPost.style.display = 'block';
-    // } else { deleteOrModifyPost.style.display = 'none'; }
+
+    //  divElement.querySelector('#post').value = ''; 
+
   });
 
   return divElement;

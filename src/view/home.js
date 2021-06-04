@@ -31,19 +31,19 @@ export default () => {
         <article class="rememberMe"><input type="checkbox"><label class="smallText">Recuérdame</label></article>
         <a class = "smallText" id="forgotPassword">Olvidé mi contraseña</a>
       </article>
-      <section class="login">
-          <a id="enterHome">Ingresar</a>
-          <img id="arrowImg" src="./images/arrow.png">
-      </section>
-      <button class = "googleButton" id="goggleButton">
-        <img src="./images/googleIcon.png" class="googleLogo"> Ingresar con Google
-      </button>
-      <article class="smallContainer">
-        <p>¿No tienes una cuenta?</p>
-        <a href="#/register">Regístrate</a>
+          <section class="login">
+              <a id="enterHome">Ingresar</a>
+              <img id="arrowImg" src="./images/arrow.png">
+          </section>
+          <button class = "googleButton" id="goggleButton">
+            <img src="./images/googleIcon.png" class="googleLogo"> Ingresar con Google
+          </button>
+          <article class="smallContainer">
+            <p>¿No tienes una cuenta?</p>
+            <a href="#/register">Regístrate</a>
+          </article>
       </article>
-    </article>
-      <pid="userIncorrect"> </p>
+      <p id="userIncorrect"> </p>
     </section>
     `;
   const sectionElement = document.createElement('section');
@@ -72,20 +72,20 @@ export default () => {
     resetPasswordMail(emailInput.value);
   });
 
-  /* const userIncorrect = sectionElement.querySelector('#errorMessage'); */
+  const userIncorrect = sectionElement.querySelector('#userIncorrect');
   toLogIn.addEventListener('click', () => {
     const email = document.getElementById('email').value;
     const pass = document.getElementById('password').value;
-    logIn(email, pass);
-    // .then((obj) => {
-    //   console.log(obj);
-    //   if (obj.user.emailVerified) {
-    //     window.location.hash = '#/feed';
-    //   } else { userIncorrect.innerHTML = 'Verifica tu correo'; }
-    // })
-    // .catch(() => {
-    //   userIncorrect.innerHTML = 'Dirección de correo electrónico o contraseña incorrectos.';
-    // });
+    logIn(email, pass)
+      .then((obj) => {
+      /* const user = obj.user; */
+        if (obj.user.emailVerified) {
+          window.location.hash = '#/feed';
+        } else { userIncorrect.textContent = 'Verifica tu correo'; }
+      })
+      .catch(() => {
+        userIncorrect.textContent = 'Dirección de correo electrónico o contraseña incorrectos.';
+      });
   });
 
   return sectionElement;

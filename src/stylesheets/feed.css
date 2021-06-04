@@ -22,7 +22,6 @@
 .formPost{
     background-color: white;
     margin:3% 10% 0% 0%;
-    background-color: white;
     border: rgba(255, 255, 255, 0);
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274); 
 }   
@@ -120,7 +119,6 @@
         width: 100%;
         height: 100vh;
         top: 65px;
-        text-align: center;
         padding: 10%;
         background: rgba(116, 55, 144, 1);
         display: none;
