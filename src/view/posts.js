@@ -55,7 +55,8 @@ export default (post) => {
 
       <div id="commentWall">
       </div>
-    </article> `;
+    </article> 
+    `;
 
   const postToWall = document.createElement('div');
   postToWall.setAttribute('class', 'postOnWall');
@@ -65,7 +66,7 @@ export default (post) => {
   const deleteOrModifyArea = postToWall.querySelector('#deleteOrModifyArea');
   const modifyPost = postToWall.querySelector('#modifyPost');
   const deletePost = postToWall.querySelector('#deletePost');
-  const editPostWrapper = postToWall.querySelector('#editPostWrapper');
+  // const editPostWrapper = postToWall.querySelector('#editPostWrapper');
   const postContent = postToWall.querySelector('#postContent');
   const commentContainer = postToWall.querySelector('#commentContainer');
   const savePost = postToWall.querySelector('#savePost');
@@ -155,21 +156,6 @@ export default (post) => {
       newPost: postContent.innerHTML,
     });
   });
-
-  // Mejorable click fuera del post
-  // window.addEventListener('click', (y) => {
-  //   console.log('in');
-  //   console.log(y.target);
-  //   if (y.target !== postToWall) {
-  //     y.preventDefault();
-  //     postContent.contentEditable = false;
-  //     savePost.style.display = 'none';
-  //     postContent.style.border = 'none';
-  //     updateDocPost(post.id, {
-  //       newPost: postContent.innerHTML,
-  //     });
-  //   }
-  // });
 
   return postToWall;
 };

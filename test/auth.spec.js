@@ -1,36 +1,33 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-console */
-// TEST DE LA FUNCIÓN CREATEUSER
+
+// CONFIGURA FIREBASE MOCK
 import firebasemock from 'firebase-mock';
-
-import {
-  // eslint-disable-next-line no-unused-vars
-  createUser, logIn, verificationMail, signInWithGoogle, logOut, resetPasswordMail,
-} from '../src/firebase/firebaseFx.js';
-
 // const firebasemock = require('firebase-mock');
+import {
+  createUser,
+  logIn,
+  verificationMail,
+  signInWithGoogle,
+  logOut,
+  resetPasswordMail,
+} from '../src/firebase/firebaseFx.js';
 
 const mockauth = new firebasemock.MockAuthentication();
 const mockfirestore = new firebasemock.MockFirestore();
 const mockstorage = new firebasemock.MockStorage();
 mockauth.autoFlush();
 // simula los mét y prop de firebase auth
-const mocksdk = new firebasemock.MockFirebaseSdk(
-  // use null if your code does not use RTDB
+global.firebase = new firebasemock.MockFirebaseSdk(
   null,
-  // use null if your code does not use AUTHENTICATION
   () => mockauth,
-  // use null if your code does not use FIRESTORE
   () => mockfirestore,
-  // use null if your code does not use STORAGE
   () => mockstorage,
-  // use null if your code does not use MESSAGING
   null,
 );
 
-global.firebase = mocksdk;
-
+// CREATE USER
 describe('Función que crea un nuevo usuario sin tener cuenta de Google', () => {
   it('Debería ser una función', () => {
     expect(typeof createUser).toBe('function');
@@ -42,6 +39,7 @@ describe('Función que crea un nuevo usuario sin tener cuenta de Google', () => 
     }));
 });
 
+// VERIFICATION MAIL
 describe('Función que permite verificar el correo', () => {
   it('Debería ser una función', () => {
     expect(typeof verificationMail).toBe('function');
@@ -55,6 +53,7 @@ describe('Función que permite verificar el correo', () => {
   });
 });
 
+// SIGN IN WITH GOOGLE
 describe('Función para ingresar con Gmail', () => {
   it('Debería ser una función', () => {
     expect(typeof signInWithGoogle).toBe('function');
@@ -62,47 +61,41 @@ describe('Función para ingresar con Gmail', () => {
   it('Debe logearse con Google', () => {
     signInWithGoogle()
       .then((user) => {
-        /* console.log(user); */
         expect(user.displayName).toBe(undefined);
       });
   });
 });
 
-// LOGIN
+// LOG IN
 describe('Función para ingresar con correo electrónico', () => {
   it('Debería ser una función', () => {
     expect(typeof logIn).toBe('function');
   });
   it('Debe logearse con correo y contraseña', () => logIn('ben@example.com', 'examplePass')
     .then((user) => {
-      expect(user.isAnonymous).toBe(false);
+      /* console.log(user.email); */
+      expect(user.email).toBe('ben@example.com');
     }));
 });
 
 // LOG OUT
-// describe('Función para salir de la sesión', () => {
-//   it('Debería ser una función', () => {
-//     expect(typeof logOut).toBe('function');
-//   });
-//   it('Debe salir un mensaje de Logging Out', () => {
-//     const logOutMock = jest.fn();
-//     firebase.auth().signOut = logOutMock.mockResolvedValue();
-//     logOut()
-//       .then((message) => {
-//         /* console.log(user); */
-//         expect(message).toBe('Logging out');
-//       });
-//   });
-// });
+describe('Log out', () => {
+  it('Deberia salir de sesión', () => logOut()
+    .then((user) => {
+      expect(user).toBe(undefined);
+    }));
+});
 
 // RESETPASSWORD
 describe('Función para restablecer la contraseña', () => {
-  it('Debería ser una función', () => {
-    expect(typeof resetPasswordMail).toBe('function');
+  it('Deberia enviar un email para restablecer contraseña', () => {
+    const mockSendPasswordResetEmail = jest.fn();
+    firebase.auth().sendPasswordResetEmail = mockSendPasswordResetEmail;
+    resetPasswordMail('test@gmail.com');
+    // verificar si fue llamado el metodo de firebase
+    expect(mockSendPasswordResetEmail).toHaveBeenCalled();
+    expect(mockSendPasswordResetEmail.mock.calls).toHaveLength(1); // BUSCAR!!!!
+    // verificar si el metodo recibio como arg el email
+    expect(mockSendPasswordResetEmail).toHaveBeenCalledWith('test@gmail.com');
   });
-  it('Debe permitir cambiar la contraseña', () => resetPasswordMail('ben@example.com')
-    .then((user) => {
-      /* console.log(user); */
-      expect(user).toBe(undefined);
-    }));
 });

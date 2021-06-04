@@ -8,7 +8,6 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-console */
 
-
 // ------------------ FUNCIÓN QUE CREA UN USUARIO -------------------------- //
 export const createUser = (email, pass) => firebase.auth().createUserWithEmailAndPassword(email, pass);
 
@@ -21,18 +20,7 @@ export const verificationMail = () => {
 };
 
 // -------- FUNCIÓN QUE PERMITE EL LOGIN DESDE CUALQUIER PROVEEDOR --------- //
-export const logIn = (email, pass) => {
-  firebase.auth().signInWithEmailAndPassword(email, pass)
-    .then((obj) => {
-    // console.log(obj);
-      if (obj.user.emailVerified) {
-        window.location.hash = '#/feed';
-      } else { alert('Verifica tu correo'); }
-    })
-    .catch(() => {
-      alert('Dirección de correo electrónico o contraseña incorrectos.');
-    });
-};
+export const logIn = (email, pass) => firebase.auth().signInWithEmailAndPassword(email, pass);
 
 // ----------------- FUNCIÓN QUE PERMITE LOGIN CON GOOGLE ------------------ //
 export const signInWithGoogle = () => {
@@ -48,22 +36,13 @@ export const signInWithGoogle = () => {
 // ---------------- FUNCIÓN QUE RESETEA EL PASSWORD DEL USUARIO -------------- //
 export const resetPasswordMail = (emailAddress) => {
   const auth = firebase.auth();
-  auth.sendPasswordResetEmail(emailAddress)
-    .then(() => {
-    }).catch((error) => {
-      console.log(error);
-    });
+  return auth.sendPasswordResetEmail(emailAddress);
 };
 
+// ---------------- FUNCIÓN QUE CIERRA LA SESSIÓN -------------- //
 export const logOut = () => {
-  firebase.auth().signOut()
-    .then(() => {
-      ('Logging out');
-
-      window.location.hash = '#/'; // consumo aquí o en feed.js?
-    }).catch((error) => {
-      console.log(error);
-    });
+  const auth = firebase.auth();
+  return auth.signOut();
 };
 
 // -------- FUNCIÓN QUE CONTIENE INFORMACIÓN EN UN OBJETO DEL CURRENT USER --------//
@@ -82,6 +61,5 @@ export const getCurrentUser = () => {
 };
 
 export const userSessionActive = (callback) => firebase.auth().onAuthStateChanged(callback); 
-
 
 
