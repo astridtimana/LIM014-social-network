@@ -30,8 +30,7 @@ export default (post) => {
         </section><hr>
         <section id="editPostWrapper">
           <p id= "postContent" > ${post.newPost}</p>
-          <img class="image-post" src='${post.file}' /> 
-          
+          <img class="image-post ${post.file ? 'show' : 'hidden'}"  src=${post.file} />
           <p id="savePost">Guardar</p>
         </section><hr>
 

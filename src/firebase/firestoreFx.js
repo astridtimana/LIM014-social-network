@@ -39,8 +39,9 @@ export const listPostAll = (callback) => firebase.firestore().collection('posts'
 export const listCommentAll = (idPost, callback) => firebase.firestore().collection(`posts/${idPost}/comment`)
   .orderBy('date', 'asc').onSnapshot((querySnapshot) => {
     const comment = [];
+    console.log('####');
     querySnapshot.forEach((doc) => {
-      // console.log(doc);
+      console.log(doc.id, doc.data());
       comment.push({ id: doc.id, ...doc.data() });
     });
     callback(comment);

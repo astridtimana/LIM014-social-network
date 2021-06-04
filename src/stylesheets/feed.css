@@ -129,6 +129,11 @@
     text-align: center;
     margin-bottom: 5%;
 }
+.loading {
+    grid-column: 2;
+    margin-left: 28%;
+    margin-top:10px;
+}
 @media only screen and (max-width: 500px) {
 
     #feedSection{
