@@ -6,7 +6,10 @@ export default (comment, postId) => {
     <article id="commentPostWrapper">
         <img class="userPhotoComment" src="${comment.photo === null ? '../images/user.svg' : comment.photo}">
         <article class="commentWrap">
-          <article id="userNameComment">${comment.userName}</article>
+          <section class= "headerComment">
+            <article id="userNameComment">${comment.userName}</article>
+            <article class="dateComment">${comment.date}</article>
+          </section>
           <article class="commentPost">
             <article class= "comment-content">${comment.newComment}</article>
             <p id="saveComment-${comment.id}" class="saveCommentButton">Guardar</p>
@@ -15,7 +18,7 @@ export default (comment, postId) => {
         <section id= "deleteOrModifyCommentsWrapper" class="${comment.userID === getCurrentUser().uid ? 'show' : 'hidden'}"> 
           <i class="fas fa-ellipsis-h"></i>
           <div id="deleteOrModifyCommentArea">
-            <p id="modifyComment" class="menu-comment">Modificar</p>
+            <p id="modifyComment" class="menu-comment">Editar</p>
             <p id="deleteComment" class="menu-comment" >Eliminar</p>
           </div>
         </section>
@@ -44,22 +47,33 @@ export default (comment, postId) => {
     deleteCommentFirebase(postId, comment.id);
   });
 
+  // --------- FUNCIÓN PARA GUARDAR COMENTARIOS --------
+  function savingComments(e) {
+    e.preventDefault();
+    commentContent.contentEditable = false;
+    // deleteOrModifyArea.style.display = 'none';
+    saveComment.style.display = 'none';
+    commentContent.classList.remove('comment-content-2');
+    // console.log(postContent);
+    updateDocComment(postId, comment.id, {
+      newComment: commentContent.innerHTML,
+    });
+  }
+
   // MODIFICAR COMENTARIO
   modifyComment.addEventListener('click', (e) => {
     e.stopPropagation();
     saveComment.style.display = 'block';
     commentContent.contentEditable = true;
-    commentContent.style.border = '#FFCC00 solid';
+    commentContent.classList.add('comment-content-2');
     // console.log(e);
     saveComment.addEventListener('click', () => {
-      commentContent.contentEditable = false;
-      deleteOrModifyArea.style.display = 'none';
-      saveComment.style.display = 'none';
-      commentContent.style.border = 'none';
-      // console.log(postContent);
-      updateDocComment(postId, comment.id, {
-        newComment: commentContent.innerHTML,
-      });
+      savingComments(e);
+    });
+    commentContent.addEventListener('keypress', (y) => {
+      if (y.key === 'Enter') {
+        savingComments(e);
+      }
     });
   });
 

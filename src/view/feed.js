@@ -32,41 +32,36 @@ export default () => {
   
   </header>
     <main id="feedSection">
-            <section id="activitiesArea">
-                <h3 id="activitiesTitle"> ACTIVIDADES </h3>
-                <section class="activities">
-                </section>
-            </section>
-
-            <section id="aditionalsArea">
-                <section class="aditionals"></section>
-            </section>  
   
-            <article id="user-info">
-
+      <article id="user-info">
               <img class="userImage" src="${photo === null ? '../images/user.svg' : photo}" alt="Foto de perfil">
-
               <h2 class="user-name profile-name" id="nameUserProfile">${name}</h2>
               <article class="user-information">
-                  <h3><h3>
+                  <textarea placeholder="Cuéntanos sobre ti..." class="aboutMe"></textarea>
               </article>
-            </article>
+      </article>
+
+      <section class="aditional">
+      </section>
 
       <form class="formPost">
           <img class="userPhotoFeed" src="${photo === null ? '../images/user.svg' : photo}" alt="userPhoto">
           <textarea placeholder="¿En qué estás pensando?" id="post"></textarea><hr>
-         
-         <article class="image-upload">
-         <label for="file-input">
-         <img src= "../images/photo.png" id="uploadPhoto">
-         </label>
-         
-         <input type="file" id="file-input" accept="*" />
-         </article>
-          
           <button id="bttPost" type="submit">Publicar</button>
-      </form>
       
+     
+        <article class="image-upload">
+        <label for="file-input">
+        <img src= "../images/photo.png" id="uploadPhoto">
+        </label>
+     </form>
+
+     <input type="file" id="file-input" accept="*" />
+     </article>
+      
+      <section id="activitiesArea">
+      <h3 id="activitiesTitle"> ACTIVIDADES </h3>
+      </section>
 
       <div id="wall">
       </div>

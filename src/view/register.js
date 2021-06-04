@@ -27,11 +27,11 @@ export default () => {
             
             <p id="textRegister">Regístrate para ver fotos y videos de tus amigos.</p>
             
-            <input type="name" placeholder="Nombre y apellido" id="nameRegister">
-            <p id = "errorNameUser" class="errorRegister"></p>
-            <input type="email" placeholder="Correo electrónico" id="mailRegister">
+            <input type="name" placeholder="Nombre y apellido" id="nameRegister" class="inputRegister">
+            <p id = "errorNameUser" class="errorRegister" ></p>
+            <input type="email" placeholder="Correo electrónico" id="mailRegister" class="inputRegister">
             <p id = "errorMailUser" class="errorRegister" ></p> 
-            <input type="password" placeholder="Contraseña" id="passwordRegister"> 
+            <input type="password" placeholder="Contraseña" id="passwordRegister" class="inputRegister"> 
             <p id = "errorPasswordUser" class="errorRegister"></p> 
             <button id="signUp"> Regístrate</button>
             <p id="textConditions">Al registrarte, aceptas nuestras Condiciones, Política de datos, Política de cookies.</p>

@@ -1,7 +1,9 @@
-.toDesktop, #headerCreateToDesktop, #signUp {
+ #headerCreateToDesktop, #signUp {
     display: none;
 }
-
+#logoBig{
+    text-align: right;
+}
 #headerCreate {
     display: flex;
     flex-direction: row-reverse;
@@ -16,16 +18,19 @@
     flex-direction: column;
     row-gap: 1.5rem;
     /* margin: 5% 0% 0% 5%; */
-    padding: 5%;
+    padding: 10% 10% 3% 10%;
 }
 
-#formRegister > input {
-    height: 3rem;
+.inputRegister {
     border-radius: 10px;
     justify-content: center;
     padding: 3%;
     background-color: rgba(0, 0, 0, 0.1);
     border: rgba(255, 255, 255, 0);
+    width: 90%;
+    margin: 3% 5% 1% 5%;
+    height: 3rem;
+
 }
 
 #buttonRegister {
@@ -33,6 +38,7 @@
     align-items: center;
     justify-content: space-around;
     font-size: 2rem;
+    margin-bottom: 3%;
 }
 
 
@@ -61,14 +67,6 @@
     justify-content: space-between;
     margin: 3%;
 }
-/* 
-.containerRegister{
-    display:flex;
-    padding: 5px 10px;
-    flex-direction: row;
-    justify-content: space-around;
-    font-size: 1rem;
-} */
 
 #textConditions{
     color: #828282;
@@ -77,8 +75,12 @@
     flex-wrap: wrap;
     font-size: small;
     margin-bottom: 4%;
+    margin-top: 6%;
+    text-align: center;
 }
-
+#textRegister {
+    margin-bottom:5%;
+}
 
 @media only screen and (min-width: 700px) {
    
@@ -93,12 +95,6 @@
     margin: 0% 5% 0% 5%;
     font-size: 1.1rem;
     }
-
-    /* .googleButton {
-        width: 100%;
-        margin: 10%;
-        align-items: center;
-    } */
 
     #buttonRegisterGoogle {
         border-radius: 5px;

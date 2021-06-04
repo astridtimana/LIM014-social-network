@@ -20,6 +20,8 @@
     display:flex;
     flex-direction: row;
     height: 1.8rem;
+    margin-top:2%;
+    margin-bottom:3%;
 }
 #deleteOrModifyAreaComment{
  background-color: white;
@@ -52,15 +54,56 @@
     flex-direction: column;
     background-color: #e4ddf3d3;
     border-radius: 18px;
-    padding-left: 3%;
+    padding-left: 2%;
     width: 80%;
+    margin-left:1%;
 }
 .comment-content{
-    padding: 1% 2% 2% 3%;
+    padding: 1% 2% 1% 2%;
     outline: none;
+    width: 100%;
+    margin-bottom: 1%;
+}
+.comment-content-2{
+    border-bottom:1px solid rgba(116, 55, 144, 1);
+    
 }
 .menu-comment{
     font-size: small;
     color: rgba(116, 55, 144, 1);
     font-style: oblique;
+}
+.headerComment{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.dateComment{
+    font-size: small;
+    margin-right: 3%;
+    margin-top: 1%;
+}
+@media only screen and (max-width: 500px) {
+    .commentWrap{
+        width: 70%;
+    }
+    .dateComment{
+        display: none;
+    }
+    .menu-comment{
+        font-size: 0.5rem;
+        font-weight: bold;
+        font-style: normal;
+    }
+    .fa-ellipsis-h{
+        font-size: 0.8rem;
+        height: 0.5rem;
+        background-color: transparent;
+    }
+    .fa-ellipsis-h:hover{
+        font-size: 0.8rem;
+        height: 0.5rem;
+        background-color: transparent;
+        color: rgb(110, 101, 114);
+    }
 }

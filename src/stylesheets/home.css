@@ -117,7 +117,8 @@ section .forDesktopHome {
     align-items: center;
     justify-content: space-between;
     font-size: 2rem;
-    margin-top: 5%;
+    margin-top: 10%;
+    margin-bottom: 10%;
     height: 3rem;
 }
 
@@ -250,8 +251,8 @@ footer{
         font-size: 1rem;
     }
     section .formContainerHome{
-        row-gap: 0.8rem;
         display: inline-grid;
+        row-gap: 1rem;
         border: rgba(221, 217, 217) solid;
         border-width: 3px;
         display:block;
