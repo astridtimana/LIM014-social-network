@@ -113,10 +113,10 @@ export default () => {
     // fx firestorage
     if (textarea.length > 0 || inputFile.length >= 1) {
       if (inputFile.length >= 1) {
-        console.log(inputFile);
+        // console.log(inputFile);
         const fileName = inputFile[0].name;
         uploadFile(`img/${fileName}`, inputFile[0]).then((snapshot) => {
-          console.log('Archivo Subido');
+          // console.log('Archivo Subido');
           snapshot.ref.getDownloadURL().then((url) => {
             console.log('Url :', url);
             addDocPost(
@@ -144,7 +144,9 @@ export default () => {
           .catch((error) => { console.log('Got an error: ', error); });
       }
     }
-    /*  divElement.querySelector('#post').value = ''; */
+
+    //  divElement.querySelector('#post').value = ''; 
+
   });
 
   return divElement;
