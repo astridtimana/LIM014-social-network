@@ -4,7 +4,9 @@
        color: #FFD220;
        transition: .3s ease all;
        text-align: right;
-}
+       font-size: 180%;
+       margin-left: 5%;
+}      
 
 /*----------------*/
 
@@ -21,6 +23,8 @@
        background-color: white;
        border: rgba(255, 255, 255, 0);
        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274); 
+       padding-bottom:1px ;
+       margin-bottom: 4%;
        /* padding-bottom:2%; */
        /* width: 35%;  */
 }
@@ -82,7 +86,6 @@
        justify-content: space-between;
 }
 .fa-ellipsis-h{
-       background-color: none;
        border-radius: 50%;
        height: 1.3rem;
        width: 1.3rem;
@@ -131,16 +134,19 @@
        border-radius: 15px;
        margin-left:2%;
        width: 90%;
+       background-color: transparent;
 }
 #commentContainerWrap{
+       margin-top: 2%;
        margin-left: 6%;
        height: 3rem;
        display:flex;
        flex-direction: row;
 }
 .image-post{
-       width:300px;
-       height:200px;
+       height:300px;
+       object-fit: contain;
+       margin:auto;
 }
 .formComment{
        background-color: #e4ddf3d3;
@@ -149,7 +155,8 @@
        width: 85%;
        height: 2.2rem;
        border-radius: 20px;
-       margin-top:1%;
+       margin-top:0.5%;
+       margin-left: 1%;
 }
 .fa-share-square{
        float: right;
@@ -159,6 +166,22 @@
        font-size: large;
 }
 .fa-comment-dots{
-       width: 3rem;
+       font-size: 180%;
        color:rgba(255, 210, 32, 1);
+       margin-left:2%;
+}
+.numberLikes{
+       font-size: large;
+       margin-left: 2%;
+}
+@media only screen and (max-width: 500px) {
+       .fa-share-square{
+              float: right;
+              margin-top: auto;
+              margin-bottom: auto;
+       }
+       .formComment{
+              width: 80%;
+              display: flex;
+       }
 }

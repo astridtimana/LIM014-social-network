@@ -6,28 +6,42 @@
     grid-template-columns: 3fr 7fr;
 }
 #user-info {
+    background-color: white;
+    border: rgba(255, 255, 255, 0);
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274); 
     grid-column-start: 1;
-    padding: 10%;
-    margin-left:10%;
+    /* grid-row-end: 1; */
+    padding: 6%;
+    margin:5% 0% 0% 10%;
+    width:70%;
+    display: flex;
+    flex-direction: column;
 }
 .userImage{
     border-radius: 50%;
     border: rgba(216, 48, 39, 0.452) solid;
     width: 15vh;
+    text-align: center;
+    justify-content: center;
+    margin-left:auto;
+    margin-right:auto;
 }
 #wall{
     grid-column-start: 2;
     padding: 3% 10% 2% 0%; /* arriba, derecha, abajo, izquierda */
 }
 .formPost{
+    grid-column-start: 2;
+    grid-row-start: 1;
+    height: 60%;
+    margin:7% 10% 0% 0%;
     background-color: white;
-    margin:3% 10% 0% 0%;
     border: rgba(255, 255, 255, 0);
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274); 
 }   
 #post{
     resize: none;
-    margin: 2% 3% 2% 2%;
+    margin: 4% 3% 2% 2%;
     width: 50%;
     height: 3rem;
     border:transparent;
@@ -35,7 +49,7 @@
     text-align: left;
 }
 #uploadPhoto{
-    margin: 2%;
+    margin: 1.5%;
 }
 .navigatorMenuFeed {
     text-align: right;
@@ -50,7 +64,8 @@
     color:white;
     border-color:transparent;
     float: right;
-    margin: 2.2% 3% 0% 0%;
+    margin-right: 3% ;
+    margin-top: 1.5%;
 }
 
 #feedPrideLogo {
@@ -97,11 +112,22 @@
 .userPhotoFeed{
     border-radius: 50%;
     margin-left: 3%;
-    margin-bottom:1.5%;
+    margin-bottom:3%;
 }
 
 #file-input {
     display: none;
+}
+.aboutMe{
+    resize:none;
+    border:transparent;
+    outline: none;
+    height: 5rem;
+    width: 100%;
+}
+.profile-name{
+    text-align: center;
+    margin-bottom: 5%;
 }
 .loading {
     grid-column: 2;
@@ -110,10 +136,14 @@
 }
 @media only screen and (max-width: 500px) {
 
+    #feedSection{
+        grid-template-columns: 1fr;
+    }
     #wall{
         grid-column-start: 1;
         grid-column-end: 3;
-        padding: 3% 5% 2% 5%; /* arriba, derecha, abajo, izquierda */
+        padding: 5% 5% 2% 5%; /* arriba, derecha, abajo, izquierda */
+
     }
     .toggleFeed {
         display: block;
@@ -123,18 +153,30 @@
         text-align: center;
         width: 100%;
         height: 100vh;
-        top: 65px;
+        top: 69px;
+        text-align: center;
         padding: 10%;
         background: rgba(116, 55, 144, 1);
         display: none;
 
     }
-
+    .formPost{
+        grid-column-start: 1;
+        margin:3% auto 4.5% auto;
+        width:90%;
+        height: 8rem;
+    }
     .menuFeed a {
         display: block;
         margin: 0;
     }
-
+    #user-info{
+        display: none;
+    }
+    #activitiesArea{
+        margin:auto;
+        grid-column-start: 1;
+    }
     #toggle:checked + .menuFeed {
         display: block;
         transition: transform .1s ease-in;
@@ -147,5 +189,31 @@
     }
     #feedSection{
         position: relative;
+    }
+    .formPost hr{
+        display: none;
+    }
+    #bttPost {
+        height: 2rem;
+        width: 6rem;
+        background-color: rgba(255, 210, 32, 1);
+        border-radius: 5px;
+        color:white;
+        border-color:transparent;
+        float: right;
+        margin-right: 2%;
+    }
+    #post{
+        margin-left: 4%;
+        margin-top: 4%;
+    }
+    #uploadPhoto{
+        width: 2.5rem;
+        margin: 1.5%;
+    }
+    #feedPrideLogo{
+        margin: 2.2% 0% 0% 5%;
+        width: 55px;
+        height: 55px;
     }
 }

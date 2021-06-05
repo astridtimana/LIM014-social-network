@@ -117,7 +117,8 @@ section .forDesktopHome {
     align-items: center;
     justify-content: space-between;
     font-size: 2rem;
-    margin-top: 5%;
+    margin-top: 10%;
+    margin-bottom: 10%;
     height: 3rem;
 }
 
@@ -126,7 +127,7 @@ section .forDesktopHome {
 }
 
 #arrowImg, #arrowImgRegister {
-    width: 55px;
+    width: 50px;
 }
 .logo{
     height: 3.5rem;
@@ -225,7 +226,7 @@ footer{
         font-size: 1.5rem;
     }
     .textHome {
-        margin-bottom: 1%;
+        margin-bottom: 0;
         color: #333333;
     }
     .login {
@@ -239,18 +240,13 @@ footer{
         padding: 4%;
         display: flex;
         justify-content: center;
+        margin-top: 2%;
+        margin-bottom: 2%;
 }
-    .googleButton{
-        border-radius: 5px;
-        padding: 3%;
-        background-color: rgba(45, 55, 72, 1);
-        color:white;
-        border: rgba(255, 255, 255, 0);
-        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
-        font-size: 1rem;
-    }
+
     section .formContainerHome{
-        row-gap: 0.8rem;
+        display: inline-grid;
+        row-gap: 1rem;
         border: rgba(221, 217, 217) solid;
         border-width: 3px;
         display:flex;

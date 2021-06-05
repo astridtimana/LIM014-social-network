@@ -36,7 +36,7 @@ export default (post) => {
 
               <section id="likeAndCommentSection"> 
                   <i class="${!post.likes.includes(getCurrentUser().uid) ? 'far' : 'fas'} fa-heart" id="heart-${post.id}"></i>
-                  <p class="numberLikes">${post.likes.length}</p>
+                  <p class="numberLikes">  ${post.likes.length}</p>
 
                 <article class="likeAndCommentWrapper" > 
                   <i class="far fa-comment-dots" id="commentButton"></i>
@@ -70,7 +70,7 @@ export default (post) => {
   const commentContainer = postToWall.querySelector('#commentContainer');
   const savePost = postToWall.querySelector('#savePost');
   const commentWall = postToWall.querySelector('#commentWall');
-  // const formComment = postToWall.querySelector('.formComment');
+  const commentText = postToWall.querySelector(`#commentText-${post.id}`);
   const commentOnPost = postToWall.querySelector(`#sendComment-${post.id}`);
 
   // --------- ESCONDE EL DIV DEL COMENTARIO ---------//
@@ -120,8 +120,7 @@ export default (post) => {
         date: new Date().toLocaleString(),
         userName: getCurrentUser().name,
         photo: getCurrentUser().photo,
-      })
-        .catch((error) => { console.log('Got an error: ', error); });
+      }).then(() => { postToWall.querySelector(`#commentText-${post.id}`).value = ''; });
     }
   });
 

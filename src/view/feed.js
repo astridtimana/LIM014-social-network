@@ -32,45 +32,45 @@ export default () => {
   
   </header>
     <main id="feedSection">
-            <section id="activitiesArea">
-                <h3 id="activitiesTitle"> ACTIVIDADES </h3>
-                <section class="activities">
-                </section>
-            </section>
-
-            <section id="aditionalsArea">
-                <section class="aditionals"></section>
-            </section>  
   
-            <article id="user-info">
-
+      <article id="user-info">
               <img class="userImage" src="${photo === null ? '../images/user.svg' : photo}" alt="Foto de perfil">
-
               <h2 class="user-name profile-name" id="nameUserProfile">${name}</h2>
               <article class="user-information">
-                  <h3><h3>
+                  <textarea placeholder="Cuéntanos sobre ti..." class="aboutMe"></textarea>
               </article>
-            </article>
+      </article>
+
+      <section class="aditional">
+      </section>
 
       <form class="formPost">
           <img class="userPhotoFeed" src="${photo === null ? '../images/user.svg' : photo}" alt="userPhoto">
           <textarea placeholder="¿En qué estás pensando?" id="post"></textarea><hr>
-         
-         <article class="image-upload">
-         <label for="file-input">
-         <img src= "../images/photo.png" id="uploadPhoto">
-         </label>
-         
-         <input type="file" id="file-input" accept="*" />
-         </article>
-          
           <button id="bttPost" type="submit">Publicar</button>
+
       </form>
+
+
+          <article class="image-upload">
+          <label for="file-input">
+          <img src= "../images/photo.png" id="uploadPhoto">
+          </label>
+
       
       <div id="loading" class="loading hidden">
       <img src="../images/loadingspin.gif"/>
       </div>
       
+
+     </form>
+
+     <input type="file" id="file-input" accept="*" />
+     </article>
+      
+      <section id="activitiesArea">
+      <h3 id="activitiesTitle"> ACTIVIDADES </h3>
+      </section>
 
       <div id="wall">
       </div>
@@ -126,16 +126,18 @@ export default () => {
     const inputFileEmpty = divElement.querySelector('#file-input');
     showLoading();
 
+
     // fx firestorage
     if (textarea.length > 0 || inputFile.length >= 1) {
       if (inputFile.length >= 1) {
+        showLoading();
         // console.log(inputFile);
         const fileName = inputFile[0].name;
         // console.log(fileName);
         uploadFile(`img/${fileName}`, inputFile[0]).then((snapshot) => {
           // console.log('Archivo Subido');
           snapshot.ref.getDownloadURL().then((url) => {
-            console.log('Url :', url);
+            // console.log('Url :', url);
             addDocPost(
               textarea,
               getCurrentUser().uid,
@@ -143,9 +145,9 @@ export default () => {
               getCurrentUser().photo,
               new Date().toLocaleString(),
               url,
-              [],
-            )
+              [])
               .then(() => { hiddenLoading(); textareaEmpty.value = ''; inputFileEmpty.value = ''; });
+
           });
         });
       } else {
@@ -157,6 +159,7 @@ export default () => {
           null,
           [])
           .then(() => { hiddenLoading(); textareaEmpty.value = ''; inputFileEmpty.value = ''; });
+
       }
     }
   });
