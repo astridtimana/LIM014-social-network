@@ -1,6 +1,6 @@
 import MockFirebase from 'mock-cloud-firestore';
 import {
-  // addDocComment,
+  addDocComment,
   addDocPost,
   listCommentAll,
   listPostAll,
@@ -65,17 +65,16 @@ describe('Función fireStore para crear posts', () => {
 });
 
 // CREAR UNA SUB COLECCIÓN DE DATOS POR COMMENT
-// describe('Función fireStore para crear comments', () => {
-//   it('Debería crear un comentario en una publicación', (done) => addDocComment('',
-// 'texto en comentario', '', '001', 'Kathy', 'id_001')
-//     .then(() => listCommentAll('id_001',
-//       (data) => {
-//         // verificar que
-//         const result = data.find((comment) => comment.newComment === 'texto en comentario');
-//         expect(result.newComment).toBe('texto en comentario');
-//         done(); // ES LA PROMESA QUE LE DICE AL TEST QUE NO SE QUEDE ESPERANDO A LA OTRA PROMESA
-//       })));
-// });
+describe('Función fireStore para crear comments', () => {
+  it('Debería crear un comentario en una publicación', (done) => addDocComment('id_001', 'texto en comentario')
+    .then(() => listCommentAll('id_001',
+      (data) => {
+        // verificar que
+        const result = data.find((comment) => comment.newComment === 'texto en comentario');
+        expect(result.newComment).toBe('texto en comentario');
+        done();
+      })));
+});
 
 // DA 'ME GUSTA' A UN POST
 describe('Función que permite dar likes', () => {
@@ -116,7 +115,7 @@ describe('actualizar el comentario', () => {
       })));
 });
 
-// 
+// k
 
 // ELIMINA UN POST
 describe('Función fireStore para borrar posts', () => {
