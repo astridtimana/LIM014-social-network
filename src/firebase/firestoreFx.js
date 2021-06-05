@@ -52,12 +52,6 @@ export const listCommentAll = (idPost, callback) => firebase.firestore().collect
   // console.log('Posts: ', post.join(', '));
   });
 
-// obtener información de posts
-export const getPostData = (post) => {
-  const db = firebase.firestore();
-  db.collection('posts').doc(post).get();
-};
-
 // borrar POST
 export const deletePostFirebase = (idPost) => {
   const db = firebase.firestore();
@@ -71,9 +65,3 @@ export const deleteCommentFirebase = (idPost, idComment) => {
     .doc(idComment)
     .delete();
 };
-
-// obtener info de posts
-export const onGetPosts = () => firebase.firestore().collection('posts').get();
-// .then((snapshot) => {
-//   snapshot.docs.forEach((doc) => doc.data());
-// });
