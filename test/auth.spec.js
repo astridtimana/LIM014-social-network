@@ -82,6 +82,9 @@ describe('Función para ingresar con correo electrónico', () => {
 
 // LOG OUT
 describe('Log out', () => {
+  it('Debería ser una función', () => {
+    expect(typeof logOut).toBe('function');
+  });
   it('Deberia salir de sesión', () => logOut()
     .then((user) => {
       expect(user).toBe(undefined);
@@ -90,6 +93,9 @@ describe('Log out', () => {
 
 // RESETPASSWORD
 describe('Función para restablecer la contraseña', () => {
+  it('Debería ser una función', () => {
+    expect(typeof resetPasswordMail).toBe('function');
+  });
   it('Deberia enviar un email para restablecer contraseña', () => {
     // this mocks the initializeApp on the firebase-admin,  we're calling out to firestore
     // You have to stub admin method to provide our admin with proper credentials
@@ -106,11 +112,21 @@ describe('Función para restablecer la contraseña', () => {
 
 // GET CURRENT USER
 describe('Función del usuario actual', () => {
-  it('Debería devovler el usuario logeado', () => {
+  it('Debería ser una función', () => {
+    expect(typeof getCurrentUser).toBe('function');
+  });
+  it('Debería devolver el usuario logeado', () => {
     const mockUser = {
       currentUser: { uid: '001' },
     };
     firebase.auth().currentUser = mockUser.currentUser;
     expect(getCurrentUser().uid).toEqual('001');
+  });
+  it('Debería devolver si el usuario NO está logeado', () => {
+    const mockUser = {
+      currentUser: null,
+    };
+    firebase.auth().currentUser = mockUser.currentUser;
+    expect(getCurrentUser().uid).toEqual(undefined);
   });
 });

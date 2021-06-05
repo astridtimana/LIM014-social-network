@@ -126,7 +126,6 @@ export default () => {
     const inputFileEmpty = divElement.querySelector('#file-input');
     showLoading();
 
-
     // fx firestorage
     if (textarea.length > 0 || inputFile.length >= 1) {
       if (inputFile.length >= 1) {
@@ -145,9 +144,9 @@ export default () => {
               getCurrentUser().photo,
               new Date().toLocaleString(),
               url,
-              [])
+              [],
+            )
               .then(() => { hiddenLoading(); textareaEmpty.value = ''; inputFileEmpty.value = ''; });
-
           });
         });
       } else {
@@ -159,7 +158,6 @@ export default () => {
           null,
           [])
           .then(() => { hiddenLoading(); textareaEmpty.value = ''; inputFileEmpty.value = ''; });
-
       }
     }
   });
