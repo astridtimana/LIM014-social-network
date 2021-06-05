@@ -10,7 +10,7 @@ import {
 } from '../firebase/firebaseFx.js';
 import templatePost from './posts.js';
 // console.log(templatePost());
-import { addDocPost, listPostAll, onGetPosts } from '../firebase/firestoreFx.js';
+import { addDocPost, listPostAll } from '../firebase/firestoreFx.js';
 import { uploadFile } from '../firebase/firestorageFx.js';
 
 export default () => {
@@ -129,8 +129,9 @@ export default () => {
     const textarea = divElement.querySelector('#post').value;
     const textareaEmpty = divElement.querySelector('#post');
     const inputFile = divElement.querySelector('#file-input').files;
-
+    const inputFileEmpty = divElement.querySelector('#file-input');
     showLoading();
+
     // fx firestorage
     if (textarea.length > 0 || inputFile.length >= 1) {
       if (inputFile.length >= 1) {
@@ -149,9 +150,9 @@ export default () => {
               new Date().toLocaleString(),
               url,
               [],
-            ).then(() => {
-              hiddenLoading();
-            }).catch((error) => { console.log('Got an error: ', error); });
+            )
+              .then(() => { hiddenLoading(); textareaEmpty.value = ''; inputFileEmpty.value = ''; });
+
           });
         });
       } else {
@@ -162,15 +163,10 @@ export default () => {
           new Date().toLocaleString(),
           null,
           [])
-          .then(() => hiddenLoading())
-          .catch((error) => {
-            console.log('Got an error: ', error);
-            hiddenLoading();
-          });
+          .then(() => { hiddenLoading(); textareaEmpty.value = ''; inputFileEmpty.value = ''; });
       }
     }
 
-    //  divElement.querySelector('#post').value = '';
   });
 
   return divElement;

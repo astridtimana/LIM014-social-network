@@ -13,17 +13,22 @@ export const addDocPost = (newPost, userID, userName, photo, date, file, likes) 
 export const updateLike = (docID, likes) => firebase.firestore().collection('posts').doc(docID).update(likes);
 
 // ----- Añadir lista de fields en un documento de la colección comments -----
-export const addDocComment = (docID, comment) => firebase.firestore().collection('posts').doc(docID).collection('comment')
-  .add(comment);
+export const addDocComment = (idPost, comment) => {
+  const db = firebase.firestore();
+  return db.collection('posts').doc(idPost).collection('comment').add(comment);
+};
 
 // ----- Agregar/actualizar field en un documento de la colección posts -----
 export const updateDocPost = (docID, newField) => firebase.firestore().collection('posts').doc(docID).update(newField);
 
 // ----- Agregar/actualizar field en un documento de la colección posts -----
-export const updateDocComment = (postID, commentID, newField) => firebase.firestore().collection('posts').doc(postID)
-  .collection('comment')
-  .doc(commentID)
-  .update(newField);
+export const updateDocComment = (postID, commentID, newField) => {
+  const db = firebase.firestore();
+  return db.collection('posts').doc(postID)
+    .collection('comment')
+    .doc(commentID)
+    .update(newField);
+};
 
 // ----- Función para almacenar información sobre posts de forma descendente ----
 export const listPostAll = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
@@ -48,25 +53,16 @@ export const listCommentAll = (idPost, callback) => firebase.firestore().collect
   // console.log('Posts: ', post.join(', '));
   });
 
-// obtener información de posts
-export const getPostData = (post) => {
-  firebase.firestore().collection('posts').doc(post).get();
-};
-
 // borrar POST
 export const deletePostFirebase = (idPost) => {
-  firebase.firestore().collection('posts').doc(idPost).delete();
+  const db = firebase.firestore();
+  return db.collection('posts').doc(idPost).delete();
 };
 
 // borrar COMENTARIO
 export const deleteCommentFirebase = (idPost, idComment) => {
-  firebase.firestore().collection('posts').doc(idPost).collection('comment')
+  const db = firebase.firestore();
+  return db.collection('posts').doc(idPost).collection('comment')
     .doc(idComment)
     .delete();
 };
-
-// obtener info de posts
-export const onGetPosts = () => firebase.firestore().collection('posts').get();
-// .then((snapshot) => {
-//   snapshot.docs.forEach((doc) => doc.data());
-// });
