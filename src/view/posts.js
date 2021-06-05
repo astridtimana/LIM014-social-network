@@ -30,8 +30,7 @@ export default (post) => {
         </section><hr>
         <section id="editPostWrapper">
           <p id= "postContent" > ${post.newPost}</p>
-          ${post.file ? `<img class="image-post" src='${post.file}' />` : ''}
-          
+          <img class="image-post ${post.file ? 'show' : 'hidden'}"  src=${post.file} />
           <p id="savePost">Guardar</p>
         </section><hr>
 
@@ -118,7 +117,7 @@ export default (post) => {
       addDocComment(post.id, {
         newComment: textarea,
         userID: getCurrentUser().uid,
-        date: new Date().toLocaleDateString(),
+        date: new Date().toLocaleString(),
         userName: getCurrentUser().name,
         photo: getCurrentUser().photo,
       })

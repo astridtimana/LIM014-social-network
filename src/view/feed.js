@@ -66,6 +66,14 @@ export default () => {
           
           <button id="bttPost" type="submit">Publicar</button>
       </form>
+
+      <div id="loadingImages" class="loadingImages hidden">
+      <img src="../images/loadingspin.gif"/>
+      </div>
+      
+      <div id="loading" class="loading hidden">
+      <img src="../images/loadingspin.gif"/>
+      </div>
       
 
       <div id="wall">
@@ -91,6 +99,7 @@ export default () => {
   // const docRef = firestore.collection('posts');
   const buttonPost = divElement.querySelector('#bttPost');
   const wallArea = divElement.querySelector('#wall');
+  const loadingImages = divElement.querySelector('#loadingImages');
 
   // renderizar posts en wall
   listPostAll((data) => {
@@ -103,6 +112,17 @@ export default () => {
     return wallArea;
   });
 
+  const hiddenLoading = () => {
+    const loading = divElement.querySelector('#loading');
+    loading.classList.remove('show');
+    loading.classList.add('hidden');
+  };
+  const showLoading = () => {
+    const loading = divElement.querySelector('#loading');
+    loading.classList.remove('hidden');
+    loading.classList.add('show');
+  };
+
   buttonPost.addEventListener('click', (e) => {
     e.preventDefault();// para evitar que los datos no aparezcan cuando se refresque
     // si el textarea está vacío, no guardar algo
@@ -110,11 +130,14 @@ export default () => {
     const textareaEmpty = divElement.querySelector('#post');
     const inputFile = divElement.querySelector('#file-input').files;
     const inputFileEmpty = divElement.querySelector('#file-input');
+    showLoading();
+
     // fx firestorage
     if (textarea.length > 0 || inputFile.length >= 1) {
       if (inputFile.length >= 1) {
         // console.log(inputFile);
         const fileName = inputFile[0].name;
+        // console.log(fileName);
         uploadFile(`img/${fileName}`, inputFile[0]).then((snapshot) => {
           // console.log('Archivo Subido');
           snapshot.ref.getDownloadURL().then((url) => {
@@ -128,7 +151,8 @@ export default () => {
               url,
               [],
             )
-              .then(() => { textareaEmpty.value = ''; inputFileEmpty.value = ''; });
+              .then(() => { hiddenLoading(); textareaEmpty.value = ''; inputFileEmpty.value = ''; });
+
           });
         });
       } else {
@@ -139,9 +163,10 @@ export default () => {
           new Date().toLocaleString(),
           null,
           [])
-          .then(() => { textareaEmpty.value = ''; inputFileEmpty.value = ''; });
+          .then(() => { hiddenLoading(); textareaEmpty.value = ''; inputFileEmpty.value = ''; });
       }
     }
+
   });
 
   return divElement;
