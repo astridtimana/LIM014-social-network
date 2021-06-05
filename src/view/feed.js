@@ -110,15 +110,13 @@ export default () => {
     const textareaEmpty = divElement.querySelector('#post');
     const inputFile = divElement.querySelector('#file-input').files;
     const inputFileEmpty = divElement.querySelector('#file-input');
-    /* divElement.querySelector('#post').value = ''; */
-    /* divElement.querySelector('#file-input').value = ''; */
     // fx firestorage
     if (textarea.length > 0 || inputFile.length >= 1) {
       if (inputFile.length >= 1) {
-        console.log(inputFile);
+        // console.log(inputFile);
         const fileName = inputFile[0].name;
         uploadFile(`img/${fileName}`, inputFile[0]).then((snapshot) => {
-          console.log('Archivo Subido');
+          // console.log('Archivo Subido');
           snapshot.ref.getDownloadURL().then((url) => {
             console.log('Url :', url);
             addDocPost(
