@@ -7,10 +7,8 @@ import {
   updateLike,
   updateDocPost,
   updateDocComment,
-  // getPostData,
   deletePostFirebase,
   deleteCommentFirebase,
-  // onGetPosts
 } from '../src/firebase/firestoreFx.js';
 
 // datos simulados que les paso para que pueda validarlo
@@ -114,8 +112,6 @@ describe('actualizar el comentario', () => {
         done();
       })));
 });
-
-// k
 
 // ELIMINA UN POST
 describe('Función fireStore para borrar posts', () => {
