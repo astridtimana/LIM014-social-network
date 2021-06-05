@@ -66,10 +66,6 @@ export default () => {
           
           <button id="bttPost" type="submit">Publicar</button>
       </form>
-
-      <div id="loadingImages" class="loadingImages hidden">
-      <img src="../images/loadingspin.gif"/>
-      </div>
       
       <div id="loading" class="loading hidden">
       <img src="../images/loadingspin.gif"/>
@@ -99,8 +95,6 @@ export default () => {
   // const docRef = firestore.collection('posts');
   const buttonPost = divElement.querySelector('#bttPost');
   const wallArea = divElement.querySelector('#wall');
-  const loadingImages = divElement.querySelector('#loadingImages');
-
   // renderizar posts en wall
   listPostAll((data) => {
     // console.log(data); trae la data del documento con sus fields.
@@ -151,7 +145,10 @@ export default () => {
               [],
             ).then(() => {
               hiddenLoading();
-            }).catch((error) => { console.log('Got an error: ', error); });
+            }).catch((error) => {
+              console.log('Got an error: ', error);
+              hiddenLoading();
+            });
           });
         });
       } else {
@@ -170,7 +167,8 @@ export default () => {
       }
     }
 
-    //  divElement.querySelector('#post').value = '';
+    // divElement.querySelector('#post').value = '';
+    // divElement.querySelector('#file-input').value = '';
   });
 
   return divElement;
