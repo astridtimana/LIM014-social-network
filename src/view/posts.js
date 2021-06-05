@@ -70,7 +70,7 @@ export default (post) => {
   const commentContainer = postToWall.querySelector('#commentContainer');
   const savePost = postToWall.querySelector('#savePost');
   const commentWall = postToWall.querySelector('#commentWall');
-  const commentText = postToWall.querySelector(`#commentText-${post.id}`);
+  // const commentText = postToWall.querySelector(`#commentText-${post.id}`);
   const commentOnPost = postToWall.querySelector(`#sendComment-${post.id}`);
 
   // --------- ESCONDE EL DIV DEL COMENTARIO ---------//

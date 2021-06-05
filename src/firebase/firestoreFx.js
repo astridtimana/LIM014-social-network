@@ -39,7 +39,6 @@ export const listPostAll = (callback) => firebase.firestore().collection('posts'
 export const listCommentAll = (idPost, callback) => firebase.firestore().collection(`posts/${idPost}/comment`)
   .orderBy('date', 'asc').onSnapshot((querySnapshot) => {
     const comment = [];
-    console.log('####');
     querySnapshot.forEach((doc) => {
       console.log(doc.id, doc.data());
       comment.push({ id: doc.id, ...doc.data() });
@@ -49,21 +48,15 @@ export const listCommentAll = (idPost, callback) => firebase.firestore().collect
   });
 
 // obtener información de posts
-export const getPostData = (post) => {
-  firebase.firestore().collection('posts').doc(post).get();
-};
+export const getPostData = (post) => firebase.firestore().collection('posts').doc(post).get();
 
 // borrar POST
-export const deletePostFirebase = (idPost) => {
-  firebase.firestore().collection('posts').doc(idPost).delete();
-};
+export const deletePostFirebase = (idPost) => firebase.firestore().collection('posts').doc(idPost).delete();
 
 // borrar COMENTARIO
-export const deleteCommentFirebase = (idPost, idComment) => {
-  firebase.firestore().collection('posts').doc(idPost).collection('comment')
-    .doc(idComment)
-    .delete();
-};
+export const deleteCommentFirebase = (idPost, idComment) => firebase.firestore().collection('posts').doc(idPost).collection('comment')
+  .doc(idComment)
+  .delete();
 
 // obtener info de posts
 export const onGetPosts = () => firebase.firestore().collection('posts').get();

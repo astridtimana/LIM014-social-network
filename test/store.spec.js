@@ -4,13 +4,13 @@ import {
   listPostAll,
   // updateLike,
   // addDocComment,
-  // updateDocPost,
   // updateDocComment,
   // listPostAll,
   // listCommentAll,
   // getPostData,
-  // deletePostFirebase,
-  // deleteCommentFirebase,
+  deletePostFirebase,
+  updateDocPost,
+  // deleteCommentFirebase, A
   // onGetPosts
 } from '../src/firebase/firestoreFx.js';
 
@@ -63,4 +63,21 @@ describe('Función fireStore para crear posts', () => {
         done(); // ES LA PROMESA QUE LE DICE AL TEST QUE NO SE QUEDE ESPERANDO A LA OTRA PROMESA
       },
     )));
+});
+
+describe('Función fireStore para borrar posts', () => {
+  it('Debería borrar una publicación', (done) => deletePostFirebase('id_001')
+    .then((data) => {
+      expect(data).toBe(undefined);
+      done();
+    }));
+});
+
+describe('Función fireStore para actualizar el field de un documento', () => {
+  it('Debería actualizar un documento', (done) => updateDocPost('id_001', { newPost: 'TEXTO' })
+    .then((data) => {
+      console.log(data);
+      // expect(data).toBe(undefined);
+      done();
+    }));
 });

@@ -18,6 +18,7 @@ const mockauth = new firebasemock.MockAuthentication();
 const mockfirestore = new firebasemock.MockFirestore();
 const mockstorage = new firebasemock.MockStorage();
 mockauth.autoFlush();
+
 // simula los mét y prop de firebase auth
 global.firebase = new firebasemock.MockFirebaseSdk(
   null,
