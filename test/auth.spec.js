@@ -12,6 +12,7 @@ import {
   signInWithGoogle,
   logOut,
   resetPasswordMail,
+  getCurrentUser,
 } from '../src/firebase/firebaseFx.js';
 
 const mockauth = new firebasemock.MockAuthentication();
@@ -89,6 +90,8 @@ describe('Log out', () => {
 // RESETPASSWORD
 describe('Función para restablecer la contraseña', () => {
   it('Deberia enviar un email para restablecer contraseña', () => {
+    // this mocks the initializeApp on the firebase-admin,  we're calling out to firestore
+    // You have to stub admin method to provide our admin with proper credentials
     const mockSendPasswordResetEmail = jest.fn();
     firebase.auth().sendPasswordResetEmail = mockSendPasswordResetEmail;
     resetPasswordMail('test@gmail.com');
@@ -97,5 +100,16 @@ describe('Función para restablecer la contraseña', () => {
     expect(mockSendPasswordResetEmail.mock.calls).toHaveLength(1); // BUSCAR!!!!
     // verificar si el metodo recibio como arg el email
     expect(mockSendPasswordResetEmail).toHaveBeenCalledWith('test@gmail.com');
+  });
+});
+
+// GET CURRENT USER
+describe('Función del usuario actual', () => {
+  it('Debería devovler el usuario logeado', () => {
+    const mockUser = {
+      currentUser: { uid: '001' },
+    };
+    firebase.auth().currentUser = mockUser.currentUser;
+    expect(getCurrentUser().uid).toEqual('001');
   });
 });
