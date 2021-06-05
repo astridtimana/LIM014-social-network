@@ -15,8 +15,7 @@ export const createUser = (email, pass) => firebase.auth().createUserWithEmailAn
 export const verificationMail = () => {
   const user = firebase.auth().currentUser;
   return user.sendEmailVerification()
-    .then(() => ('se envió el email'))
-    .catch((error) => error);
+    .then(() => ('se envió el email'));
 };
 
 // -------- FUNCIÓN QUE PERMITE EL LOGIN DESDE CUALQUIER PROVEEDOR --------- //
@@ -28,8 +27,6 @@ export const signInWithGoogle = () => {
   return firebase.auth().signInWithPopup(provider)
     .then(() => {
       window.location.hash = '#/feed'; // consumo aquí o en home.js?
-    }).catch((error) => {
-      console.log(error.message);
     });
 };
 
