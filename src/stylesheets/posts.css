@@ -183,4 +183,10 @@
               width: 80%;
               display: flex;
        }
+       .image-post{
+              max-height:300px;
+              object-fit: contain;
+              margin:auto;
+              max-width: 300px;
+       }
 }

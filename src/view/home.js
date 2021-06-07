@@ -19,7 +19,7 @@ export default () => {
     <section id="form">
     <article class="formContainerHome">
      <article class = "forDesktopHome">
-      <a id="welcomeMessage"> ¡Bienvenidx!</a><br>
+      <a id="welcomeMessage"> ¡Bienvenidx!</a><br><br>
       <a id="loginMessage"> Ingresa a tu cuenta</a>
      </article>
       <a class="textHome" >Email</a>

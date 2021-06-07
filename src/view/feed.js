@@ -48,14 +48,12 @@ export default () => {
           <img class="userPhotoFeed" src="${photo === null ? '../images/user.svg' : photo}" alt="userPhoto">
           <textarea placeholder="¿En qué estás pensando?" id="post"></textarea><hr>
           <button id="bttPost" type="submit">Publicar</button>
-
-      </form>
-
-
           <article class="image-upload">
           <label for="file-input">
           <img src= "../images/photo.png" id="uploadPhoto">
           </label>
+          
+      </form>
 
       
       <div id="loading" class="loading hidden">

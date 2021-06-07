@@ -66,6 +66,8 @@
 }
 .comment-content-2{
     border-bottom:1px solid rgba(116, 55, 144, 1);
+    width: 98%;
+    border-width: 98%;
     
 }
 .menu-comment{

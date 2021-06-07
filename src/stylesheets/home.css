@@ -158,6 +158,7 @@ footer{
 }
 #lgtbiqImage{
     width: 0px;  
+    margin-left: 12%;
 }
 #homePhrase{
     display: none;
@@ -186,6 +187,7 @@ footer{
         display: flex;
         flex-direction: column;
         align-items: left;
+        width: 40%;
     }
     #homePhrase{
         display: block;
@@ -220,10 +222,13 @@ footer{
         display: none;
     }
     #welcomeMessage{
-        font-size: 1.9rem;
+        /* font-size: 1.9rem; */
+        font-size: large;
     }
     #loginMessage{
-        font-size: 1.5rem;
+        /* font-size: 1.5rem; */
+        font-size: x-large;
+        font-weight: bold;
     }
     .textHome {
         margin-bottom: 0;
@@ -267,5 +272,12 @@ footer{
         color: rgba(216, 48, 39, 1);
         text-align: center;
         font-size: small;
+    }
+    .googleButton{
+        background-color: rgba(45, 55, 72, 1);
+        color: white;
+    }
+    .smallContainer a {
+        color:rgba(47, 128, 237, 1);
     }
 }
