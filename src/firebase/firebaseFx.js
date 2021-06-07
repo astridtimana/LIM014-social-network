@@ -14,8 +14,7 @@ export const createUser = (email, pass) => firebase.auth().createUserWithEmailAn
 // ------------------ FUNCIÓN QUE ENVÍA CORREO DE VERIFICACIÓN ------------- //
 export const verificationMail = () => {
   const user = firebase.auth().currentUser;
-  return user.sendEmailVerification()
-    .then(() => ('se envió el email'));
+  return user.sendEmailVerification();
 };
 
 // -------- FUNCIÓN QUE PERMITE EL LOGIN DESDE CUALQUIER PROVEEDOR --------- //
