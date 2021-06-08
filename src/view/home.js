@@ -1,10 +1,7 @@
 /* eslint-disable no-console */
-<<<<<<< HEAD
 
 import { logIn, signInWithGoogle, resetPasswordMail } from '../firebase/firebaseFx.js';
 
-=======
->>>>>>> 69e7a0eb6c82e37f8f29868bf22d6cd3ec21f6d9
 export default () => {
   const viewHome = `
       <section class="leftWrapper">
@@ -27,12 +24,7 @@ export default () => {
      </article>
       <a class="textHome" >Email</a>
       <input type="email" placeholder="john.snow@gmail.com" id="email"> 
-<<<<<<< HEAD
-      <p class = "errorMailMessage"></p>
-      <a class="textHome" >Contraseña</a>
-=======
       <a class="text">Contraseña</a>
->>>>>>> 69e7a0eb6c82e37f8f29868bf22d6cd3ec21f6d9
       <input type="password" placeholder="********" id="password"> 
       <article class="smallContainer">
         <article class="rememberMe"><input type="checkbox"><label class="smallText">Recuérdame</label></article>

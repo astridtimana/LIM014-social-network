@@ -17,7 +17,6 @@ export default () => {
   const photo = getCurrentUser().photo;
   const name = getCurrentUser().name;
   const viewFeed = `
-<<<<<<< HEAD
   <header id="feedHeader">
     <nav class="navigatorMenuFeed">
             
@@ -76,13 +75,6 @@ export default () => {
     </main>
     `;
 
-=======
-      <h2 class=""> Holi Feed </h2>
-      <figure class="">
-          <img class="" src="" alt="">
-      </figure>
-      `;
->>>>>>> 69e7a0eb6c82e37f8f29868bf22d6cd3ec21f6d9
   const divElement = document.createElement('div');
   divElement.innerHTML = viewFeed;
 
