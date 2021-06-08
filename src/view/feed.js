@@ -45,7 +45,7 @@ export default () => {
       </section>
 
       <form class="formPost">
-          <img class="userPhotoFeed" src="${photo === null ? '../images/user.svg' : photo}" alt="userPhoto">
+          <img class="userPhotoFeed" src="${photo === null ? '../images/User.svg' : photo}" alt="userPhoto">
           <textarea placeholder="¿En qué estás pensando?" id="post"></textarea><hr>
           <button id="bttPost" type="submit">Publicar</button>
           <article class="image-upload">
