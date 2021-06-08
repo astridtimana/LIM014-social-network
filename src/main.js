@@ -6,13 +6,6 @@
 import { changeView } from './view-controller/indexMVC.js';
 // import { firebaseConfig } from './firebase/configFireBase.js';
 
-const navigator = document.getElementById('navigator');
-
-// const init = () => {
-//   navigator.innerHTML = '';
-//   changeView(window.location.hash);
-//   window.addEventListener('hashchange', () => changeView(window.location.hash));
-// };
 const init = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
