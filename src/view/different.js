@@ -15,7 +15,13 @@ const viewError = () => {
   articleElement.innerHTML = viewDifferent;
 
   const goHome = articleElement.querySelector('.buttonHome');
-  goHome.addEventListener('click', () => { window.location.hash = '#/'; });
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      goHome.addEventListener('click', () => { window.location.hash = '#/feed'; });
+    } else {
+      goHome.addEventListener('click', () => { window.location.hash = '#/home'; });
+    }
+  });
 
   return articleElement;
 };

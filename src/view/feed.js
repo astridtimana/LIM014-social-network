@@ -24,8 +24,8 @@ export default () => {
     <label class="toggleFeed" for="toggle"><i class="fas fa-bars"></i></label>
     <input type="checkbox" id="toggle" />
       <article class="menuFeed">
-          <a href="#">Inicio  <i class="fas fa-home"></i></a>
-          <a href="#" > Mi Perfil <i class="fas fa-user-alt"></i></a>
+          <a href="#feed">Inicio  <i class="fas fa-home"></i></a>
+          <a href="#different" > Mi Perfil <i class="fas fa-user-alt"></i></a>
           <a href="#" id="logOut">Cerrar sesión <i class="fas fa-sign-out-alt"></i></a>
       </article>
     </nav>      
