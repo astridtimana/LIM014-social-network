@@ -67,7 +67,6 @@ export default () => {
   const errorNameUser = divElement.querySelector('#errorNameUser');
   const errorMailUser = divElement.querySelector('#errorMailUser');
   const errorPasswordUser = divElement.querySelector('#errorPasswordUser');
-  // const buttonRegisterGoogleDesktop = divElement.querySelector('#buttonRegisterGoogleDesktop');
   const buttonRegisterGoogle = divElement.querySelector('#buttonRegisterGoogle');
   const validateLetters = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;
 
@@ -119,9 +118,6 @@ export default () => {
       });
   };
 
-  // buttonRegisterGoogleDesktop.addEventListener('click', () => {
-  //   signInWithGoogle();
-  // });
   buttonRegisterGoogle.addEventListener('click', () => {
     signInWithGoogle();
   });

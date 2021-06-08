@@ -8,9 +8,19 @@ import { changeView } from './view-controller/indexMVC.js';
 
 const navigator = document.getElementById('navigator');
 
+// const init = () => {
+//   navigator.innerHTML = '';
+//   changeView(window.location.hash);
+//   window.addEventListener('hashchange', () => changeView(window.location.hash));
+// };
 const init = () => {
-  navigator.innerHTML = '';
-  changeView(window.location.hash);
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      changeView(window.location.hash);
+    } else {
+      window.location.hash = '#/home';
+    }
+  });
   window.addEventListener('hashchange', () => changeView(window.location.hash));
 };
 
