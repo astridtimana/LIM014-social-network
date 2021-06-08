@@ -101,10 +101,10 @@ export default () => {
     const email = document.getElementById('mailRegister').value;
     createUser(email, pass)
       .then((userCredential) => {
-        const user = userCredential.user;
-        user.updateProfile({
-          displayName: name,
-        });
+        // const user = userCredential.user;
+        // user.updateProfile({
+        //   displayName: name,
+        // });
         verificationMail()
           .then(() => {
             alert(`${name} tu usuario ha sido creado, verifica tu correo`);
@@ -126,7 +126,7 @@ export default () => {
     signInWithGoogle();
   });
 
-  signUp.addEventListener('click', (registerUser));
-  signUpDesk.addEventListener('click', (registerUser));
+  signUp.addEventListener('click', (registerUser()));
+  signUpDesk.addEventListener('click', (registerUser()));
   return divElement;
 };

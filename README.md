@@ -112,4 +112,11 @@ La o el usuario se identifica y es un aliado de la comunidad LGQTB+. En tal sent
 * _Desktop_ 
 
 
+
+
+
+
+
+
+
 Más información en ... [Laboratoria-Repositorio-Red-Social](https://github.com/Laboratoria/LIM014-social-network)
