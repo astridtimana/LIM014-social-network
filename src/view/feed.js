@@ -40,10 +40,8 @@ export default () => {
                   <textarea placeholder="Cuéntanos sobre ti..." class="aboutMe"></textarea>
               </article>
       </article>
-
       <section class="aditional">
       </section>
-
       <form class="formPost">
           <img class="userPhotoFeed" src="${photo === null ? '../images/User.svg' : photo}" alt="userPhoto">
           <textarea placeholder="¿En qué estás pensando?" id="post"></textarea><hr>
@@ -54,28 +52,25 @@ export default () => {
           </label>
           
       </form>
-
       
       <div id="loading" class="loading hidden">
       <img src="../images/loadingspin.gif"/>
       </div>
       
-
      </form>
-
      <input type="file" id="file-input" accept="*" />
      </article>
       
       <section id="activitiesArea">
       <h3 id="activitiesTitle"> ACTIVIDADES </h3>
       </section>
-
       <div id="wall">
       </div>
     </main>
     `;
 
   const divElement = document.createElement('div');
+  divElement.setAttribute('class', 'feed');
   divElement.innerHTML = viewFeed;
 
   const userLogOut = divElement.querySelector('#logOut');

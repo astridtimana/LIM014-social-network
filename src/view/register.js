@@ -5,11 +5,7 @@
 /* eslint-disable no-unreachable */
 // será necesario hacer una página de js para el modal???.
 
-<<<<<<< HEAD
 import { createUser, verificationMail, signInWithGoogle } from '../firebase/firebaseFx.js';
-=======
-import { createUser } from '../firebase/firebaseFx.js';
->>>>>>> 69e7a0eb6c82e37f8f29868bf22d6cd3ec21f6d9
 
 export default () => {
   const viewRegister = `
@@ -22,7 +18,6 @@ export default () => {
       <section id="formRegister">
 
           <article class="toDesktop">
-<<<<<<< HEAD
             <header id="headerCreateToDesktop">
               <article id="logoContainer">
                 <img class="logo" src="./images/colorwheel.png"><h2> PRIDE </h2>
@@ -53,20 +48,6 @@ export default () => {
           <article class="containerRegister">
             <p>¿Tienes una cuenta?</p>
             <a id="logIn" href="#/home"> Iniciar sesión</a>
-=======
-              <header id="headerCreateToDesktop">
-                  <article id="logoContainer">
-                      <img class="logo" src="./images/colorwheel.png">
-                      <h2> PRIDE </h2>
-                  </article>
-              </header>
-
-              <p id="textRegister">Regístrate para ver fotos y videos de tus amigos.</p>
-
-              <button class="googleButton" id="buttonRegisterGoogleDesktop">
-                  <img src="./images/googleIcon.png" class="googleLogo">Iniciar sesión con Google
-              </button>
->>>>>>> 69e7a0eb6c82e37f8f29868bf22d6cd3ec21f6d9
           </article>
 
           <input type="name" placeholder="Nombre y apellido" id="name">
