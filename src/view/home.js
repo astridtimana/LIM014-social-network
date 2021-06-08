@@ -68,11 +68,17 @@ export default () => {
     signInWithGoogle();
   });
 
+  const userIncorrect = sectionElement.querySelector('#userIncorrect');
   forgotPassword.addEventListener('click', () => {
-    resetPasswordMail(emailInput.value);
+    resetPasswordMail(emailInput.value)
+      .then(() => {
+        userIncorrect.textContent = '🦄Te hemos enviado un correo de recuperación de contraseña.🦄';
+      })
+      .catch(() => {
+        userIncorrect.textContent = '💜💙💛Escribe el correo o verifica que esté bien escrito.💛💙💜';
+      });
   });
 
-  const userIncorrect = sectionElement.querySelector('#userIncorrect');
   toLogIn.addEventListener('click', () => {
     const email = document.getElementById('email').value;
     const pass = document.getElementById('password').value;
@@ -81,10 +87,10 @@ export default () => {
       /* const user = obj.user; */
         if (obj.user.emailVerified) {
           window.location.hash = '#/feed';
-        } else { userIncorrect.textContent = 'Verifica tu correo'; }
+        } else { userIncorrect.textContent = '💜💛💙Verifica tu correo.💙💛💜'; }
       })
       .catch(() => {
-        userIncorrect.textContent = 'Dirección de correo electrónico o contraseña incorrectos.';
+        userIncorrect.textContent = '🦄Dirección de correo electrónico o contraseña incorrectos.🦄';
       });
   });
 

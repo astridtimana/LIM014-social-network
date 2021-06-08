@@ -103,8 +103,16 @@ section .forDesktopHome {
 .smallText{
     font-size:0.8rem ;
     color: #333333;
+    cursor: pointer;
 }
- .letterPride{
+#forgotPassword :hover {
+    color:  rgba(255, 204, 0, 1);
+}
+#userIncorrect{
+    color: rgba(216, 48, 39, 1);
+    text-align: center;
+}
+.letterPride{
     font-size : 3rem;
     justify-content: center;
     font-family: 'Raleway', sans-serif;
