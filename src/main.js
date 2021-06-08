@@ -3,7 +3,7 @@
 /* eslint-disable no-console */
 // Este es el punto de entrada de tu aplicacion
 
-import { changeView } from './view-controller/indexMVC.js';
+import { changeView } from './view/indexViews.js';
 // import { firebaseConfig } from './firebase/configFireBase.js';
 
 const init = () => {
