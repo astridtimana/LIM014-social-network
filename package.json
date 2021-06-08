@@ -39,6 +39,8 @@
     "node": ">=10"
   },
   "dependencies": {
-    "firebase": "^8.6.5"
+    "firebase": "^8.6.5",
+    "firebase-tools": "^9.12.1",
+    "g": "^2.0.1"
   }
 }
