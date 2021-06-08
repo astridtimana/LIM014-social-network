@@ -1,21 +1,20 @@
-# Creando una Red Social : PRIDE
+# Red Social : PRIDE
 
 ## Índice
 
-* [1. Resumen del proyecto](#1-resumen-del-proyecto)
-* [2. Definición del producto](#2-definición-del-producto)
-* [3. Diseño del proyecto](#3-diseño-del-proyecto)
-* [4. Historias de usuario](#4-consideraciones-generales)
-* [5. MVP](#5-criterios-de-aceptación-mínimos-del-proyecto)
-* [6. Objetivos de aprendizaje](#5-criterios-de-aceptación-mínimos-del-proyecto)
+- [Red Social : PRIDE](#red-social--pride)
+  - [Índice](#índice)
+  - [1. Resumen del proyecto](#1-resumen-del-proyecto)
+  - [2. Definición del producto](#2-definición-del-producto)
+  - [3. Prototipo de alta fidelidad](#3-prototipo-de-alta-fidelidad)
+  - [4. Historias de usuario](#4-historias-de-usuario)
+  - [5. MVP](#5-mvp)
 
 
 ## 1. Resumen del proyecto
 
-COMPLETAR---
-
-Pride, es una red social que está orientada hacia la comunidad LGTBIQ+ y sus allies, y busca crear un espacio social seguro, libre de prejuicios y discriminaciones, en donde se podrá revisar noticias y recomendaciones de interés para este público. 
-En la plataforma los usuarixs podrán escribir publicaciones y comentarios, editarlos y/o borrarlos , así como dar 'like' a las publicaciones de su preferencia. Con la plataforma también buscamos que los usuarixs puedan conocer amigos, informarse sobre lugares gay-friendly, acceder a contenidos de interés, entre otros. El servicio es gratuito,y se encuentra en versión web y móvil.
+Pride es una red social que está orientada hacia la comunidad LGTBIQ+ y sus allies. Busca crear un espacio social seguro, libre de prejuicios y discriminaciones, en donde se podrá revisar noticias y recomendaciones de interés para este público. 
+En la plataforma, los usuarixs podrán escribir publicaciones y comentarios, editarlos y/o borrarlos , así como dar 'like' a las publicaciones de su preferencia. Con la plataforma, también, buscamos que los usuarixs puedan conocer amigos, informarse sobre lugares gay-friendly, acceder a contenidos de interés, entre otros. El servicio es gratuito y se encuentra en versión web y móvil.
 
 
 ![ResponsiveDesign](https://user-images.githubusercontent.com/75852321/120943679-04388700-c6f6-11eb-8116-2695b9e6b3b5.png)
@@ -32,9 +31,6 @@ En la plataforma los usuarixs podrán escribir publicaciones y comentarios, edit
 
 **¿Qué problema resuelve el producto / para qué le servirá a estos usuarios?**
 
-Pride, es una red social que está orientada hacia la comunidad LGTBIQ+ y sus allies, y busca crear un espacio social seguro, libre de prejuicios y discriminaciones, en donde se podrá revisar noticias y recomendaciones de interés para este público. 
-En la plataforma los usuarios pueden conocer amigos, informarse sobre lugares gay-friendly, acceder a contenidos de interés, enterarse de los eventos de la comunidad. El servicio es gratuito,y se encuentra en versión web y móvil.
-
 Esta red social será de gran utilidad para el público objetivo ya que en la actualidad esta minoría es foco de distintas problemáticas.
 En el Perú, se destacan las siguientes:
 - Discriminación y exclusión social
@@ -42,18 +38,7 @@ En el Perú, se destacan las siguientes:
 - Violencia
 - Falta de reconocimiento de las uniones civiles entre parejas del mismo sexo
 
-
-Pride, es una red social que está orientada hacia la comunidad LGTBIQ+ y sus allies, y busca crear un espacio social seguro, libre de prejuicios y discriminaciones, en donde se podrá revisar noticias y recomendaciones de interés para este público. 
-En la plataforma los usuarios pueden conocer amigos, informarse sobre lugares gay-friendly, acceder a contenidos de interés, enterarse de los eventos de la comunidad. El servicio es gratuito,y se encuentra en versión web y móvil.
-
-Esta red social será de gran utilidad para el público objetivo ya que en la actualidad esta minoría es foco de distintas problemáticas.
-En el Perú, se destacan las siguientes:
-- Discriminación y exclusión social
-- Afectaciones a la vida e integridad
-- Violencia
-- Falta de reconocimiento de las uniones civiles entre parejas del mismo sexo
-
-## 3. Diseño del proyecto
+## 3. Prototipo de alta fidelidad
 
 * Home
   - _Mobile_
@@ -82,7 +67,7 @@ En el Perú, se destacan las siguientes:
 
   - _Desktop_
     
-    ![Register-Pride-Desktop](https://user-images.githubusercontent.com/75852321/121040068-3d650b80-c777-11eb-827c-ae2c9d7c73b2.png)
+    ![Register-Pride-Desktop](https://user-images.githubusercontent.com/75852321/121227954-c94b6600-c851-11eb-826c-87b430135b38.png)
 
 ## 4. Historias de usuario
 
@@ -105,12 +90,45 @@ La o el usuario se identifica y es un aliado de la comunidad LGQTB+. En tal sent
   8. Yo como usuarix loggeadx quiero editar o borrar mis comentarios para poder modificarlos por si cambio de opinión.
 
 ## 5. MVP
+* Home
+  - _Mobile_
+  
+    ![Home-pride-mobile-MVP](https://user-images.githubusercontent.com/55217648/121100611-d455b600-c7bf-11eb-99cb-94d515d3c396.png)
 
-* _Mobile_
+  - _Desktop_ 
+  
+    ![Home-pride-desktop-MVP](https://user-images.githubusercontent.com/55217648/121100864-4f1ed100-c7c0-11eb-9dfd-1ad2ec5991c7.png)
 
 
-* _Desktop_ 
+* Register
+  - _Mobile_
 
+    ![Register-pride-mobile-MVP](https://user-images.githubusercontent.com/55217648/121101327-3ebb2600-c7c1-11eb-9d70-e2c494887dcd.png)
+
+  - _Desktop_ 
+  
+  ![Register-pride-desktop-MVP](https://user-images.githubusercontent.com/55217648/121101127-d9673500-c7c0-11eb-9550-4dbfff00e121.png)
+
+
+* Feed
+  - _Mobile_
+    
+    ![Feed-pride-mobile-MVP](https://user-images.githubusercontent.com/55217648/121101816-2f88a800-c7c2-11eb-87e4-209083954297.png)
+
+    ![Feed-hamburgerMenu-pride-mobile-MVP](https://user-images.githubusercontent.com/55217648/121101670-e89ab280-c7c1-11eb-9188-1d2d7ba6982a.png)
+
+  - _Desktop_ 
+    
+    ![Feed-pride-desktop-MVP](https://user-images.githubusercontent.com/55217648/121101944-6eb6f900-c7c2-11eb-9266-3cba5157397e.png)
+
+* Error 404
+  - _Mobile_
+  
+  ![Error-pride-mobile-MVP](https://user-images.githubusercontent.com/55217648/121102618-a7a39d80-c7c3-11eb-886d-0f05b7280933.png)
+
+  - _Desktop_ 
+  
+  ![Error-pride-desktop-MVP](https://user-images.githubusercontent.com/55217648/121102436-2ea44600-c7c3-11eb-8690-0d1a422a01c3.png)
 
 
 
