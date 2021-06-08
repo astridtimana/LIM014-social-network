@@ -85,7 +85,7 @@ La o el usuario se identifica y es un aliado de la comunidad LGQTB+. En tal sent
 
   6. Yo como usuarix loggeadx deseo hacer publicaciones y poder editarlas y borrarlas, para que sean vistas por mis contactos.
 
-  7. Yo como usuarix loggeadx deseo poder ver las publicaciones de mis amigos, dar like y comentar para indicar mi parecer sobre lo que comparten.
+  7. Yo como usuarix loggeadx deseo poder ver las publicaciones de mis amigos, dar like, ver cuantos likes tiene la publicación y comentar para indicar mi parecer sobre lo que comparten.
 
   8. Yo como usuarix loggeadx quiero editar o borrar mis comentarios para poder modificarlos por si cambio de opinión.
 
