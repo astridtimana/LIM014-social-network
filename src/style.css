@@ -1,0 +1,362 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    display: inline-grid;
+    font-family: 'Raleway', sans-serif;
+    /* row-gap: 1.5rem; */
+}
+
+#form {
+    display: inline-grid;
+    row-gap: 1.5rem;
+}
+
+head{
+    display: none;
+}
+
+.forDesktop {
+    display: none;
+}
+input, button {
+    height: 3rem;
+    border-radius: 10px;
+    justify-content: center;
+    padding: 3%;
+}
+input{
+    background-color: rgba(0, 0, 0, 0.1);
+    border: rgba(255, 255, 255, 0);
+}
+
+.googleButton{
+    background-color: white;
+    border: rgba(255, 255, 255, 0);
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
+    padding: 5%;
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+    color: #6C6C64;
+    font-size: 1rem;
+    align-items: center;
+    margin-bottom: 5%;
+}
+.googleLogo{
+    width: 1.4rem;
+    margin-right: 10px;
+    justify-content: center;
+}
+.home {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 400px));
+    justify-content: center;
+    margin: 35% 15%;
+}
+.smallText{
+    font-size:0.8rem ;
+}
+h1{
+    font-size : 3rem;
+    justify-content: center;
+    font-family: 'Raleway', sans-serif;
+}
+.login{
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2rem;
+    margin-bottom: 5%;
+}
+#arrowImg, #arrowImgRegister {
+    width: 55px;
+}
+.logo{
+    height: 3.5rem;
+}
+#logoContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20%;
+}
+.smallContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.rememberMe{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+footer{
+    margin-top: 0%;
+    font-size:0.8rem ;
+    justify-content: center;
+    display:flex;
+    align-items: flex-end;
+}
+#lgtbiqImage{
+    width: 0px;  
+}
+/* #formDesktop{
+    display: none;
+} */
+#homePhrase{
+    display: none;
+}
+/* .formContainer{
+    display: none;
+} */
+
+
+#signUp {
+    display: none;
+}
+@media only screen and (min-width: 700px) {
+    *{
+        row-gap: 0.8rem;
+    }
+    head {
+        margin-top: -1%; 
+    }
+    #lgtbiqImage {
+        width:500px;
+        justify-content: left;
+    }
+    .leftWrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+    }
+    #homePhrase{
+        display: block;
+        font-family: 'Raleway', sans-serif;
+        font-size:2rem;
+    }
+    #logoContainer{
+        margin-bottom: 3%;
+        justify-content: left;
+    }
+    .home {
+        justify-content: space-around;
+        margin: 5%;
+    }
+    /* #form{
+        display: none;
+    } */
+    .forDesktop {
+        display: block;
+    }
+
+    #form{
+        display: block;
+        display:flex;
+        flex-direction: column;
+    }
+
+    #arrowImg {
+        display: none;
+    }
+    #welcomeMessage{
+        font-size: 1.3rem;
+    }
+    #loginMessage{
+        font-size: 1.5rem;
+    }
+    .text{
+        margin-bottom: 1%;
+    }
+    .login {
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        color:white;
+        background-color: rgba(255, 204, 0, 1);
+        border: rgba(255, 255, 255, 0);
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
+        padding: 3%;
+        display: flex;
+        justify-content: center;
+    }
+    .googleButton{
+        border-radius: 5px;
+        padding: 3%;
+        background-color: rgba(45, 55, 72, 1);
+        color:white;
+        border: rgba(255, 255, 255, 0);
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
+        font-size: 1rem;
+    }
+    .containerRegister{
+        display:flex;
+        padding: 5px 10px;
+        flex-direction: row;
+        justify-content: space-around;
+        font-size: 1rem;
+    }
+    .formContainer{
+        border: rgba(221, 217, 217) solid;
+        border-width: 2px;
+        display:block;
+        display:flex;
+        flex-direction: column;
+        padding: 20px 50px;
+    }
+    input {
+        height: 2.5rem;
+        border-radius: 5px;
+        background-color: white;
+        border: rgba(221, 217, 217) solid;
+        border-width: 1.5px;
+    }
+    .googleLogo{
+        width: 1.3rem;
+        margin-right: 10px;
+        margin-top: 0.5%; 
+    }
+    #register{
+        display: none;
+    }
+
+}
+
+
+/*-------------------- PARA LA PÁGINA DE REGÍSTRATE ----------------------- */
+.toDesktop, #headerCreateToDesktop {
+    display: none;
+}
+
+#headerCreate {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-left: 5%;
+    font-size: 1.7rem;
+}
+
+#formRegister {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    margin: 5%;
+    padding: 5%;
+}
+
+#formRegister > input {
+    height: 3rem;
+    border-radius: 10px;
+    justify-content: center;
+    padding: 3%;
+}
+
+
+
+#buttonRegister {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 2rem;
+}
+
+#buttonRegisterGoogle{
+    height: 2.5rem;
+    margin: 10%;
+}
+
+.containerRegister {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10%;
+}
+
+#textConditions{
+    color: #828282;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: small;
+    margin-bottom: 4%;
+}
+
+@media only screen and (min-width: 700px) {
+   
+    #headerCreate, #buttonRegister, #buttonRegisterGoogle {
+    display: none;
+    }
+    .toDesktop {
+    display: block;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 5%;
+    font-size: 1.1rem;
+    }
+
+    .googleButton {
+        width: 100%;
+        align-items: center;
+    }
+
+    #headerCreateToDesktop {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-left: 5%;
+    font-size: 1.7rem;
+    }
+
+    #textRegister {
+        font-weight: bold;
+        color: #828282;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #register{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2%;
+        border: rgba(221, 217, 217) solid;
+        margin: 1% 30%;
+
+    }
+    #signUp{
+        display: block;
+        background-color: #FFCC00;
+        color: white;
+        font-weight: bold;
+        font-size: 1.2rem;
+        align-content: center;
+        border: rgba(255, 255, 255, 0);
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.274);
+        margin-top: 5%;
+    }
+    #formRegister input {
+        height: 3rem;
+        border-radius: 5px;
+        background-color: white;
+        border: rgba(221, 217, 217) solid;
+        border-width: 1.5px;
+        align-items: center;
+    }
+    
+    
+   
+    
+    
+    
+
+}

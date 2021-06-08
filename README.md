@@ -103,7 +103,7 @@ La o el usuario se identifica y es un aliado de la comunidad LGQTB+. En tal sent
 * Register
   - _Mobile_
 
-    ![Register-pride-mobile-MVP](https://user-images.githubusercontent.com/55217648/121101327-3ebb2600-c7c1-11eb-9d70-e2c494887dcd.png)
+Yo como usuarix quiero crear una nueva cuenta (sin hacer uso de Google) para tener acceso al aplicativo.
 
   - _Desktop_ 
   
