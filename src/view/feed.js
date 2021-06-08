@@ -34,7 +34,7 @@ export default () => {
     <main id="feedSection">
   
       <article id="user-info">
-              <img class="userImage" src="${photo === null ? '../images/user.svg' : photo}" alt="Foto de perfil">
+              <img class="userImage" src="${photo === null ? '../images/User.svg' : photo}" alt="Foto de perfil">
               <h2 class="user-name profile-name" id="nameUserProfile">${name}</h2>
               <article class="user-information">
                   <textarea placeholder="Cuéntanos sobre ti..." class="aboutMe"></textarea>
