@@ -14,7 +14,7 @@ export default (post) => {
     <article class="postId" id= "${post.id}">
         <section id= "postHeader">
           <section id="userInfoPost">
-            <img class="userPhoto" src="${post.photo === null ? '../images/user.svg' : post.photo}" alt="userPhoto"> 
+            <img class="userPhoto" src="${post.photo === null ? '../images/User.svg' : post.photo}" alt="userPhoto"> 
             <section id="postHeaderWrapper">
               <article id="userNamePost">${post.userName}</article>
               <p class= "daysAgo">${post.date}</p>
@@ -45,7 +45,7 @@ export default (post) => {
 
       <section id="commentContainer">
         <section id="commentContainerWrap">
-          <img class="userPhotoComment" src="${getCurrentUser().photo === null ? '../images/user.svg' : getCurrentUser().photo}">
+          <img class="userPhotoComment" src="${getCurrentUser().photo === null ? '../images/User.svg' : getCurrentUser().photo}">
           <form class="formComment">
             <input id="commentText-${post.id}" class="textOnComment" placeholder="Escribe un comentario..." required><i class="fas fa-share-square"id="sendComment-${post.id}"></i></input>
           </section>
